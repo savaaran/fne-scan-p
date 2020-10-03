@@ -1,40 +1,21 @@
 # Fundraising and Engagement
-Hello ISVs, SIs, Partners and Nonprofits - Your success is our goal.
-This repository helps you to [connect](https://assetsprod.microsoft.com/en-us/isv-getting-started-connect.pdf), [extend](https://assetsprod.microsoft.com/en-us/isv-getting-started-extend.pdf), [build](https://assetsprod.microsoft.com/en-us/isv-getting-started-guide.pdf) and contribute to Fundraising and Engagement.
-
-# Table of Contents
-
-* [Overview](#Overview-of-Fundraising-and-Engagement)
-* [Releases](#Releases)
-* [Industry Accelerators](#Get-to-know-the-Industry-Accelerators)
-* [Contributing](#Contributing)
+Hello ISVs, SIs, Partners and Nonprofits - Your success is our goal. This repository helps you to connect, extend, build and contribute to Fundraising and Engagement.
 
 ## Overview of Fundraising and Engagement
 
-(overview content)
+Microsoft Tech for Social Impact provides affordable and accessible cloud technology to nonprofits, and delivers purpose-built solutions for nonprofit partners and organizations by leveraging the power of the entire Microsoft platform through Business Applications, Modern Workplace, and Azure technology.
+
+Fundraising and Engagement for Dynamics 365 Sales, a Microsoft solution built with MISSION CRM, helps nonprofits modernize donor and constituent engagement to increase mission impact.
+
+Fundraising and Engagement allows nonprofits to better understand supporters, strengthen donations and revenue management, and more precisely target and personalize communications.  A more proactive, strategic nonprofit team will identify special funding opportunities and potential major givers and increase donor loyalty and lifetime giving. By streamlining the manual work of nonprofit backoffice staff, nonprofit organizations experience greater fundraising efficiency and cost savings at a critical time where business process automation can directly translate into time spent on program and mission delivery. From faster monthly recurring gift management to data processing and imports driven by Azure, move your nonprofit staff from reactive to strategic. 
+
+In addition, eliminate the need for complex fundraising and financial reconciliation by leveraging fundraising and ERP solutions built on the Microsoft Platform that leverage the Common Data Model for Nonprofits. Get an immediate view of donations and cash flow, gain insights into fundraising efforts, and focus dollars mid-campaign where you can have the greatest results. You’ll also have a real-time view of the impact per dollar spent that you can communicate to funders at any time, so they can see the results of the programs and services their donations are funding.
+
+Finally, Fundraising and Engagement leverages a purpose-built platform that aligns fundraising, program delivery, finance, and operations with actionable insights and impact. It will enable nonprofit organizations to integrate fundraising, finance, and program metrics to draw a clear line for grant makers and corporate partners about how each dollar drives a specific outcome. Fundraising and Engagement is part of the Dynamics 365 application platform, built on the Nonprofit Common Data Model (link AppSource), so you can connect departments, applications, and systems end-to-end as your digital transformation evolves. Leverage the power of the Microsoft Cloud and your current investments with integrated, immersive experiences with Office 365 and transaction and data processing on Azure.
 
 ## Releases
 
 Click "release" tab on the top or click this [link](https://github.com/microsoft/fundraising-and-engagement/releases) to navigate to latest release details and download the latest release assets.
-
-## Get to know the Industry Accelerators
-
-| Industry Accelerators | Description |
-|-------------|----------------------|
-| [Automotive Accelerator](https://github.com/Microsoft/Industry-Accelerator-Automotive) |  Rapidly develop test drives, vehicle specifications and service appointment scheduling solutions. The Microsoft Auto Accelerator empowers customers and users to schedule appointments and services facilitated through proactive communications. Get more details from [Dynamics 365 ISV Success community](https://community.dynamics.com/365/b/dynamics365isvsuccess)|
-| [Financial Services Accelerator](https://github.com/Microsoft/Industry-Accelerator-FinancialServices) | Rapidly develop Banking solutions using entities such as loan, mortgage, referrals, branch, collateral, deal, limit, facilities, and more. Get more details from [Dynamics 365 ISV Success community](https://community.dynamics.com/365/b/dynamics365isvsuccess)|
-| [Health Accelerator](https://github.com/Microsoft/Industry-Accelerator-Health) |  Rapidly develop healthcare solutions using FHIR entities such as patient, condition, and care plan. The Microsoft Health Accelerator enables partners and customers to create new use cases and workflows using a FHIR-based data model. Get more details from [Dynamics 365 ISV Success community](https://community.dynamics.com/365/b/dynamics365isvsuccess)|
-| [Education Accelerator](https://github.com/Microsoft/Industry-Accelerator-Education) |  Rapidly build solutions for Education using entities such as student, course, and test scores.  Get more details from [Dynamics 365 ISV Success community](https://community.dynamics.com/365/b/dynamics365isvsuccess)|
-| [Manufacturing Accelerator](https://github.com/Microsoft/Industry-Accelerator-Manufacturing) |  Rapidly develop solutions that  empower customers and users to qualify new suppliers, onboard suppliers for API data integration, and manage the ongoing supplier relationships. Get more details from [Dynamics 365 ISV Success community](https://community.dynamics.com/365/b/dynamics365isvsuccess)|
-| [Media and Communications Accelerator](https://github.com/Microsoft/Industry-Accelerator-Media) |  Rapidly develop solutions around event and venue management, sports management, ticketing and advertising sales, media sponsorships, and various guest interactions such as event registrations and the tracking of loyalty programs. Get more details from [Dynamics 365 ISV Success community](https://community.dynamics.com/365/b/dynamics365isvsuccess)|
-
-## Engage
-
-Connect with experts and peers, read blog articles, and find local events within the Industry Accelerator Community. 
-
-Join the [Industry Accelerator conversation](https://community.dynamics.com/365/industry-accelerators/).
-
-Join the [Nonprofit conversation](https://community.dynamics.com/365/industry-accelerators/f/nonprofit-accelerator-forum).
 
 ## Contributing
 
