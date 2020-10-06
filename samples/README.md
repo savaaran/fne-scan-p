@@ -1,4 +1,5 @@
 ## Fundraising and Engagement Samples
+The table below provides an overview of the sample contents.
 
 | Sample | Description |
 | - | - |
