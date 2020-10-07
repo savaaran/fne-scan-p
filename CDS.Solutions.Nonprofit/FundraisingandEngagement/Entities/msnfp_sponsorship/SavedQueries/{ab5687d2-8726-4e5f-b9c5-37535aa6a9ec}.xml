@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{ab5687d2-8726-4e5f-b9c5-37535aa6a9ec}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="msnfp_identifier" select="1" icon="1" preview="1">
+        <row name="result" id="msnfp_sponsorshipid">
+          <cell name="msnfp_identifier" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="msnfp_eventsponsorshipid" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="msnfp_amount" width="100" />
+          <cell name="msnfp_date" width="100" />
+          <cell name="msnfp_customerid" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>1</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="msnfp_sponsorship">
+          <attribute name="msnfp_identifier" />
+          <attribute name="createdon" />
+          <order attribute="msnfp_eventsponsorshipid" descending="false" />
+          <order attribute="createdon" descending="true" />
+          <attribute name="msnfp_eventsponsorshipid" />
+          <attribute name="msnfp_date" />
+          <attribute name="msnfp_customerid" />
+          <attribute name="msnfp_amount" />
+          <attribute name="msnfp_sponsorshipid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>2.0.1.100</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Sponsorship Advanced Find View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RibbonDiffXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CustomActions>
+    <HideCustomAction HideActionId="msnfp.Mscrm.SubGrid.msnfp_transaction.AddExistingAssoc.Hide" Location="Mscrm.SubGrid.msnfp_transaction.AddExistingAssoc" />
+    <HideCustomAction HideActionId="msnfp.Mscrm.SubGrid.msnfp_transaction.AddExistingStandard.Hide" Location="Mscrm.SubGrid.msnfp_transaction.AddExistingStandard" />
+    <CustomAction Id="msnfp.msnfp_transaction.Button11.Button.CustomAction" Location="Mscrm.Form.msnfp_transaction.MainTab.Save.Controls._children" Sequence="85">
+      <CommandUIDefinition>
+        <SplitButton Alt="$LocLabels:msnfp.msnfp_transaction.Button11.Button.Alt" Command="msnfp.msnfp_transaction.Command10.Command" Id="msnfp.msnfp_transaction.Button11.Button" Image32by32="$webresource:msnfp_/Images/Receipt32.png" Image16by16="$webresource:msnfp_/Images/Receipt16.png" LabelText="$LocLabels:msnfp.msnfp_transaction.Button11.Button.LabelText" Sequence="85" TemplateAlias="o2" ToolTipTitle="$LocLabels:msnfp.msnfp_transaction.Button11.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.msnfp_transaction.Button11.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/Receipt.svg">
+          <Menu Id="msnfp.msnfp_transaction.Button11.Button.Menu">
+            <MenuSection Id="msnfp.msnfp_transaction.Section12.Section" Sequence="5" DisplayMode="Menu16">
+              <Controls Id="msnfp.msnfp_transaction.Section12.Section.Controls">
+                <Button Alt="$LocLabels:msnfp.msnfp_transaction.Button16.Button.Alt" Command="msnfp.msnfp_transaction.Command8.Command" Id="msnfp.msnfp_transaction.Button16.Button" LabelText="$LocLabels:msnfp.msnfp_transaction.Button16.Button.LabelText" Sequence="7" ToolTipTitle="$LocLabels:msnfp.msnfp_transaction.Button16.Button.ToolTipTitle" ModernImage="$webresource:msnfp_/Images/Void.svg" />
+                <Button Alt="$LocLabels:msnfp.msnfp_transaction.Button15.Button.Alt" Command="msnfp.msnfp_transaction.Command7.Command" Id="msnfp.msnfp_transaction.Button15.Button" LabelText="$LocLabels:msnfp.msnfp_transaction.Button15.Button.LabelText" Sequence="8" ToolTipTitle="$LocLabels:msnfp.msnfp_transaction.Button15.Button.ToolTipTitle" ModernImage="$webresource:msnfp_/Images/VoidReissued.svg" />
+                <Button Alt="$LocLabels:msnfp.msnfp_transaction.Button14.Button.Alt" Command="msnfp.msnfp_transaction.Command6.Command" Id="msnfp.msnfp_transaction.Button14.Button" LabelText="$LocLabels:msnfp.msnfp_transaction.Button14.Button.LabelText" Sequence="10" ToolTipTitle="$LocLabels:msnfp.msnfp_transaction.Button14.Button.ToolTipTitle" ModernImage="$webresource:msnfp_/Images/Void.svg" />
+                <Button Alt="$LocLabels:msnfp.msnfp_transaction.Button13.Button.Alt" Command="msnfp.msnfp_transaction.Command5.Command" Id="msnfp.msnfp_transaction.Button13.Button" LabelText="$LocLabels:msnfp.msnfp_transaction.Button13.Button.LabelText" Sequence="13" ToolTipTitle="$LocLabels:msnfp.msnfp_transaction.Button13.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.msnfp_transaction.Button13.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/GenerateReceipt.svg" />
+              </Controls>
+            </MenuSection>
+          </Menu>
+        </SplitButton>
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.msnfp_transaction.Button18.Button.CustomAction" Location="Mscrm.Form.msnfp_transaction.MainTab.Save.Controls._children" Sequence="78">
+      <CommandUIDefinition>
+        <SplitButton Alt="$LocLabels:msnfp.msnfp_transaction.Button18.Button.Alt" Command="msnfp.msnfp_transaction.Command12.Command" Id="msnfp.msnfp_transaction.Button18.Button" Image32by32="$webresource:msnfp_/images/bankaccount32.png" Image16by16="$webresource:msnfp_/images/bankaccount16.png" LabelText="$LocLabels:msnfp.msnfp_transaction.Button18.Button.LabelText" Sequence="78" TemplateAlias="o2" ToolTipDescription="$LocLabels:msnfp.msnfp_transaction.Button18.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/bankaccount.svg">
+          <Menu Id="msnfp.msnfp_transaction.Button18.Button.Menu">
+            <MenuSection Id="msnfp.msnfp_transaction.Section19.Section" Sequence="5" DisplayMode="Menu16">
+              <Controls Id="msnfp.msnfp_transaction.Section19.Section.Controls">
+                <Button Alt="$LocLabels:msnfp.msnfp_transaction.Button20.Button.Alt" Command="msnfp.msnfp_transaction.Command11.Command" Id="msnfp.msnfp_transaction.Button20.Button" Image32by32="$webresource:msnfp_/images/bankaccount32.png" Image16by16="$webresource:msnfp_/images/bankaccount16.png" LabelText="$LocLabels:msnfp.msnfp_transaction.Button20.Button.LabelText" Sequence="10" ToolTipDescription="$LocLabels:msnfp.msnfp_transaction.Button20.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/bankaccount.svg" />
+                <Button Alt="$LocLabels:msnfp.msnfp_transaction.Button21.Button.Alt" Command="msnfp.msnfp_transaction.Command13.Command" Id="msnfp.msnfp_transaction.Button21.Button" Image32by32="$webresource:msnfp_/images/bankaccount32.png" Image16by16="$webresource:msnfp_/images/bankaccount16.png" LabelText="$LocLabels:msnfp.msnfp_transaction.Button21.Button.LabelText" Sequence="15" ToolTipDescription="$LocLabels:msnfp.msnfp_transaction.Button21.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/bankaccount.svg" />
+                <Button Alt="$LocLabels:msnfp.msnfp_transaction.Button22.Button.Alt" Command="msnfp.msnfp_transaction.Command14.Command" Id="msnfp.msnfp_transaction.Button22.Button" Image32by32="$webresource:msnfp_/images/bankaccount32.png" Image16by16="$webresource:msnfp_/images/bankaccount16.png" LabelText="$LocLabels:msnfp.msnfp_transaction.Button22.Button.LabelText" Sequence="20" ToolTipDescription="$LocLabels:msnfp.msnfp_transaction.Button22.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/bankaccount.svg" />
+              </Controls>
+            </MenuSection>
+          </Menu>
+        </SplitButton>
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.msnfp_transaction.Button2.Button.CustomAction" Location="Mscrm.Form.msnfp_transaction.MainTab.Save.Controls._children" Sequence="75">
+      <CommandUIDefinition>
+        <SplitButton Alt="$LocLabels:msnfp.msnfp_transaction.Button2.Button.Alt" Command="msnfp.msnfp_transaction.Command0.Command" Id="msnfp.msnfp_transaction.Button2.Button" Image32by32="$webresource:msnfp_/images/creditcard32.png" Image16by16="$webresource:msnfp_/images/creditcard16.png" LabelText="$LocLabels:msnfp.msnfp_transaction.Button2.Button.LabelText" Sequence="75" TemplateAlias="o2" ToolTipDescription="$LocLabels:msnfp.msnfp_transaction.Button2.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/creditcard.svg">
+          <Menu Id="msnfp.msnfp_transaction.Button2.Button.Menu">
+            <MenuSection Id="msnfp.msnfp_transaction.Section4.Section" Sequence="5" DisplayMode="Menu16">
+              <Controls Id="msnfp.msnfp_transaction.Section4.Section.Controls">
+                <Button Alt="$LocLabels:msnfp.msnfp_transaction.Button5.Button.Alt" Command="msnfp.msnfp_transaction.Command1.Command" Id="msnfp.msnfp_transaction.Button5.Button" Image32by32="$webresource:msnfp_/images/creditcard32.png" Image16by16="$webresource:msnfp_/images/creditcard16.png" LabelText="$LocLabels:msnfp.msnfp_transaction.Button5.Button.LabelText" Sequence="10" ToolTipDescription="$LocLabels:msnfp.msnfp_transaction.Button5.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/creditcard.svg" />
+                <Button Alt="$LocLabels:msnfp.msnfp_transaction.Button6.Button.Alt" Command="msnfp.msnfp_transaction.Command2.Command" Id="msnfp.msnfp_transaction.Button6.Button" Image32by32="$webresource:msnfp_/images/creditcard32.png" Image16by16="$webresource:msnfp_/images/creditcard16.png" LabelText="$LocLabels:msnfp.msnfp_transaction.Button6.Button.LabelText" Sequence="15" ToolTipDescription="$LocLabels:msnfp.msnfp_transaction.Button6.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/creditcard.svg" />
+                <Button Alt="$LocLabels:msnfp.msnfp_transaction.Button7.Button.Alt" Command="msnfp.msnfp_transaction.Command3.Command" Id="msnfp.msnfp_transaction.Button7.Button" Image32by32="$webresource:msnfp_/images/creditcard32.png" Image16by16="$webresource:msnfp_/images/creditcard16.png" LabelText="$LocLabels:msnfp.msnfp_transaction.Button7.Button.LabelText" Sequence="20" ToolTipDescription="$LocLabels:msnfp.msnfp_transaction.Button7.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/creditcard.svg" />
+              </Controls>
+            </MenuSection>
+          </Menu>
+        </SplitButton>
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.msnfp_transaction.Button24.Button.CustomAction" Location="Mscrm.Form.msnfp_transaction.MainTab.Save.Controls._children" Sequence="79">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.msnfp_transaction.Button24.Button.Alt" Command="msnfp.msnfp_transaction.Command15.Command" Id="msnfp.msnfp_transaction.Button24.Button" Image32by32="$webresource:msnfp_/Images/refund32.png" Image16by16="$webresource:msnfp_/Images/refund16.png" LabelText="$LocLabels:msnfp.msnfp_transaction.Button24.Button.LabelText" Sequence="79" TemplateAlias="o2" ToolTipTitle="$LocLabels:msnfp.msnfp_transaction.Button24.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.msnfp_transaction.Button24.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/refund.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.msnfp_transaction.Button9.Button.CustomAction" Location="Mscrm.Form.msnfp_transaction.MainTab.Workflow.Controls._children" Sequence="10">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.msnfp_transaction.Button9.Button.Alt" Command="msnfp.msnfp_transaction.Command4.Command" Id="msnfp.msnfp_transaction.Button9.Button" LabelText="$LocLabels:msnfp.msnfp_transaction.Button9.Button.LabelText" Sequence="10" TemplateAlias="o1" ToolTipTitle="$LocLabels:msnfp.msnfp_transaction.Button9.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.msnfp_transaction.Button9.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/ReturnGiftsvg" />
+      </CommandUIDefinition>
+    </CustomAction>
+  </CustomActions>
+  <Templates>
+    <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+  </Templates>
+  <CommandDefinitions>
+    <CommandDefinition Id="msnfp.msnfp_transaction.Command0.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_transaction.EnableRule0.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions />
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_transaction.Command1.Command">
+      <EnableRules />
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="showAddNewCreditCard" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_transaction.Command10.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_transaction.EnableRule6.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions />
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_transaction.Command11.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_transaction.EnableRule8.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="showAddNewBankAccount" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_transaction.Command12.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_transaction.EnableRule7.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions />
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_transaction.Command13.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_transaction.EnableRule9.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="showUpdateBankAccount" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_transaction.Command14.Command">
+      <EnableRules />
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="showAssignBankAccount" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_transaction.Command15.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_transaction.EnableRule10.EnableRule" />
+        <EnableRule Id="msnfp.msnfp_transaction.EnableRule12.EnableRule" />
+        <EnableRule Id="msnfp.msnfp_transaction.EnableRule13.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="OpenRefundPopup" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_transaction.Command2.Command">
+      <EnableRules />
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="showUpdateCreditCard" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_transaction.Command3.Command">
+      <EnableRules />
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="showAssignCreditCard" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_transaction.Command4.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_transaction.EnableRule1.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="OpenReturnFailPopup" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_transaction.Command5.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_transaction.EnableRule4.EnableRule" />
+        <EnableRule Id="msnfp.msnfp_transaction.EnableRule11.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="GenerateReceiptOnGift" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_transaction.Command6.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_transaction.EnableRule3.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="updateRelatedReceiptToVoid" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_transaction.Command7.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_transaction.EnableRule3.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="updateRelatedReceiptToVoidReissued" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_transaction.Command8.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_transaction.EnableRule2.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="updateRelatedReceiptToVoidPF" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+  </CommandDefinitions>
+  <RuleDefinitions>
+    <TabDisplayRules />
+    <DisplayRules />
+    <EnableRules>
+      <EnableRule Id="msnfp.msnfp_transaction.EnableRule0.EnableRule">
+        <CustomRule FunctionName="HideCreditCardGroup" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_transaction.EnableRule1.EnableRule">
+        <CustomRule FunctionName="HideReturnFailButton" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_transaction.EnableRule10.EnableRule">
+        <CustomRule FunctionName="hideRefundGiftButton" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_transaction.EnableRule11.EnableRule">
+        <CustomRule FunctionName="HideButtonAccordingToSecurityRoles" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false">
+          <StringParameter Value="FundraisingandEngagement: Receipting" />
+        </CustomRule>
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_transaction.EnableRule12.EnableRule">
+        <CustomRule FunctionName="HideButtonAccordingToSecurityRoles" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false">
+          <StringParameter Value="FundraisingandEngagement: Refund" />
+        </CustomRule>
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_transaction.EnableRule13.EnableRule">
+        <ValueRule Field="statuscode" Value="844060000" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_transaction.EnableRule2.EnableRule">
+        <CustomRule FunctionName="hideReceiptVoidPaymentFailed" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_transaction.EnableRule3.EnableRule">
+        <CustomRule FunctionName="hideReceiptUpdateButtons" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_transaction.EnableRule4.EnableRule">
+        <CustomRule FunctionName="showGenerateReceiptButton" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_transaction.EnableRule6.EnableRule">
+        <CustomRule FunctionName="HideReceiptGroup" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_transaction.EnableRule7.EnableRule">
+        <CustomRule FunctionName="HideBankAccountGroup" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_transaction.EnableRule8.EnableRule">
+        <CustomRule FunctionName="HideAddNewBankAccount" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_transaction.EnableRule9.EnableRule">
+        <CustomRule FunctionName="HideBankAccountButtonBasedOnCondition" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+    </EnableRules>
+  </RuleDefinitions>
+  <LocLabels>
+    <LocLabel Id="msnfp.msnfp_transaction.Button11.Button.Alt">
+      <Titles>
+        <Title description="Receipt" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button11.Button.LabelText">
+      <Titles>
+        <Title description="Receipt" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button11.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Receipt options" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button11.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Receipt" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button13.Button.Alt">
+      <Titles>
+        <Title description="Generate Receipt" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button13.Button.LabelText">
+      <Titles>
+        <Title description="Generate Receipt" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button13.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Generate a receipt for this gift" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button13.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Generate Receipt" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button14.Button.Alt">
+      <Titles>
+        <Title description="Void" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button14.Button.LabelText">
+      <Titles>
+        <Title description="Void" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button14.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Void" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button15.Button.Alt">
+      <Titles>
+        <Title description="Void (Reissued)" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button15.Button.LabelText">
+      <Titles>
+        <Title description="Void (Reissued)" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button15.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Void (Reissued)" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button16.Button.Alt">
+      <Titles>
+        <Title description="Void (Payment Failed)" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button16.Button.LabelText">
+      <Titles>
+        <Title description="Void (Payment Failed)" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button16.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Void (Payment Failed)" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button18.Button.Alt">
+      <Titles>
+        <Title description="Manage Bank Accounts" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button18.Button.LabelText">
+      <Titles>
+        <Title description="Manage Bank Accounts" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button18.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Add and assign additional bank accounts to this gift record" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button2.Button.Alt">
+      <Titles>
+        <Title description="Manage Credit Cards" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button2.Button.LabelText">
+      <Titles>
+        <Title description="Manage Credit Cards" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button2.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Add manage and assign additional credit cards to this gift record" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button20.Button.Alt">
+      <Titles>
+        <Title description="Add Bank Account" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button20.Button.LabelText">
+      <Titles>
+        <Title description="Add Bank Account" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button20.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Add a new bank account to this donor" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button21.Button.Alt">
+      <Titles>
+        <Title description="Update Bank Account" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button21.Button.LabelText">
+      <Titles>
+        <Title description="Update Bank Account" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button21.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Update an existing bank account against this donor" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button22.Button.Alt">
+      <Titles>
+        <Title description="Assign Bank Account" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button22.Button.LabelText">
+      <Titles>
+        <Title description="Assign Bank Account" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button22.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Assign an existing bank account to this gift record" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button24.Button.Alt">
+      <Titles>
+        <Title description="Refund Gift" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button24.Button.LabelText">
+      <Titles>
+        <Title description="Refund Gift" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button24.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Set the amount to refund on this gift." languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button24.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Refund Gift" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button5.Button.Alt">
+      <Titles>
+        <Title description="Add Credit Card" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button5.Button.LabelText">
+      <Titles>
+        <Title description="Add Credit Card" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button5.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Add a new credit card to this donor" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button6.Button.Alt">
+      <Titles>
+        <Title description="Update Credit Card" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button6.Button.LabelText">
+      <Titles>
+        <Title description="Update Credit Card" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button6.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Update an existing credit card against this donor" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button7.Button.Alt">
+      <Titles>
+        <Title description="Assign Credit Card" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button7.Button.LabelText">
+      <Titles>
+        <Title description="Assign Credit Card" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button7.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Assign an existing credit card to this gift record" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button9.Button.Alt">
+      <Titles>
+        <Title description="Return / Fail Gift" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button9.Button.LabelText">
+      <Titles>
+        <Title description="Return / Fail Gift" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button9.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Set the return date and change the status to &quot;Failed&quot;." languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_transaction.Button9.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Return / Fail Gift" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+  </LocLabels>
+</RibbonDiffXml>

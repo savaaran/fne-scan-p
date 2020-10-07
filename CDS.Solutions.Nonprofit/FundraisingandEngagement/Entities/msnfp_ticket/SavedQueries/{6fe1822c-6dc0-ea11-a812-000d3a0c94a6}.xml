@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{6fe1822c-6dc0-ea11-a812-000d3a0c94a6}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="msnfp_name" select="1" preview="1" icon="1">
+        <row name="result" id="msnfp_ticketid">
+          <cell name="msnfp_identifier" width="100" />
+          <cell name="msnfp_name" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="msnfp_eventid" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="msnfp_eventticketid" width="100" />
+          <cell name="msnfp_amount_base" width="100" />
+          <cell name="msnfp_amount" width="100" />
+          <cell name="msnfp_eventpackageid" width="100" />
+          <cell name="a_2b497abcab21ea11a810000d3af3bf00.msnfp_packageid" width="100" disableSorting="1" />
+          <cell name="msnfp_registrationsperticket" width="100" />
+          <cell name="a_2b497abcab21ea11a810000d3af3bf00.msnfp_amount_paid" width="100" disableSorting="1" />
+          <cell name="statecode" width="100" />
+          <cell name="statuscode" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
+        <entity name="msnfp_ticket">
+          <attribute name="msnfp_name" />
+          <order attribute="msnfp_name" descending="false" />
+          <order attribute="msnfp_eventid" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <link-entity name="msnfp_registration" from="msnfp_ticketid" to="msnfp_ticketid" alias="aa">
+            <link-entity name="msnfp_registrationpreference" from="msnfp_registrationid" to="msnfp_registrationid" alias="ab">
+              <filter type="and">
+                <condition attribute="msnfp_registrationpreferenceid" operator="not-null" />
+              </filter>
+            </link-entity>
+          </link-entity>
+          <attribute name="statuscode" />
+          <attribute name="statecode" />
+          <attribute name="msnfp_registrationsperticket" />
+          <attribute name="msnfp_eventpackageid" />
+          <attribute name="msnfp_amount" />
+          <attribute name="msnfp_identifier" />
+          <attribute name="msnfp_eventticketid" />
+          <attribute name="msnfp_eventid" />
+          <attribute name="msnfp_amount_base" />
+          <link-entity alias="a_2b497abcab21ea11a810000d3af3bf00" name="msnfp_eventpackage" from="msnfp_eventpackageid" to="msnfp_eventpackageid" link-type="outer" visible="false">
+            <attribute name="msnfp_amount_paid" />
+            <attribute name="msnfp_packageid" />
+          </link-entity>
+          <attribute name="msnfp_ticketid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>2.15.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="All Event Registrants (tickets and tables)" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="All event registrants with tickets and tables" languagecode="1033" />
+    </Descriptions>
+  </savedquery>
+</savedqueries>
