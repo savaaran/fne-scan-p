@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{e25a0b36-6fce-e911-a812-000d3a0c8f2a}</WebResourceId>
+  <Name>msnfp_/images/registration32.png</Name>
+  <DisplayName>Registration 32x32</DisplayName>
+  <Description>Registration 32x32 image for navigation</Description>
+  <WebResourceType>5</WebResourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/msnfp_imagesregistration32pngE25A0B36-6FCE-E911-A812-000D3A0C8F2A</FileName>
+</WebResource>

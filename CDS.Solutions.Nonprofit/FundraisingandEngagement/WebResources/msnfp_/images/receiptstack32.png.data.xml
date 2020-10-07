@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{f6bab798-3d91-e911-a97b-000d3aff2e2f}</WebResourceId>
+  <Name>msnfp_/images/receiptstack32.png</Name>
+  <DisplayName>Receipt Stack 32px</DisplayName>
+  <Description>Receipt Stack 32px image for navigation</Description>
+  <LanguageCode>1033</LanguageCode>
+  <WebResourceType>5</WebResourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <DependencyXml>&lt;Dependencies&gt;&lt;Dependency componentType="WebResource"/&gt;&lt;/Dependencies&gt;</DependencyXml>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/msnfp_imagesreceiptstack32pngF6BAB798-3D91-E911-A97B-000D3AFF2E2F</FileName>
+</WebResource>
