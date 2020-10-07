@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RibbonDiffXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CustomActions>
+    <CustomAction Id="msnfp.account.fande1.Button.CustomAction" Location="Mscrm.Form.account.MainTab.Save.Controls._children" Sequence="53">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.account.fande1.Button.Alt" Command="msnfp.account.Command5.Command" Id="msnfp.account.fande1.Button" Image32by32="$webresource:msnfp_/Images/Membership32.png" Image16by16="$webresource:msnfp_/Images/Membership16.png" LabelText="$LocLabels:msnfp.account.fande1.Button.LabelText" Sequence="53" TemplateAlias="o2" ToolTipDescription="$LocLabels:msnfp.account.fande1.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/Membership.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.account.fande10.Button.CustomAction" Location="Mscrm.Form.account.MainTab.Save.Controls._children" Sequence="59">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.account.fande10.Button.Alt" Command="msnfp.account.Command4.Command" Id="msnfp.account.fande10.Button" Image32by32="$webresource:msnfp_/images/bankaccount32.png" Image16by16="$webresource:msnfp_/images/bankaccount16.png" LabelText="$LocLabels:msnfp.account.fande10.Button.LabelText" Sequence="59" TemplateAlias="o2" ToolTipTitle="$LocLabels:msnfp.account.fande10.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.account.fande10.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/bankaccount.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.account.fande11.Button.CustomAction" Location="Mscrm.Form.account.MainTab.Save.Controls._children" Sequence="61">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.account.fande11.Button.Alt" Command="msnfp.account.RemoveAsAppraiser.Command" Id="msnfp.account.fande11.Button" Image16by16="$webresource:msnfp_RemoveAppraiser_16px.png" LabelText="$LocLabels:msnfp.account.fande11.Button.LabelText" Sequence="61" TemplateAlias="o2" ToolTipTitle="$LocLabels:msnfp.account.fande11.Button.ToolTipTitle" ModernImage="$webresource:msnfp_RemoveAppraiser_svg.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.account.fande12.Button.CustomAction" Location="Mscrm.Form.account.MainTab.Save.Controls._children" Sequence="60">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.account.fande12.Button.Alt" Command="msnfp.account.SetAsAppraiser.Command" Id="msnfp.account.fande12.Button" Image16by16="$webresource:msnfp_AddAppraiser_16px.png" LabelText="$LocLabels:msnfp.account.fande12.Button.LabelText" Sequence="60" TemplateAlias="o2" ToolTipTitle="$LocLabels:msnfp.account.fande12.Button.ToolTipTitle" ModernImage="$webresource:msnfp_AddAppraiser_svg.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.account.fande2.Button.CustomAction" Location="Mscrm.Form.account.MainTab.Save.Controls._children" Sequence="55">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.account.fande2.Button.Alt" Command="msnfp.account.Command6.Command" Id="msnfp.account.fande2.Button" Image32by32="$webresource:msnfp_/images/pledgematch32png" Image16by16="$webresource:msnfp_/images/pledgematch16.png" LabelText="$LocLabels:msnfp.account.fande2.Button.LabelText" Sequence="55" TemplateAlias="o2" ToolTipDescription="$LocLabels:msnfp.account.fande2.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/pledgematch.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.account.fande3.Button.CustomAction" Location="Mscrm.HomepageGrid.account.MainTab.Collaborate.Controls._children" Sequence="48">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.account.fande3.Button.Alt" Command="msnfp.account.Command7.Command" Id="msnfp.account.fande3.Button" LabelText="$LocLabels:msnfp.account.fande3.Button.LabelText" Sequence="48" TemplateAlias="o1" ToolTipTitle="$LocLabels:msnfp.account.fande3.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.account.fande3.Button.ToolTipDescription" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.account.fande4.Button.CustomAction" Location="Mscrm.Form.account.MainTab.Save.Controls._children" Sequence="54">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.account.fande4.Button.Alt" Command="msnfp.account.Command8.Command" Id="msnfp.account.fande4.Button" Image32by32="$webresource:msnfp_/images/eventpackage32.png" Image16by16="$webresource:msnfp_/images/eventpackage16.png" LabelText="$LocLabels:msnfp.account.fande4.Button.LabelText" Sequence="54" TemplateAlias="o2" ToolTipDescription="$LocLabels:msnfp.account.fande4.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/Package.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.account.fande5.Button.CustomAction" Location="Mscrm.Form.account.MainTab.Save.Controls._children" Sequence="51">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.account.fande5.Button.Alt" Command="msnfp.account.Command11.Command" Id="msnfp.account.fande5.Button" Image16by16="$webresource:msnfp_/images/Address16.png" LabelText="$LocLabels:msnfp.account.fande5.Button.LabelText" Sequence="51" TemplateAlias="o2" ToolTipTitle="$LocLabels:msnfp.account.fande5.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.account.fande5.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/Address.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.account.fande6.Button.CustomAction" Location="Mscrm.Form.account.MainTab.Save.Controls._children" Sequence="52">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.account.fande6.Button.Alt" Command="msnfp.account.Command0.Command" Id="msnfp.account.fande6.Button" Image32by32="$webresource:msnfp_/Images/donationpledge32.png" Image16by16="$webresource:msnfp_/Images/donationpledge16.png" LabelText="$LocLabels:msnfp.account.fande6.Button.LabelText" Sequence="52" TemplateAlias="o2" ToolTipTitle="$LocLabels:msnfp.account.fande6.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.account.fande6.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/donationpledge.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.account.fande7.Button.CustomAction" Location="Mscrm.Form.account.MainTab.Save.Controls._children" Sequence="56">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.account.fande7.Button.Alt" Command="msnfp.account.Command1.Command" Id="msnfp.account.fande7.Button" Image32by32="$webresource:msnfp_/images/creditcard32.png" Image16by16="$webresource:msnfp_/images/creditcard16.png" LabelText="$LocLabels:msnfp.account.fande7.Button.LabelText" Sequence="56" TemplateAlias="o2" ToolTipDescription="$LocLabels:msnfp.account.fande7.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/creditcard.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.account.fande8.Button.CustomAction" Location="Mscrm.Form.account.MainTab.Save.Controls._children" Sequence="58">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.account.fande8.Button.Alt" Command="msnfp.account.Command2.Command" Id="msnfp.account.fande8.Button" Image32by32="$webresource:msnfp_/images/bankaccount32.png" Image16by16="$webresource:msnfp_/images/bankaccount16.png" LabelText="$LocLabels:msnfp.account.fande8.Button.LabelText" Sequence="58" TemplateAlias="o2" ToolTipDescription="$LocLabels:msnfp.account.fande8.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/bankaccount.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.account.fande9.Button.CustomAction" Location="Mscrm.Form.account.MainTab.Save.Controls._children" Sequence="57">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.account.fande9.Button.Alt" Command="msnfp.account.Command3.Command" Id="msnfp.account.fande9.Button" Image32by32="$webresource:msnfp_/images/creditcard32.png" Image16by16="$webresource:msnfp_/images/creditcard16.png" LabelText="$LocLabels:msnfp.account.fande9.Button.LabelText" Sequence="57" TemplateAlias="o2" ToolTipDescription="$LocLabels:msnfp.account.fande9.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/creditcard.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+  </CustomActions>
+  <Templates>
+    <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+  </Templates>
+  <CommandDefinitions>
+    <CommandDefinition Id="msnfp.account.Command0.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.account.EnableRule3.EnableRule" />
+        <EnableRule Id="msnfp.account.HideIfAccountTypeIsHousehold" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="showNewGift" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.account.Command1.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.account.EnableRule5.EnableRule" />
+        <EnableRule Id="msnfp.account.HideIfAccountTypeIsHousehold" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="showAddNewCreditCard" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.account.Command11.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.account.EnableRule13.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="openUpdateHouseholdAddressPopup" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.account.Command2.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.account.EnableRule7.EnableRule" />
+        <EnableRule Id="msnfp.account.HideIfAccountTypeIsHousehold" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="showAddNewBankAccount" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.account.Command3.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.account.EnableRule4.EnableRule" />
+        <EnableRule Id="msnfp.account.HideIfAccountTypeIsHousehold" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="showUpdateCreditCard" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.account.Command4.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.account.EnableRule0.EnableRule" />
+        <EnableRule Id="msnfp.account.EnableRule6.EnableRule" />
+        <EnableRule Id="msnfp.account.HideIfAccountTypeIsHousehold" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="showUpdateBankAccount" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.account.Command5.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.account.EnableRule1.EnableRule" />
+        <EnableRule Id="msnfp.account.HideIfAccountTypeIsHousehold" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="showNewMembership" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.account.Command6.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.account.HideOnSpecificForms.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="showNewPledgeMatch" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.account.Command7.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.account.EnableRule2.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="SetSolicitTypeAndDateAccount" Library="$webresource:msnfp_/scripts/ribbonbutton.js">
+          <CrmParameter Value="SelectedControlSelectedItemIds" />
+        </JavaScriptFunction>
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.account.Command8.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.account.HideOnSpecificForms.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="showNewPackage" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.account.RemoveAsAppraiser.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.account.RemoveAsAppraiser.EnableRule" />
+        <EnableRule Id="msnfp.account.HideIfAccountTypeIsHousehold" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="RemoveAsAppraiser" Library="$webresource:msnfp_/scripts/ribbonbutton.js">
+          <CrmParameter Value="PrimaryControl" />
+        </JavaScriptFunction>
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.account.SetAsAppraiser.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.account.SetAsAppraiser.EnableRule" />
+        <EnableRule Id="msnfp.account.HideIfAccountTypeIsHousehold" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="SetAsAppraiser" Library="$webresource:msnfp_/scripts/ribbonbutton.js">
+          <CrmParameter Value="PrimaryControl" />
+        </JavaScriptFunction>
+      </Actions>
+    </CommandDefinition>
+  </CommandDefinitions>
+  <RuleDefinitions>
+    <TabDisplayRules />
+    <DisplayRules />
+    <EnableRules>
+      <EnableRule Id="msnfp.account.EnableRule0.EnableRule">
+        <CustomRule FunctionName="HideBankAccountonAccountandContact" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.account.EnableRule1.EnableRule">
+        <CustomRule FunctionName="ShowMembershipAccountORContact" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.account.EnableRule13.EnableRule">
+        <CustomRule FunctionName="HideUpdateHouseholdAddressButtonOnAccount" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.account.EnableRule2.EnableRule">
+        <SelectionCountRule AppliesTo="SelectedEntity" Minimum="1" Default="true" />
+      </EnableRule>
+      <EnableRule Id="msnfp.account.EnableRule3.EnableRule">
+        <CustomRule FunctionName="HideButtonAccordingToSecurityRoles" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false">
+          <StringParameter Value="FundraisingandEngagement: Gift Processing" />
+        </CustomRule>
+      </EnableRule>
+      <EnableRule Id="msnfp.account.EnableRule4.EnableRule">
+        <CustomRule FunctionName="HideButtonAccordingToSecurityRoles" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false">
+          <StringParameter Value="FundraisingandEngagement: Gift Processing" />
+        </CustomRule>
+      </EnableRule>
+      <EnableRule Id="msnfp.account.EnableRule5.EnableRule">
+        <CustomRule FunctionName="HideButtonAccordingToSecurityRoles" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false">
+          <StringParameter Value="FundraisingandEngagement: Gift Processing" />
+        </CustomRule>
+      </EnableRule>
+      <EnableRule Id="msnfp.account.EnableRule6.EnableRule">
+        <CustomRule FunctionName="HideButtonAccordingToSecurityRoles" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false">
+          <StringParameter Value="FundraisingandEngagement: Gift Processing" />
+        </CustomRule>
+      </EnableRule>
+      <EnableRule Id="msnfp.account.EnableRule7.EnableRule">
+        <CustomRule FunctionName="HideButtonAccordingToSecurityRoles" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false">
+          <StringParameter Value="FundraisingandEngagement: Gift Processing" />
+        </CustomRule>
+      </EnableRule>
+      <EnableRule Id="msnfp.account.EnableRule8.EnableRule">
+        <CustomRule FunctionName="hideUnNecessaryButton" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.account.HideIfAccountTypeIsHousehold">
+        <CustomRule FunctionName="hideRibbonButtonIfHousehold" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.account.HideOnSpecificForms.EnableRule">
+        <CustomRule FunctionName="hideRibbonElementOnTheseForms" Library="$webresource:msnfp_/scripts/ribbonbutton.js">
+          <StringParameter Value="Fundraising: Household" />
+          <CrmParameter Value="PrimaryControl" />
+        </CustomRule>
+      </EnableRule>
+      <EnableRule Id="msnfp.account.RemoveAsAppraiser.EnableRule">
+        <CustomRule FunctionName="showRemoveAsAppraiser" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.account.SetAsAppraiser.EnableRule">
+        <CustomRule FunctionName="showSetAsAppraiserButton" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" />
+      </EnableRule>
+    </EnableRules>
+  </RuleDefinitions>
+  <LocLabels>
+    <LocLabel Id="msnfp.account.fande1.Button.Alt">
+      <Titles>
+        <Title description="Add Membership" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande1.Button.LabelText">
+      <Titles>
+        <Title description="Add Membership" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande1.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Add a membership instance against this organization" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande10.Button.Alt">
+      <Titles>
+        <Title description="Update Bank Account" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande10.Button.LabelText">
+      <Titles>
+        <Title description="Update Bank Account" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande10.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Update Bank Account" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande10.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Update Bank Account" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande11.Button.Alt">
+      <Titles>
+        <Title description="Remove As Appraiser" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande11.Button.LabelText">
+      <Titles>
+        <Title description="Remove As Appraiser" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande11.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Remove As Appraiser" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande12.Button.Alt">
+      <Titles>
+        <Title description="Set as Appraiser" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande12.Button.LabelText">
+      <Titles>
+        <Title description="Set as Appraiser" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande12.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Set as Appraiser" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande2.Button.Alt">
+      <Titles>
+        <Title description="Add Pledge Match" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande2.Button.LabelText">
+      <Titles>
+        <Title description="Add Pledge Match" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande2.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Add a new pledge match rule that matches donations from this donor to another" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande3.Button.Alt">
+      <Titles>
+        <Title description="Add To Discovery" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande3.Button.LabelText">
+      <Titles>
+        <Title description="Add To Discovery" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande3.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Sets the Solicit Code to Discover and the Solicit Date to today." languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande3.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Add To Discovery" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande4.Button.Alt">
+      <Titles>
+        <Title description="Add Registration" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande4.Button.LabelText">
+      <Titles>
+        <Title description="Add Registration" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande4.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Add a ticket registration for this organization" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande5.Button.Alt">
+      <Titles>
+        <Title description="Update Address" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande5.Button.LabelText">
+      <Titles>
+        <Title description="Update Address" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande5.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Update the household address" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande5.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Update Address" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande6.Button.Alt">
+      <Titles>
+        <Title description="Add Gift" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande6.Button.LabelText">
+      <Titles>
+        <Title description="Add Gift" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande6.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Create a new gift transaction for this account." languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande6.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Add Gift" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande7.Button.Alt">
+      <Titles>
+        <Title description="Add Credit Card" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande7.Button.LabelText">
+      <Titles>
+        <Title description="Add Credit Card" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande7.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Add a new credit card to this donor" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande8.Button.Alt">
+      <Titles>
+        <Title description="Add Bank Account" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande8.Button.LabelText">
+      <Titles>
+        <Title description="Add Bank Account" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande8.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Add a new bank account to this donor" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande9.Button.Alt">
+      <Titles>
+        <Title description="Update Credit Card" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande9.Button.LabelText">
+      <Titles>
+        <Title description="Update Credit Card" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande9.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Update an existing credit card against this donor" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+  </LocLabels>
+</RibbonDiffXml>

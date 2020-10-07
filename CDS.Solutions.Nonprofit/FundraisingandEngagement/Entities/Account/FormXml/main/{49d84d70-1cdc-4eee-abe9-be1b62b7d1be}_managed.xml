@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{49d84d70-1cdc-4eee-abe9-be1b62b7d1be}</formid>
+    <IntroducedVersion>1.1.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form maxWidth="1920" shownavigationbar="true" showImage="true">
+      <Navigation>
+        <NavBar>
+          <NavBarByRelationshipItem Id="nav_msnfp_account_award_Recipient" Area="Info" Sequence="10033" RelationshipName="msnfp_account_award_Recipient" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="navContacts" Area="Info" Sequence="10039" RelationshipName="contact_customer_accounts" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="nav_msnfp_account_msnfp_creditrecipient_Customer" Area="Info" Sequence="10040" RelationshipName="msnfp_account_msnfp_creditrecipient_Customer" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="nav_msnfp_creditPlan_account" Area="Info" Sequence="10041" RelationshipName="msnfp_creditPlan_account" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="nav_msnfp_account_deliveryframework_Account" Area="Info" Sequence="10042" RelationshipName="msnfp_account_deliveryframework_Account" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="nav_msnfp_account_disbursement_RecipientAccount" Area="Info" Sequence="10043" RelationshipName="msnfp_account_disbursement_RecipientAccount" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="nav_msnfp_account_docket_AwardRecipient" Area="Info" Sequence="10044" RelationshipName="msnfp_account_docket_AwardRecipient" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="nav_msnfp_account_msnfp_docket_docket_fiscalSponsor" Area="Info" Sequence="10045" RelationshipName="msnfp_account_msnfp_docket_docket_fiscalSponsor" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="nav_msnfp_commitment_pledgedOnAccount" Area="Info" Sequence="10046" RelationshipName="msnfp_commitment_pledgedOnAccount" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="nav_msnfp_employmentHistory_employer" Area="Info" Sequence="10047" RelationshipName="msnfp_employmentHistory_employer" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="nav_msnfp_account_msnfp_membership_Customer" Area="Info" Sequence="10048" RelationshipName="msnfp_account_msnfp_membership_Customer" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="nav_msnfp_account_msnfp_ofacmatch_ofacMatch_customer" Area="Info" Sequence="10049" RelationshipName="msnfp_account_msnfp_ofacmatch_ofacMatch_customer" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="nav_msnfp_pmtMethod_account" Area="Info" Sequence="10050" RelationshipName="msnfp_pmtMethod_account" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="nav_msnfp_account_msnfp_paymentschedule_DefaultHardCreditToCustomer" Area="Info" Sequence="10051" RelationshipName="msnfp_account_msnfp_paymentschedule_DefaultHardCreditToCustomer" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="nav_msnfp_pmtSched_receiptOnAccount" Area="Info" Sequence="10052" RelationshipName="msnfp_pmtSched_receiptOnAccount" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="nav_msnfp_plannedgiving_account" Area="Info" Sequence="10053" RelationshipName="msnfp_plannedgiving_account" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="nav_msnfp_account_msnfp_preference_preference_customer" Area="Info" Sequence="10054" RelationshipName="msnfp_account_msnfp_preference_preference_customer" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="nav_msnfp_txn_receiptOnAccount" Area="Info" Sequence="10055" RelationshipName="msnfp_txn_receiptOnAccount" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="nav_msnfp_account_request_CustomerId" Area="Info" Sequence="10056" RelationshipName="msnfp_account_request_CustomerId" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="nav_msnfp_account_request_FiscalSponsor" Area="Info" Sequence="10057" RelationshipName="msnfp_account_request_FiscalSponsor" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="nav_msnfp_account_msnfp_salutation_salutation_customer" Area="Info" Sequence="10058" RelationshipName="msnfp_account_msnfp_salutation_salutation_customer" solutionaction="Modified" />
+          <NavBarByRelationshipItem Id="navPlaybooks" Area="Info" Sequence="20" RelationshipName="msdyn_playbookinstance_account" solutionaction="Added">
+            <Titles>
+              <Title Text="Playbooks" LCID="1033" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem Id="navEntitlement" Area="Info" Sequence="21" RelationshipName="account_entitlement_Customer" solutionaction="Added">
+            <Titles>
+              <Title Text="Entitlements" LCID="1033" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem Id="navCampaignsInSFA" Area="Marketing" Sequence="23" RelationshipName="hardcoded_{B7196B13-6B9D-42CD-BD58-B19A3953126F}navCampaignsInSFA" Show="false" solutionaction="Added">
+            <Titles>
+              <Title Text="Campaigns" LCID="1033" />
+              <Title Text="الحملات" LCID="1025" />
+              <Title Text="Кампании" LCID="1026" />
+              <Title Text="Campanyes" LCID="1027" />
+              <Title Text="Kampaně" LCID="1029" />
+              <Title Text="Kampagner" LCID="1030" />
+              <Title Text="Kampagnen" LCID="1031" />
+              <Title Text="Εκστρατείες" LCID="1032" />
+              <Title Text="Campañas" LCID="3082" />
+              <Title Text="Kampaaniad" LCID="1061" />
+              <Title Text="Kanpainak" LCID="1069" />
+              <Title Text="Kampanjat" LCID="1035" />
+              <Title Text="Campagnes" LCID="1036" />
+              <Title Text="Campañas" LCID="1110" />
+              <Title Text="קמפיינים" LCID="1037" />
+              <Title Text="अभियान" LCID="1081" />
+              <Title Text="Kampanje" LCID="1050" />
+              <Title Text="Kampányok" LCID="1038" />
+              <Title Text="Kampanye" LCID="1057" />
+              <Title Text="Campagne" LCID="1040" />
+              <Title Text="キャンペーン" LCID="1041" />
+              <Title Text="Науқандар" LCID="1087" />
+              <Title Text="캠페인" LCID="1042" />
+              <Title Text="Kampanijos" LCID="1063" />
+              <Title Text="Kampaņas" LCID="1062" />
+              <Title Text="Kempen" LCID="1086" />
+              <Title Text="Kampanjer" LCID="1044" />
+              <Title Text="Campagnes" LCID="1043" />
+              <Title Text="Kampanie" LCID="1045" />
+              <Title Text="Campanhas" LCID="1046" />
+              <Title Text="Campanhas" LCID="2070" />
+              <Title Text="Campanii" LCID="1048" />
+              <Title Text="Кампании" LCID="1049" />
+              <Title Text="Kampane" LCID="1051" />
+              <Title Text="Akcije" LCID="1060" />
+              <Title Text="Кампање" LCID="10266" />
+              <Title Text="Kampanje" LCID="9242" />
+              <Title Text="Kampanjer" LCID="1053" />
+              <Title Text="การส่งเสริมการขาย" LCID="1054" />
+              <Title Text="Kampanyalar" LCID="1055" />
+              <Title Text="Кампанії" LCID="1058" />
+              <Title Text="Chiến dịch" LCID="1066" />
+              <Title Text="市场活动" LCID="2052" />
+              <Title Text="行銷活動" LCID="3076" />
+              <Title Text="行銷活動" LCID="1028" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_donorcommitment" Sequence="10000" Area="Info" Id="nav_msnfp_account_msnfp_donorcommitment" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Donor Commitments (Donor)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_accountdonor_msnfp_transaction" Sequence="10001" Area="Info" Id="nav_msnfp_accountdonor_msnfp_transaction" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Transactions (Donor)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_accountdonor_msnfp_paymentschedule" Sequence="10002" Area="Info" Id="nav_msnfp_accountdonor_msnfp_paymentschedule" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Payment Schedules (Donor)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_accountdonor_msnfp_giftbatch" Sequence="10003" Area="Info" Id="nav_msnfp_accountdonor_msnfp_giftbatch" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Gift Batches" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_accountdonor_msnfp_givinglevelinstance" Sequence="10004" Area="Info" Id="nav_msnfp_accountdonor_msnfp_givinglevelinstance" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Giving Level Instances" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_paymentmethod_customer" Sequence="10005" Area="Info" Id="nav_msnfp_account_msnfp_paymentmethod_customer" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Payment Methods" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_accountdonor_msnfp_receipt" Sequence="10006" Area="Info" Id="nav_msnfp_accountdonor_msnfp_receipt" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Receipts" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_accountto_msnfp_pledgematch" Sequence="10007" Area="Info" Id="nav_msnfp_accountto_msnfp_pledgematch" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Pledge Matches (Soft Credit To)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_accountfrom_msnfp_pledgematch" Sequence="10008" Area="Info" Id="nav_msnfp_accountfrom_msnfp_pledgematch" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Pledge Matches (Donation From)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_giftaiddeclaration" Sequence="10009" Area="Info" Id="nav_msnfp_account_msnfp_giftaiddeclaration" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Gift Aid Declarations" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_event" Sequence="10010" Area="Info" Id="nav_msnfp_account_msnfp_event" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Events" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_accountcustomer_msnfp_product" Sequence="10011" Area="Info" Id="nav_msnfp_accountcustomer_msnfp_product" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Products" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_accountcustomer_msnfp_registration" Sequence="10012" Area="Info" Id="nav_msnfp_accountcustomer_msnfp_registration" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Registrations" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_accountcustomer_msnfp_sponsorship" Sequence="10013" Area="Info" Id="nav_msnfp_accountcustomer_msnfp_sponsorship" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Sponsorships" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_accountdonor_msnfp_eventpackage" Sequence="10014" Area="Info" Id="nav_msnfp_accountdonor_msnfp_eventpackage" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Event Packages" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_refund_Customer" Sequence="10015" Area="Info" Id="nav_msnfp_account_msnfp_refund_Customer" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Refunds" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_designationplan_Donor" Sequence="10016" Area="Info" Id="nav_msnfp_account_msnfp_designationplan_Donor" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Designation Plans" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_accountcustomer_msnfp_eventticket" Sequence="10017" Area="Info" Id="nav_msnfp_accountcustomer_msnfp_eventticket" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Event Tickets" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_donationimport_Donor" Sequence="10018" Area="Info" Id="nav_msnfp_account_msnfp_donationimport_Donor" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Donation Imports" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_ticket_customer" Sequence="10019" Area="Info" Id="nav_msnfp_account_msnfp_ticket_customer" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Tickets" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_payment_customerid" Sequence="10020" Area="Info" Id="nav_msnfp_account_msnfp_payment_customerid" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Payments" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_award_FiscalSponsor" Sequence="10021" Area="Info" Id="nav_msnfp_account_award_FiscalSponsor" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Awards (Fiscal Sponsor)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_benefitrecipient_beneficiary" Sequence="10022" Area="Info" Id="nav_msnfp_account_msnfp_benefitrecipient_beneficiary" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Benefit Recipients" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_commitment_pledgedbyaccount" Sequence="10023" Area="Info" Id="nav_msnfp_commitment_pledgedbyaccount" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Donor Commitments (Pledged By Account)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_transaction_Solicitor" Sequence="10024" Area="Info" Id="nav_msnfp_account_msnfp_transaction_Solicitor" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Transactions (Solicitor)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_paymentschedule_Solicitor" Sequence="10025" Area="Info" Id="nav_msnfp_account_msnfp_paymentschedule_Solicitor" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Payment Schedules (Solicitor)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_donorcommitment_Solicitor" Sequence="10026" Area="Info" Id="nav_msnfp_account_msnfp_donorcommitment_Solicitor" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Donor Commitments (Solicitor)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_transaction_RelatedCustomerId" Sequence="10027" Area="Info" Id="nav_msnfp_account_msnfp_transaction_RelatedCustomerId" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Transactions (Related Customer)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msdyn_account_msdyn_customerasset_Account" Sequence="10028" Area="Info" Id="nav_msdyn_account_msdyn_customerasset_Account" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Devices" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_receipt_ApprCustomer" Sequence="10029" Area="Info" Id="nav_msnfp_account_msnfp_receipt_ApprCustomer" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Receipts" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_transaction_ApprCustomer" Sequence="10030" Area="Info" Id="nav_msnfp_account_msnfp_transaction_ApprCustomer" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Transactions" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msdyn_account_msdyn_iotdevice_Account" Sequence="10031" Area="Info" Id="nav_msdyn_account_msdyn_iotdevice_Account" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="IoT Devices" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_donationimport_Household" Sequence="10032" Area="Info" Id="nav_msnfp_account_msnfp_donationimport_Household" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Donation Imports" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_contact_Household" Sequence="10034" Area="Info" Id="nav_msnfp_account_contact_Household" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Contacts" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_transaction_Household" Sequence="10035" Area="Info" Id="nav_msnfp_account_msnfp_transaction_Household" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Transactions (Household)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_eventpackage_Household" Sequence="10036" Area="Info" Id="nav_msnfp_account_msnfp_eventpackage_Household" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Event Packages (Household)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_donorcommitment_Household" Sequence="10037" Area="Info" Id="nav_msnfp_account_msnfp_donorcommitment_Household" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Donor Commitments (Household)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_account_msnfp_paymentschedule_Household" Sequence="10038" Area="Info" Id="nav_msnfp_account_msnfp_paymentschedule_Household" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Payment Schedules (Household)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+        </NavBar>
+      </Navigation>
+    </form>
+    <LocalizedNames>
+      <LocalizedName description="Organization" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Form for organization" languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>
