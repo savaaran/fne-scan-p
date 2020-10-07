@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workflow WorkflowId="{0d3a2c28-7a8c-4ac4-9106-b7005c710f4c}" Name="Action - Payment Schedule Thank You" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <XamlFileName>/Workflows/Action-PaymentScheduleThankYou-0D3A2C28-7A8C-4AC4-9106-B7005C710F4C.xaml</XamlFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
+  <Category>3</Category>
+  <Mode>0</Mode>
+  <Scope>1</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnCreate>1</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>0</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>1</SyncWorkflowLogOnFailure>
+  <StateCode>0</StateCode>
+  <StatusCode>1</StatusCode>
+  <CreateStage>40</CreateStage>
+  <RunAs>1</RunAs>
+  <SdkMessageId>{099495fb-85c7-ea11-a812-000d3a0c94a6}</SdkMessageId>
+  <UniqueName>ActionPaymentScheduleThankYou</UniqueName>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <FormId>{00000000-0000-0000-0000-000000000000}</FormId>
+  <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+  <PrimaryEntity>msnfp_PaymentSchedule</PrimaryEntity>
+  <LocalizedNames>
+    <LocalizedName languagecode="1033" description="Action - Payment Schedule Thank You" />
+  </LocalizedNames>
+</Workflow>

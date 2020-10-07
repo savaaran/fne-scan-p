@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workflow WorkflowId="{a9ecd87e-d030-411b-982c-cdf1c7796c07}" Name="Action - Generate Receipt for Payment Schedule" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <XamlFileName>/Workflows/Action-GenerateReceiptforPaymentSchedule-A9ECD87E-D030-411B-982C-CDF1C7796C07.xaml</XamlFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
+  <Category>3</Category>
+  <Mode>0</Mode>
+  <Scope>4</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnCreate>0</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>0</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>1</SyncWorkflowLogOnFailure>
+  <StateCode>1</StateCode>
+  <StatusCode>2</StatusCode>
+  <CreateStage>40</CreateStage>
+  <RunAs>1</RunAs>
+  <SdkMessageId>{a4aa9341-96c7-ea11-a812-000d3a0c94a6}</SdkMessageId>
+  <UniqueName>ActionGenerateReceiptforPaymentSchedule</UniqueName>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <FormId>{00000000-0000-0000-0000-000000000000}</FormId>
+  <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+  <PrimaryEntity>msnfp_PaymentSchedule</PrimaryEntity>
+  <LocalizedNames>
+    <LocalizedName languagecode="1033" description="Action - Generate Receipt for Payment Schedule" />
+  </LocalizedNames>
+</Workflow>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workflow WorkflowId="{172121fd-f3c3-4aa9-894b-ffcc6c164899}" Name="Action - Event Package Receipt" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <XamlFileName>/Workflows/Action-EventPackageReceipt-172121FD-F3C3-4AA9-894B-FFCC6C164899.xaml</XamlFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
+  <Category>3</Category>
+  <Mode>0</Mode>
+  <Scope>4</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnCreate>0</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>0</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>1</SyncWorkflowLogOnFailure>
+  <StateCode>0</StateCode>
+  <StatusCode>1</StatusCode>
+  <CreateStage>40</CreateStage>
+  <RunAs>1</RunAs>
+  <SdkMessageId>{e434bb6d-61d2-ea11-a813-000d3a0c94a6}</SdkMessageId>
+  <UniqueName>ActionEventPackageReceipt</UniqueName>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.1.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <FormId>{00000000-0000-0000-0000-000000000000}</FormId>
+  <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+  <PrimaryEntity>msnfp_eventpackage</PrimaryEntity>
+  <LocalizedNames>
+    <LocalizedName languagecode="1033" description="Action - Event Package Receipt" />
+  </LocalizedNames>
+</Workflow>
