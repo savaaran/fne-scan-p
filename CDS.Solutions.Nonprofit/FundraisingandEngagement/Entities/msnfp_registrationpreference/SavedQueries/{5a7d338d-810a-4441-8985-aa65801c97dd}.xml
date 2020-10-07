@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{5a7d338d-810a-4441-8985-aa65801c97dd}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="msnfp_identifier" select="1" icon="1" preview="1">
+        <row name="result" id="msnfp_registrationpreferenceid">
+          <cell name="msnfp_identifier" width="300" />
+          <cell name="createdon" width="125" />
+          <cell name="msnfp_eventpreference" width="100" />
+          <cell name="msnfp_checkbox" width="100" />
+          <cell name="msnfp_eventid" width="100" />
+          <cell name="ownerid" width="100" />
+          <cell name="createdby" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+        <entity name="msnfp_registrationpreference">
+          <attribute name="msnfp_identifier" />
+          <attribute name="createdon" />
+          <attribute name="msnfp_eventpreference" />
+          <attribute name="msnfp_eventid" />
+          <attribute name="createdby" />
+          <order attribute="msnfp_identifier" descending="true" />
+          <order attribute="createdon" descending="true" />
+          <filter type="and">
+            <condition attribute="statecode" operator="ne" value="0" />
+          </filter>
+          <attribute name="ownerid" />
+          <attribute name="msnfp_checkbox" />
+          <attribute name="msnfp_registrationpreferenceid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>2.0.1.118</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive Registration Preferences" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

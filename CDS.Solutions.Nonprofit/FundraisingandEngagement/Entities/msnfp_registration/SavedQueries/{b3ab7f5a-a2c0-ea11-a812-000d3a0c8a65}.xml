@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{b3ab7f5a-a2c0-ea11-a812-000d3a0c8a65}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="msnfp_identifier" select="1" preview="1" icon="1">
+        <row name="result" id="msnfp_registrationid">
+          <cell name="msnfp_date" width="100" />
+          <cell name="msnfp_eventticketid" width="100" />
+          <cell name="a_124fbd9943ade911a98f000d3aff2e31.msnfp_name" width="100" disableSorting="1" />
+          <cell name="msnfp_customerid" width="100" />
+          <cell name="msnfp_email" width="100" />
+          <cell name="msnfp_telephone1" width="100" />
+          <cell name="statuscode" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="msnfp_registration">
+          <order attribute="msnfp_date" descending="true" />
+          <order attribute="msnfp_customerid" descending="false" />
+          <attribute name="msnfp_telephone1" />
+          <attribute name="msnfp_eventticketid" />
+          <attribute name="msnfp_email" />
+          <attribute name="msnfp_date" />
+          <attribute name="msnfp_customerid" />
+          <attribute name="statuscode" />
+          <link-entity alias="a_124fbd9943ade911a98f000d3aff2e31" name="msnfp_event" from="msnfp_eventid" to="msnfp_eventid" link-type="outer" visible="false">
+            <attribute name="msnfp_name" />
+          </link-entity>
+          <attribute name="msnfp_registrationid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="All Event Registrations - Tickets" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="All Event Registrations - Tickets" languagecode="1033" />
+    </Descriptions>
+  </savedquery>
+</savedqueries>

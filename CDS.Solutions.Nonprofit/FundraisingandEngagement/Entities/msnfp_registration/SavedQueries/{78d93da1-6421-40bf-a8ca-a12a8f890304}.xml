@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{78d93da1-6421-40bf-a8ca-a12a8f890304}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="msnfp_identifier" select="1" icon="1" preview="1">
+        <row name="result" id="msnfp_registrationid">
+          <cell name="msnfp_identifier" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="msnfp_customerid" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="msnfp_eventpackageid" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="msnfp_eventticketid" width="100" />
+          <cell name="msnfp_date" width="100" />
+          <cell name="createdon" width="100" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>1</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="msnfp_registration">
+          <attribute name="msnfp_identifier" />
+          <attribute name="createdon" />
+          <order attribute="msnfp_customerid" descending="false" />
+          <order attribute="createdon" descending="true" />
+          <attribute name="msnfp_eventticketid" />
+          <attribute name="msnfp_eventpackageid" />
+          <attribute name="msnfp_date" />
+          <attribute name="msnfp_customerid" />
+          <attribute name="msnfp_registrationid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>2.0.1.100</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Registration Advanced Find View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
