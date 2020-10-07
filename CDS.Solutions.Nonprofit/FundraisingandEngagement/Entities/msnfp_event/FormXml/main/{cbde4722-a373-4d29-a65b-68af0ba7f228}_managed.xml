@@ -1,0 +1,915 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{cbde4722-a373-4d29-a65b-68af0ba7f228}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form shownavigationbar="true" showImage="false" maxWidth="1920">
+      <tabs>
+        <tab verticallayout="true" id="{3ee60523-3b9b-4659-b96c-c4d09228d487}" IsUserDefined="1" labelid="{6957de88-eed8-4fc4-a551-c37bcda35f97}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{3beebac0-3a94-4040-85c9-ffc194be0acc}" name="{3beebac0-3a94-4040-85c9-ffc194be0acc}" columns="1111" locklevel="0" labelwidth="130" celllabelalignment="Left" celllabelposition="Left" labelid="{5d385047-8c53-497a-b267-d847957ce071}">
+                  <labels>
+                    <label description="Event" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{9c75a4af-7a82-43d8-887e-a90bc33be0a9}" showlabel="true" locklevel="0" colspan="4" labelid="{7509211b-0bec-4980-b502-ebd18a241ead}">
+                        <labels>
+                          <label description="Internal Display Name" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_identifier" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="msnfp_identifier" uniqueid="{33138201-c597-3dd8-d6e8-74e2a2e27747}" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e2d2c8e7-04eb-d7d0-74a1-8cca471cab43}" showlabel="true" locklevel="0" colspan="4" labelid="{26a08ad7-77ae-46fa-8d7f-f259a3dadb64}">
+                        <labels>
+                          <label description="Display Name" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="msnfp_name" disabled="false" uniqueid="{7c3dc4b4-2179-93c3-c5b7-cc276ea72647}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{735a382b-9b0e-4ae7-b635-a22b2e6ee019}" showlabel="true" locklevel="0" labelid="{63db51d6-454f-4ec0-ab4b-9a65216c42ef}">
+                        <labels>
+                          <label description="Campaign" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_campaignid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="msnfp_campaignid" disabled="false" uniqueid="{0d69ee60-edbb-e9e2-9b46-1bbd4a4ca940}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>true</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{0E76DC73-2052-484E-8C00-A760F8D522EC}</DefaultViewId>
+                            <AllowFilterOff>false</AllowFilterOff>
+                          </parameters>
+                        </control>
+                      </cell>
+                      <cell id="{d87d28e4-2c69-85a7-64e7-5890334ccd36}" showlabel="true" locklevel="0" labelid="{2a6f3b3a-faee-4859-bf11-a14ab87629ad}">
+                        <labels>
+                          <label description="Appeal" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_appealid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="msnfp_appealid" disabled="false" uniqueid="{bb15b4d4-a3b4-d461-615b-681577eca1a7}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>true</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{1D815714-25E2-47AE-BED4-FE23D50B864E}</DefaultViewId>
+                            <AllowFilterOff>true</AllowFilterOff>
+                            <FilterRelationshipName>msnfp_campaign_msnfp_appeal</FilterRelationshipName>
+                            <DependentAttributeName>msnfp_event.msnfp_campaignid</DependentAttributeName>
+                            <DependentAttributeType>campaign</DependentAttributeType>
+                          </parameters>
+                        </control>
+                      </cell>
+                      <cell id="{b2518645-9747-97d9-e560-0dc654ba6205}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Package" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_packageid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="msnfp_packageid" disabled="false" uniqueid="{d93e84dc-0b67-d85b-44d2-675d726e788b}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>true</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{1884565F-16E1-4806-A42C-71FBD3AEF083}</DefaultViewId>
+                            <AllowFilterOff>true</AllowFilterOff>
+                            <FilterRelationshipName>msnfp_appeal_msnfp_package_AppealId</FilterRelationshipName>
+                            <DependentAttributeName>msnfp_event.msnfp_appealid</DependentAttributeName>
+                            <DependentAttributeType>msnfp_appeal</DependentAttributeType>
+                          </parameters>
+                        </control>
+                      </cell>
+                      <cell id="{b9aa00e0-3001-7819-d468-ed68ab63eb43}" showlabel="true" locklevel="0" labelid="{e98fdbf6-6b4e-4efa-860e-84c704098843}">
+                        <labels>
+                          <label description="Designation" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_designationid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="msnfp_designationid" disabled="false" uniqueid="{8d88983e-b3d9-1658-2ae0-8e46a958482e}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>true</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{0D69FADE-F4FB-4C97-8D59-08E9839563D0}</DefaultViewId>
+                            <AllowFilterOff>false</AllowFilterOff>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b1887970-8783-c45e-e0d1-a91e1311d1a9}" showlabel="true" locklevel="0" labelid="{1908d836-d2ed-4ba5-a4f2-c8c66dddb656}">
+                        <labels>
+                          <label description="Proposed Start" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_proposedstart" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="msnfp_proposedstart" disabled="false" />
+                      </cell>
+                      <cell id="{d3d17d55-e47a-b2b8-a392-175ea8d91cb4}" showlabel="true" locklevel="0" labelid="{a94f53c1-4517-432d-a448-a46a702efe30}">
+                        <labels>
+                          <label description="Proposed End" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_proposedend" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="msnfp_proposedend" disabled="false" />
+                      </cell>
+                      <cell id="{d6b644b9-4a5d-d011-4428-9ae0be4a2524}" showlabel="true" locklevel="0" labelid="{1ce137ae-daaf-4dfe-8d1a-ac5448247372}">
+                        <labels>
+                          <label description="Currency" languagecode="1033" />
+                        </labels>
+                        <control id="transactioncurrencyid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="transactioncurrencyid" disabled="false" />
+                      </cell>
+                      <cell id="{cb705372-aaee-528a-cac1-bb18c9b3e312}" showlabel="true" locklevel="0" labelid="{3282011d-ae08-46f9-8b31-cb91f929e5d9}">
+                        <labels>
+                          <label description="Budget Allocated" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_budget" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="msnfp_budget" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1e9280e0-6152-b4cd-e12c-511426612465}" showlabel="true" locklevel="0" labelid="{792bfdbb-d4da-49db-b033-7d3ed8749aa2}">
+                        <labels>
+                          <label description="Event Type" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_eventtypecode" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="msnfp_eventtypecode" disabled="false" />
+                      </cell>
+                      <cell id="{c67e3143-c47d-3683-a7e9-a492430c8307}" showlabel="true" locklevel="0" labelid="{3daf8f31-1bab-47d2-88a6-1dfd19b11c2c}">
+                        <labels>
+                          <label description="Capacity" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_capacity" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="msnfp_capacity" disabled="false" />
+                      </cell>
+                      <cell id="{193c2339-a40b-e9ee-cced-84097ee0227c}" showlabel="true" locklevel="0" labelid="{5f5f8c2a-c7b5-4ec5-8a12-90a8978e7508}">
+                        <labels>
+                          <label description="Goal" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_goal" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="msnfp_goal" disabled="false" />
+                      </cell>
+                      <cell id="{38e1e763-0928-5d12-2e29-b935b049b61e}" showlabel="false" userspacer="true" labelid="{f3100a9e-2d95-45b0-8be4-7218642386ba}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a88d4140-108b-46ab-7d5a-7a3a4774c8ed}" showlabel="true" locklevel="0" labelid="{bb2b28d8-fa03-421a-82ff-012f38050167}">
+                        <labels>
+                          <label description="Total Registrations" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_sum_totalregistrations" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="msnfp_sum_totalregistrations" disabled="true" uniqueid="{412c02be-9c73-5404-6ae4-26ce4dab4862}" />
+                      </cell>
+                      <cell id="{788ccb0b-91b9-edbc-dd6e-a56c86be4aee}" showlabel="false" userspacer="true" labelid="{e6cc308e-ebd2-4dde-b918-ec15b131f942}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{5946d944-1e3c-8ab3-2c8a-e2534e216d00}" showlabel="true" locklevel="0" labelid="{34336caa-1fba-433e-a695-052b75eafdf4}">
+                        <labels>
+                          <label description="Configuration Record" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_configurationid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="msnfp_configurationid" disabled="false" uniqueid="{9d9c7c69-7a05-d817-e498-26509184180e}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>true</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{848296C4-5743-4F31-BB62-8EDC61DEBBCD}</DefaultViewId>
+                            <AllowFilterOff>false</AllowFilterOff>
+                          </parameters>
+                        </control>
+                      </cell>
+                      <cell id="{4dabee70-6a36-30a9-e504-56bba874b0a2}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_2" id="{a5e24535-bbb1-b918-82d9-14ada5858339}" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true" labelid="{a394dcd2-d39d-4b17-a6f0-33074dbe9c88}">
+          <labels>
+            <label description="Event Venue" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_2_section_1" showlabel="false" showbar="false" locklevel="0" id="{a376bba8-a6ed-394b-2a2d-e93dc31c7e48}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" labelid="{b98779ec-2c14-47f8-943b-586799b4b296}">
+                  <labels>
+                    <label description="Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{79d6a146-20a8-c279-22c2-e52c3479312e}" showlabel="true" locklevel="0" labelid="{736b0072-59cb-4164-872a-dc8bf5527115}">
+                        <labels>
+                          <label description="Venue" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_venueid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="msnfp_venueid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1169dd24-1525-0530-d1d3-5555038662d9}" showlabel="true" locklevel="0" labelid="{fc994029-aae1-49ce-93c0-de01f83d8a9d}">
+                        <labels>
+                          <label description="Address 1: Street 1" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_map_line1" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="msnfp_map_line1" disabled="false" uniqueid="{2d3b4988-35b1-6095-66ba-15aa566e6ed6}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{cc1d3cc5-9c7b-3d45-70a0-885cbde038ae}" showlabel="true" locklevel="0" labelid="{5e959752-4482-4112-8870-c6f6ea5f088e}">
+                        <labels>
+                          <label description="Address 1: Street 2" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_map_line2" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="msnfp_map_line2" disabled="false" uniqueid="{375c858a-10ad-c13c-89e6-40c014a71882}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e1210d86-5db0-a4da-178a-0dd4601159dd}" showlabel="true" locklevel="0" labelid="{6b8f97bd-8fec-4074-955e-a28d81495e27}">
+                        <labels>
+                          <label description="Address 1: Street 3" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_map_line3" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="msnfp_map_line3" disabled="false" uniqueid="{4e801d21-08ac-db8a-62d3-bbbc49642584}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a977833b-03d4-2e2b-4677-050d29d5add4}" showlabel="true" locklevel="0" labelid="{5b165a0c-5fc1-4ba0-aaf1-7b4356dd96f0}">
+                        <labels>
+                          <label description="Address 1: City" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_map_city" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="msnfp_map_city" disabled="false" uniqueid="{8a4ab116-0535-8c8a-34c8-7c91dc627237}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{094d6891-5863-3872-d1bd-613ee6704c56}" showlabel="true" locklevel="0" labelid="{d3a142a3-391c-4da0-a53e-4f2a6e580433}">
+                        <labels>
+                          <label description="Address 1: State/Province" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_stateorprovince" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="msnfp_stateorprovince" disabled="false" uniqueid="{3616814c-62e7-eea8-59bd-438490918135}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5304c8ec-4827-ab68-a101-770317d0ccce}" showlabel="true" locklevel="0" labelid="{7594aa2d-b9e2-4ce0-b6cb-e3bde5c98c9c}">
+                        <labels>
+                          <label description="Address 1: ZIP/Postal Code" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_map_postalcode" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="msnfp_map_postalcode" disabled="false" uniqueid="{6a065111-cdcd-887c-cda8-b20e81455207}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_3" id="{eb503be3-babc-79a8-998b-dc25dc6a817a}" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true" labelid="{e26e71e8-7358-4673-9170-ac64c5ad136e}">
+          <labels>
+            <label description="Event Components" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_3_section_4" showlabel="true" showbar="false" locklevel="0" id="{946d76da-2b45-9eea-ed35-0057984d9902}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" labelid="{e3950d69-e8eb-437f-a20f-0f8e8f731c4b}">
+                  <labels>
+                    <label description="Disclaimers" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{bc18002b-661b-54c6-5bc5-74ab914b4ba5}" showlabel="false" colspan="1" auto="false" rowspan="4" labelid="{31b57448-4b70-49ef-82d7-eeb63350fc9c}">
+                        <labels>
+                          <label description="Event Disclaimers (Event)" languagecode="1033" />
+                        </labels>
+                        <control id="Acknowledgement" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true" uniqueid="{c53494d9-4061-53a0-ac8a-57885aa08829}">
+                          <parameters>
+                            <ViewId>{8571BF03-22DA-43EE-A70F-3E8C6A91DF13}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>msnfp_event_msnfp_eventdisclaimer</RelationshipName>
+                            <TargetEntityType>msnfp_eventdisclaimer</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{8571BF03-22DA-43EE-A70F-3E8C6A91DF13}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>2</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+                <section name="tab_3_section_6" showlabel="true" showbar="false" locklevel="0" id="{7e433e6b-07b6-6c72-5009-286787b61121}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" labelid="{422d2281-f522-49b8-9153-331e4324f457}">
+                  <labels>
+                    <label description="Sponsors" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{ddcd2d29-ecc8-39bb-e757-ce11a6111893}" showlabel="false" colspan="1" auto="false" rowspan="6" labelid="{86c681cd-3739-4e63-817d-4acba3b007fa}">
+                        <labels>
+                          <label description="Event Sponsorships (Event)" languagecode="1033" />
+                        </labels>
+                        <control id="Sponsorship" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <ViewId>{CBB06499-A5CE-4BEF-9B0D-233C752F6EB6}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>msnfp_event_msnfp_eventsponsorship</RelationshipName>
+                            <TargetEntityType>msnfp_eventsponsorship</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{CBB06499-A5CE-4BEF-9B0D-233C752F6EB6}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+                <section name="tab_3_section_3" showlabel="true" showbar="false" locklevel="0" id="{0c79d33c-5333-5426-820e-94dec4d7b3ed}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" labelid="{3bb24fda-6cc6-4b56-aa92-c31b5cb8d830}">
+                  <labels>
+                    <label description="Tickets" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{6512989d-4145-0791-2e87-59400010e06d}" showlabel="false" colspan="1" auto="false" rowspan="6" labelid="{6fc23b58-2f98-47fc-b4f3-12622bafdd0c}">
+                        <labels>
+                          <label description="Event Tickets (Event)" languagecode="1033" />
+                        </labels>
+                        <control id="Tickets" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <ViewId>{587FF9AA-8E2E-40BF-907F-ADC1CDF259F9}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>msnfp_event_msnfp_eventticket</RelationshipName>
+                            <TargetEntityType>msnfp_eventticket</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{587FF9AA-8E2E-40BF-907F-ADC1CDF259F9}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+                <section name="tab_3_section_5" showlabel="true" showbar="false" locklevel="0" id="{3db7d622-7a89-3995-346e-e9b5d37b21a8}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" labelid="{ac52911f-438e-4703-a0cd-ce9fabb9a010}">
+                  <labels>
+                    <label description="Products" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{c088ae8e-2cb1-0b95-022e-ce6dea8dc5d4}" showlabel="false" colspan="1" auto="false" rowspan="6" labelid="{2aaeb71f-66dc-45fd-b42d-bf3248dad045}">
+                        <labels>
+                          <label description="Event Products (Event)" languagecode="1033" />
+                        </labels>
+                        <control id="Products" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <ViewId>{5969CE48-C5FA-4E6E-9136-1A2B0114288C}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>msnfp_event_msnfp_eventproduct</RelationshipName>
+                            <TargetEntityType>msnfp_eventproduct</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{5969CE48-C5FA-4E6E-9136-1A2B0114288C}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+                <section name="tab_3_section_2" showlabel="true" showbar="false" locklevel="0" id="{0aec349c-a50e-0c43-9114-ed74859a66d4}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" labelid="{b35fc6ff-838e-4db8-80ca-3bd13576e126}">
+                  <labels>
+                    <label description="Donations" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{dba934e7-4571-e085-3262-9292064cae5c}" showlabel="false" colspan="1" auto="false" rowspan="5" labelid="{daa09048-25f7-4e48-8712-0bbb1cfe12d0}">
+                        <labels>
+                          <label description="Event Donations (Event)" languagecode="1033" />
+                        </labels>
+                        <control id="Donation" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                          <parameters>
+                            <ViewId>{8D642876-3BC0-4983-8041-E96B868D78AB}</ViewId>
+                            <IsUserView>false</IsUserView>
+                            <RelationshipName>msnfp_event_msnfp_eventdonation</RelationshipName>
+                            <TargetEntityType>msnfp_eventdonation</TargetEntityType>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <ViewIds>{8D642876-3BC0-4983-8041-E96B868D78AB}</ViewIds>
+                            <EnableJumpBar>false</EnableJumpBar>
+                            <ChartGridMode>All</ChartGridMode>
+                            <VisualizationId />
+                            <IsUserChart>false</IsUserChart>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <RecordsPerPage>3</RecordsPerPage>
+                            <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_7" id="{b807464d-dc58-9360-d994-1270c1857aa3}" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true" labelid="{5e80e1c3-e400-4bb9-88b1-adccb461d8a4}">
+          <labels>
+            <label description="Preferences" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="40%">
+              <sections>
+                <section name="tab_4_section_1" showlabel="true" showbar="false" locklevel="0" id="{69ed58d1-e55c-a8c1-5a09-0bcc6928bd4c}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" labelid="{40839fa7-2bf9-4ce8-9b15-395d5821cd6a}">
+                  <labels>
+                    <label description="Preferences for this Event" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{5216bb2b-a886-410e-cb13-4a2ad1c1ad1e}" showlabel="false" colspan="1" auto="false" rowspan="10" labelid="{b22808d1-e623-4cdb-8b9b-48685d195237}">
+                        <labels>
+                          <label description="EventPreferences" languagecode="1033" />
+                        </labels>
+                        <control id="WebResource_EventPreferences" classid="{9FDF5F91-88B1-47f4-AD53-C11EFC01A01D}">
+                          <parameters>
+                            <Url>msnfp_/webpages/eventpreferences.html</Url>
+                            <PassParameters>false</PassParameters>
+                            <ShowOnMobileClient>false</ShowOnMobileClient>
+                            <Security>false</Security>
+                            <Scrolling>auto</Scrolling>
+                            <Border>false</Border>
+                            <WebResourceId>{1A6852CC-DB20-EA11-A810-000D3A0C8A65}</WebResourceId>
+                          </parameters>
+                        </control>
+                        <events>
+                          <event name="onload" application="false">
+                            <dependencies />
+                          </event>
+                        </events>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="60%">
+              <sections>
+                <section name="tab_4_section_2" showlabel="true" showbar="false" locklevel="0" id="{1ed9ca05-5aae-5512-99de-2680e9603a54}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" labelid="{a1097e48-93a0-4fc8-b8e8-a26b684170bc}">
+                  <labels>
+                    <label description="Available Preferences" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{7c86346c-1090-81ca-ac8d-17e3b72d3726}" showlabel="false" colspan="1" auto="false" rowspan="10" labelid="{80b6b66a-0c95-4439-81a3-a0529e4d03ae}">
+                        <labels>
+                          <label description="EventExistingPreferences" languagecode="1033" />
+                        </labels>
+                        <control id="WebResource_EventExistingPreferences" classid="{9FDF5F91-88B1-47f4-AD53-C11EFC01A01D}">
+                          <parameters>
+                            <Url>msnfp_/webpages/eventexistingpreferences.html</Url>
+                            <PassParameters>false</PassParameters>
+                            <ShowOnMobileClient>false</ShowOnMobileClient>
+                            <Security>false</Security>
+                            <Scrolling>auto</Scrolling>
+                            <Border>false</Border>
+                            <WebResourceId>{9BEB8AF6-DB20-EA11-A810-000D3A0C8A65}</WebResourceId>
+                          </parameters>
+                        </control>
+                        <events>
+                          <event name="onload" application="false">
+                            <dependencies />
+                          </event>
+                        </events>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_5" id="{0ebec5a2-a530-195e-c62d-c383a44eb558}" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true" labelid="{594889cb-af03-420d-bf2b-bd51bf46dd88}">
+          <labels>
+            <label description="Event Revenue" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_5_section_1" showlabel="false" showbar="false" locklevel="0" id="{79cec24c-9051-7657-1ab2-a20e362bc9ad}" IsUserDefined="0" layout="varwidth" columns="1111" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" labelid="{8c8c298d-f14a-400c-be93-37be3d26fda7}">
+                  <labels>
+                    <label description="Hidden Fields" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{d4729ca7-cdda-04ad-6648-954a94c05703}" showlabel="true" locklevel="0" labelid="{7fcc0a9c-b227-4074-9160-140eeb3d7aa5}">
+                        <labels>
+                          <label description="# Sponsorships" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_count_sponsorships" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="msnfp_count_sponsorships" disabled="true" uniqueid="{61331e68-0702-d149-ee64-3b5419a4e582}" />
+                      </cell>
+                      <cell id="{7aa908e0-60c1-3316-673e-8ba5454d0825}" showlabel="true" locklevel="0" labelid="{7f5af678-b0b9-42e2-9fb4-933ae9f47512}">
+                        <labels>
+                          <label description="$ Sponsorships" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_sum_sponsorships" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="msnfp_sum_sponsorships" disabled="true" uniqueid="{4cadbdd9-4a7d-2cda-dc66-61cd41733a48}" />
+                      </cell>
+                      <cell id="{43a3943a-2b85-6365-4b78-9e274cd1ed75}" showlabel="true" locklevel="0" labelid="{691418c1-decb-4535-9a7d-b995de69fdb7}">
+                        <labels>
+                          <label description="# Products" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_count_products" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="msnfp_count_products" disabled="true" uniqueid="{86c83d4a-38d3-4092-e9c7-71acbcab2568}" />
+                      </cell>
+                      <cell id="{cd030342-6ca8-e49b-d121-3aa7347d0648}" showlabel="true" locklevel="0" labelid="{82d1ea19-7b38-4e50-8331-ed2f1bf1f0de}">
+                        <labels>
+                          <label description="$ Products" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_sum_products" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="msnfp_sum_products" disabled="true" uniqueid="{99d14c2a-a36e-8a91-b2be-7c0a24119148}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d36a07ca-1412-774b-5a95-2c6dd187e32d}" showlabel="true" locklevel="0" labelid="{6ad789e1-93e3-4996-8103-bff618358812}">
+                        <labels>
+                          <label description="# Tickets" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_count_tickets" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="msnfp_count_tickets" disabled="true" uniqueid="{365c81ec-dd8a-1492-d6e0-bba2b65bd891}" />
+                      </cell>
+                      <cell id="{9218b5c9-9e58-b50c-43cd-72da195d4d0e}" showlabel="true" locklevel="0" labelid="{0ecfa58c-e4f5-43de-8909-71326dda3584}">
+                        <labels>
+                          <label description="$ Tickets" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_sum_tickets" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="msnfp_sum_tickets" disabled="true" uniqueid="{d5975249-6945-0269-41be-4002ac88eb53}" />
+                      </cell>
+                      <cell id="{7c173ce9-ca73-9316-7bd8-cd1e0dd851ce}" showlabel="true" locklevel="0" labelid="{61717231-e446-4cb3-b1ac-83b272bf67bb}">
+                        <labels>
+                          <label description="# Donations" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_count_donations" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="msnfp_count_donations" disabled="true" uniqueid="{c1883e1b-bb50-906b-9285-1c48548769c4}" />
+                      </cell>
+                      <cell id="{079294c9-1155-e3cb-e7d6-12e833a160c5}" showlabel="true" locklevel="0" labelid="{7dac8b2d-289f-452e-8711-7bf745483b4b}">
+                        <labels>
+                          <label description="$ Donations" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_sum_donations" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="msnfp_sum_donations" disabled="true" uniqueid="{08e5e196-c165-3220-4cdb-5caa3c724960}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4bc0438d-2618-b3a8-07bd-0c3277ad5b20}" showlabel="false" labelid="{8b6939a5-e6d7-450b-9a28-5f5f71412dc2}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{73de464b-3996-1823-2c79-3537971364c5}" showlabel="true" locklevel="0" visible="false" rowspan="2" labelid="{d72624eb-8572-4ca6-8e10-db79a8a1b266}">
+                        <labels>
+                          <label description="Description" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_description" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="msnfp_description" disabled="false" uniqueid="{61d3c909-4d09-0b33-70e8-bdc319012db3}" />
+                      </cell>
+                      <cell id="{c89bb050-511b-4729-1851-61c802e492d0}" showlabel="true" locklevel="0" labelid="{e1158a4c-0286-4f8a-9bb7-fbd62e81bda8}">
+                        <labels>
+                          <label description="# Packages" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_count_packages" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="msnfp_count_packages" disabled="true" uniqueid="{2423e638-1cc1-8390-e14d-161828c8181e}" />
+                      </cell>
+                      <cell id="{240e7982-2184-50ca-6632-10839b637d04}" showlabel="true" locklevel="0" labelid="{2cc16f12-7543-45b9-93c4-cdf024fc7efc}">
+                        <labels>
+                          <label description="$ Packages" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_sum_packages" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="msnfp_sum_packages" disabled="true" uniqueid="{5e7d1d9b-8917-0302-9e81-b37438536482}" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{19339b2e-5727-5376-3db1-dec3641b08b9}" showlabel="false" labelid="{d1ecc080-df19-460b-9929-aed73d3b28aa}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{7c956206-2832-1e81-b92e-ecce25066dd2}" showlabel="false" labelid="{3514cc30-9a6d-4dd3-9d1c-c25a01372ab1}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{96ab6447-209c-1653-9854-21c4b2e0e1cd}" showlabel="true" locklevel="0" labelid="{c8967d07-471c-4739-bbb5-4a95458eabac}">
+                        <labels>
+                          <label description="$ Total Revenue" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_sum_total" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="msnfp_sum_total" disabled="true" uniqueid="{84e6bd71-5074-4690-e016-9542ee587995}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_6" id="{36836476-811e-5204-b550-66ca195b5155}" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true">
+          <labels>
+            <label description="Administration" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_6_section_1" showlabel="false" showbar="false" locklevel="0" id="{711ec34b-8746-296b-a904-deb307953264}" IsUserDefined="0" layout="varwidth" columns="1111" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{4c6e37d8-9c7d-c437-3320-4d91070c1687}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Created By" languagecode="1033" />
+                        </labels>
+                        <control id="createdby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="createdby" disabled="false" />
+                      </cell>
+                      <cell id="{2168e7e6-4785-1eb0-61d8-b29439908e98}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Created On" languagecode="1033" />
+                        </labels>
+                        <control id="createdon" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="createdon" disabled="false" />
+                      </cell>
+                      <cell id="{5e378638-080b-aa35-6c9d-bdc8e8514521}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Modified By" languagecode="1033" />
+                        </labels>
+                        <control id="modifiedby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="modifiedby" disabled="false" />
+                      </cell>
+                      <cell id="{50e89d46-5121-6cae-93a8-c9b1e8d68984}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Modified On" languagecode="1033" />
+                        </labels>
+                        <control id="modifiedon" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="modifiedon" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{bc597d9d-c7a7-2b53-7bb9-cbb53cb57399}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" />
+                      </cell>
+                      <cell id="{5065e7de-1353-2453-7ab1-79cd5c5c4614}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{11907368-5361-d267-0d1a-2d2c59c3e8d9}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Status" languagecode="1033" />
+                        </labels>
+                        <control id="statecode" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="statecode" disabled="false" />
+                      </cell>
+                      <cell id="{d52d4882-9bc8-ceec-2147-db9ed33152c5}" showlabel="true" locklevel="0" labelid="{fc7bd617-6794-416e-ba48-4f985ad9b3de}">
+                        <labels>
+                          <label description="Status Reason" languagecode="1033" />
+                        </labels>
+                        <control id="statuscode" classid="{5D68B988-0661-4db2-BC3E-17598AD3BE6C}" datafieldname="statuscode" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{42c47609-7547-4e18-b72e-552482931432}" columns="111">
+        <rows>
+          <row>
+            <cell id="{664b29b4-5cc9-626d-aa1d-1be01550d351}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{3eb2367b-3195-4fb0-85ba-1883d0a71923}" showlabel="false" labelid="{3e354ceb-3ffa-49e5-88a0-52250f83abf5}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{b2a17df4-d63d-4d64-891a-6790bda02463}" showlabel="false" labelid="{1a3a08f6-7624-4e6c-b6ff-8eb2598b9e72}">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <Navigation>
+        <NavBar>
+          <NavBarByRelationshipItem RelationshipName="msnfp_event_msnfp_eventpackage" Sequence="10000" Area="Info" Id="nav_msnfp_event_msnfp_eventpackage">
+            <Titles>
+              <Title LCID="1033" Text="Event Packages" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_msnfp_event_msnfp_eventpreference_EventId" Sequence="10001" Area="Info" Id="nav_msnfp_msnfp_event_msnfp_eventpreference_EventId">
+            <Titles>
+              <Title LCID="1033" Text="Event Preferences" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_msnfp_event_msnfp_eventtables_EventId" Sequence="10002" Area="Info" Id="nav_msnfp_msnfp_event_msnfp_eventtables_EventId">
+            <Titles>
+              <Title LCID="1033" Text="Event Tables" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_event_msnfp_giftbatch" Sequence="10003" Area="Info" Id="nav_msnfp_event_msnfp_giftbatch">
+            <Titles>
+              <Title LCID="1033" Text="Gift Batches" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_event_opportunity_EventId" Sequence="10004" Area="Info" Id="nav_msnfp_event_opportunity_EventId">
+            <Titles>
+              <Title LCID="1033" Text="Opportunities" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_event_msnfp_product" Sequence="10005" Area="Info" Id="nav_msnfp_event_msnfp_product">
+            <Titles>
+              <Title LCID="1033" Text="Products" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_event_msnfp_paymentschedule" Sequence="10006" Area="Info" Id="nav_msnfp_event_msnfp_paymentschedule" Show="false">
+            <Titles>
+              <Title LCID="1033" Text="Payment Schedules" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_event_msnfp_registration" Sequence="10007" Area="Info" Id="nav_msnfp_event_msnfp_registration">
+            <Titles>
+              <Title LCID="1033" Text="Registrations" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_event_msnfp_sponsorship" Sequence="10008" Area="Info" Id="nav_msnfp_event_msnfp_sponsorship">
+            <Titles>
+              <Title LCID="1033" Text="Sponsorships" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_msnfp_event_msnfp_ticket_EventId" Sequence="10009" Area="Info" Id="nav_msnfp_msnfp_event_msnfp_ticket_EventId">
+            <Titles>
+              <Title LCID="1033" Text="Tickets" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_event_msnfp_transaction" Sequence="10010" Area="Info" Id="nav_msnfp_event_msnfp_transaction">
+            <Titles>
+              <Title LCID="1033" Text="Transactions" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_msnfp_event_msnfp_donationimport_EventId" Sequence="10011" Area="Info" Id="nav_msnfp_msnfp_event_msnfp_donationimport_EventId" Show="false">
+            <Titles>
+              <Title LCID="1033" Text="Donation Imports" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_event_msnfp_eventdisclaimer" Sequence="10012" Area="Info" Id="nav_msnfp_event_msnfp_eventdisclaimer" Show="false">
+            <Titles>
+              <Title LCID="1033" Text="Event Disclaimers" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_event_msnfp_eventdonation" Sequence="10013" Area="Info" Id="nav_msnfp_event_msnfp_eventdonation" Show="false">
+            <Titles>
+              <Title LCID="1033" Text="Event Donations" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_event_msnfp_eventproduct" Sequence="10014" Area="Info" Id="nav_msnfp_event_msnfp_eventproduct" Show="false">
+            <Titles>
+              <Title LCID="1033" Text="Event Products" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_event_msnfp_eventsponsorship" Sequence="10015" Area="Info" Id="nav_msnfp_event_msnfp_eventsponsorship" Show="false">
+            <Titles>
+              <Title LCID="1033" Text="Event Sponsorships" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_event_msnfp_eventticket" Sequence="10016" Area="Info" Id="nav_msnfp_event_msnfp_eventticket" Show="false">
+            <Titles>
+              <Title LCID="1033" Text="Event Tickets" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_event_msnfp_registrationpreference_EventId" Sequence="10017" Area="Info" Id="nav_msnfp_event_msnfp_registrationpreference_EventId" Show="false">
+            <Titles>
+              <Title LCID="1033" Text="Registration Preferences" />
+            </Titles>
+          </NavBarByRelationshipItem>
+        </NavBar>
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
+      <controlDescriptions />
+      <formLibraries>
+        <Library name="msnfp_/scripts/jquery.js" libraryUniqueId="{19b695d7-e047-d856-2e8a-05ace873b913}" />
+        <Library name="msnfp_/scripts/common.js" libraryUniqueId="{d0a64196-5412-e9b2-4603-8749b31908c8}" />
+        <Library name="msnfp_/scripts/eventpopulatevenueaddress.js" libraryUniqueId="{28569884-c0eb-543c-8101-e98eb123b98e}" />
+        <Library name="msnfp_/scripts/eventform.js" libraryUniqueId="{75d0679c-75ed-a226-a97a-95a962a3cb7c}" />
+      </formLibraries>
+      <events>
+        <event name="onchange" application="false" active="false" attribute="msnfp_venueid">
+          <Handlers>
+            <Handler functionName="onVenueChange" libraryName="msnfp_/scripts/eventpopulatevenueaddress.js" handlerUniqueId="{82302d00-4d9a-69a6-37b6-85ac75cea13e}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="msnfp_campaignid">
+          <Handlers>
+            <Handler functionName="autoPopulateDesignationDependingOnCampaign" libraryName="msnfp_/scripts/eventform.js" handlerUniqueId="{b9108e82-81d5-ac3d-d422-75dadb3089d1}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+      <DisplayConditions Order="1" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Fundraising: Information" languagecode="1033" />
+    </LocalizedNames>
+  </systemform>
+</forms>

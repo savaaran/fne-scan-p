@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{54c9d0b8-179e-438a-bd9e-8637d4ca823c}</formid>
+    <IntroducedVersion>1.0.2</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form shownavigationbar="true" showImage="false" maxWidth="1920">
+      <tabs>
+        <tab id="{15979beb-ec79-4fc2-94bc-e1fad56e8c7a}" name="{15979beb-ec79-4fc2-94bc-e1fad56e8c7a}" verticallayout="true" IsUserDefined="1" locklevel="0" expanded="true" showlabel="true" ordinalvalue="0">
+          <columns>
+            <column width="34%" id="0">
+              <sections>
+                <section id="{02b1fea1-eae3-409a-a7ba-5b10e40694ba}" IsUserDefined="0" showlabel="false" showbar="false" ordinalvalue="0">
+                  <rows>
+                    <row>
+                      <cell id="{1ba714d1-1118-3808-a131-56489505be8e}" locklevel="0" showlabel="true" ordinalvalue="10001" solutionaction="Removed" />
+                    </row>
+                    <row>
+                      <cell id="{50d30076-9ab5-eea4-c298-1624e6920a0d}" showlabel="true" locklevel="0" ordinalvalue="10001" solutionaction="Added">
+                        <labels>
+                          <label description="Anonymity" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_anonymous" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="msnfp_anonymous" disabled="false" uniqueid="{61a3b882-4758-86a7-d143-318569bee3ec}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%" id="2">
+              <sections>
+                <section id="{3b8c2a75-1e8a-d29c-2768-32d150a663d5}" name="{15979beb-ec79-4fc2-94bc-e1fad56e8c7a}_section_3" IsUserDefined="0" locklevel="0" showlabel="false" columns="1" showbar="false" layout="varwidth" labelwidth="115" ordinalvalue="0">
+                  <rows>
+                    <row>
+                      <cell id="{dd3b05e8-1e83-be44-7b42-a4383d164818}" locklevel="0" showlabel="true" ordinalvalue="10001" solutionaction="Modified" />
+                    </row>
+                    <row>
+                      <cell id="{b84b5ba6-89ba-3e2d-20e8-bc55bdd95d08}" locklevel="0" showlabel="true" ordinalvalue="10000" solutionaction="Added">
+                        <labels>
+                          <label description="Campaign" languagecode="1033" />
+                        </labels>
+                        <control disabled="false" id="msnfp_commitment_campaignid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="msnfp_commitment_campaignid" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <Navigation>
+        <NavBar>
+          <NavBarByRelationshipItem Id="nav_msnfp_opportunity_primaryProposal" Area="Info" Sequence="10002" RelationshipName="msnfp_opportunity_primaryProposal" solutionaction="Added">
+            <Titles>
+              <Title Text="Primary Proposal On" LCID="1033" />
+            </Titles>
+          </NavBarByRelationshipItem>
+        </NavBar>
+      </Navigation>
+    </form>
+    <LocalizedNames>
+      <LocalizedName description="Donor Commitment" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

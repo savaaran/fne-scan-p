@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RibbonDiffXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CustomActions>
+    <CustomAction Id="msnfp.msnfp_event.Button2.Button.CustomAction" Location="Mscrm.Form.msnfp_event.MainTab.Collaborate.Controls._children" Sequence="33">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.msnfp_event.Button2.Button.Alt" Command="msnfp.msnfp_event.Command0.Command" Id="msnfp.msnfp_event.Button2.Button" Image16by16="$webresource:msnfp_/images/clone16.png" LabelText="$LocLabels:msnfp.msnfp_event.Button2.Button.LabelText" Sequence="33" TemplateAlias="o1" ToolTipTitle="$LocLabels:msnfp.msnfp_event.Button2.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.msnfp_event.Button2.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/images/clone.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.msnfp_event.Button4.Button.CustomAction" Location="Mscrm.Form.msnfp_event.MainTab.Collaborate.Controls._children" Sequence="33">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.msnfp_event.Button4.Button.Alt" Command="msnfp.msnfp_event.Command2.Command" Id="msnfp.msnfp_event.Button4.Button" Image16by16="$webresource:msnfp_/images/eventpackage16.png" LabelText="$LocLabels:msnfp.msnfp_event.Button4.Button.LabelText" Sequence="33" TemplateAlias="o1" ToolTipTitle="$LocLabels:msnfp.msnfp_event.Button4.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.msnfp_event.Button4.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/EventPackage.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.msnfp_event.Button6.Button.CustomAction" Location="Mscrm.HomepageGrid.msnfp_event.MainTab.Management.Controls._children" Sequence="28">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.msnfp_event.Button6.Button.Alt" Command="msnfp.msnfp_event.Command1.Command" Id="msnfp.msnfp_event.Button6.Button" Image16by16="$webresource:msnfp_/images/clone16.png" LabelText="$LocLabels:msnfp.msnfp_event.Button6.Button.LabelText" Sequence="28" TemplateAlias="o2" ToolTipTitle="$LocLabels:msnfp.msnfp_event.Button6.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.msnfp_event.Button6.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/images/clone.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+  </CustomActions>
+  <Templates>
+    <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+  </Templates>
+  <CommandDefinitions>
+    <CommandDefinition Id="msnfp.msnfp_event.AddToList.Command">
+      <EnableRules />
+      <DisplayRules>
+        <DisplayRule Id="msnfp.msnfp_event.ExistingRecord.DisplayRule" />
+      </DisplayRules>
+      <Actions>
+        <JavaScriptFunction FunctionName="AddToListEventPage" Library="$webresource:msnfp_/scripts/ribbonbutton.js">
+          <CrmParameter Value="PrimaryControl" />
+        </JavaScriptFunction>
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_event.Command0.Command">
+      <EnableRules />
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="CloneEventRecord" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_event.Command1.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_event.EnableRule2.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="CloneEventListRecords" Library="$webresource:msnfp_/scripts/ribbonbutton.js">
+          <CrmParameter Value="SelectedControlSelectedItemReferences" />
+        </JavaScriptFunction>
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_event.Command2.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_event.EnableRule1.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="openEventPackageFromEvent" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+  </CommandDefinitions>
+  <RuleDefinitions>
+    <TabDisplayRules />
+    <DisplayRules>
+      <DisplayRule Id="msnfp.msnfp_event.ExistingRecord.DisplayRule">
+        <FormStateRule State="Existing" Default="false" InvertResult="false" />
+      </DisplayRule>
+    </DisplayRules>
+    <EnableRules>
+      <EnableRule Id="msnfp.msnfp_event.EnableRule1.EnableRule">
+        <CustomRule FunctionName="HideNewEventPackageButtonOnEvent" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_event.EnableRule2.EnableRule">
+        <SelectionCountRule AppliesTo="SelectedEntity" Minimum="1" Maximum="250" Default="false" InvertResult="false" />
+      </EnableRule>
+    </EnableRules>
+  </RuleDefinitions>
+  <LocLabels>
+    <LocLabel Id="msnfp.msnfp_event.Button2.Button.Alt">
+      <Titles>
+        <Title description="Clone Record" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_event.Button2.Button.LabelText">
+      <Titles>
+        <Title description="Clone Record" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_event.Button2.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Clone the current Event" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_event.Button2.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Clone Record" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_event.Button4.Button.Alt">
+      <Titles>
+        <Title description="New Registration" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_event.Button4.Button.LabelText">
+      <Titles>
+        <Title description="New Registration" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_event.Button4.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Create a new event registration" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_event.Button4.Button.ToolTipTitle">
+      <Titles>
+        <Title description="New Registration" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_event.Button6.Button.Alt">
+      <Titles>
+        <Title description="Clone Record" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_event.Button6.Button.LabelText">
+      <Titles>
+        <Title description="Clone Record" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_event.Button6.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Clone Record" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_event.Button6.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Clone Record" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+  </LocLabels>
+</RibbonDiffXml>

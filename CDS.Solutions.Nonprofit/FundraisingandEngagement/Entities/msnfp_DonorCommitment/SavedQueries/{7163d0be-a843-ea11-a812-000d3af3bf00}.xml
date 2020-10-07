@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{7163d0be-a843-ea11-a812-000d3af3bf00}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="msnfp_name" select="1" preview="1" icon="1">
+        <row name="result" id="msnfp_donorcommitmentid">
+          <cell name="msnfp_bookdate" width="75" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="msnfp_customerid" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="msnfp_totalamount" width="100" />
+          <cell name="msnfp_totalamount_paid" width="100" />
+          <cell name="msnfp_totalamount_balance" width="100" />
+          <cell name="msnfp_expectedbydate" width="75" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+        <entity name="msnfp_donorcommitment">
+          <attribute name="msnfp_customerid" />
+          <attribute name="msnfp_bookdate" />
+          <order attribute="msnfp_bookdate" descending="true" />
+          <order attribute="msnfp_customerid" descending="false" />
+          <filter type="and">
+            <condition attribute="msnfp_bookdate" operator="last-x-months" value="12" />
+            <condition attribute="statuscode" operator="in">
+              <value>1</value>
+              <value>703650005</value>
+            </condition>
+          </filter>
+          <attribute name="msnfp_totalamount_paid" />
+          <attribute name="msnfp_totalamount_balance" />
+          <attribute name="msnfp_totalamount" />
+          <attribute name="msnfp_expectedbydate" />
+          <attribute name="msnfp_donorcommitmentid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>2.0.1.206</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Aging Pledges Last 12 Months" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

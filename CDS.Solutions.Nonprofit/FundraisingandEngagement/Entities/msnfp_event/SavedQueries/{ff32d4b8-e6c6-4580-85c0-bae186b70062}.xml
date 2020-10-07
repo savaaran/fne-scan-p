@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{ff32d4b8-e6c6-4580-85c0-bae186b70062}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="msnfp_identifier" select="1" icon="1" preview="1">
+        <row name="result" id="msnfp_eventid">
+          <cell name="msnfp_identifier" width="300" />
+          <cell name="msnfp_proposedstart" width="100" />
+          <cell name="createdon" width="125" />
+          <cell name="msnfp_campaignid" width="100" />
+          <cell name="msnfp_designationid" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="msnfp_event">
+          <attribute name="msnfp_identifier" />
+          <attribute name="createdon" />
+          <order attribute="msnfp_identifier" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+          <attribute name="msnfp_proposedstart" />
+          <attribute name="msnfp_designationid" />
+          <attribute name="msnfp_campaignid" />
+          <attribute name="msnfp_eventid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>2.0.1.100</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive Events" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
