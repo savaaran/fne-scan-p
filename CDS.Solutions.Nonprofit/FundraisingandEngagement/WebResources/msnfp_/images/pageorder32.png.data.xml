@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{c838c96f-83ce-e911-a812-000d3a0c8f2a}</WebResourceId>
+  <Name>msnfp_/images/pageorder32.png</Name>
+  <DisplayName>Page Order 32x32</DisplayName>
+  <LanguageCode>1033</LanguageCode>
+  <WebResourceType>5</WebResourceType>
+  <IntroducedVersion>2.0.1.100</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <DependencyXml>&lt;Dependencies&gt;&lt;Dependency componentType="WebResource"/&gt;&lt;/Dependencies&gt;</DependencyXml>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/msnfp_imagespageorder32pngC838C96F-83CE-E911-A812-000D3A0C8F2A</FileName>
+</WebResource>

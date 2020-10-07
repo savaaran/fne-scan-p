@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{8ed51245-3c91-e911-a97b-000d3aff2e2f}</WebResourceId>
+  <Name>msnfp_/images/receiptlog32.png</Name>
+  <DisplayName>Receipt Log 32px</DisplayName>
+  <Description>Receipt Log 32px image for navigation</Description>
+  <LanguageCode>1033</LanguageCode>
+  <WebResourceType>5</WebResourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <DependencyXml>&lt;Dependencies&gt;&lt;Dependency componentType="WebResource"/&gt;&lt;/Dependencies&gt;</DependencyXml>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/msnfp_imagesreceiptlog32png8ED51245-3C91-E911-A97B-000D3AFF2E2F</FileName>
+</WebResource>
