@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{03439321-b043-ea11-a812-000d3af3bf00}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="fullname" select="1" preview="1" icon="1">
+        <row name="result" id="contactid">
+          <cell name="fullname" width="150" />
+          <cell name="msnfp_constituentnumber" width="100" />
+          <cell name="msnfp_vip" width="100" />
+          <cell name="address1_line1" width="100" />
+          <cell name="address1_city" width="100" />
+          <cell name="address1_stateorprovince" width="100" />
+          <cell name="address1_telephone1" width="100" />
+          <cell name="emailaddress1" width="100" />
+          <cell name="msnfp_lasttransactiondate" width="100" />
+          <cell name="createdon" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+        <entity name="contact">
+          <attribute name="fullname" />
+          <attribute name="msnfp_vip" />
+          <attribute name="msnfp_constituentnumber" />
+          <attribute name="address1_line1" />
+          <attribute name="address1_stateorprovince" />
+          <attribute name="address1_city" />
+          <attribute name="emailaddress1" />
+          <attribute name="address1_telephone1" />
+          <attribute name="createdon" />
+          <attribute name="msnfp_lasttransactiondate" />
+          <order attribute="fullname" descending="false" />
+          <order attribute="createdon" descending="true" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="eq" value="1" />
+            <condition attribute="msnfp_lasttransactiondate" operator="this-year" />
+          </filter>
+          <attribute name="contactid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>2.0.1.206</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Donor Classification YTD" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

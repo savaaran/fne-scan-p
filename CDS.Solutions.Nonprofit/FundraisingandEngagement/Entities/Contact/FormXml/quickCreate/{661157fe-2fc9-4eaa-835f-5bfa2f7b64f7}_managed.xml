@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{661157fe-2fc9-4eaa-835f-5bfa2f7b64f7}</formid>
+    <IntroducedVersion>6.0.0.0</IntroducedVersion>
+    <FormPresentation>0</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form maxWidth="1920" solutionaction="Modified">
+      <tabs>
+        <tab id="{ee019344-2ac2-4ade-b2b8-630ff38801b1}" name="tab_1" showlabel="false" IsUserDefined="0" ordinalvalue="0">
+          <columns>
+            <column width="33%" id="0">
+              <sections>
+                <section id="{be7e5181-f67d-4fac-9420-ed9e2ac588fd}" name="tab_1_column_1_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" locklevel="0" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" ordinalvalue="0">
+                  <rows>
+                    <row>
+                      <cell id="{cc42934a-7770-eace-a535-ca3c4d3e4ca5}" showlabel="false" visible="false" locklevel="0" ordinalvalue="10000" solutionaction="Removed" />
+                    </row>
+                    <row>
+                      <cell id="{a2528d42-720c-9931-81ca-784c1881b8c2}" showlabel="true" locklevel="0" ordinalvalue="10000" solutionaction="Modified" />
+                    </row>
+                    <row>
+                      <cell id="{7a7e1043-ea62-1a5d-44c8-68757777c3d0}" showlabel="true" locklevel="0" ordinalvalue="10001" solutionaction="Modified" />
+                    </row>
+                    <row>
+                      <cell id="{c7039214-3590-a99c-cce7-e18a7895d74e}" showlabel="true" locklevel="0" ordinalvalue="10002" solutionaction="Modified" />
+                    </row>
+                    <row>
+                      <cell id="{64cb3028-1866-28da-8268-c5487ce86317}" showlabel="true" locklevel="0" ordinalvalue="10003" solutionaction="Modified">
+                        <labels>
+                          <label description="Company Name" languagecode="1033" solutionaction="Modified" />
+                        </labels>
+                        <control id="parentcustomerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="parentcustomerid" disabled="false" uniqueid="{85b02086-9d47-a766-1996-9d5950ee3670}" solutionaction="Modified">
+                          <parameters solutionaction="Added">
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>true</DisableMru>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{998a55eb-0b81-7c8c-c8e7-93474a497365}" showlabel="true" locklevel="0" ordinalvalue="10004" solutionaction="Added">
+                        <labels>
+                          <label description="Household" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_householdid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="msnfp_householdid" disabled="false" uniqueid="{3dd18e73-33ee-3599-e0e6-b31d904464a6}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>true</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>true</DisableViewPicker>
+                            <DefaultViewId>{399D82D4-4DD7-EA11-A813-000D3A0C94A6}</DefaultViewId>
+                            <AllowFilterOff>false</AllowFilterOff>
+                            <AvailableViewIds>{A9AF0AB8-861D-4CFA-92A5-C6281FED7FAB}</AvailableViewIds>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%" id="2">
+              <sections>
+                <section id="{4e35e9f6-ac81-44cf-b8d6-91149b679634}" name="tab_1_column_3_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" locklevel="0" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" ordinalvalue="0">
+                  <rows>
+                    <row>
+                      <cell id="{2AC67B8F-6335-4448-9E85-1601793BF072}" showlabel="true" locklevel="0" ordinalvalue="10004" solutionaction="Modified" />
+                    </row>
+                    <row>
+                      <cell id="{b0081d21-b779-7e73-cac0-66a028117e52}" showlabel="true" locklevel="0" ordinalvalue="10003" solutionaction="Added">
+                        <labels>
+                          <label description="Address 1: State/Province" languagecode="1033" />
+                        </labels>
+                        <control id="address1_stateorprovince" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_stateorprovince" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <events>
+        <event name="onload" application="true" active="true">
+          <Handlers solutionaction="Added">
+            <Handler functionName="onFormLoad" libraryName="msnfp_/scripts/contactquickcreateform.js" handlerUniqueId="{20968d11-bb92-319c-7be0-165996a6b650}" enabled="true" parameters="" passExecutionContext="true" ordinalvalue="0" />
+            <Handler functionName="setParentAccountByType" libraryName="msnfp_/scripts/contactform.js" handlerUniqueId="{a830cd56-de14-6aba-0a75-366046c684eb}" enabled="true" parameters="" passExecutionContext="true" ordinalvalue="1" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="true" active="true" attribute="businesscard" solutionaction="Removed" />
+        <event name="onchange" application="false" active="false" attribute="parentcustomerid" solutionaction="Added">
+          <Handlers>
+            <Handler functionName="onCompanyChange" libraryName="msnfp_/scripts/contactform.js" handlerUniqueId="{c0b16b62-9b7d-e70e-6c57-bca11e0a09a0}" enabled="true" parameters="" passExecutionContext="true" ordinalvalue="0" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="msnfp_householdid" solutionaction="Added">
+          <Handlers>
+            <Handler functionName="onHouserholdChange" libraryName="msnfp_/scripts/contactform.js" handlerUniqueId="{858cc2e6-4c47-e1c1-e116-2cc570e47157}" enabled="true" parameters="" passExecutionContext="true" ordinalvalue="0" />
+          </Handlers>
+        </event>
+        <event name="onsave" application="false" active="false" solutionaction="Added">
+          <Handlers>
+            <Handler functionName="onFormSave" libraryName="msnfp_/scripts/contactform.js" handlerUniqueId="{0b327b82-bb4a-96c5-1ee1-30b261c3ada8}" enabled="true" parameters="" passExecutionContext="true" ordinalvalue="0" />
+          </Handlers>
+        </event>
+      </events>
+      <controlDescriptions>
+        <controlDescription forControl="{0758709b-abec-8c87-786a-56116be5a5de}" solutionaction="Removed" />
+      </controlDescriptions>
+      <formLibraries solutionaction="Added">
+        <Library name="msnfp_/scripts/contactquickcreateform.js" libraryUniqueId="{d6eecba6-7374-40a4-da9b-de4a8e07634a}" />
+        <Library name="msnfp_/scripts/contactform.js" libraryUniqueId="{aa5e9094-6851-4028-1823-bd501ace64e5}" />
+      </formLibraries>
+    </form>
+    <LocalizedNames>
+      <LocalizedName description="Contact Quick Create" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Updated quick create form for Contact" languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

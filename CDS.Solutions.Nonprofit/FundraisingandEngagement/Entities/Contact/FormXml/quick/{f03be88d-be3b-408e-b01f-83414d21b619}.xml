@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{f03be88d-be3b-408e-b01f-83414d21b619}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form maxWidth="400">
+      <tabs>
+        <tab id="{2968aa61-fba7-4362-837e-69363d338ec7}" name="tab_1" showlabel="false">
+          <labels>
+            <label description="Tab" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section id="{223d6954-e298-4de7-bd83-1a96004fb161}" name="tab_1_column_1_section_1" columns="1" showlabel="false" showbar="false" IsUserDefined="0">
+                  <labels>
+                    <label description="section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{26b11341-2743-c14b-2062-583ee3eb5a78}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Email" languagecode="1033" />
+                        </labels>
+                        <control id="emailaddress1" classid="{ADA2203E-B4CD-49be-9DDF-234642B43B52}" datafieldname="emailaddress1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d6a4823c-31e0-799e-9b67-0eaa54397b37}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Home Phone" languagecode="1033" />
+                        </labels>
+                        <control id="telephone2" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="telephone2" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b814596c-dca7-422a-4a75-d2246924764e}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Last Transaction" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_lasttransactionid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="msnfp_lasttransactionid" disabled="true" uniqueid="{8778d24c-7358-12ee-9675-e2c33095a901}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>false</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{2385D69E-8BF4-4451-8235-5F7484886883}</DefaultViewId>
+                            <AllowFilterOff>false</AllowFilterOff>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{dee227dc-9c49-1de9-2ce6-a249ede1aa69}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Last Transaction Date" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_lasttransactiondate" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="msnfp_lasttransactiondate" disabled="true" uniqueid="{43276cd6-194b-a85c-d260-cde2903a62de}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <DisplayConditions Order="4">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Fundraising: Quick View" languagecode="1033" />
+    </LocalizedNames>
+  </systemform>
+</forms>

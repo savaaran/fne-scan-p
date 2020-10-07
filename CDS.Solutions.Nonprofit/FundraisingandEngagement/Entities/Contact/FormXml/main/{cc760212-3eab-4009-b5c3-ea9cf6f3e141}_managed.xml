@@ -1,0 +1,482 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{cc760212-3eab-4009-b5c3-ea9cf6f3e141}</formid>
+    <IntroducedVersion>8.0.0.0</IntroducedVersion>
+    <FormPresentation>2</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab name="SUMMARY_TAB" id="{13c118dd-d4ad-48ee-8087-d35f5b5f2490}" IsUserDefined="0" showlabel="false" expanded="true" locklevel="0" ordinalvalue="0" solutionaction="Modified">
+          <columns>
+            <column width="34%" id="0" solutionaction="Modified">
+              <sections>
+                <section name="CONTACT_INFORMATION" showlabel="true" showbar="false" id="{101071f5-50e1-4c8b-9a07-ba8e22941e7f}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelposition="Left" ordinalvalue="0">
+                  <rows>
+                    <row>
+                      <cell id="{80cd1184-6b57-447e-b4d0-8764cc69fd15}" colspan="1" showlabel="false" ordinalvalue="10000">
+                        <labels>
+                          <label description="Company Name" languagecode="1033" solutionaction="Added" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{513cdd75-ded3-4ec3-898c-11bf547bcd7c}" showlabel="true" locklevel="0" ordinalvalue="10001">
+                        <labels>
+                          <label description="First Name" languagecode="1033" solutionaction="Added" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{67339c7e-8111-4056-b58c-639a6c4d84f4}" showlabel="true" locklevel="0" ordinalvalue="10002">
+                        <labels>
+                          <label description="Last Name" languagecode="1033" solutionaction="Added" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{0fd67383-480d-4cd4-a4a5-1cbaf263ae85}" showlabel="true" ordinalvalue="10004">
+                        <labels>
+                          <label description="Mobile Phone" languagecode="1033" solutionaction="Added" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ef7da3b9-54b4-42f3-9df3-de1f86a930f3}" showlabel="true" ordinalvalue="10005" solutionaction="Removed" />
+                    </row>
+                    <row>
+                      <cell id="{546e368a-0ffc-4c1d-bff1-3b44703fc5be}" showlabel="true" ordinalvalue="10005" solutionaction="Modified" />
+                    </row>
+                    <row>
+                      <cell id="{7a7f9e6a-c480-4951-bc2a-237e081b4a5f}" showlabel="true" locklevel="0" ordinalvalue="10006" solutionaction="Modified" />
+                    </row>
+                    <row>
+                      <cell id="{d8ee4199-1994-9ca4-6094-46038c770351}" showlabel="true" locklevel="0" ordinalvalue="10008" solutionaction="Removed" />
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%" id="1" solutionaction="Modified" />
+            <column width="33%" id="2" solutionaction="Modified">
+              <sections>
+                <section name="ref_pan_CUSTOMER_DETAILS_TAB" showlabel="true" showbar="false" id="{62a14c24-6d88-42a6-be2b-5b8d59c29b6d}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelposition="Top" ordinalvalue="0" solutionaction="Removed" />
+                <section name="SUMMARY_TAB_accountinformation" showlabel="false" showbar="false" locklevel="0" id="{c96b8436-80d1-18c8-a531-b85193ce15d3}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" ordinalvalue="0" solutionaction="Added">
+                  <labels>
+                    <label description="ACCOUNT INFORMATION" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{40b852ec-3489-74c1-94c0-4127c9bc4c8d}" showlabel="false" colspan="1" auto="false" ordinalvalue="10000">
+                        <labels>
+                          <label description="Account Information" languagecode="1033" />
+                        </labels>
+                        <control id="quickview_accountinformation" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="parentcustomerid" disabled="false">
+                          <parameters>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="account"&gt;3ecba9af-afc4-4bdf-a951-8a771a9add4a&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                            <ControlMode>Edit</ControlMode>
+                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="DETAILS_TAB" id="{3f11f670-7ed1-4efa-b43b-9b2f07531d21}" IsUserDefined="0" expanded="true" showlabel="true" ordinalvalue="1">
+          <columns>
+            <column width="34%" id="0">
+              <sections>
+                <section name="PERSONAL INFORMATION" showlabel="true" showbar="false" id="{748b7f66-a65c-43ac-8eb5-3bde012488d2}" IsUserDefined="0" columns="1" labelwidth="115" celllabelposition="Left" ordinalvalue="0">
+                  <rows>
+                    <row>
+                      <cell id="{14c3cfa9-0d99-4abe-918f-0073dd6db8ff}" showlabel="true" ordinalvalue="10000">
+                        <labels>
+                          <label description="Gender" languagecode="1033" solutionaction="Added" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7f995b2b-e5b7-4fd6-9192-08e0f960a2ce}" showlabel="true" ordinalvalue="10001">
+                        <labels>
+                          <label description="Marital Status" languagecode="1033" solutionaction="Added" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e8f92320-38ba-413b-bb01-956ed0f72277}" showlabel="true" ordinalvalue="10002">
+                        <labels>
+                          <label description="Spouse/Partner Name" languagecode="1033" solutionaction="Added" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{59639742-1fc0-4392-946f-1555732c70ef}" showlabel="true" ordinalvalue="10003">
+                        <labels>
+                          <label description="Birthday" languagecode="1033" solutionaction="Added" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{14f90ddb-6d27-4edd-9285-44c86c80b7c8}" showlabel="true" ordinalvalue="10004">
+                        <labels>
+                          <label description="Anniversary" languagecode="1033" solutionaction="Added" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="PERSONAL_NOTES_SECTION" showlabel="true" showbar="false" locklevel="0" id="{d7f5280c-18ab-49d3-800f-282eaab40801}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Top" ordinalvalue="1">
+                  <rows>
+                    <row>
+                      <cell id="{ed2d473e-a5e4-4c08-bf37-d6fd27a1ce48}" showlabel="false" locklevel="0" rowspan="5" ordinalvalue="10000">
+                        <labels>
+                          <label description="Description" languagecode="1033" solutionaction="Added" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%" id="1">
+              <sections>
+                <section name="marketing information" showlabel="true" showbar="false" locklevel="0" id="{65631b32-444a-42b3-86f6-7d73c0d3a4c1}" IsUserDefined="0" layout="varheight" columns="1" labelwidth="115" celllabelposition="Left" ordinalvalue="0">
+                  <rows>
+                    <row>
+                      <cell id="{8c992f19-17f9-49d3-9536-128c30b29d79}" ordinalvalue="10000">
+                        <labels>
+                          <label description="Originating Lead" languagecode="1033" solutionaction="Added" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="CONTACT_PREFERENCES" showlabel="true" showbar="false" id="{9c17a290-ee6f-43d9-ab88-3b555178e01a}" IsUserDefined="0" columns="1" labelwidth="115" celllabelposition="Left" ordinalvalue="1">
+                  <rows>
+                    <row>
+                      <cell id="{e4e22136-a015-40ee-ac54-fcf2f210ca64}" ordinalvalue="10005" solutionaction="Removed" />
+                    </row>
+                    <row>
+                      <cell id="{f48849f5-3cd6-4e16-9bb3-922f2bf1a76f}" ordinalvalue="10005" solutionaction="Modified" />
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%" id="2">
+              <sections>
+                <section name="billing information" showlabel="true" showbar="false" id="{bafbf773-16e6-4c0a-90db-f07a8c0fa0be}" IsUserDefined="0" columns="1" labelwidth="115" celllabelposition="Left" ordinalvalue="0">
+                  <rows>
+                    <row>
+                      <cell id="{49b8171d-743e-4ce4-afdb-cd0528f9e078}" ordinalvalue="10000">
+                        <labels>
+                          <label description="Currency" languagecode="1033" solutionaction="Added" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{02aa413f-3b73-47bc-ae5b-cd3dfc3b04db}" ordinalvalue="10001">
+                        <labels>
+                          <label description="Credit Limit" languagecode="1033" solutionaction="Added" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7ebd0241-4733-4ccb-9d9b-eb7bd9804b37}" ordinalvalue="10002">
+                        <labels>
+                          <label description="Credit Hold" languagecode="1033" solutionaction="Added" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9d8e8eac-40e9-4fd3-894f-2fdf727a94ef}" ordinalvalue="10003">
+                        <labels>
+                          <label description="Payment Terms" languagecode="1033" solutionaction="Added" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab id="{da8e2e40-3ddb-4ea7-b537-09b5536929e2}" name="conflictstab" group="solutionconflictstab" ordinalvalue="2" solutionaction="Removed" />
+        <tab name="tab_administrative" id="{d2a30346-8d28-4134-1a84-7b37d0328ad3}" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true" ordinalvalue="2" solutionaction="Added">
+          <labels>
+            <label description="Administrative" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%" id="0">
+              <sections>
+                <section name="tab_4_section_1" showlabel="false" showbar="false" locklevel="0" id="{639d922b-db27-3192-3648-1a3698c71d66}" IsUserDefined="0" layout="varwidth" columns="1111" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" ordinalvalue="0">
+                  <labels>
+                    <label description="Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{753b1b2d-edec-a95b-4c19-e379cec1e045}" showlabel="true" locklevel="0" ordinalvalue="10000">
+                        <labels>
+                          <label description="Created By" languagecode="1033" />
+                        </labels>
+                        <control id="createdby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="createdby" disabled="false" />
+                      </cell>
+                      <cell id="{a9250054-ac4e-3680-aba6-527a9ae553c3}" showlabel="true" locklevel="0" ordinalvalue="20001">
+                        <labels>
+                          <label description="Created On" languagecode="1033" />
+                        </labels>
+                        <control id="createdon" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="createdon" disabled="false" />
+                      </cell>
+                      <cell id="{c4c8dd00-b31c-281d-113c-92b83e02718c}" showlabel="true" locklevel="0" ordinalvalue="30002">
+                        <labels>
+                          <label description="Modified By" languagecode="1033" />
+                        </labels>
+                        <control id="modifiedby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="modifiedby" disabled="false" />
+                      </cell>
+                      <cell id="{968a798b-9c7c-49b5-c840-606477284a8d}" showlabel="true" locklevel="0" ordinalvalue="40003">
+                        <labels>
+                          <label description="Modified On" languagecode="1033" />
+                        </labels>
+                        <control id="modifiedon" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="modifiedon" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5ab0e4a1-5545-2cce-688d-410a98da1487}" showlabel="true" locklevel="0" ordinalvalue="10004">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" />
+                      </cell>
+                      <cell id="{3786cccb-e0dd-9034-a0b5-54be99e0e8d2}" showlabel="false" ordinalvalue="20005">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{94b9cae3-77a6-d292-872e-3129ca10059c}" showlabel="false" ordinalvalue="30006">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{cd8d98bb-03b6-455c-4121-0c62772e9306}" showlabel="false" ordinalvalue="40007">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{2617b740-a221-4510-b5f9-92d8bee371fa}" celllabelposition="Top" columns="1111" labelwidth="115">
+        <rows>
+          <row>
+            <cell id="{7385d4f6-fa69-4d3e-b86c-604602334023}" showlabel="true" ordinalvalue="10000">
+              <labels>
+                <label description="Job Title" languagecode="1033" solutionaction="Added" />
+              </labels>
+            </cell>
+            <cell id="{3e3f3558-1d2a-40cf-9e66-744f93a851cd}" showlabel="true" ordinalvalue="20001">
+              <labels>
+                <label description="Business Phone" languagecode="1033" solutionaction="Added" />
+              </labels>
+            </cell>
+            <cell id="{cf440f34-7bd1-4937-b50a-4657cfdf1141}" showlabel="true" ordinalvalue="30002">
+              <labels>
+                <label description="Email" languagecode="1033" solutionaction="Added" />
+              </labels>
+            </cell>
+            <cell id="{feb62a46-38f3-41d0-b39c-28a7f4bd90c3}" showlabel="true" locklevel="1" ordinalvalue="40003" solutionaction="Removed" />
+          </row>
+          <row>
+            <cell id="{83328a96-74cc-5600-7ee6-b96c81008c51}" showlabel="false" ordinalvalue="40003" solutionaction="Added">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <events>
+        <event name="onload" application="true" active="true">
+          <InternalHandlers>
+            <Handler functionName="AppCommon.Contact.Instance.form_onload" libraryName="AppCommon/Contact/Contact_main_system_library.js" handlerUniqueId="4ea24ebd-795d-434e-af94-6812c3867b54" enabled="true" />
+          </InternalHandlers>
+        </event>
+      </events>
+      <Navigation>
+        <NavBar>
+          <NavBarByRelationshipItem RelationshipName="Contact_CustomerAddress" Id="navAddresses" Sequence="14" Area="Info" Show="false" solutionaction="Modified" />
+          <NavBarByRelationshipItem RelationshipName="contact_customer_contacts" Id="navSubConts" Sequence="15" Area="Info" Show="false" solutionaction="Modified" />
+          <NavBarByRelationshipItem RelationshipName="contact_customer_relationship_customer" Id="navRelationships" Sequence="16" Area="Info" Show="false" solutionaction="Modified" />
+          <NavBarByRelationshipItem RelationshipName="hardcoded_{B7196B13-6B9D-42CD-BD58-B19A3953126F}navCampaignsInSFA" Sequence="22" Area="Marketing" Id="navCampaignsInSFA" Show="false" solutionaction="Modified" />
+          <NavBarByRelationshipItem RelationshipName="quote_customer_contacts" Id="navQuotes" Sequence="13" Area="Info" Show="false" solutionaction="Modified" />
+          <NavBarByRelationshipItem RelationshipName="order_customer_contacts" Id="navOrders" Sequence="12" Area="Info" Show="false" solutionaction="Modified" />
+          <NavBarByRelationshipItem RelationshipName="invoice_customer_contacts" Id="navInvoices" Sequence="11" Area="Info" Show="false" solutionaction="Modified" />
+          <NavBarByRelationshipItem RelationshipName="listcontact_association" Id="navListsInSFA" Sequence="17" Area="Info" Show="false" solutionaction="Modified" />
+          <NavBarByRelationshipItem RelationshipName="Contact_ActivityPointers" Sequence="21" Area="Info" Id="navActivities" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Activities" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_contact_award_InternalContactId" Sequence="10001" Area="Info" Id="nav_msnfp_contact_award_InternalContactId" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Awards (Internal Contact)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_contact_award_Recipient" Sequence="10002" Area="Info" Id="nav_msnfp_contact_award_Recipient" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Awards (Recipient)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_contact_awardversion_PrimaryContactId" Sequence="10003" Area="Info" Id="nav_msnfp_contact_awardversion_PrimaryContactId" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Award Versions (Primary Contact)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_contact_awardversion_SubmittedById" Sequence="10004" Area="Info" Id="nav_msnfp_contact_awardversion_SubmittedById" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Award Versions (Submitted By)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_contact_msnfp_creditrecipient_Customer" Sequence="10006" Area="Info" Id="nav_msnfp_contact_msnfp_creditrecipient_Customer" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Credit Recipients" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_contact_assistants" Sequence="10007" Area="Marketing" Id="nav_msnfp_contact_assistants" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Assistants" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_contact_disbursement_RecipientContactId" Sequence="10007" Area="Info" Id="nav_msnfp_contact_disbursement_RecipientContactId" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Disbursements" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_docket_assignedTo" Sequence="10008" Area="Info" Id="nav_msnfp_docket_assignedTo" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Dockets (Assigned To)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_contact_docket_AwardRecipient" Sequence="10009" Area="Info" Id="nav_msnfp_contact_docket_AwardRecipient" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Dockets (Award Recipient)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_contact_msnfp_docket_docket_fiscalSponsor" Sequence="10010" Area="Info" Id="nav_msnfp_contact_msnfp_docket_docket_fiscalSponsor" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Dockets (Fiscal Sponsor)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_commitment_pledgedByContact" Sequence="10011" Area="Info" Id="nav_msnfp_commitment_pledgedByContact" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Donor Commitments" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_education_contact" Sequence="10012" Area="Info" Id="nav_msnfp_education_contact" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Education" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_contact_employmenthistory_ContactId" Sequence="10013" Area="Info" Id="nav_msnfp_contact_employmenthistory_ContactId" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Employment History" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_contact_msnfp_membership_Customer" Sequence="10014" Area="Info" Id="nav_msnfp_contact_msnfp_membership_Customer" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Memberships" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_contact_msnfp_ofacmatch_ofacMatch_customer" Sequence="10015" Area="Info" Id="nav_msnfp_contact_msnfp_ofacmatch_ofacMatch_customer" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="OFAC Matches" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_plannedGiving_contact" Sequence="10016" Area="Info" Id="nav_msnfp_plannedGiving_contact" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Planned Giving" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_contact_msnfp_paymentmethod" Sequence="10017" Area="Info" Id="nav_msnfp_contact_msnfp_paymentmethod" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Payment Methods" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_contact_msnfp_paymentschedule_DefaultHardCreditToCustomer" Sequence="10018" Area="Info" Id="nav_msnfp_contact_msnfp_paymentschedule_DefaultHardCreditToCustomer" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Payment Schedules" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_contact_msnfp_preference_preference_customer" Sequence="10019" Area="Info" Id="nav_msnfp_contact_msnfp_preference_preference_customer" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Preferences" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_contact_request_CustomerId" Sequence="10020" Area="Info" Id="nav_msnfp_contact_request_CustomerId" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Requests (Recipient)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_contact_request_SubmittedById" Sequence="10021" Area="Info" Id="nav_msnfp_contact_request_SubmittedById" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Requests (Submitted By)" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_contact_msnfp_salutation_salutation_customer" Sequence="10022" Area="Info" Id="nav_msnfp_contact_msnfp_salutation_salutation_customer" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Salutations" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_contact_reportsTo" Sequence="10023" Area="Marketing" Id="nav_msnfp_contact_reportsTo" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Direct Reports" />
+            </Titles>
+          </NavBarByRelationshipItem>
+        </NavBar>
+        <NavBarAreas solutionaction="Added">
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
+      <DisplayConditions FallbackForm="true" Order="3" solutionaction="Modified" />
+      <controlDescriptions solutionaction="Added" />
+    </form>
+    <LocalizedNames>
+      <LocalizedName description="Contact for Interactive experience" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Default Interactive experience Contact form." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

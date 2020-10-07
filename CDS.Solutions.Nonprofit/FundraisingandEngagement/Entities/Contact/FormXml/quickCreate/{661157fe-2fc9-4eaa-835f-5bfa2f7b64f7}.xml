@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{661157fe-2fc9-4eaa-835f-5bfa2f7b64f7}</formid>
+    <IntroducedVersion>6.0.0.0</IntroducedVersion>
+    <FormPresentation>0</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form maxWidth="1920">
+      <tabs>
+        <tab id="{ee019344-2ac2-4ade-b2b8-630ff38801b1}" name="tab_1" showlabel="false" IsUserDefined="0">
+          <labels>
+            <label description="Tab" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="33%">
+              <sections>
+                <section id="{be7e5181-f67d-4fac-9420-ed9e2ac588fd}" name="tab_1_column_1_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" locklevel="0" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{a2528d42-720c-9931-81ca-784c1881b8c2}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="First Name" languagecode="1033" />
+                        </labels>
+                        <control id="firstname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="firstname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{7a7e1043-ea62-1a5d-44c8-68757777c3d0}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Last Name" languagecode="1033" />
+                        </labels>
+                        <control id="lastname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="lastname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c7039214-3590-a99c-cce7-e18a7895d74e}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Job Title" languagecode="1033" />
+                        </labels>
+                        <control id="jobtitle" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="jobtitle" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{64cb3028-1866-28da-8268-c5487ce86317}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Company Name" languagecode="1033" />
+                        </labels>
+                        <control id="parentcustomerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="parentcustomerid" disabled="false" uniqueid="{85b02086-9d47-a766-1996-9d5950ee3670}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>true</DisableMru>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{998a55eb-0b81-7c8c-c8e7-93474a497365}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Household" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_householdid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="msnfp_householdid" disabled="false" uniqueid="{3dd18e73-33ee-3599-e0e6-b31d904464a6}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>true</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>true</DisableViewPicker>
+                            <DefaultViewId>{399D82D4-4DD7-EA11-A813-000D3A0C94A6}</DefaultViewId>
+                            <AllowFilterOff>false</AllowFilterOff>
+                            <AvailableViewIds>{A9AF0AB8-861D-4CFA-92A5-C6281FED7FAB}</AvailableViewIds>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="{b5f2a6a1-d1e1-439d-ab76-fbb48f1381d4}" name="tab_1_column_2_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" locklevel="0" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Contact Information" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{a6b833e8-225b-4986-c283-067453a7daa2}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Email" languagecode="1033" />
+                        </labels>
+                        <control id="emailaddress1" classid="{ADA2203E-B4CD-49be-9DDF-234642B43B52}" datafieldname="emailaddress1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{192e5ab2-2129-ee55-cd56-2846649cbe47}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Mobile Phone" languagecode="1033" />
+                        </labels>
+                        <control id="mobilephone" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="mobilephone" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d5a423e7-3536-2052-4e49-5d4b3ce1c0ae}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Business Phone" languagecode="1033" />
+                        </labels>
+                        <control id="telephone1" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="telephone1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{abb75da6-8727-e2a0-dccb-9ce591c107b7}" showlabel="true" locklevel="0" rowspan="1">
+                        <labels>
+                          <label description="Description" languagecode="1033" />
+                        </labels>
+                        <control id="description" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="description" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="{4e35e9f6-ac81-44cf-b8d6-91149b679634}" name="tab_1_column_3_section_1" columns="1" showlabel="true" showbar="false" IsUserDefined="0" locklevel="0" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Address" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{9E47DA5C-45B2-4D9B-8C83-2633E2FB68A5}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Street 1" languagecode="1033" />
+                        </labels>
+                        <control id="address1_line1" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_line1" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{67473FA2-07D2-485B-BC63-7B05D02D5230}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Street 2" languagecode="1033" />
+                        </labels>
+                        <control id="address1_line2" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_line2" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{F43497C8-73CC-4853-9736-964446900C81}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="City" languagecode="1033" />
+                        </labels>
+                        <control id="address1_city" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_city" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{b0081d21-b779-7e73-cac0-66a028117e52}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Address 1: State/Province" languagecode="1033" />
+                        </labels>
+                        <control id="address1_stateorprovince" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_stateorprovince" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2AC67B8F-6335-4448-9E85-1601793BF072}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="ZIP/Postal Code" languagecode="1033" />
+                        </labels>
+                        <control id="address1_postalcode" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="address1_postalcode" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <events>
+        <event name="onload" application="true" active="true">
+          <InternalHandlers>
+            <Handler functionName="Sales.Contact.Instance.Quick_Form_onload" libraryName="Sales/Contact/Contact_main_system_library.js" handlerUniqueId="ba2ec2ae-0dd2-48b1-a22a-3c639a02a3ae" enabled="true" passExecutionContext="true" />
+          </InternalHandlers>
+          <Handlers>
+            <Handler functionName="onFormLoad" libraryName="msnfp_/scripts/contactquickcreateform.js" handlerUniqueId="{20968d11-bb92-319c-7be0-165996a6b650}" enabled="true" parameters="" passExecutionContext="true" />
+            <Handler functionName="setParentAccountByType" libraryName="msnfp_/scripts/contactform.js" handlerUniqueId="{a830cd56-de14-6aba-0a75-366046c684eb}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="parentcustomerid">
+          <Handlers>
+            <Handler functionName="onCompanyChange" libraryName="msnfp_/scripts/contactform.js" handlerUniqueId="{c0b16b62-9b7d-e70e-6c57-bca11e0a09a0}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="msnfp_householdid">
+          <Handlers>
+            <Handler functionName="onHouserholdChange" libraryName="msnfp_/scripts/contactform.js" handlerUniqueId="{858cc2e6-4c47-e1c1-e116-2cc570e47157}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+        <event name="onsave" application="false" active="false">
+          <Handlers>
+            <Handler functionName="onFormSave" libraryName="msnfp_/scripts/contactform.js" handlerUniqueId="{0b327b82-bb4a-96c5-1ee1-30b261c3ada8}" enabled="true" parameters="" passExecutionContext="true" />
+          </Handlers>
+        </event>
+      </events>
+      <clientresources>
+        <internalresources>
+          <clientincludes>
+            <internaljscriptfile src="$webresource:Sales/Contact/Contact_main_system_library.js" />
+          </clientincludes>
+        </internalresources>
+      </clientresources>
+      <controlDescriptions />
+      <formLibraries>
+        <Library name="msnfp_/scripts/contactquickcreateform.js" libraryUniqueId="{d6eecba6-7374-40a4-da9b-de4a8e07634a}" />
+        <Library name="msnfp_/scripts/contactform.js" libraryUniqueId="{aa5e9094-6851-4028-1823-bd501ace64e5}" />
+      </formLibraries>
+      <DisplayConditions FallbackForm="true" Order="2">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <LocalizedNames>
+      <LocalizedName description="Contact Quick Create" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Updated quick create form for Contact" languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>
