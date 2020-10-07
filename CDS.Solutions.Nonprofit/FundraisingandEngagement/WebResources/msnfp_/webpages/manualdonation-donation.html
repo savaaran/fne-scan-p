@@ -1,0 +1,841 @@
+<html><!--/*************************************************************************
+* © Microsoft. All rights reserved.
+*/--><!-- msnfp_manualdonation-donation.html --><head>
+    <title></title>
+    <meta charset="utf-8">
+
+    <link href="../scripts/jquery_ui.css" rel="stylesheet">
+    <link href="../scripts/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="../scripts/bootstrap.min.css" rel="stylesheet">
+    <link href="../scripts/common.css" rel="stylesheet">
+    <link href="../scripts/manualdonation_transaction.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+    <script src="ClientGlobalContext.js.aspx" type="text/javascript"></script>
+    <script src="../scripts/jQuery.js" type="text/javascript"></script>
+    <script src="../scripts/jquery_ui.js" type="text/javascript"></script>
+    <script src="../scripts/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script src="../scripts/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="../scripts/dataTables.cellEdit.js" type="text/javascript"></script>
+    <script src="../scripts/jquery.autocomplete.js"></script>
+    <script src="../scripts/common.js" type="text/javascript"></script>
+    <script src="../scripts/manualdonation_transaction.js" type="text/javascript"></script>
+    <script src="../scripts/savepaymentvalues.js" type="text/javascript"></script>
+
+<meta><meta></head>
+<body style="word-wrap: break-word; margin: 1px;" onfocusout="parent.setEmailRange();">
+
+    <!-- The Modal -->
+    <div id="membershipModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Membership</h2>
+                <span class="closeBtn">×</span>
+            </div>
+
+            <div id="divSelectMembership" style="width: 100%; display: none;">
+                <table style="width: 100%; margin-top: 5px; float: right;" role="presentation">
+                    <tbody>
+                        <tr>
+                            <td style="padding-left: 0px;padding-right: 0px;">
+                                <div class="tabview">
+                                </div>
+                                <br>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <table style="width: 100%;" role="presentation">
+                    <tbody>
+                        <tr>
+                            <td style="width: 30%;">
+                                <label id="lblMembershipMsg"></label>
+                                <br>
+                            </td>
+                            <td style="width: 70%;">
+                                <div style="float:right;width:100%;text-align: right;">
+                                    <input type="button" id="btnAddToGift" class="main-button" value="Add to Gift" role="button">
+                                    <input type="button" id="btnMembershipCancel" class="main-button" value="Cancel" style="margin-left: 1%;" role="button">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="membershipGroup-clone">
+                    <table class="table stripe hover" style="display:none;font-family: 'Hind', sans-serif; font-weight: normal; font-size: 12px; width: 100%;" role="presentation">
+                        <thead>
+                            <tr>
+                                <th style="width: 15% !important;">Select</th>
+                                <th style="text-align: left; width: 55% !important; padding-left: 10px;">Membership</th>
+                                <th style="text-align: left; width: 30% !important; padding-left: 10px;">Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container manual-main">
+        <div class="form-row">
+            <div class="col-md-1 content-header">
+                <h2>GIFT DETAILS</h2>
+            </div>
+
+            <div class="content-details switch-field" style="display: inline-block;">
+                <input name="donationPledgeType" id="radioDonation" type="radio" checked="" value="844060000" aria-label="Donation">
+                <label for="radioDonation">Donation</label>
+                <input name="donationPledgeType" id="radioCredit" type="radio" value="844060001" aria-label="Soft Credit">
+                <label for="radioCredit">Soft Credit</label>
+            </div>
+
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-1 content-header">
+                <h2>PROCESS GIFTS</h2>
+            </div>
+            <div class="col content-details switch-field" style="padding-left:0px;">
+                <div id="divPaymentTypes">
+                    <input type="radio" id="radioCash" name="paymentType" value="844060000" checked="" aria-label="Cash">
+                    <label for="radioCash">Cash</label>
+                    <input type="radio" id="radioCheque" name="paymentType" value="844060001" aria-label="Check">
+                    <label for="radioCheque">Check</label>
+                    <input type="radio" id="radioCreditDebit" name="paymentType" value="844060002" aria-label="Credit / Debit">
+                    <label for="radioCreditDebit">Credit / Debit</label>
+                    <input type="radio" id="radioBankACH" name="paymentType" value="844060003" aria-label="Bank (ACH)">
+                    <label for="radioBankACH">Bank (ACH)</label>
+                    <input type="radio" id="radioInKind" name="paymentType" value="844060004" aria-label="In Kind">
+                    <label for="radioInKind">In Kind</label>
+                    <!--<input type="radio" id="radioGift" name="paymentType" value="844060005">
+                    <label for="radioGift">Gift</label>-->
+                    <input type="radio" id="radioStock" name="paymentType" value="844060006" aria-label="Stock">
+                    <label for="radioStock">Stock</label>
+                    <input type="radio" id="radioProperty" name="paymentType" value="844060007" aria-label="Property">
+                    <label for="radioProperty">Property</label>
+                    <input type="radio" id="radioOther" name="paymentType" value="844060008" aria-label="Other">
+                    <label for="radioOther">Other</label>
+                    <input type="radio" id="radioWireTransfer" name="paymentType" value="844060009" aria-label="Wire Transfer">
+                    <label for="radioWireTransfer">Wire Transfer</label>
+                    <!--<input type="radio" id="radioBACSDirectDebit" name="paymentType" value="844060010">
+                    <label for="radioBACSDirectDebit">BACS Direct Debit</label>-->
+                    <input type="radio" id="radioFundTransfer" name="paymentType" value="844060011" aria-label="Fund Transfer">
+                    <label for="radioFundTransfer">Fund Transfer</label>
+                    <input type="radio" id="radioExtCreditCard" name="paymentType" value="844060012" aria-label="Ext. Credit Card">
+                    <label for="radioExtCreditCard" style="margin-right:20px;">Ext. Credit Card</label>
+                </div>
+
+                <input name="anonymousDonation" id="radioVisibleDonation" type="radio" checked="" value="844060000" aria-label="Visible">
+                <label for="radioVisibleDonation">Visible</label>
+                <input name="anonymousDonation" id="radioAnonymous" type="radio" value="844060001" aria-label="Anonymous">
+                <label for="radioAnonymous" style="margin-right:20px;">Anonymous</label>
+
+                <input name="giftSource" id="radioPhone" type="radio" checked="" value="844060000" aria-label="Phone">
+                <label for="radioPhone">Phone</label>
+                <input name="giftSource" id="radioMail" type="radio" value="844060002" aria-label="Mail">
+                <label for="radioMail">Mail</label>
+                <input name="giftSource" id="radioInPerson" type="radio" value="844060001" aria-label="In Person">
+                <label for="radioInPerson">In Person</label>
+                <input name="giftSource" id="radioOnline" type="radio" value="844060003" aria-label="Online">
+                <label for="radioOnline">Online</label>
+                <input name="giftSource" id="radioSocial" type="radio" value="844060004" aria-label="Social">
+                <label style="margin-right:20px;" for="radioSocial">Social</label>
+
+                <input name="receiptPreference" id="radioDoNotReceipt" type="radio" value="844060000" aria-label="DO NOT RECEIPT">
+                <label for="radioDoNotReceipt">DO NOT RECEIPT</label>
+                <input name="receiptPreference" id="radioReceiptEmail" type="radio" value="844060001" aria-label="Email">
+                <label for="radioReceiptEmail">Email</label>
+                <input name="receiptPreference" id="radioReceiptPrint" type="radio" value="844060002" aria-label="Print">
+                <label for="radioReceiptPrint">Print</label>
+                <input name="receiptPreference" id="radioReceiptBoth" type="radio" value="844060003" aria-label="Both">
+                <label for="radioReceiptBoth">Both</label>
+
+            </div>
+        </div>
+
+        <div class="row form-container">
+            <div class="col-sm-3">
+                <div class="donationFields">
+                    <div class="hide form-group">
+                        <label for="txtDisableTotal">Total</label>
+                        <input type="text" class="form-control" id="txtDisableTotal">
+                    </div>
+                    <div class="hide form-group">
+                        <label for="txtDisableAmountNonreceiptable">Advantage</label>
+                        <input type="text" class="form-control" id="txtDisableAmountNonreceiptable">
+                    </div>
+                    <div class="hide form-group">
+                        <label for="txtDisableAmountMembership">Amount (Member)</label>
+                        <input type="text" class="form-control" id="txtDisableAmountMembership">
+                    </div>
+                    <div class="hide form-group">
+                        <label for="txtDisableAmount">Amount (Gift)</label>
+                        <input type="text" class="form-control" id="txtDisableAmount">
+                    </div>
+                    <div class="hide form-group">
+                        <label for="txtDisableDescription">Description</label>
+                        <input type="text" class="form-control" id="txtDisableDescription">
+                    </div>
+                    <div class="hide form-group" style="display:none !important;">
+                        <label for="txtDisableDonorName">Receiptable Name</label>
+                        <input type="text" class="form-control" id="txtDisableDonorName">
+                    </div>
+                    <div class="mandatory form-group" style="display: flex;">
+                        <label for="txtFirstName">First Name</label>
+                        <input type="text" class="form-control" id="txtFirstName" aria-label="First Name" aria-required="true">
+                    </div>
+                    <div class="mandatory form-group" style="display: flex;">
+                        <label for="txtLastName">Last Name</label>
+                        <input type="text" class="form-control" id="txtLastName" aria-label="Last Name" aria-required="true">
+                    </div>
+                    <div class="divEmail form-group">
+                        <label for="txtEmail">Email</label>
+                        <input type="text" class="form-control" id="txtEmail" aria-label="Email">
+                    </div>
+                    <div class="divPhone form-group">
+                        <label for="txtPhone">Phone</label>
+                        <input type="text" class="form-control" id="txtPhone" aria-label="Phone">
+                    </div>
+                    <div class="divAltPhone form-group">
+                        <label for="txtAltPhone">Alt. Phone</label>
+                        <input type="text" class="form-control" id="txtAltPhone" aria-label="Alt. Phone">
+                    </div>
+                    <div class="divMobilePhone form-group">
+                        <label for="txtMobilePhone">Mobile</label>
+                        <input type="text" class="form-control" id="txtMobilePhone" aria-label="Mobile">
+                    </div>
+                    <div class="divInHonour form-group">
+                        <label for="txtInHonorMemoryOf">In Honor/Memory of</label>
+                        <input type="text" class="form-control" id="txtInHonorMemoryOf" aria-label="In Honor/Memory of">
+                    </div>
+                    <div class="divTributeCode form-group" style="display:flex;">
+                        <label for="ddlTributeCode">Tribute Type</label>
+                        <select class="form-control" id="ddlTributeCode" role="listbox" aria-label="Tribute Type">
+                            <option value=""></option>
+                            <option value="844060000">Tribute</option>
+                            <option value="844060001">Honor or Memory</option>
+                        </select>
+                    </div>
+                    <div id="divTransactionIdentifier" hidden="">
+                        <label for="txtTransactionIdentifier">Gateway ID</label>
+                        <input type="tel" id="txtTransactionIdentifier">
+                    </div>
+                    <div id="divSourceIdentifier" hidden="">
+                        <label for="txtSourceIdentifier">Source Identifier</label>
+                        <input type="text" id="txtSourceIdentifier">
+                    </div>
+                    <div id="divCreditCard" hidden="">
+                        <label for="txtCreditCard">Credit<span style="font-size:1px;"> </span>/<span style="font-size:1px;"> </span>Debit Card</label>
+                        <input type="text" id="txtCreditCard" aria-label="Credit/Debit Card">
+                    </div>
+                    <div id="divBankAccount" hidden="">
+                        <label for="txtBankAccount">Bank Account</label>
+                        <input type="tel" id="txtBankAccount" aria-label="Bank Account">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="donationFields">
+                    <div class="form-group" style="display: flex;">
+                        <label for="txtOrganization">Organization</label>
+                        <input type="text" class="form-control" id="txtOrganization" aria-label="Organization">
+                    </div>
+                    <div class="divAddressFields form-group">
+                        <label for="txtAddressLine1">Street 1</label>
+                        <input type="text" class="form-control" id="txtAddressLine1" aria-label="Street 1">
+                    </div>
+                    <div class="divAddressFields form-group">
+                        <label for="txtAddressLine2">Street 2</label>
+                        <input type="text" class="form-control" id="txtAddressLine2" aria-label="Street 2">
+                    </div>
+                    <div class="divAddressFields form-group">
+                        <label for="txtAddressLine3">Street 3</label>
+                        <input type="text" class="form-control" id="txtAddressLine3" aria-label="Street 3">
+                    </div>
+                    <div class="divAddressFields form-group">
+                        <label for="txtAddressCity">City</label>
+                        <input type="text" class="form-control" id="txtAddressCity" aria-label="City">
+                    </div>
+                    <div class="divAddressFields form-group">
+                        <label for="txtAddressProvince">State</label>
+                        <input type="text" class="form-control" id="txtAddressProvince" aria-label="State">
+                    </div>
+                    <div class="divAddressFields form-group">
+                        <label for="txtAddressPostalCode">Zip Code</label>
+                        <input type="text" class="form-control" id="txtAddressPostalCode" aria-label="Zip Code">
+                    </div>
+                    <div class="divAddressFields form-group">
+                        <label for="txtAddressCountry">Country</label>
+                        <input type="text" class="form-control" id="txtAddressCountry" aria-label="Country">
+                    </div>
+                    <div class="content">
+                        <div class="fieldWrap">
+                            <div class="error" id="errorMessage"></div>
+                        </div>
+                        <div class="fieldWrap">
+                            <div id="result"></div>
+                        </div>
+                        <div class="seperator" id="seperator"></div>
+                        <div class="fieldWrap">
+                            <div class="outputArea" id="output"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-row">
+                    <div id="donationInfo">
+                        <div class="form-group" style="display:none !important;">
+                            <label for="txtDonorName">Receiptable Name</label>
+                            <input type="text" class="form-control" id="txtDonorName" aria-label="Receiptable Name">
+                        </div>
+                        <div class="donationCheque hide">
+                            <div class="form-group" style="display:flex;">
+                                <label for="txtChequeDate" class="spnChequeDate field-label hide">Check Date</label>
+                                <label for="txtChequeDate" class="spnWireDate field-label hide">Wire Date</label>
+                                <input type="text" class="form-control" id="txtChequeDate" aria-label="Check/Wire Date" aria-required="true">
+                            </div>
+                            <div class="form-group" style="display:flex;">
+                                <label class="spnChequeNumber field-label hide">Check Number</label>
+                                <label class="spnWireNumber field-label hide">Wire Number</label>
+                                <input class="form-control" type="text" id="txtChequeNumber" onkeypress="return checkIt(event);" aria-label="Check/Wire Number" aria-required="true">
+                            </div>
+                        </div>
+                        <div class="form-group description hide">
+                            <div class="form-group" style="display:flex;">
+                                <label for="txtDescription">Description</label>
+                                <input class="form-control" type="text" id="txtDescription" aria-label="Description">
+                            </div>
+                        </div>
+                        <div class="form-group divAppraiserInfo hide">
+                            <div class="divAppraiserFirst">
+                                <div class="form-group" style="display:flex;">
+                                    <label for="ddlAppraiser">Appraiser Lookup</label>
+                                    <select id="ddlAppraiser" class="form-control" style="width:170px;" aria-label="Appraiser" role="listbox">
+                                        <option value="0">-- Select --</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" style="display:flex;">
+                                    <label for="txtAppraiserName">Appr. Name</label>
+                                    <input type="text" class="form-control" id="txtAppraiserName" aria-label="Appraiser Name">
+                                </div>
+                                <div class="form-group" style="display:flex;">
+                                    <label for="txtAppraiserStreet1">Appr. Street 1</label>
+                                    <input type="text" class="form-control" id="txtAppraiserStreet1" aria-label="Appraiser Street 1">
+                                </div>
+                                <div class="form-group" style="display:flex;">
+                                    <label for="txtAppraiserStreet2">Appr. Street 2</label>
+                                    <input type="text" class="form-control" id="txtAppraiserStreet2" aria-label="Appraiser Street 2">
+                                </div>
+                                <div class="form-group" style="display:flex;">
+                                    <label for="txtAppraiserStreet3">Appr. Street 3</label>
+                                    <input type="text" class="form-control" id="txtAppraiserStreet3" aria-label="Appraiser Street 3">
+                                </div>
+                                <div class="form-group" style="display:flex;">
+                                    <label for="txtAppraiserCity">Appr. City</label>
+                                    <input type="text" class="form-control" id="txtAppraiserCity" aria-label="Appraiser City">
+                                </div>
+                                <div class="form-group" style="display:flex;">
+                                    <label for="txtAppraiserState">Appr. State / Province</label>
+                                    <input type="text" class="form-control" id="txtAppraiserState" aria-label="Appraiser State/Province">
+                                </div>
+                                <div class="form-group" style="display:flex;">
+                                    <label for="txtAppraiserCountry">Appr. Country</label>
+                                    <input type="text" class="form-control" id="txtAppraiserCountry" aria-label="Appraiser Country">
+                                </div>
+                            </div>
+                            <div class="divAppraiserSecond hide">
+                                <div class="mandatory form-group" style="display: flex;">
+                                    <label for="txtAppraiserDescription">Description</label>
+                                    <textarea class="textarea form-control" type="text" id="txtAppraiserDescription" maxlength="500" style="height: 75px; width: 166px; margin-left: 24px;" aria-label="Description"></textarea>
+                                </div>
+                                <div class="form-group" style="display: flex;">
+                                    <label for="txtAdvDescription">Advantage Description</label>
+                                    <textarea class="textarea form-control" type="text" id="txtAdvDescription" maxlength="500" style="height: 75px; width: 166px; margin-left: 24px;" aria-label="Advantage Description" aria-required="true"></textarea>
+                                </div>
+                                <div class="form-group mandatory" style="display:flex;">
+                                    <label for="txtAppraiserAmount">Amount of Gift</label>
+                                    <input type="text" class="form-control" id="txtAppraiserAmount" onkeypress="return validateFloatKeyPress(this, event)" style="margin-left: 20px;" aria-label="Amount of Gift" aria-required="true">
+                                </div>
+                                <!--<div class="form-group" class="mandatory" style="display:flex;">
+                                    <label for="txtEligibleAmount">Eligible Amount of Gift</label>
+                                    <input type="text" class="form-control" id="txtEligibleAmount" onkeypress="return validateFloatKeyPress(this, event)" style="margin-left: 20px;" />
+                                </div>-->
+                                <div class="form-group mandatory" style="display:flex;">
+                                    <label for="txtAppraiserNonReceiptable">Advantage</label>
+                                    <input type="text" class="form-control" id="txtAppraiserNonReceiptable" onkeypress="return validateFloatKeyPress(this, event)" style="margin-left: 20px;" aria-label="Advantage" aria-required="true">
+                                </div>
+                            </div>
+                            <div class="divAppraiserButtons clearfix form-group" style="width: 47%; display:flex;">
+                                <input class="float-right main-button" id="btnAppraiserNext" type="button" value="Next" role="button" style="width: 80px;" disabled="">
+                                <input class="float-right main-button hide" id="btnAppraiserProcess" type="button" value="Process" role="button" style="margin-right: -10px !important; width: 80px;">
+                            </div>
+                            <label id="lblAppraiserError" class="errorMsg" role="alert"></label><br>
+                            <label id="lblAppraiserAmountError" class="errorMsg" role="alert"></label>
+                        </div>
+
+                        <div class="form-group divStockInfo hide" style="width: 100%;">
+                            <div class="form-group " style="display: flex;">
+                                <label for="aaa">Securities Description</label>
+                                <textarea type="text" id="txtStockDescription" class="form-control" maxlength="500" style="height: 75px; width: 167px;" aria-label="Securities Description" aria-required="true"></textarea>
+                            </div>
+                            <div class="form-group " style="display: flex;">
+                                <label for="txtStockSymbol">Stock Symbol</label>
+                                <input type="text" id="txtStockSymbol" class="form-control upperCase" maxlength="50" aria-label="Stock Symbol" aria-required="true">
+                            </div>
+                            <div class="form-group " style="display: flex;">
+                                <label for="txtDateofSale">Date of Sale</label>
+                                <input type="text" class="form-control" id="txtDateofSale" aria-label="Date of Sale" aria-required="true">
+                            </div>
+                            <div class="form-group " style="display: flex;">
+                                <label for="txtCostPerStock">Cost per Stock</label>
+                                <input type="text" class="form-control" id="txtCostPerStock" onkeypress="return validateFloatKeyPress(this, event)" aria-label="Cost per Stock" aria-required="true">
+                            </div>
+                            <div class="form-group " style="display: flex;">
+                                <label for="txtNoOfShares"># of Shares</label>
+                                <input type="text" class="form-control" id="txtNoOfShares" onkeypress="return checkIt(event);" aria-label="# of Shares" aria-required="true">
+                            </div>
+                            <div class="form-group" style="display: flex;">
+                                <label for="txtGainLossAmount">Gain / Loss Amount</label>
+                                <input type="text" class="form-control" id="txtGainLossAmount" onkeypress="return validateFloatKeyPressWithNegative(this, event)" aria-label="Gain / Loss Amount">
+                            </div>
+                            <div class="form-group" style="display: flex;">
+                                <label for="txtAmountPriorSale">Amount of Stock Prior to Sale</label>
+                                <input type="text" class="form-control" id="txtAmountPriorSale" onkeypress="return validateFloatKeyPress(this, event)" aria-label="Amount of Stock Prior to Sale">
+                            </div>
+                            <div class="form-group " style="display: flex;">
+                                <label for="txtStockAmount">Amount of Gift</label>
+                                <input type="text" class="form-control" id="txtStockAmount" onkeypress="return validateFloatKeyPress(this, event)" aria-label="Amount of Gift" aria-required="true">
+                            </div>
+                            <!--<div class="form-group " style="display: flex;">
+                                <label for="txtStockEligibleAmount">Eligible Amount of Gift</label>
+                                <input type="text" class="form-control" id="txtStockEligibleAmount" maxlength="500" onkeypress="return validateFloatKeyPress(this, event)" />
+                            </div>-->
+                            <div class="form-group " style="display: flex;">
+                                <label for="txtStockAdvantageAmount">Advantage</label>
+                                <input type="text" class="form-control" id="txtStockAdvantageAmount" maxlength="500" onkeypress="return validateFloatKeyPress(this, event)" aria-label="Advantage" aria-required="true">
+                            </div>
+                            <div class="divStockButtons clearfix form-group" style="width: 47%; display: flex;">
+                                <input class="float-right main-button" id="btnStockProcess" type="button" value="Process" role="button" style="margin-right: -10px !important; width: 80px;">
+                            </div>
+                            <label id="lblStockError" class="errorMsg" role="alert"></label>
+                        </div>
+                        <div class="form-group donationCreditCard hide">
+                            <div class="form-group notExists">
+                                <label for="ddlExistingCard">Existing Card</label>
+                                <select class="form-control" id="ddlExistingCard" role="listbox" aria-label="Existing Card" aria-required="true">
+                                    <option value="">--Select--</option>
+                                </select>
+                            </div>
+                            <div class="exists">
+                                <div class="form-group" style="display:flex;">
+                                    <label for="txtCardName">Name on the Card</label>
+                                    <input class="form-control" type="text" id="txtCardName" aria-label="Name on the Card" aria-required="true">
+                                </div>
+                                <div class="form-group" style="display:flex;">
+                                    <label for="txtCardNumber">Card Number</label>
+                                    <input class="form-control" type="text" id="txtCardNumber" onkeypress="return checkIt(event);" aria-label="Card Number" aria-required="true">
+                                </div>
+                                <div class="form-group" style="display:flex;">
+                                    <label for="ddlCardType">Credit Card Type</label>
+                                    <select class="form-control" id="ddlCardType" aria-label="Credit Card Type" role="listbox" aria-required="true">
+                                        <option value="0"></option>
+                                        <option value="844060000">Visa</option>
+                                        <option value="844060001">Master Card</option>
+                                        <option value="844060002">Visa Debit</option>
+                                        <option value="844060003">Master Card Debit</option>
+                                        <option value="844060004">American Express</option>
+                                        <option value="844060005">Diners Club</option>
+                                        <option value="844060006">JCB</option>
+                                        <option value="844060007">Interact</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" style="display:flex;">
+                                    <label for="txtExpiry">Expiry</label>
+                                    <input class="form-control" type="text" id="txtExpiry" placeholder="mmyy" maxlength="4" aria-label="Expiry" aria-required="true">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="donationBankAccount" style="display:none;">
+                            <div class="form-group notExists">
+                                <label for="ddlExistingBank">Existing Bank</label>
+                                <select class="form-control" id="ddlExistingBank" aria-label="Existing Bank" role="listbox" aria-required="true">
+                                    <option value="">--Select--</option>
+                                </select>
+                            </div>
+                            <div class="exists">
+                                <div class="form-group" style="display:flex;">
+                                    <label for="txtBankName">Bank Name</label>
+                                    <input class="form-control" type="text" id="txtBankName" aria-label="Bank Name" aria-required="true">
+                                </div>
+                                <div class="form-group" style="display:flex;">
+                                    <label for="txtAccountNumber">Account Number</label>
+                                    <input class="form-control" type="text" id="txtAccountNumber" onkeypress="return checkIt(event);" aria-label="Account Number" aria-required="true">
+                                </div>
+                                <div class="form-group" style="display:flex;">
+                                    <label for="txtRoutingNumber">Routing Number</label>
+                                    <input class="form-control" type="text" id="txtRoutingNumber" onkeypress="return checkIt(event);" aria-label="Routing Number" aria-required="true">
+                                </div>
+                                <div class="form-group" style="display:flex;">
+                                    <label for="txtBankUserName">Name</label>
+                                    <input class="form-control" type="text" id="txtBankUserName" aria-label="Bank User Name" aria-required="true">
+                                </div>
+                                <div class="form-group" style="display:flex;">
+                                    <label for="ddlAccountType">Account Type</label>
+                                    <select class="form-control" id="ddlAccountType" role="listbox" aria-label="Account Type" aria-required="true">
+                                        <option value="0">--Select--</option>
+                                        <option value="844060000">CHECKING</option>
+                                        <option value="844060001">SAVING</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="donatoinRecurring hide">
+                            <div class="form-group">
+                                <label for="txtRecurringStartDate">Start Date</label>
+                                <input class="form-control" type="text" id="txtRecurringStartDate" aria-label="Start Date">
+                                <div class="inputError" style="color: red;"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtRecurringEndDate">End Date</label>
+                                <input class="form-control" type="text" id="txtRecurringEndDate" aria-label="End Date">
+                                <div class="inputError" style="color: red;"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtRecurringInstance">Every</label>
+                                <input class="form-control" type="text" id="txtRecurringInstance" onkeypress="return isNumber(event)">
+                                <select class="form-control" id="ddlRecurringEveryDayType" role="listbox" aria-label="Select - Recurring Every Type">
+                                    <option value="">--Select--</option>
+                                    <option value="844060000">Days</option>
+                                    <option value="844060001">Weeks</option>
+                                    <option value="844060002">Months</option>
+                                    <option value="844060003">Years</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ddlRecurrenceStart">Recurrence Start</label>
+                                <select class="form-control" id="ddlRecurrenceStart" role="listbox" aria-label="Recurrence Start" disabled="">
+                                    <option value="">--Select--</option>
+                                    <option value="844060000">Start Day</option>
+                                    <option value="844060002">1st of the Month</option>
+                                    <option value="844060001">15th of the Month</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group divDepositDate">
+                            <label for="txtDepositDate">Deposit Date</label>
+                            <input class="form-control" type="text" id="txtDepositDate" aria-label="Deposit Date">
+                        </div>
+                        <div class="form-group divTotalAmount clearfix">
+                            <div class="mandatory" style="display:flex;">
+                                <label for="txtTotalAmount">Total Amount</label>
+                                <input class="form-control" type="text" id="txtTotalAmount" onkeypress="return validateFloatKeyPress(this, event)" aria-label="Total Amount" aria-required="true">
+                            </div>
+                        </div>
+                        <div class="form-group divAmountNonReceiptable clearfix" style="display: none;">
+                            <label for="txtAmountNonReceiptable">Advantage</label><!--Fair Market Value-->
+                            <input class="form-control" type="text" id="txtAmountNonReceiptable" onkeypress="return validateFloatKeyPress(this, event)" aria-label="Advantage">
+                        </div>
+                        <div class="form-group divMembershipFields">
+                            <div class="form-group divMembershipAmount">
+                                <label for="txtMembershipAmount"><span id="spanAddMembershipButton" class="badge badge-success">Add +</span> Membership Amount</label>
+                                <input class="form-control" type="text" id="txtMembershipAmount" aria-label="Membership Amount" disabled="">
+                            </div>
+                            <div class="form-group divMembershipCommittedAmount" hidden="">
+                                <label for="txtMembershipAmountCommitted">Membership Amount</label>
+                                <input class="form-control" type="text" id="txtMembershipAmountCommitted" aria-label="Membership Amount Committed" disabled="">
+                            </div>
+                            <input class="form-control" type="text" id="txtMembershipAmountPaid" hidden="">
+                            <input class="form-control" type="text" id="txtMembershipAmountOwing" hidden="">
+                            <input class="form-control" type="text" id="txtMembershipAmountBalance" hidden="">
+                            <input class="form-control" type="hidden" id="hdnMembershipAmount">
+                            <input class="form-control" type="hidden" id="hdnMembershipAmountTax">
+
+                            <div class="form-group divAmountTax" style="display: none;">
+                                <label for="txtAmountTax">Amount (Tax)</label>
+                                <input class="form-control" type="text" id="txtAmountTax" aria-label="Amount (Tax)" onkeypress="return validateFloatKeyPress(this, event)" disabled="">
+                            </div>
+                            <div class="form-group divAmount">
+                                <label for="txtAmount">Gift Amount</label>
+                                <input class="form-control" type="text" id="txtAmount" aria-label="Gift Amount" disabled="">
+                            </div>
+                        </div>
+                        <div class="form-group divProcess clearfix" style="display: flex;flex-flow: column wrap;align-items: center;">
+                            <input class="form-control float-left main-button" id="btnProcess" type="button" role="button" value="Process >">
+                        </div>
+                        <div class="form-group divProcessNextEnterCreditBank clearfix" style="display: none;flex-flow: column wrap;align-items: center;">
+                            <input class="form-control float-left main-button" id="btnNextEnterCreditBank" type="button" role="button" value="Next >">
+                        </div>
+                        <div class="form-group divRecurringNext hide">
+                            <input class="form-control float-left main-button hide" type="button" value="Exclude" id="btnExclude" role="button">
+                            <input class="form-control float-left main-button hide" type="button" value="Include" id="btnInclude" role="button">
+                            <input class="form-control main-button" id="btnRecurringNext" type="button" value="Next >" role="button">
+                        </div>
+                    </div>
+
+                    <div class="form-group subsequent-main hide" style="width: 100%;">
+                        <div class="form-group cancelDonation-success hide">
+                            <label role="alert" style="color: red;"><b>This donation has been cancelled or archived.</b></label>
+                            <br>
+                            <b><label id="lblCancelDonationReason" role="alert" style="color: red;"></label></b>
+                            <div id="form-group divUpdateCancelReason" hidden="">
+                                <select id="ddlUpdateCancelDonationReason" role="listbox" aria-label="Select Cancellation Reason">
+                                    <option value="0"></option>
+                                </select>
+                                <textarea type="text" id="txtUpdateCancelReason" aria-label="Enter Cancel Reason"></textarea>
+                                <input type="button" id="btnUpdateCancelReason" class="form-control main-button" value="Update" role="button">
+                                <br><br><br>
+                                <label class="lblUpdateCancelReason" style="color: red; font-weight: bold;" role="alert"></label>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="default-subsequent" style="width: 100%;">
+                            <div class="form-group subsequent-buttons divUpdateDepositDateMain">
+                                <div>
+                                    <b>
+                                        Deposit Date : <input type="button" id="btnDepositDateAll" class="main-button" value="" role="button">
+                                    </b>
+                                </div>
+                                <div id="divUpdateDepositDateAll" class="form-group" style="display:none;">
+                                    <input class="form-control" type="text" id="txtNewDepositDateAll" readonly="" style="background: white;display:inline;width:45%;" aria-label="New Deposit Date">
+                                    <input class="main-button" type="button" id="btnUpdateDepositDateAll" value="Update" role="button"><br>
+                                    <label id="lblDepositDateAllError" style="display:none;color:red" role="alert">Please select the Date</label>
+                                </div>
+                            </div>
+                            <div class="form-group subsequent-buttons divUpdateChequeDepositDate">
+                                <div class="row" style="width:100%;">
+                                    <div class="col-md-4" style="display:flex;">
+                                        <label>Check Date</label><input class="form-control main-button" style="margin-top:0.5em; width: 250px;" type="button" id="btnChequeDate" role="button" value="">
+                                    </div>
+                                    <div class="col-md-4" style="display:flex;">
+                                        <label>Deposit Date</label><input class="form-control main-button" style="margin-top:0.5em; width: 250px;" type="button" role="button" id="btnDepositDate" value="">
+                                    </div>
+                                    <div class="col-md-4" style="display:flex;">
+                                        <label>Check Number</label><input class="form-control main-button" style="margin-top:0.5em; width: 250px;" type="button" role="button" id="btnChequeNumber" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group subsequent-buttons mb20">
+                                <div id="divUpdateChequeDate" class="form-group" style="display: none;width:440px;">
+                                    <input class="form-control" type="text" id="txtNewChequeDate" placeholder="Select a Check Date" readonly="" style="background: white;margin-right: 10px;" aria-label="Check Date">
+                                    <input class="form-control main-button" type="button" id="btnUpdateChequeDate" value="Update" role="button"> 
+                                </div>
+                                <div id="divUpdateDepositDate" class="form-group" style="display: none;width:440px;">
+                                    <input class="form-control" type="text" id="txtNewDepositDate" placeholder="Select a Deposit Date" readonly="" style="background: white;margin-right: 10px;" aria-label="Deposit Date">
+                                    <input class="form-control main-button" type="button" id="btnUpdateDepositDate" value="Update" role="button">
+                                </div>
+                                <div id="divUpdateChequeNumber" class="form-group" style="display: none;width:440px;">
+                                    <input class="form-control" type="text" id="txtNewChequeNumber" placeholder="Enter a Check Number" style="margin-left: 0px;margin-right: 10px;" onkeypress="return checkIt(event);" aria-label="Check Number">
+                                    <input class="form-control main-button" type="button" id="btnUpdateChequeNumber" value="Update" role="button">
+                                </div>
+                            </div>
+                            <div class="form-group subsequent-buttons divUpdateWireDepositDate mb20">
+                                <div class="form-group">
+                                    <b>
+                                        Wire Date : <input class="form-control main-button" type="button" id="btnWireDate" role="button" value="">
+                                        Deposit Date : <input class="form-control main-button" type="button" id="btnWireDepositDate" role="button" value="">
+                                        Wire Number : <input class="form-control main-button" type="button" id="btnWireNumber" role="button" value="">
+                                    </b>
+                                </div>
+                                <div class="form-group" id="divUpdateWireDate" hidden="">
+                                    <input class="form-control" type="text" id="txtNewWireDate" readonly="" style="background: white;" aria-label="New Wire Date">
+                                    <input class="form-control main-button" type="button" id="btnUpdateWireDate" value="Update" role="button">
+                                </div>
+                                <div class="form-group" id="divUpdateWireDepositDate" hidden="">
+                                    <input class="form-control" type="text" id="txtNewWireDepositDate" readonly="" style="background: white;" aria-label="New Wire Deposit Date">
+                                    <input class="form-control main-button" type="button" id="btnUpdateWireDepositDate" value="Update" role="button">
+                                </div>
+                                <div class="form-group" id="divUpdateWireNumber" hidden="">
+                                    <input class="form-control" type="text" id="txtNewWireNumber" onkeypress="return checkIt(event);" aria-label="New Wire Number">
+                                    <input class="form-control main-button" type="button" id="btnUpdateWireNumber" value="Update" role="button">
+                                </div>
+                            </div>
+
+                            <div id="divMembershipContainer" class="form-row" style="display:none;margin-left: 0px;">
+                                <div class="content-details switch-field" style="padding-left:0px;">
+                                    <a id="newMembershipToDonation" href="javascript:void(0);" style="text-decoration: none;">
+                                        <div class="divSection newMembership" id="divMembership" style="background-image: url('msnfp_/images/SolicitationAdd32');border-bottom-color: #878786;background-size: auto;">
+                                            <div class="boldCaps">Membership</div>
+                                            <div class="header3"><span class="spanMembership spanHighlighted"></span></div>
+                                            <div class="header2"><span class="spanDate"></span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="form-group subsequent-buttons mb20" id="btn-Payment-Schedule-Container">
+                                <b>Payment Schedule:</b>
+                                <div class="payment-schedule-link">
+                                    <input class="form-control main-button" id="btn-Payment-Schedule" type="button" role="button">
+                                </div>
+                            </div>
+                            <div class="form-group divLinkExistingPledgeNull">
+                                <div class="form-group">
+                                    <label style="width:100%;text-align:left;" title="Currently this donation is not associated to a pledge">Currently this donation is not associated to a pledge:</label>
+                                    <br>
+                                    <input id="btnLinkNoPledge" class="form-control main-button" style="width:250px;" role="button" type="button" value="Link to an existing Pledge >">
+                                </div>
+                                <div class="error-msg">
+                                    No related pledge found.
+                                </div>
+                            </div>
+                            <div class="form-group subsequent-buttons divLinkExistingPledge mb20">
+                                <div class="form-group">
+                                    <b style="float:left;margin-bottom: 10px;">This donation is linked to pledge:</b>
+                                    <br>
+                                    <label class="spanExistingPledge main-button-lnk"></label>
+                                </div>
+                                <table role="presentation">
+                                    <tbody>
+                                        <tr>
+                                            <td style="padding-left: 0px;">
+                                                <input class="form-control float-left main-button" style="width:100%;" id="btnRemoveLink" type="button" role="button" value="Remove Link >">
+                                            </td>
+                                            <td>
+                                                <input id="btnLinkExistingPledge" class="form-control float-right main-button" style="width:100%;" type="button" role="button" value="Link to A Different Pledge >">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="form-group subsequent-buttons refund-donation-sucess hide mb20">
+                                <div class="form-group">
+                                    <b>This Donation has been refunded:</b>
+                                </div>
+                                <table role="presentation">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group" style="display:flex;">
+                                                    <label style="width:50px;">On</label>
+                                                    <input class="form-control" type="text" id="txtRefundSucessOn" value="" aria-label="Refund Success On" disabled="disabled">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group" style="display:flex;">
+                                                    <label>Refund Amount</label>
+                                                    <input class="form-control" type="text" id="txtRefundSuccessAmount" aria-label="Refund Amount" value="" disabled="disabled">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="form-group subsequent-buttons recurringDonation-success hide mb20">
+                                <div class="form-group divNextDonation">
+                                    <div class="form-group">
+                                        <b>Next donation will be taken on</b>
+                                        <input class="form-control main-button" type="button" role="button" id="btnRecurringNextDonation" value="">
+                                        <b>for</b>
+                                        <input class="form-control main-button" type="button" role="button" id="btnRecurringNextDonationAmount" value="">
+                                        <div class="form-group" id="divUpdateNextRecurringDate" hidden="">
+                                            <input class="form-control" type="text" aria-label="Next Recurring Date" id="txtNextRecurringDate" readonly="" style="background: white;">
+                                            <input class="form-control main-button" type="button" role="button" id="btnUpdateNextRecurringDate" value="Update"><br>
+                                            <label id="lblNextDateError" role="alert" style="display:none;color:red">Please select the Date</label>
+                                        </div>
+                                        <div class="form-group" id="divUpdateNextRecurringAmount" hidden="">
+                                            <input class="form-control" type="text" aria-label="Next Recurring Amount" id="txtNextRecurringAmount" onkeypress="return validateFloatKeyPress(this, event);">
+                                            <input class="form-control main-button" role="button" type="button" id="btnUpdateNextRecurringAmount" value="Update"><br>
+                                            <label id="lblNextRecurringAmountError" role="alert" style="display:none;color:red">Please select the Amount</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control main-button" role="button" type="button" id="btnRecurringChargeDonationNow" value="Charge this Donation Now >">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group recurringDonation-last hide mb20">
+                                <div class="recurringDonationLastList">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control main-button" role="button" id="btnRecurringCancelDonation" type="button" value="Cancel This Donation >">
+                                </div>
+                            </div>
+                            <div class="form-group subsequent-buttons clearfix">
+                                <label for="emailReceipt" style="display: none !important;"><b>Email Receipt To</b></label>
+                                <input type="text" class="form-control float-right" aria-label="Email Receipt" id="emailReceipt" style="display: none !important;margin-right: 5px; width: 425px;">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-4" style="padding-left: 0px;">
+                                    <input class="form-control main-button" role="button" style="width:110px" type="button" id="btnPrintReceipt" value="Print Receipt">
+                                </div>
+                                <div class="col-sm-4" style="padding-left: 0px;">
+                                    <input class="form-control main-button" style="width:135px" role="button" type="button" id="btnThankyou" value="Print Thank You">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group existing-pledge hide">
+                            <table id="searchResult" class="table table-striped table-bordered" role="presentation">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Date</th>
+                                        <th style="min-width:250px;">Installment</th>
+                                        <th>Amount</th>
+                                        <th>Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                            <div class="subsequent-buttons clearfix" style="padding-top:5px;">
+                                <input id="btnComplete" class="float-right main-button" role="button" type="button" value="Complete">
+                            </div>
+                            <div class="error-msg">
+                                <label role="alert"> Please select donation.</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group cancelDonation hide">
+                            <div class="form-group">
+                                <label for="ddlCancelDonationReason">Reason</label>
+                                <select class="form-control" id="ddlCancelDonationReason" role="listbox" aria-label="Cancellation Reason">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtCancelDonationNote">Note</label>
+                                <textarea id="txtCancelDonationNote" aria-label="Cancel Donation Note"></textarea>
+                            </div>
+                            <div class="error-msg-cancel hide" style="color: red; font-weight: bold;"></div>
+                            <div class="form-group">
+                                <input type="button" id="btnCancelDonation" class="form-control main-button" role="button" value="Cancel This Donation">
+                                <input type="button" id="btnCancelDonationBack" class="form-control main-button" role="button" value="Back">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group msg-div">
+                        <!--Bootstrap error message--->
+                        <div id="divErrorMessageContainer" style="display:none;" class="alert alert-danger">
+                            <strong>Error:</strong> <label id="lblErrorMessageText" role="alert" class="errorMSG"></label>
+                        </div>
+
+                        <div class="error-msg"><label role="alert" id="lblerrormsg"></label></div>
+                        <div class="noMatch">
+                            <label id="lblError" role="alert"></label>
+                        </div>
+                        <div class="form-group payment-failed-msg hide">
+                            <label class="field-label errorMsg" role="alert">Payment Failed</label>
+                            <label id="payment-failed-block" role="alert"></label>
+                            <div class="clearfix">
+                                <input class="form-control float-right main-button" role="button" id="btnTryAgain" type="button" value="Try Again >">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body></html>

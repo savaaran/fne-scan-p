@@ -1,0 +1,267 @@
+<html><!--/*************************************************************************
+* © Microsoft. All rights reserved.
+*/--><head>
+    <meta charset="utf-8">
+    <title>Select Address Form</title>
+    <script src="/WebResources/msnfp_/scripts/angular.min_1.8.0.js"></script>
+    <link href="../scripts/bootstrap.min.css" rel="stylesheet">
+    <link href="../scripts/common.css" rel="stylesheet">
+    <style>
+        h2 {
+            color: #7C7C7C;
+            margin: 10px auto;
+            text-transform: uppercase;
+            font-size: 17px;
+        }
+
+        th {
+            font-size: 14px;
+        }
+
+        body, table {
+            color: #444444;
+            font-size: 13px !important;
+            font-family: SegoeUI, "Segoe UI", "Helvetica Neue",Arial,"Noto Sans",sans-serif;
+            font-weight: normal;
+        }
+
+        .container {
+            border-width: .2rem;
+            position: relative;
+            padding: 1rem;
+            margin: 1rem -15px 0;
+            border: solid #f7f7f9;
+            border-width: .2rem 0 0;
+        }
+
+        .main-button {
+            text-align: center !important;
+            text-shadow: none !important;
+            border: 1px solid #b4b4b4 !important;
+            background-color: #cccccc !important;
+            -webkit-transition: all 0.1s ease-in-out !important;
+            -moz-transition: all 0.1s ease-in-out !important;
+            -ms-transition: all 0.1s ease-in-out !important;
+            -o-transition: all 0.1s ease-in-out !important;
+            transition: all 0.1s ease-in-out !important;
+            padding: 5px 6px 3px 6px !important;
+            font-family: 'Hind', sans-serif !important;
+            font-weight: bolder !important;
+            text-transform: uppercase !important;
+            font-size: 14px !important;
+            color: #000 !important;
+            cursor: pointer !important;
+            border-radius: 0px !important;
+            background-clip: initial !important;
+            margin: 0 !important;
+            margin-top: 0px !important;
+            line-height: unset !important;
+            margin-right: 5px !important;
+            white-space: nowrap !important;
+        }
+
+            .main-button:hover {
+                cursor: pointer !important;
+                color: white !important;
+                border: 1px solid #000000 !important;
+                background-color: #000000 !important;
+            }
+
+        .bs-checkbox {
+            text-align: center;
+            vertical-align: middle;
+            width: 36px;
+        }
+
+        tr.selected {
+            color: #212529;
+            background-color: rgba(0,0,0,.075);
+        }
+
+        .maincontainer {
+            padding-bottom: 50px;
+        }
+    </style>
+    <meta>
+<meta></head>
+<body ng-app="msnfp_updatehouseholdaddress">
+    <main class="col-12 bd-content maincontainer" role="main" ng-controller="addressctrl">
+        <div class="container-fluid bd-content table-responsive" ng-init="init();">
+            <h2>CURRENT ADDRESS</h2>
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Household Salutation</th>
+                        <th scope="col">Informal Salutation</th>
+                        <th scope="col">Formal Salutation</th>
+                        <th scope="col">Address 1</th>
+                        <th scope="col">Address 2</th>
+                        <th scope="col">Email Address 1</th>
+                        <th scope="col">Email Address 2</th>
+                        <th scope="col">Email Address 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{household.msnfp_householdsalutation}}</td>
+                        <td>{{household.msnfp_informalsalutation}}</td>
+                        <td>{{household.msnfp_formalsalutation}}</td>
+                        <td>{{household.address1_composite}}</td>
+                        <td>{{household.address2_composite}}</td>
+                        <td>{{household.emailaddress1}}</td>
+                        <td>{{household.emailaddress2}}</td>
+                        <td>{{household.emailaddress3}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>SELECT FROM THE FOLLOWING ADDRESSES</h2>
+            <table class="table table-hover table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Select Address</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Informal Salutation</th>
+                        <th scope="col">Formal Salutation</th>
+                        <th scope="col">Address 1</th>
+                        <th scope="col">Address 2</th>
+                        <th scope="col">Address 3</th>
+                        <th scope="col">Email Address 1</th>
+                        <th scope="col">Email Address 2</th>
+                        <th scope="col">Email Address 3</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="contact in contacts track by $index">
+                    <tr class="{{contact.class}}">
+                        <th class="bs-checkbox">
+                            <label><input data-index="$index" type="radio" name="radio-contact" value="0" ng-click="select($index);"></label>
+                        </th>
+                        <td>{{contact.fullname}}</td>
+                        <td>{{contact.msnfp_informalsalutation}}</td>
+                        <td>{{contact.msnfp_formalsalutation}}</td>
+                        <td>{{contact.address1_composite}}</td>
+                        <td>{{contact.address2_composite}}</td>
+                        <td>{{contact.address3_composite}}</td>
+                        <td>{{contact.emailaddress1}}</td>
+                        <td>{{contact.emailaddress2}}</td>
+                        <td>{{contact.emailaddress3}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>CHANGE ADDRESSEE TO</h2>
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Household Salutation</th>
+                        <th scope="col">Informal Salutation</th>
+                        <th scope="col">Formal Salutation</th>
+                        <th scope="col">Address 1</th>
+                        <th scope="col">Address 2</th>
+                        <th scope="col">Email Address 1</th>
+                        <th scope="col">Email Address 2</th>
+                        <th scope="col">Email Address 3</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td ng-model="account.msnfp_householdsalutation" contenteditable="true">{{account.msnfp_householdsalutation}}</td>
+                        <td ng-model="account.msnfp_informalsalutation" contenteditable="true">{{account.msnfp_informalsalutation}}</td>
+                        <td ng-model="account.msnfp_formalsalutation" contenteditable="true">{{account.msnfp_formalsalutation}}</td>
+                        <td>{{account.address1_composite}}</td>
+                        <td>{{account.address2_composite}}</td>
+                        <td>{{account.emailaddress1}}</td>
+                        <td>{{account.emailaddress2}}</td>
+                        <td>{{account.emailaddress3}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="row">
+                <div class="col-md-2 offset-md-8">
+                    <button type="button" class="main-button" onclick="window.close();">Discard Changes</button>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="main-button" ng-click="update();">Update</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        var app = angular.module('msnfp_updatehouseholdaddress', []);
+        app.controller('addressctrl', function ($scope, $q, $http) {
+            $scope.init = function () {
+                $scope.Xrm = parent.Xrm;
+                $scope.api = `${$scope.Xrm.Utility.getGlobalContext().getClientUrl()}/api/data/v9.1`;
+                let data = JSON.parse(new URLSearchParams(window.location.search).get("data"));
+                $scope.householdid = data.householdid;
+                $scope.from = data.from;
+                $scope.refreshbackgroundpage = data.refreshbackgroundpage;
+                $scope.fromid = data.fromid;
+                $scope.selected = null;
+                let select = "msnfp_informalsalutation,msnfp_formalsalutation,address1_composite,address2_composite,emailaddress1,emailaddress2,emailaddress3";
+                $q.all([$http.get(`${$scope.api}/contacts?$select=fullname,address3_composite,${select}&$filter=_msnfp_householdid_value%20eq%20${data.householdid}`),
+                $http.get(`${$scope.api}/accounts(${data.householdid})?$select=msnfp_householdsalutation,${select}`)]).then(
+                    (results) => {
+                        $scope.contacts = results[0].data.value;
+                        $scope.household = results[1].data;
+                    }
+                );
+            };
+            $scope.select = function (i) {
+                $scope.contacts.forEach((item, index) => {
+                    item.class = index == i ? 'selected' : '';
+                })
+                $scope.selected = $scope.contacts[i];
+                const { msnfp_householdsalutation, ..._ } = $scope.household;
+                $scope.account = { ...$scope.selected, ...{ msnfp_householdsalutation } };
+            };
+            $scope.update = function () {
+                if (!$scope.selected)
+                    return $scope.Xrm.Navigation.openAlertDialog("Please select contact address.");
+                $scope.Xrm.Utility.showProgressIndicator();
+                $http.get(`${$scope.api}/contacts(${$scope.selected.contactid})?$select=msnfp_informalsalutation,msnfp_formalsalutation,address1_line1,address1_line2,address1_line3,address1_city,address1_stateorprovince,address1_postalcode,address1_country,
+                            address2_line1,address2_line2,address2_line3,address2_city,address2_stateorprovince,address2_postalcode,address2_country,emailaddress1,emailaddress2,emailaddress3`)
+                    .then((result) => {
+                        const { '@odata.context': _, '@odata.etag': __, address1_composite, address2_composite, contactid, ...account } = result.data;
+                        const { msnfp_householdsalutation, msnfp_informalsalutation, msnfp_formalsalutation, ...rest } = $scope.account;
+                        $scope.account = { ...account, ...{ msnfp_householdsalutation, msnfp_informalsalutation, msnfp_formalsalutation } };
+                        return $http.patch(`${$scope.api}/accounts(${$scope.householdid})`, $scope.account);
+                    })
+                    .then((results) => {
+                        $scope.Xrm.Utility.closeProgressIndicator();
+                        return $scope.Xrm.Navigation.openAlertDialog("Household address updated successfully.");
+                    })
+                    .then(() => {
+                        if ($scope.refreshbackgroundpage) {
+                            window.top.opener.location.reload();
+                        }
+                        window.close();
+                    })
+            }
+        });
+        app.directive("contenteditable", function () {
+            return {
+                restrict: "A",
+                link: function (scope, element, ngModel) {
+                    function read() {
+                        var formattedValue = element.text().trim();
+                        element.controller('ngModel').$setViewValue(formattedValue);
+                        element.text(formattedValue);
+                    }
+                    ngModel.$render = function () {
+                        element.html(ngModel.$viewValue || "");
+                    };
+                    element.bind("blur", function () {
+                        scope.$apply(read);
+                    });
+                    element.bind("paste", function (e) {
+                        e.preventDefault();
+                        document.execCommand('inserttext', false, e.clipboardData.getData('text/plain'));
+                    });
+                }
+            };
+        });
+
+    </script>
+
+</body></html>

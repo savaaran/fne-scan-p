@@ -1,0 +1,560 @@
+<html><!--/*************************************************************************
+* © Microsoft. All rights reserved.
+*/--><head>
+    <meta charset="utf-8">
+    <title>ADD BANK ACCOUNT</title>
+    <script src="ClientGlobalContext.js.aspx" type="text/javascript"></script>
+    <script src="../scripts/jQuery.js" type="text/javascript"></script>
+    <link href="../scripts/common.css" rel="stylesheet">
+    <script src="../scripts/common.js" type="text/javascript"></script>
+<meta></head>
+<body style="height: 255px; overflow-wrap: break-word;">
+    <!--onfocusout="parent.setEmailRange();"-->
+    <style type="text/css">
+        table, th {
+            border-collapse: collapse;
+            color: #444444;
+            font-family: 'Hind', sans-serif;
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+
+        table, td {
+            color: #444444;
+            font-family: 'Hind', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        input[type=text] {
+            width: 190px;
+        }
+
+        input:disabled {
+            opacity: 0.5;
+        }
+
+        .red-border {
+            border: solid 2px #FF0000 !important;
+        }
+
+        .tabview {
+            border-style: none;
+            padding: 12px;
+            position: relative;
+            top: 0px;
+            left: 0px;
+            width: calc(100% - 22px);
+            height: 33px;
+            background-color: none;
+            z-index: 1;
+        }
+
+        .fa, .fas, .far {
+            font-size: 18px !important;
+            vertical-align: middle;
+        }
+
+        .content-header h2 {
+            color: #000000;
+            font-size: 18px !important;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .content-details input, .content-details select, .contDet input, .contDet select {
+            margin: 2px;
+            padding: .280rem .5rem;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            margin-top: 1px;
+        }
+
+        .form-container-head {
+            background-color: white;
+            padding-left: 20px;
+            padding-top: 20px;
+            border-top: 0.6em solid #243a5e;
+            padding-right: 0px;
+        }
+
+        .form-container-headNBorder {
+            background-color: white;
+            padding-left: 20px;
+            padding-top: 20px;
+            padding-right: 0px;
+        }
+
+        .form-container {
+            background-color: white;
+            padding-left: 20px;
+            padding-right: 0px;
+        }
+
+        .main-button {
+            text-align: center !important;
+            text-shadow: none !important;
+            border: 1px solid #b4b4b4 !important;
+            background-color: #cccccc !important;
+            -webkit-transition: all 0.1s ease-in-out !important;
+            -moz-transition: all 0.1s ease-in-out !important;
+            -ms-transition: all 0.1s ease-in-out !important;
+            -o-transition: all 0.1s ease-in-out !important;
+            transition: all 0.1s ease-in-out !important;
+            padding: 5px 6px 3px 6px !important;
+            font-family: 'Hind', sans-serif !important;
+            font-weight: bolder !important;
+            text-transform: uppercase !important;
+            font-size: 14px !important;
+            color: #243a5e !important;
+            cursor: pointer !important;
+            border-radius: 0px !important;
+            background-clip: initial !important;
+            margin: 0 !important;
+            margin-top: 0px !important;
+            line-height: unset !important;
+            margin-right: 5px !important;
+            white-space: nowrap !important;
+        }
+
+            .main-button:hover {
+                cursor: pointer !important;
+                color: white !important;
+                border: 1px solid #243a5e !important;
+                background-color: #243a5e !important;
+            }
+
+            .main-button .button-icon {
+                margin-left: 10px;
+                text-rendering: optimizeLegibility;
+            }
+
+        .mandatory span:after {
+            content: '*';
+            color: red;
+            font-weight: bold;
+            font-size: 15px;
+            padding-left: 3px;
+        }
+
+        .divloader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            background: lightgrey;
+            opacity: 0.8;
+            filter: alpha(opacity=40);
+            z-index: 2000;
+            margin-top: -30px;
+            margin-left: -8px;
+        }
+    </style>
+
+    <div class="divloader" id="ajaxLoader" style="display: none;">
+        <img id="ajax-loader" src="../images/ajaxloader.gif" style="margin:30% 48%; display: block;">
+    </div>
+
+    <table class="content-details" style="width: 100%; margin-top: 5px;" border="0" role="presentation">
+        <tbody>
+            <tr>
+                <td style="padding-left: 0px;padding-right: 2px;">
+                    <div class="tabview">
+                        <div class="content-header" style="float:left;width: 220px;margin-top: 4px;">
+                            <h2 class="noselect" style="margin: 0;">ADD BANK ACCOUNT</h2>
+                        </div>
+                    </div>
+                    <table style="border-style:none;width:100%;" border="0" role="presentation">
+                        <tbody>
+                            <tr>
+                                <td colspan="3" style="background:#ededed !important;padding: 13px;padding-top: 15px;padding-bottom: 15px;text-align:center;">
+                                    <table style="border-style:none;width:99%;margin-left: 2px;" border="0" align="center" role="presentation">
+                                        <tbody>
+                                            <tr class="trBank mandatory">
+                                                <td style="width: 125px;" class="form-container-head"><span><label for="txtBankName" title="The name of the bank the account is held with.">Bank Name</label></span></td>
+                                                <td class="form-container-head"><input type="text" id="txtBankName" aria-label="Bank Name" aria-required="true"></td>
+                                            </tr>
+                                            <tr class="trBank mandatory">
+                                                <td class="form-container"><span><label for="txtAccountNumber" title="The bank account number as it appears on the bank account without dashes">A/C Number</label></span></td>
+                                                <td class="form-container"><input type="text" id="txtAccountNumber" aria-label="A/C Number" aria-required="true" onkeypress="return checkIt(event);"></td>
+                                            </tr>
+                                            <tr class="trBank mandatory">
+                                                <td class="form-container"><span><label for="txtRoutingNumber" title="The bank account routing number as it appears on the bank account without dashes.">Routing Number</label></span></td>
+                                                <td class="form-container"><input type="text" id="txtRoutingNumber" aria-label="Routing Number" aria-required="true" onkeypress="return checkIt(event);"></td>
+                                            </tr>
+                                            <tr class="trBank mandatory">
+                                                <td class="form-container"><span><label for="txtCustomerName" title="The name of the individual as it pertains to there payment method such as the name on the card or the name on the bank account">Name</label></span></td>
+                                                <td class="form-container"><input type="text" id="txtCustomerName" aria-label="Name" aria-required="true"></td>
+                                            </tr>
+                                            <tr class="trBank mandatory">
+                                                <td class="form-container"><span><label for="listAccountType" title="Account Type">Account Type</label></span></td>
+                                                <td class="form-container">
+                                                    <select id="listAccountType" style="width: 190px;height:32px;" role="listbox" aria-label="Account Type" aria-required="true">
+                                                        <option value="0" role="option">Please Select..</option>
+                                                        <option value="844060000" selected="" role="option">CHECKING</option>
+                                                        <option value="844060001" role="option">SAVING</option>
+                                                    </select> 
+                                                    <input type="button" id="btnCreate" class="main-button" role="button" value="Create">
+                                                    <input type="button" id="btnClose" class="main-button" role="button" value="Close">
+                                                    <input type="button" id="btnRetry" class="main-button" role="button" value="Retry" hidden="">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" class="form-container">
+                                                    <span id="lblMsg" style="color: #e60000;display:block;" role="alert"></span>
+                                                    <span id="lblErrorExpiry" style="color: #e60000;display:block;" role="alert"></span>
+                                                    <span id="lblErrorValidation" style="color:#e60000;display:block;" role="alert"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="form-container" style="height:10px;" colspan="2">
+                                                    <br>
+                                                    <select id="ddlPaymentGateway" hidden="hidden">
+                                                        <option value=""></option>
+                                                        <option value="844060000">Moneris</option>
+                                                        <option value="844060001">Authorize.Net</option>
+                                                        <option value="844060002">iATS</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script type="text/javascript">
+
+        var entityName;
+        var currentEntityGUID;
+        var customerGUID;
+        var customerEntityName;
+        var customerOrDonationPledge;
+
+        var configRecord = null;
+        var xrm = XrmUtility.get_Xrm();
+
+        var currentuserID = MissionFunctions.GetCurrentUserID();
+
+        console.log("currentuserID: " + currentuserID);
+
+        var userSelect = "systemusers?$select=systemuserid,_msnfp_configurationid_value"
+        userSelect += "&$filter=systemuserid eq " + currentuserID;
+        var user = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + userSelect);
+        user = user[0];
+
+        if (!isNullOrUndefined(user._msnfp_configurationid_value)) {
+            var selectQuery = "msnfp_configurations?$select=msnfp_configurationid";
+            var filterConfig = "&$filter=msnfp_configurationid eq " + user._msnfp_configurationid_value;
+            var configresult = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + selectQuery + filterConfig);
+            if (!isNullOrUndefined(configresult))
+                configRecord = configresult[0];
+        }
+
+        function getParameters() {
+            entityName = MissionFunctions.GetQueryStringParam("entityName");
+            currentEntityGUID = MissionFunctions.GetQueryStringParam("entityGUID");
+        }
+
+        $(function () {
+            getParameters();
+
+            //load current record with details
+            var select = "";
+            if (entityName === "msnfp_transaction") {
+                select = "msnfp_transactions(" + currentEntityGUID + ")?";
+                select += "$select=msnfp_transactionid,msnfp_billing_line1,msnfp_billing_line2,msnfp_billing_line3,msnfp_billing_city,msnfp_billing_stateorprovince,msnfp_billing_country,msnfp_billing_postalcode,msnfp_telephone1,msnfp_emailaddress1&";
+                select += "$expand=msnfp_CustomerId_contact($select=contactid,firstname,lastname,fullname),msnfp_CustomerId_account($select=accountid,name)";
+                customerOrDonationPledge = XrmServiceUtility.ExecuteQueryWithExpand(XrmServiceUtility.GetWebAPIUrl() + select);
+
+                if (customerOrDonationPledge.msnfp_CustomerId_account != null) {
+                    customerEntityName = "account";
+                    customerGUID = customerOrDonationPledge.msnfp_CustomerId_account.accountid;
+                    $("#txtCustomerName").val(customerOrDonationPledge.msnfp_CustomerId_account.name);
+                }
+                else if (customerOrDonationPledge.msnfp_CustomerId_contact != null) {
+                    customerEntityName = "contact";
+                    customerGUID = customerOrDonationPledge.msnfp_CustomerId_contact.contactid;
+                    $("#txtCustomerName").val(customerOrDonationPledge.msnfp_CustomerId_contact.fullname);
+                }
+            }
+            else if (entityName === "msnfp_paymentschedule") {
+                select = "msnfp_paymentschedules(" + currentEntityGUID + ")?";
+                select += "$select=msnfp_paymentscheduleid,msnfp_billing_line1,msnfp_billing_line2,msnfp_billing_line3,msnfp_billing_city,msnfp_billing_stateorprovince,msnfp_billing_country,msnfp_billing_postalcode,msnfp_telephone1,msnfp_emailaddress1&";
+                select += "$expand=msnfp_CustomerId_contact($select=contactid,firstname,lastname,fullname),msnfp_CustomerId_account($select=accountid,name)";
+                customerOrDonationPledge = XrmServiceUtility.ExecuteQueryWithExpand(XrmServiceUtility.GetWebAPIUrl() + select);
+
+                if (customerOrDonationPledge.msnfp_CustomerId_account != null) {
+                    customerEntityName = "account";
+                    customerGUID = customerOrDonationPledge.msnfp_CustomerId_account.accountid;
+                    $("#txtCustomerName").val(customerOrDonationPledge.msnfp_CustomerId_account.name);
+                }
+                else if (customerOrDonationPledge.msnfp_CustomerId_contact != null) {
+                    customerEntityName = "contact";
+                    customerGUID = customerOrDonationPledge.msnfp_CustomerId_contact.contactid;
+                    $("#txtCustomerName").val(customerOrDonationPledge.msnfp_CustomerId_contact.fullname);
+                }
+            }
+            else if (entityName === "contact") {
+                select = "contacts?";
+                select += "$select=contactid,fullname,firstname,lastname,address1_line1,address1_line2,address1_line3,address1_city,address1_stateorprovince,address1_country,address1_postalcode,telephone1,emailaddress1&";
+                select += "$filter=contactid eq " + currentEntityGUID;
+                customerOrDonationPledge = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + select);
+                customerOrDonationPledge = customerOrDonationPledge[0];
+                $("#txtCustomerName").val(customerOrDonationPledge.fullname);
+            }
+            else if (entityName === "account") {
+                select = "accounts?";
+                select += "$select=accountid,name,address1_line1,address1_line2,address1_line3,address1_city,address1_stateorprovince,address1_country,address1_postalcode,telephone1,emailaddress1&";
+                select += "$filter=accountid eq " + currentEntityGUID;
+                customerOrDonationPledge = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + select);
+                customerOrDonationPledge = customerOrDonationPledge[0];
+                $("#txtCustomerName").val(customerOrDonationPledge.name);
+            }
+
+            $("#btnCreate").click(function () {
+                if (validate()) {
+                    $(".divloader").css('display', 'block');
+                    var eEntity = {};
+
+                    if (entityName == "msnfp_transaction") {
+                        if (customerEntityName == "account") {
+                            eEntity["msnfp_CustomerId_account@odata.bind"] = "/accounts(" + customerGUID + ")";
+                            var name = customerOrDonationPledge.msnfp_CustomerId_account.name;
+                            var nm = name.split(" ");
+                            eEntity["msnfp_firstname"] = nm[0];
+                            eEntity["msnfp_lastname"] = nm[1];
+                        }
+                        else if (customerEntityName == "contact") {
+                            eEntity["msnfp_CustomerId_contact@odata.bind"] = "/contacts(" + customerGUID + ")";
+                            eEntity["msnfp_firstname"] = customerOrDonationPledge.msnfp_CustomerId_contact.firstname;
+                            eEntity["msnfp_lastname"] = customerOrDonationPledge.msnfp_CustomerId_contact.lastname;
+                        }
+
+                        eEntity["msnfp_emailaddress1"] = customerOrDonationPledge.msnfp_emailaddress1;
+                        eEntity["msnfp_telephone1"] = customerOrDonationPledge.msnfp_telephone1;
+                        eEntity["msnfp_billing_line1"] = customerOrDonationPledge.msnfp_billing_line1;
+                        eEntity["msnfp_billing_line2"] = customerOrDonationPledge.msnfp_billing_line2;
+                        eEntity["msnfp_billing_line3"] = customerOrDonationPledge.msnfp_billing_line3;
+                        eEntity["msnfp_billing_city"] = customerOrDonationPledge.msnfp_billing_city;
+                        eEntity["msnfp_billing_state"] = customerOrDonationPledge.msnfp_billing_stateorprovince;
+                        eEntity["msnfp_billing_country"] = customerOrDonationPledge.msnfp_billing_country;
+                        eEntity["msnfp_billing_postalcode"] = customerOrDonationPledge.msnfp_billing_postalcode;
+
+                    }
+                    else if (entityName === "msnfp_paymentschedule") {
+                        if (customerEntityName == "account") {
+                            eEntity["msnfp_CustomerId_account@odata.bind"] = "/accounts(" + customerGUID + ")";
+                            var name = customerOrDonationPledge.msnfp_CustomerId_account.name;
+                            var nm = name.split(" ");
+                            eEntity["msnfp_firstname"] = nm[0];
+                            eEntity["msnfp_lastname"] = nm[1];
+                        }
+                        else if (customerEntityName == "contact") {
+                            eEntity["msnfp_CustomerId_contact@odata.bind"] = "/contacts(" + customerGUID + ")";
+                            eEntity["msnfp_firstname"] = customerOrDonationPledge.msnfp_CustomerId_contact.firstname;
+                            eEntity["msnfp_lastname"] = customerOrDonationPledge.msnfp_CustomerId_contact.lastname;
+                        }
+
+                        eEntity["msnfp_emailaddress1"] = customerOrDonationPledge.msnfp_emailaddress1;
+                        eEntity["msnfp_telephone1"] = customerOrDonationPledge.msnfp_telephone1;
+                        eEntity["msnfp_billing_line1"] = customerOrDonationPledge.msnfp_billing_line1;
+                        eEntity["msnfp_billing_line2"] = customerOrDonationPledge.msnfp_billing_line2;
+                        eEntity["msnfp_billing_line3"] = customerOrDonationPledge.msnfp_billing_line3;
+                        eEntity["msnfp_billing_city"] = customerOrDonationPledge.msnfp_billing_city;
+                        eEntity["msnfp_billing_state"] = customerOrDonationPledge.msnfp_billing_stateorprovince;
+                        eEntity["msnfp_billing_country"] = customerOrDonationPledge.msnfp_billing_country;
+                        eEntity["msnfp_billing_postalcode"] = customerOrDonationPledge.msnfp_billing_postalcode;
+
+                    }
+                    else {
+                        if (entityName == "account") {
+                            eEntity["msnfp_CustomerId_account@odata.bind"] = "/accounts(" + currentEntityGUID + ")";
+                            var name = customerOrDonationPledge.name;
+                            var nm = name.split(" ");
+                            eEntity["msnfp_firstname"] = nm[0];
+                            eEntity["msnfp_lastname"] = nm[1];
+                        }
+                        else {
+                            eEntity["msnfp_CustomerId_contact@odata.bind"] = "/contacts(" + currentEntityGUID + ")";
+                            eEntity["msnfp_firstname"] = customerOrDonationPledge.firstname;
+                            eEntity["msnfp_lastname"] = customerOrDonationPledge.lastname;
+                        }
+
+                        eEntity["msnfp_emailaddress1"] = customerOrDonationPledge.emailaddress1;
+                        eEntity["msnfp_telephone1"] = customerOrDonationPledge.telephone1;
+                        eEntity["msnfp_billing_line1"] = customerOrDonationPledge.address1_line1;
+                        eEntity["msnfp_billing_line2"] = customerOrDonationPledge.address1_line2;
+                        eEntity["msnfp_billing_line3"] = customerOrDonationPledge.address1_line3;
+                        eEntity["msnfp_billing_city"] = customerOrDonationPledge.address1_city;
+                        eEntity["msnfp_billing_state"] = customerOrDonationPledge.address1_stateorprovince;
+                        eEntity["msnfp_billing_country"] = customerOrDonationPledge.address1_country;
+                        eEntity["msnfp_billing_postalcode"] = customerOrDonationPledge.address1_postalcode;
+                    }
+
+                    var accountNo = $('#txtAccountNumber').val();
+
+                    eEntity["msnfp_bankname"] = $('#txtBankName').val();
+                    eEntity["msnfp_bankactnumber"] = accountNo;
+                    eEntity["msnfp_bankactrtnumber"] = $('#txtRoutingNumber').val();
+                    eEntity["msnfp_nameonfile"] = $('#txtCustomerName').val();
+                    eEntity["msnfp_banktypecode"] = $('#listAccountType').val();
+                    eEntity["msnfp_identifier"] = RandomGuid().substring(0, 8);
+                    eEntity["msnfp_name"] = $('#txtBankName').val() + " - " + accountNo.substr(accountNo.length - 4);
+                    eEntity["msnfp_type"] = 844060001;
+                    eEntity["msnfp_isreusable"] = true;
+
+                    var query = XrmServiceUtility.GetWebAPIUrl() + "msnfp_paymentmethods";
+                    XrmServiceUtility.CreateRecordAsync(query, eEntity, saveSuccess, errorFailure);
+                }
+            });
+
+            $("#btnRetry").click(function () {
+                $("#lblMsg")[0].innerText = "";
+                $(".trBank").show();
+                $("#btnCreate").click();
+            });
+
+            $("#btnClose").click(function () {
+                window.close();
+            });
+        });
+
+        function saveSuccess() {
+            //$("#lblMsg")[0].innerText = "Bank Account record created successfully.";
+            $('#lblMsg').append('<p>Bank Account record created successfully.</p>');
+            $("#lblMsg").css('color', 'green');
+            $(".trBank").show();
+            $("#btnCreate").hide();
+            //$("#btnClose").show();
+            $(".divloader").css('display', 'none');
+        }
+
+        function errorFailure(message) {
+            //$("#lblMsg")[0].innerText = "Process fail : " + message;
+            $('#lblMsg').append('<p>Process fail : ' + message + '</p>');
+            $("#btnCreate").hide();
+            $("#btnRetry").show();
+            $(".divloader").css('display', 'none');
+        }
+
+        function checkIt(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                status = "This field accepts numbers only."
+                return false;
+            }
+            status = "";
+            return true;
+        }
+
+        function validate() {
+            var isValidate = true;
+            //$("#lblMsg")[0].innerText = '';
+            $('#lblMsg').html('');
+            //$("#lblErrorValidation")[0].innerText = '';
+            $('#lblErrorValidation').html('');
+
+            if (isNullOrUndefined($("#txtBankName").val())) {
+                isValidate = false;
+                $("#txtBankName").addClass('red-border');
+                //$("#lblErrorValidation")[0].innerText = "Please enter a bank name.";
+                $('#lblErrorValidation').append('<p>Please enter a bank name.</p>');
+                return;
+            }
+            else {
+                $("#txtBankName").removeClass('red-border');
+            }
+
+            if (isNullOrUndefined($("#txtAccountNumber").val())) {
+                isValidate = false;
+                $("#txtAccountNumber").addClass('red-border');
+                //$("#lblErrorValidation")[0].innerText = "Please enter the account number.";
+                $('#lblErrorValidation').append('<p>Please enter the account number.</p>');
+                return;
+            }
+            else {
+                $("#txtAccountNumber").removeClass('red-border');
+            }
+
+            if (isNullOrUndefined($("#txtRoutingNumber").val())) {
+                isValidate = false;
+                $("#txtRoutingNumber").addClass('red-border');
+                //$("#lblErrorValidation")[0].innerText = "Please enter the routing number.";
+                $('#lblErrorValidation').append('<p>Please enter the routing number.</p>');
+                return;
+            }
+            else {
+                $("#txtRoutingNumber").removeClass('red-border');
+            }
+
+            if (isNullOrUndefined($("#txtCustomerName").val())) {
+                isValidate = false;
+                $("#txtCustomerName").addClass('red-border');
+                //$("#lblErrorValidation")[0].innerText = "Please enter the name on the bank account.";
+                $('#lblErrorValidation').append('<p>Please enter the name on the bank account.</p>');
+                return;
+            }
+            else {
+                $("#txtCustomerName").removeClass('red-border');
+            }
+
+            if ($("#listAccountType").val() === "0") {
+                isValidate = false;
+                $("#listAccountType").addClass('red-border');
+                //$("#lblErrorValidation")[0].innerText = "Please select the account type.";
+                $('#lblErrorValidation').append('<p>Please select the account type.</p>');
+                return;
+            }
+            else {
+                $("#listAccountType").removeClass('red-border');
+            }
+
+            $('tr.mandatory input, tr.mandatory select').each(function () {
+                var $this = $(this);
+                if ($this.val() == '') {
+                    isValidate = false;
+                    $this.addClass('red-border');
+                }
+                else {
+                    $this.removeClass('red-border');
+                }
+            });
+
+            return isValidate;
+        }
+
+        function isNullOrUndefined(value) {
+            return (typeof (value) === "undefined" || value === null || value === "");
+        }
+
+        function RandomGuid() {
+            return s4() + s4() + '' + s4() + '' + s4() + '' +
+                s4() + '' + s4() + s4() + s4();
+        }
+
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+        }
+    </script>
+
+</body></html>

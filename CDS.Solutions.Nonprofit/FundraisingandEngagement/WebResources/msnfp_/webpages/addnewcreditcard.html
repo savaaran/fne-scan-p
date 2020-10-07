@@ -1,0 +1,635 @@
+<html><!--/*************************************************************************
+* © Microsoft. All rights reserved.
+*/--><head aria-hidden="true">
+    <meta charset="utf-8">
+    <title>ADD CREDIT CARD</title>
+    <script src="ClientGlobalContext.js.aspx" type="text/javascript"></script>
+    <script src="../scripts/jQuery.js" type="text/javascript"></script>
+    <link href="../scripts/common.css" rel="stylesheet">
+    <script src="../scripts/common.js" type="text/javascript"></script>
+<meta></head>
+<body style="height: 255px; overflow-wrap: break-word;">
+    <style type="text/css">
+        table, th {
+            border-collapse: collapse;
+            color: #444444;
+            font-family: 'Hind', sans-serif;
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+
+        table, td {
+            color: #444444;
+            font-family: 'Hind', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        input[type=text] {
+            width: 190px;
+        }
+
+        input:disabled {
+            opacity: 0.5;
+        }
+
+        .red-border {
+            border: solid 2px #FF0000 !important;
+        }
+
+        .tabview {
+            border-style: none;
+            padding: 12px;
+            position: relative;
+            top: 0px;
+            left: 0px;
+            width: calc(100% - 22px);
+            height: 33px;
+            background-color: none;
+            z-index: 1;
+        }
+
+        .fa, .fas, .far {
+            font-size: 18px !important;
+            vertical-align: middle;
+        }
+
+        .content-header h2 {
+            color: #000000;
+            font-size: 18px !important;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .content-details input, .content-details select, .contDet input, .contDet select {
+            margin: 2px;
+            padding: .280rem .5rem;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            margin-top: 1px;
+        }
+
+        .form-container-head {
+            background-color: white;
+            padding-left: 20px;
+            padding-top: 20px;
+            border-top: 0.6em solid #243a5e;
+            padding-right: 0px;
+        }
+
+        .form-container-headNBorder {
+            background-color: white;
+            padding-left: 20px;
+            padding-top: 20px;
+            padding-right: 0px;
+        }
+
+        .form-container {
+            background-color: white;
+            padding-left: 20px;
+            padding-right: 0px;
+        }
+
+        .main-button {
+            text-align: center !important;
+            text-shadow: none !important;
+            border: 1px solid #b4b4b4 !important;
+            background-color: #cccccc !important;
+            -webkit-transition: all 0.1s ease-in-out !important;
+            -moz-transition: all 0.1s ease-in-out !important;
+            -ms-transition: all 0.1s ease-in-out !important;
+            -o-transition: all 0.1s ease-in-out !important;
+            transition: all 0.1s ease-in-out !important;
+            padding: 5px 6px 3px 6px !important;
+            font-family: 'Hind', sans-serif !important;
+            font-weight: bolder !important;
+            text-transform: uppercase !important;
+            font-size: 14px !important;
+            color: #243a5e !important;
+            cursor: pointer !important;
+            border-radius: 0px !important;
+            background-clip: initial !important;
+            margin: 0 !important;
+            margin-top: 0px !important;
+            line-height: unset !important;
+            margin-right: 5px !important;
+            white-space: nowrap !important;
+        }
+
+            .main-button:hover {
+                cursor: pointer !important;
+                color: white !important;
+                border: 1px solid #243a5e !important;
+                background-color: #243a5e !important;
+            }
+
+            .main-button .button-icon {
+                margin-left: 10px;
+                text-rendering: optimizeLegibility;
+            }
+
+        .mandatory span:after {
+            content: '*';
+            color: red;
+            font-weight: bold;
+            font-size: 15px;
+            padding-left: 3px;
+        }
+
+        .divloader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            background: lightgrey;
+            opacity: 0.8;
+            filter: alpha(opacity=40);
+            z-index: 2000;
+            margin-top: -30px;
+            margin-left: -8px;
+        }
+    </style>
+
+    <div class="divloader" id="ajaxLoader" style="display: none;">
+        <img id="ajax-loader" src="../images/ajaxloader.gif" style="margin:30% 48%; display: block;">
+    </div>
+
+    <table class="content-details" style="width: 100%; margin-top: 5px;" border="0" role="presentation">
+        <tbody>
+            <tr>
+                <td style="padding-left: 0px;padding-right: 2px;">
+                    <div class="tabview">
+                        <div class="content-header" style="float:left;width: 220px;margin-top: 4px;">
+                            <h2 class="noselect" style="margin: 0;">ADD CREDIT CARD</h2>
+                        </div>
+                    </div>
+                    <table style="border-style:none;width:100%;" border="0" role="presentation">
+                        <tbody>
+                            <tr>
+                                <td colspan="3" style="background:#ededed !important;padding: 13px;padding-top: 15px;padding-bottom: 15px;text-align:center;">
+                                    <table style="border-style:none;width:99%;margin-left: 2px;" border="0" align="center" role="presentation">
+                                        <tbody>
+                                            <tr class="trCard mandatory">
+                                                <td style="width: 125px;" class="form-container-head"><span><label for="txtCardNumber" title="The credit card number as it appears on the card without dashes">Card Number</label></span></td>
+                                                <td class="form-container-head"><input type="text" id="txtCardNumber" onkeypress="return checkIt(event);" aria-label="Card Number" aria-required="true"></td>
+                                            </tr>
+                                            <tr class="trCard mandatory">
+                                                <td class="form-container"><span><label for="txtNameOnCard" title="The name of the individual as it pertains to there payment method such as the name on the card or the name on the bank account">Name on the Card</label></span></td>
+                                                <td class="form-container"><input type="text" id="txtNameOnCard" aria-label="Name on the Card" aria-required="true"></td>
+                                            </tr>
+                                            <tr class="trCard mandatory">
+                                                <td class="form-container"><span><label for="listCardType" title="The type of card">Credit Card Type</label></span></td>
+                                                <td class="form-container">
+                                                    <select id="listCardType" style="width: 190px; height: 32px;" role="listbox" aria-label="Credit Card Type" aria-required="true">
+                                                        <option value="" role="option"></option>
+                                                        <option value="844060000" role="option">Visa</option>
+                                                        <option value="844060001" role="option">Master Card</option>
+                                                        <option value="844060002" role="option">Visa Debit</option>
+                                                        <option value="844060003" role="option">Master Card Debit</option>
+                                                        <option value="844060004" role="option">American Express</option>
+                                                        <option value="844060005" role="option">Diners Club</option>
+                                                        <option value="844060006" role="option">JCB</option>
+                                                        <option value="844060007" role="option">Interact</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr class="trCard mandatory">
+                                                <td class="form-container"><span><label for="txtCardExpiry" title="The expiry date of the credit card in the format of MMYY">Expiry</label></span></td>
+                                                <td class="form-container"><input type="text" id="txtCardExpiry" placeholder="mmyy" maxlength="7" aria-label="Expiry" aria-required="true"></td><!--onkeypress="return checkIt(event);" onblur="checkLength(this)" /></td>-->
+                                            </tr>
+                                            <tr class="trCard">
+                                                <td class="form-container" colspan="2">
+                                                    <input type="button" id="btnCreate" class="main-button" role="button" value="Create">
+                                                    <input type="button" id="btnClose" class="main-button" role="button" value="Close">
+                                                    <input type="button" id="btnRetry" class="main-button" role="button" value="Retry" hidden="">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" class="form-container">
+                                                    <span id="lblMsg" style="color: #e60000; display:block;" role="alert"></span>
+                                                    <span id="lblErrorExpiry" style="color: #e60000; display:block;" role="alert"></span>
+                                                    <span id="lblErrorValidation" style="color:#e60000; display:block;" role="alert"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="form-container" style="height:10px;" colspan="2">
+                                                    <br>
+                                                    <select id="ddlPaymentGateway" hidden="hidden">
+                                                        <option value=""></option>
+                                                        <option value="844060000">Moneris</option>
+                                                        <option value="844060001">Authorize.Net</option>
+                                                        <option value="844060002">iATS</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script type="text/javascript">
+
+        var entityName;
+        var currentEntityGUID;
+        var customerGUID;
+        var customerEntityName;
+        var customerOrDonationPledge;
+
+        var configRecord = null;
+        var xrm = XrmUtility.get_Xrm();
+
+        var currentuserID = MissionFunctions.GetCurrentUserID();
+
+        console.log("currentuserID: " + currentuserID);
+
+        var userSelect = "systemusers?$select=systemuserid,_msnfp_configurationid_value"
+        userSelect += "&$filter=systemuserid eq " + currentuserID;
+        var user = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + userSelect);
+        user = user[0];
+
+        if (!isNullOrUndefined(user._msnfp_configurationid_value)) {
+            var selectQuery = "msnfp_configurations?$select=msnfp_configurationid,_msnfp_paymentprocessorid_value";
+            var filterConfig = "&$filter=msnfp_configurationid eq " + user._msnfp_configurationid_value;
+            var configresult = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + selectQuery + filterConfig);
+            if (!isNullOrUndefined(configresult))
+                configRecord = configresult[0];
+        }
+
+        function getParameters() {
+            currentEntityGUID = MissionFunctions.GetQueryStringParam("entityGUID");
+            entityName = MissionFunctions.GetQueryStringParam("entityName");
+        }
+
+        $(function () {
+            getParameters();
+
+
+            console.log("entityName " + entityName);
+
+            //load current record with details
+            var select = "";
+            // On a transaction:
+            if (entityName === "msnfp_transaction") {
+                select = "msnfp_transactions(" + currentEntityGUID + ")?";
+                select += "$select=msnfp_transactionid,msnfp_billing_line1,msnfp_billing_line2,msnfp_billing_line3,msnfp_billing_city,msnfp_billing_stateorprovince,msnfp_billing_country,msnfp_billing_postalcode,msnfp_telephone1,msnfp_emailaddress1&";
+                select += "$expand=msnfp_CustomerId_contact($select=contactid,firstname,lastname,fullname),msnfp_CustomerId_account($select=accountid,name)";
+                customerOrDonationPledge = XrmServiceUtility.ExecuteQueryWithExpand(XrmServiceUtility.GetWebAPIUrl() + select);
+
+                if (customerOrDonationPledge.msnfp_CustomerId_account != null) {
+                    customerEntityName = "account";
+                    customerGUID = customerOrDonationPledge.msnfp_CustomerId_account.accountid;
+                    $("#txtNameOnCard").val(customerOrDonationPledge.msnfp_CustomerId_account.name);
+                }
+                else if (customerOrDonationPledge.msnfp_CustomerId_contact != null) {
+                    customerEntityName = "contact";
+                    customerGUID = customerOrDonationPledge.msnfp_CustomerId_contact.contactid;
+                    $("#txtNameOnCard").val(customerOrDonationPledge.msnfp_CustomerId_contact.fullname);
+                }
+            }
+            // On a payment schedule:
+            else if (entityName === "msnfp_paymentschedule") {
+                select = "msnfp_paymentschedules(" + currentEntityGUID + ")?";
+                select += "$select=msnfp_paymentscheduleid,msnfp_billing_line1,msnfp_billing_line2,msnfp_billing_line3,msnfp_billing_city,msnfp_billing_stateorprovince,msnfp_billing_country,msnfp_billing_postalcode,msnfp_telephone1,msnfp_emailaddress1&";
+                select += "$expand=msnfp_CustomerId_contact($select=contactid,firstname,lastname,fullname),msnfp_CustomerId_account($select=accountid,name)";
+                customerOrDonationPledge = XrmServiceUtility.ExecuteQueryWithExpand(XrmServiceUtility.GetWebAPIUrl() + select);
+
+                if (customerOrDonationPledge.msnfp_CustomerId_account != null) {
+                    customerEntityName = "account";
+                    customerGUID = customerOrDonationPledge.msnfp_CustomerId_account.accountid;
+                    $("#txtNameOnCard").val(customerOrDonationPledge.msnfp_CustomerId_account.name);
+                }
+                else if (customerOrDonationPledge.msnfp_CustomerId_contact != null) {
+                    customerEntityName = "contact";
+                    customerGUID = customerOrDonationPledge.msnfp_CustomerId_contact.contactid;
+                    $("#txtNameOnCard").val(customerOrDonationPledge.msnfp_CustomerId_contact.fullname);
+                }
+            }
+            // On a contact:
+            else if (entityName === "contact") {
+                select = "contacts?";
+                select += "$select=contactid,fullname,firstname,lastname,address1_line1,address1_line2,address1_line3,address1_city,address1_stateorprovince,address1_country,address1_postalcode,telephone1,emailaddress1&";
+                select += "$filter=contactid eq " + currentEntityGUID;
+                customerOrDonationPledge = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + select);
+                customerOrDonationPledge = customerOrDonationPledge[0];
+                $("#txtNameOnCard").val(customerOrDonationPledge.fullname);
+            }
+            // On an account:
+            else if (entityName === "account") {
+                select = "accounts?";
+                select += "$select=accountid,name,address1_line1,address1_line2,address1_line3,address1_city,address1_stateorprovince,address1_country,address1_postalcode,telephone1,emailaddress1&";
+                select += "$filter=accountid eq " + currentEntityGUID;
+                customerOrDonationPledge = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + select);
+                customerOrDonationPledge = customerOrDonationPledge[0];
+                $("#txtNameOnCard").val(customerOrDonationPledge.name);
+            }
+
+            $("#btnCreate").click(function () {
+                if (validate()) {
+                    $(".divloader").css('display', 'block');
+                    var eEntity = {};
+
+                    if (entityName == "msnfp_transaction") {
+                        if (customerEntityName == "account") {
+                            eEntity["msnfp_CustomerId_account@odata.bind"] = "/accounts(" + customerGUID + ")";
+                            var name = customerOrDonationPledge.msnfp_CustomerId_account.name;
+                            var nm = name.split(" ");
+                            eEntity["msnfp_firstname"] = nm[0];
+                            eEntity["msnfp_lastname"] = nm[1];
+                        }
+                        else if (customerEntityName == "contact") {
+                            eEntity["msnfp_CustomerId_contact@odata.bind"] = "/contacts(" + customerGUID + ")";
+                            eEntity["msnfp_firstname"] = customerOrDonationPledge.msnfp_CustomerId_contact.firstname;
+                            eEntity["msnfp_lastname"] = customerOrDonationPledge.msnfp_CustomerId_contact.lastname;
+                        }
+
+
+                        eEntity["msnfp_emailaddress1"] = customerOrDonationPledge.msnfp_emailaddress1;
+                        eEntity["msnfp_telephone1"] = customerOrDonationPledge.msnfp_telephone1;
+                        eEntity["msnfp_billing_line1"] = customerOrDonationPledge.msnfp_billing_line1;
+                        eEntity["msnfp_billing_line2"] = customerOrDonationPledge.msnfp_billing_line2;
+                        eEntity["msnfp_billing_line3"] = customerOrDonationPledge.msnfp_billing_line3;
+                        eEntity["msnfp_billing_city"] = customerOrDonationPledge.msnfp_billing_city;
+                        eEntity["msnfp_billing_postalcode"] = customerOrDonationPledge.msnfp_billing_postalcode;
+                    }
+                    else if (entityName == "msnfp_paymentschedule") {
+                        if (customerEntityName == "account") {
+                            eEntity["msnfp_CustomerId_account@odata.bind"] = "/accounts(" + customerGUID + ")";
+                            var name = customerOrDonationPledge.msnfp_CustomerId_account.name;
+                            var nm = name.split(" ");
+                            eEntity["msnfp_firstname"] = nm[0];
+                            eEntity["msnfp_lastname"] = nm[1];
+                        }
+                        else if (customerEntityName == "contact") {
+                            eEntity["msnfp_CustomerId_contact@odata.bind"] = "/contacts(" + customerGUID + ")";
+                            eEntity["msnfp_firstname"] = customerOrDonationPledge.msnfp_CustomerId_contact.firstname;
+                            eEntity["msnfp_lastname"] = customerOrDonationPledge.msnfp_CustomerId_contact.lastname;
+                        }
+
+
+                        eEntity["msnfp_emailaddress1"] = customerOrDonationPledge.msnfp_emailaddress1;
+                        eEntity["msnfp_telephone1"] = customerOrDonationPledge.msnfp_telephone1;
+                        eEntity["msnfp_billing_line1"] = customerOrDonationPledge.msnfp_billing_line1;
+                        eEntity["msnfp_billing_line2"] = customerOrDonationPledge.msnfp_billing_line2;
+                        eEntity["msnfp_billing_line3"] = customerOrDonationPledge.msnfp_billing_line3;
+                        eEntity["msnfp_billing_city"] = customerOrDonationPledge.msnfp_billing_city;
+                        eEntity["msnfp_billing_postalcode"] = customerOrDonationPledge.msnfp_billing_postalcode;
+                    }
+                    else {
+                        if (entityName == "account") {
+                            eEntity["msnfp_CustomerId_account@odata.bind"] = "/accounts(" + currentEntityGUID + ")";
+                            var name = customerOrDonationPledge.name;
+                            var nm = name.split(" ");
+                            eEntity["msnfp_firstname"] = nm[0];
+                            eEntity["msnfp_lastname"] = nm[1];
+                        }
+                        else if (entityName == "contact") {
+                            eEntity["msnfp_CustomerId_contact@odata.bind"] = "/contacts(" + currentEntityGUID + ")";
+                            eEntity["msnfp_firstname"] = customerOrDonationPledge.firstname;
+                            eEntity["msnfp_lastname"] = customerOrDonationPledge.lastname;
+                        }
+
+                        eEntity["msnfp_emailaddress1"] = customerOrDonationPledge.emailaddress1;
+                        eEntity["msnfp_telephone1"] = customerOrDonationPledge.telephone1;
+                        eEntity["msnfp_billing_line1"] = customerOrDonationPledge.address1_line1;
+                        eEntity["msnfp_billing_line2"] = customerOrDonationPledge.address1_line2;
+                        eEntity["msnfp_billing_line3"] = customerOrDonationPledge.address1_line3;
+                        eEntity["msnfp_billing_city"] = customerOrDonationPledge.address1_city;
+                        eEntity["msnfp_billing_state"] = customerOrDonationPledge.address1_stateorprovince;
+                        eEntity["msnfp_billing_country"] = customerOrDonationPledge.address1_country;
+                        eEntity["msnfp_billing_postalcode"] = customerOrDonationPledge.address1_postalcode;
+                    }
+                    var cardNo = $("#txtCardNumber").val();
+                    eEntity["msnfp_nameonfile"] = $("#txtNameOnCard").val();
+
+                    eEntity["msnfp_cclast4"] = cardNo;
+                    eEntity["msnfp_ccexpmmyy"] = $("#txtCardExpiry").val();
+                    eEntity["msnfp_ccbrandcode"] = parseInt($("#listCardType").val());
+                    eEntity["msnfp_identifier"] = RandomGuid().substring(0, 8);
+                    eEntity["msnfp_name"] = $("#listCardType option:selected").text() + " - " + cardNo.substr(cardNo.length - 4);
+                    eEntity["msnfp_type"] = 844060000;
+                    eEntity["msnfp_isreusable"] = true;
+                    if (!isNullOrUndefined(configRecord._msnfp_paymentprocessorid_value)) {
+                        eEntity["msnfp_PaymentProcessorId@odata.bind"] = "/msnfp_paymentprocessors(" + configRecord._msnfp_paymentprocessorid_value + ")";
+                    }
+
+                    var query = XrmServiceUtility.GetWebAPIUrl() + "msnfp_paymentmethods";
+                    XrmServiceUtility.CreateRecordAsync(query, eEntity, saveSuccess, errorFailure);
+
+                }
+            });
+
+            $("#btnRetry").click(function () {
+                $("#lblMsg")[0].innerText = "";
+                $(".trCard").show();
+            });
+
+            $("#btnClose").click(function () {
+                window.close();
+            });
+        });
+
+        function saveSuccess() {
+            //$("#lblMsg")[0].innerText = "Credit Card record created successfully.";
+            $('#lblMsg').append('<p>Credit Card record created successfully.</p>');
+            $("#lblMsg").css('color', 'green');
+            $(".trCard").show();
+            $("#btnCreate").hide();
+            //$("#btnClose").show();
+            $(".divloader").css('display', 'none');
+        }
+
+        function errorFailure(message) {
+            //$("#lblMsg")[0].innerText = "Process fail : " + message;
+            $('#lblMsg').append('<p>Process fail : ' + message + '</p>');
+            $("#btnCreate").hide();
+            $("#btnRetry").show();
+            $(".divloader").css('display', 'none');
+        }
+
+        function checkIt(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                status = "This field accepts numbers only."
+                return false;
+            }
+            status = "";
+            return true;
+        }
+
+        function cardnumber(inputtxt) {
+            var AE = /^(?:3[47][0-9]{13})$/;                 //Amercican Express
+            var visa = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;      //Visa
+            var MC = /^(?:5[1-5][0-9]{14})$/;                //Mastercard
+            var Dis = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/; //Discover
+            var DC = /^(?:3(?:0[0-5]|[68][0-9])[0-9]{11})$/; //Dinners Club
+
+            if (inputtxt.val().match(AE)) {
+                $(inputtxt).removeClass('red-border');
+                return true;
+            }
+            else if (inputtxt.val().match(visa)) {
+                $(inputtxt).removeClass('red-border');
+                return true;
+            }
+            else if (inputtxt.val().match(MC)) {
+                $(inputtxt).removeClass('red-border');
+                return true;
+            }
+            else if (inputtxt.val().match(Dis)) {
+                $(inputtxt).removeClass('red-border');
+                return true;
+            }
+            else if (inputtxt.val().match(DC)) {
+                $(inputtxt).removeClass('red-border');
+                return true;
+            }
+        }
+
+        function validate() {
+            var isValidate = true;
+            //$("#lblMsg")[0].innerText = '';
+            $('#lblMsg').html('');
+            //$("#lblErrorValidation")[0].innerText = '';
+            $('#lblErrorValidation').html('');
+
+            if (isNullOrUndefined($("#txtCardNumber").val()) || !cardnumber($("#txtCardNumber"))) {
+                isValidate = false;
+                $("#txtCardNumber").addClass('red-border');
+                //$("#lblErrorValidation")[0].innerText = "Please enter a valid credit card number.";
+                $('#lblErrorValidation').append('<p>Please enter a valid credit card number.</p>');
+                return;
+            }
+            else {
+                $("#txtCardNumber").removeClass('red-border');
+            }
+
+            if (isNullOrUndefined($("#txtNameOnCard").val())) {
+                isValidate = false;
+                $("#txtNameOnCard").addClass('red-border');
+                //$("#lblErrorValidation")[0].innerText = "Please enter the name of the credit/debit card.";
+                $('#lblErrorValidation').append('<p>Please enter the name of the credit/debit card.</p>');
+                return;
+            }
+            else {
+                $("#txtNameOnCard").removeClass('red-border');
+            }
+
+            if ($("#listCardType").val() === "") {
+                isValidate = false;
+                $("#listCardType").addClass('red-border');
+                //$("#lblErrorValidation")[0].innerText = "Please select Credit Card type.";
+                $('#lblErrorValidation').append('<p>Please select Credit Card type.</p>');
+                return;
+            }
+            else {
+                $("#listCardType").removeClass('red-border');
+            }
+
+            if (isNullOrUndefined($("#txtCardExpiry").val()) || !validateExpiry()) {
+                isValidate = false;
+                $("#txtCardExpiry").addClass('red-border');
+                //$("#lblErrorValidation")[0].innerText = "Please enter a valid expiry date.";
+                $('#lblErrorValidation').append('<p>Please enter a valid expiry date.</p>');
+                return;
+            }
+            else {
+                $("#txtCardExpiry").removeClass('red-border');
+            }
+
+            $('tr.mandatory input, tr.mandatory select').each(function () {
+                var $this = $(this);
+                if ($this.val() == '') {
+                    isValidate = false;
+                    $this.addClass('red-border');
+                }
+                else {
+                    $this.removeClass('red-border');
+                }
+            });
+
+            return isValidate;
+        }
+
+        function validateExpiry() {
+            //$("#lblErrorExpiry")[0].innerText = '';
+            $('#lblErrorExpiry').html('');
+
+            var currentDate = new Date();
+            var isExpValidate = true;
+            var cardExp = $('#txtCardExpiry').val();
+            var mm = parseInt(cardExp.substring(0, 2));
+            var yy = parseInt(cardExp.substring(cardExp.length - 2));
+            var currentMonth = parseInt(currentDate.getMonth() + 1);
+            var currentYear = parseInt(currentDate.getFullYear().toString().substr(-2));
+
+            if (mm > 12 || mm <= currentMonth) {
+                if (yy == currentYear && mm >= currentMonth) {
+                    isExpValidate = true;
+                }
+                else if (yy > currentYear && mm < 12) {
+                    isExpValidate = true;
+                }
+                else {
+                    //$("#lblErrorExpiry")[0].innerText = "Month value must be 1 to 12 and greater than current month.";
+                     $('#lblErrorExpiry').append('<p>Month value must be 1 to 12 and greater than current month.</p>');
+                    isExpValidate = false;
+                }
+            }
+
+            if (yy < currentYear) {
+                //$("#lblErrorExpiry")[0].innerText = "Year value must be greater than or equal to current year.";
+                $('#lblErrorExpiry').append('<p>Year value must be greater than or equal to current year.</p>');
+                isExpValidate = false;
+            }
+            return isExpValidate;
+        }
+
+        function checkLength(elem) {
+            if ($(elem)[0].id === "txtCardExpiry") {
+                if (elem.value.length < 4) {
+                    $(elem).addClass('red-border');
+                    $(elem).focus();
+                    return false;
+                }
+            }
+            else {
+                $(elem).removeClass('red-border');
+                return true;
+            }
+        }
+
+        function isNullOrUndefined(value) {
+            return (typeof (value) === "undefined" || value === null || value === "");
+        }
+
+        function RandomGuid() {
+            return s4() + s4() + '' + s4() + '' + s4() + '' +
+                s4() + '' + s4() + s4() + s4();
+        }
+
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+        }
+    </script>
+
+</body></html>

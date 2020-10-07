@@ -1,0 +1,166 @@
+<html><!--/*************************************************************************
+* © Microsoft. All rights reserved.
+*/--><head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <!--CSS-->
+    <link href="../scripts/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../scripts/jquery.dataTables.min.css" rel="stylesheet">
+
+    <!--JS-->
+    <script src="../scripts/jQuery.js" type="text/javascript"></script>
+    <script src="../scripts/common.js" type="text/javascript"></script>
+    <script src="../scripts/jquery.dataTables.min.js" type="text/javascript"></script>
+
+
+    <style type="text/css">
+
+        body {
+            font-family: SegoeUI, "Segoe UI", "Helvetica Neue",Arial,"Noto Sans",sans-serif;
+        }
+
+        .form-control {
+            display: block;
+            width: 50%;
+            z-index: 2; /*This fixes an issue where labels may overlap a text box.*/
+            min-width: 50%;
+            height: calc((1.5em + 0.75rem) + 2px);
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: rgb(73, 80, 87);
+            background-color: rgb(255, 255, 255);
+            background-clip: padding-box;
+            padding: 0.375rem 0.75rem;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(206, 212, 218);
+            border-image: initial;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+    </style>
+
+<meta></head>
+<body>
+
+
+    <table id="tblOpportunityExistingPreferences" class="table" role="presentation">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Description</th>
+                <th scope="col">Objective</th>
+            </tr>
+        </thead>
+
+        <tbody id="tbodyOpportunityExistingPreferences">
+        </tbody>
+    </table>
+
+
+    <!--Executed on load-->
+    <script type="text/javascript">
+
+        var customerID;
+        var currentPageId;
+        var prefSelect;
+        var xrm = XrmUtility.get_Xrm();
+
+        $(document).ready(function () {
+
+            // Get the customer id:
+            customerID = getLookupGuid("customerid");
+            currentPageId = xrm.Page.data.entity.getId().replace('{', '').replace('}', '');
+            prefSelect = "";
+
+            if (customerID != null) {
+                // Get the preferences based on id:
+                prefSelect = "msnfp_preferences?$select=msnfp_preferenceid,_msnfp_objectiveid_value,_msnfp_preference_opportunityid_value,statecode,msnfp_name";
+                prefSelect += "&$filter=statecode eq 0 and (_msnfp_preference_customer_value eq " + customerID + ")"; // Use the opportunity.customerid and opportunity.customeridtype to retrieve a list of related preferences to that account or contact
+            }
+            else {
+                // No customer set yet:
+                prefSelect = "msnfp_preferences?$select=msnfp_preferenceid,_msnfp_objectiveid_value,_msnfp_preference_opportunityid_value,statecode,msnfp_name";
+                prefSelect += "&$filter=statecode eq 0";
+            }
+
+            var prefs = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + prefSelect);
+
+            // Only proceed if we have the page id (not in Create state):
+            if (currentPageId != null && currentPageId.length > 0 && prefs) {
+                for (var i = 0; i < prefs.length; i++) {
+
+                    var objectiveText = "";
+
+                    // Get the objective text (if applicable):
+                    if (prefs[i]._msnfp_objectiveid_value != null) {
+                        var objSelect = "msnfp_objectives?$select=msnfp_objectiveid,msnfp_name";
+                        objSelect += "&$filter=msnfp_objectiveid eq " + prefs[i]._msnfp_objectiveid_value;
+                        var obj = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + objSelect);
+                        objectiveText = obj[0].msnfp_name;
+                    }
+
+                    // See if we show the save button or not:
+                    var opportunityPreferenceSelect = "msnfp_opportunitypreferences?$select=msnfp_opportunitypreferenceid,_msnfp_opportunityid_value,_msnfp_preferenceid_value";
+                    opportunityPreferenceSelect += "&$filter=(_msnfp_opportunityid_value eq " + currentPageId + " and _msnfp_preferenceid_value eq " + prefs[i].msnfp_preferenceid + ")";
+                    var opportunityPreferences = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + opportunityPreferenceSelect);
+
+                    // Show With Save:
+                    if (opportunityPreferences == null) {
+                        $("#tbodyOpportunityExistingPreferences").append('' +
+                            '<tr class="tr_clone">' +                            
+                            '<td><i id=\'addExistingPref' + prefs[i].msnfp_preferenceid + '\' onclick="addExistingPreference(\'' + prefs[i].msnfp_preferenceid + '\')" class="fa fa-arrow-left fa-2" title="Add to this Opportunity" style="font-size: 24px;color:#243a5e;cursor: pointer;" role="button" tabindex="0"></i></td>' +
+                            '<th scope="row" title="' + prefs[i].msnfp_name +'" tabindex="0" >' + prefs[i].msnfp_name + '</th>' +
+                            '<td title="' + objectiveText +'" tabindex="0">' + objectiveText + '</td>' +
+                            '</tr>');
+                    }
+                    // Show Without Save:
+                    else {
+                        $("#tbodyOpportunityExistingPreferences").append('' +
+                            '<tr class="tr_clone">' +
+                            '<td><i class="fa fa-check" style="font-size: 24px;color:#243a5e;" title="Already Added to this Opportunity" aria-hidden="true"></i></td>' +
+                            '<th scope="row" title="' + prefs[i].msnfp_name +'" tabindex="0" >' + prefs[i].msnfp_name + '</th>' +
+                            '<td title="' + objectiveText +'" tabindex="0">' + objectiveText + '</td>' +
+                            '</tr>');
+                    }
+                }
+            }
+
+        });
+
+        // Use case:
+        // If a preference is not already associated to the opportunity record using the “Opportunity Preference” entity which acts as a linking entity that ties the opportunity to the preference, a green arrow appears allowing the user to add it to the list. In doing so creates an “Opportunity Preference” record with the correct details.
+        function addExistingPreference(prefId) {
+            // Add the preference to this opportunity by creating an “Opportunity Preference” record:
+            var newOpportunityPreference = {};
+            newOpportunityPreference["msnfp_PreferenceId@odata.bind"] = "/msnfp_preferences(" + prefId + ")";
+            newOpportunityPreference["msnfp_OpportunityId@odata.bind"] = "/opportunities(" + currentPageId + ")";
+
+            if (prefId != null && currentPageId != null) {
+                var qry = XrmServiceUtility.GetWebAPIUrl() + "msnfp_opportunitypreferences";
+                XrmServiceUtility.CreateRecord(qry, newOpportunityPreference);
+                console.log("Saved successfully.");
+                $("#addExistingPref" + prefId).replaceWith('<i class="fa fa-check" style="font-size: 24px;color:#243a5e;" aria-hidden="true"></i>');
+                // refresh the OpportunityPreferences iframe
+                //setSrc() was not working in Unified Interface. So used different way. https://github.com/MicrosoftDocs/dynamics-365-customer-engagement/issues/912
+                var url = xrm.Page.getControl("WebResource_OpportunityPreferences").getObject().src;
+                console.log(url);
+                xrm.Page.getControl("WebResource_OpportunityPreferences").getObject().src = url;
+            }
+        }
+
+        function getLookupGuid(fieldName) {
+            var field = xrm.Page.data.entity.attributes.get(fieldName);
+            if (field != null && field.getValue() != null) {
+                return xrm.Page.data.entity.attributes.get(fieldName).getValue()[0].id.replace('{', '').replace('}', '');
+            }
+            return null;
+        }
+
+    </script>
+
+
+</body></html>

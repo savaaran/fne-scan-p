@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{0848da0d-6ce4-e911-a812-000d3a0c8cd2}</WebResourceId>
+  <Name>msnfp_/webpages/opportunitystages.html</Name>
+  <DisplayName>Opportunity Stages HTML</DisplayName>
+  <Description>Opportunity Stages HTML</Description>
+  <LanguageCode>1033</LanguageCode>
+  <WebResourceType>1</WebResourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <DependencyXml>&lt;Dependencies&gt;&lt;Dependency componentType="WebResource"/&gt;&lt;/Dependencies&gt;</DependencyXml>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/msnfp_webpagesopportunitystageshtml0848DA0D-6CE4-E911-A812-000D3A0C8CD2</FileName>
+</WebResource>

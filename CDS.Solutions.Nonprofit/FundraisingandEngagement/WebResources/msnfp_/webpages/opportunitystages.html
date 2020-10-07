@@ -1,0 +1,143 @@
+<html><!--/*************************************************************************
+* © Microsoft. All rights reserved.
+*/--><head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <!--CSS-->
+    <link href="../scripts/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../scripts/jquery.dataTables.min.css" rel="stylesheet">
+
+    <!--JS-->
+    <script src="../scripts/jQuery.js" type="text/javascript"></script>
+    <script src="../scripts/common.js" type="text/javascript"></script>
+    <script src="../scripts/jquery.dataTables.min.js" type="text/javascript"></script>
+
+    <style type="text/css">
+
+        body {
+            font-family: SegoeUI, "Segoe UI", "Helvetica Neue",Arial,"Noto Sans",sans-serif;
+        }
+
+        .form-control {
+            display: block;
+            width: 50%;
+            z-index: 2; /*This fixes an issue where labels may overlap a text box.*/
+            min-width: 50%;
+            height: calc((1.5em + 0.75rem) + 2px);
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: rgb(73, 80, 87);
+            background-color: rgb(255, 255, 255);
+            background-clip: padding-box;
+            padding: 0.375rem 0.75rem;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(206, 212, 218);
+            border-image: initial;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+    </style>
+
+<meta></head>
+<body>
+
+
+    <table id="tblOpportunityStages" class="table" tabindex="0" role="presentation">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col" tabindex="1">Stage Name</th>
+                <th scope="col" tabindex="2">Started</th>
+                <th scope="col" tabindex="3">Finished</th>
+                <th scope="col" tabindex="4">Days in Stage</th>
+                <th scope="col" tabindex="5">Appointments</th>
+                <th scope="col" tabindex="6">Emails</th>
+                <th scope="col" tabindex="7">Letters</th>
+                <th scope="col" tabindex="8">Phone Calls</th>
+                <th scope="col" tabindex="9">Tasks</th>
+                <th scope="col" tabindex="10">Total Activities</th>
+            </tr>
+        </thead>
+
+        <tbody id="tbodyOpportunityStages">
+        </tbody>
+    </table>
+
+
+    <!--Executed on load-->
+    <script type="text/javascript">
+
+        var currentPageId;
+        var stageSelect;
+        var xrm = XrmUtility.get_Xrm();
+
+        $(document).ready(function () {
+
+            // Get the current page Id:
+            currentPageId = xrm.Page.data.entity.getId().replace('{', '').replace('}', '');
+            stageSelect = "";
+
+            // Only proceed if we have the page id (not in Create state):
+            if (currentPageId != null && currentPageId.length > 0) {
+                PopulateTheTable();
+            }
+
+        });
+
+        function PopulateTheTable() {
+
+            $("#tbodyOpportunityStages").empty();
+
+            // Get the stages based on id:
+            stageSelect = "msnfp_opportunitystages?$select=msnfp_opportunitystageid,msnfp_stagename,msnfp_appointments,createdon,msnfp_daysinstage,msnfp_emails,msnfp_startedon,msnfp_finishedon,msnfp_letters,msnfp_phonecalls,_msnfp_opportunityid_value,statecode,msnfp_tasks,msnfp_totalactivities";
+            stageSelect += "&$filter=_msnfp_opportunityid_value eq " + currentPageId + "&$orderby=createdon";
+
+            var stages = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + stageSelect);
+
+            if (stages != null) {
+                var j = 10;
+                for (var i = 0; i < stages.length; i++) {
+                   
+                    if (stages[i].msnfp_finishedon != null) {
+                        $("#tbodyOpportunityStages").append('' +
+                            '<tr class="tr_clone">' +
+                            '<th scope="row"  tabindex="' + (j + 1) +'">' + stages[i].msnfp_stagename + '</th>' +
+                            '<td tabindex="' + (j + 2) +'">' + stages[i].msnfp_startedon.split("T")[0] + '</td>' +
+                            '<td tabindex="' + (j + 3) + '">' + stages[i].msnfp_finishedon.split("T")[0] + '</td>' +
+                            '<td tabindex="' + (j + 4) + '">' + stages[i].msnfp_daysinstage + '</td>' +
+                            '<td tabindex="' + (j + 5) + '">' + stages[i].msnfp_appointments + '</td>' +
+                            '<td tabindex="' + (j + 6) + '">' + stages[i].msnfp_emails + '</td>' +
+                            '<td tabindex="' + (j + 7) + '">' + stages[i].msnfp_letters + '</td>' +
+                            '<td tabindex="' + (j + 8) + '">' + stages[i].msnfp_phonecalls + '</td>' +
+                            '<td tabindex="' + (j + 9) + '">' + stages[i].msnfp_tasks + '</td>' +
+                            '<td tabindex="' + (j + 10) + '">' + stages[i].msnfp_totalactivities + '</td>' +
+                            '</tr>');
+                    }
+                    else {
+                        $("#tbodyOpportunityStages").append('' +
+                            '<tr class="tr_clone">' +
+                            '<th scope="row" tabindex="' + (j + 1) + '">' + stages[i].msnfp_stagename + '</th>' +
+                            '<td tabindex="' + (j + 2) +'">' + stages[i].msnfp_startedon.split("T")[0] + '</td>' +
+                            '<td tabindex="' + (j + 3) +'"></td>' +
+                            '<td tabindex="' + (j + 4) +'"></td>' +
+                            '<td tabindex="' + (j + 5) + '">' + stages[i].msnfp_appointments + '</td>' +
+                            '<td tabindex="' + (j + 6) + '">' + stages[i].msnfp_emails + '</td>' +
+                            '<td tabindex="' + (j + 7) + '">' + stages[i].msnfp_letters + '</td>' +
+                            '<td tabindex="' + (j + 8) + '">' + stages[i].msnfp_phonecalls + '</td>' +
+                            '<td tabindex="' + (j + 9) + '">' + stages[i].msnfp_tasks + '</td>' +
+                            '<td tabindex="' + (j + 10) + '">' + stages[i].msnfp_totalactivities + '</td>' +
+                            '</tr>');
+                    }
+                    j = j + 10;
+
+                }
+            }
+        }
+
+    </script>
+
+
+</body></html>

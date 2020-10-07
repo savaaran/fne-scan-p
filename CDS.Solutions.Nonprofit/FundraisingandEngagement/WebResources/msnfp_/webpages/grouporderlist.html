@@ -1,0 +1,355 @@
+<html><!--/*************************************************************************
+* © Microsoft. All rights reserved.
+*/--><head>
+    <title></title>
+    <meta charset="utf-8">
+
+    <link href="../scripts/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="../scripts/rowReorder.dataTables.min.css" rel="stylesheet">
+
+    <script src="../scripts/jQuery.js" type="text/javascript"></script>
+    <script src="../scripts/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="../scripts/dataTables.rowReorder.min.js" type="text/javascript"></script>
+    <script src="../scripts/common.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        table.dataTable thead .sorting,
+        table.dataTable thead .sorting_asc,
+        table.dataTable thead .sorting_desc {
+            background: none;
+        }
+
+        .divloader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            background: lightgrey;
+            opacity: 0.8;
+            filter: alpha(opacity=40);
+            z-index: 2000;
+            margin-top: -8px;
+            margin-left: -8px;
+        }
+
+        .zeroPadding {
+            padding-left: 0px !important;
+        }
+
+        #lblMsg {
+            font-family: Segoe UI,Tahoma,Arial;
+            font-size: 12px;
+            margin-left: 3%;
+            color: #243a5e;
+            font-weight: bold;
+        }
+
+        .main-button:hover {
+            cursor: pointer !important;
+            color: white !important;
+            border: 1px solid #243a5e !important;
+            background-color: #243a5e !important;
+        }
+
+        .main-button {
+            text-align: center !important;
+            text-shadow: none !important;
+            border: 1px solid #b4b4b4 !important;
+            background-color: #cccccc !important;
+            -webkit-transition: all 0.1s ease-in-out !important;
+            -moz-transition: all 0.1s ease-in-out !important;
+            -ms-transition: all 0.1s ease-in-out !important;
+            -o-transition: all 0.1s ease-in-out !important;
+            transition: all 0.1s ease-in-out !important;
+            padding: 5px 6px 3px 6px !important;
+            font-family: 'Hind', sans-serif !important;
+            font-weight: bolder !important;
+            text-transform: uppercase !important;
+            font-size: 14px !important;
+            color: #243a5e !important;
+            cursor: pointer !important;
+            border-radius: 0px !important;
+            background-clip: initial !important;
+            margin: 0 !important;
+            margin-top: 0px !important;
+            line-height: unset !important;
+            margin-right: 5px !important;
+            white-space: nowrap !important;
+        }
+
+            .main-button:hover {
+                cursor: pointer !important;
+                color: white !important;
+                border: 1px solid #243a5e !important;
+                background-color: #243a5e !important;
+            }
+
+            .main-button .button-icon {
+                margin-left: 10px;
+                text-rendering: optimizeLegibility;
+            }
+    </style>
+    <meta>
+<meta></head>
+<body>
+    <div class="divloader" id="ajaxLoader">
+        <img id="ajax-loader" src="../images/ajaxloader.gif" style="margin:35% 47%; display: block;">
+    </div>
+    <div>
+        <table id="orderList" class="table stripe hover" style="font-family: 'Segoe UI', Calibri; font-weight: normal; font-size: 12px; width: 95%;">
+            <thead>
+                <tr>
+                    <th style="text-align: center;" tabindex="0">Order</th>
+                    <th style="text-align: center;" tabindex="0">Membership Group</th>
+                    <th style="text-align: center;" tabindex="0">Sorting</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div>
+            <input type="button" id="btnSave" class="main-button" value="Save" role="button" style="margin-right: 3%;">
+            <input type="button" id="btnClose" class="main-button" value="Close" role="button" style="margin-right: 3%;">
+            <br>
+            <label id="lblMsg" role="alert"></label>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var orderList;
+        var query;
+        var result = [];
+        var xrm;
+        var currentRecordID;
+        var i = 1;
+        var imageList = [];
+
+        $(document).ready(function () {
+            getParameters();
+
+            xrm = XrmUtility.get_Xrm();
+            orderList = $('#orderList').DataTable({
+                "pagingType": "numbers",
+                "paging": true,
+                "searching": false,
+                "lengthChange": false,
+                "info": false,
+                "pageLength": 5,
+                "rowReorder": true,
+                "createdRow": function (row, data, dataIndex) {
+                    $(row).attr('id', 'row-' + dataIndex);
+                },
+                "columnDefs": [
+                    { "className": "dt-center", "width": "10%", "targets": 0 },
+                    { "className": "zeroPadding", "width": "70%", "targets": 1 },
+                    { "className": "dt-center", "width": "20%", "targets": 2 },
+                ],
+            });
+
+            loadOrderList();
+        });
+
+        $('#btnSave').click(function () {
+            saveRowReordering();
+        });
+
+        $('#btnClose').click(function () {
+            window.close();
+            parent.close();
+        });
+
+        // Sort Up:
+        $("body").on('click', 'i.btnIncreaseOrder', function () {
+            // Change the DOM:
+            var row = $(this).parents("tr:first");
+            row.insertBefore(row.prev());
+
+            // Change the DataTable:
+            var dt = $("#orderList").DataTable();
+            let ordering = dt.rows()[0];
+
+            let thisId = $(this).attr('data-id');
+
+            if (thisId != "0") {
+                for (var i = 0; i < ordering.length; i++) {
+                    if (ordering[i] == thisId) {
+                        // Save the old value:
+                        let otherId = ordering[(i - 1)];
+                        // Move up this value to that spot:
+                        ordering[(i - 1)] = thisId;
+                        // Move the old value to the below spot:
+                        ordering[i] = otherId;
+                        break;
+                    }
+                }
+                $('#lblMsg').html('');
+                $('#lblMsg').append('<p>Saving Changes.</p>');
+
+                let api = XrmServiceUtility.GetWebAPIUrl();
+                for (var i = 0; i < result.length; i++) {
+                    var qry = api + "msnfp_membershiporders(" + result[ordering[i]].id + ")";
+                    XrmServiceUtility.UpdateRecord(qry, { msnfp_order: i + 1 });
+                }
+
+                $('#lblMsg').html('');
+                $('#lblMsg').append('<p>Reordering Saved Successfully. Refreshing the Form.</p>');
+
+                setTimeout(function () {
+                    location.reload();
+                }, 3500);
+            }
+            else {
+                $('#lblMsg').html('');
+                $('#lblMsg').append('<p>Cannot increase the top sorted item.</p>');
+            }
+        });
+
+        // Sort Down:
+        $("body").on('click', 'i.btnDecreaseOrder', function () {
+            // Change the DOM:
+            var row = $(this).parents("tr:first");
+            row.insertAfter(row.next());
+
+            // Change the DataTable:
+            var dt = $("#orderList").DataTable();
+            let ordering = dt.rows()[0];
+
+            let thisId = $(this).attr('data-id');
+
+            if (thisId != (ordering.length - 1)) {
+                for (var i = 0; i < ordering.length; i++) {
+                    if (ordering[i] == thisId) {
+                        // Save the old value:
+                        let otherId = ordering[(i + 1)];
+                        // Move up this value to that spot:
+                        ordering[(i + 1)] = thisId;
+                        // Move the old value to the above spot:
+                        ordering[i] = otherId;
+                        break;
+                    }
+                }
+                $('#lblMsg').html('');
+                $('#lblMsg').append('<p>Saving Changes.</p>');
+
+                let api = XrmServiceUtility.GetWebAPIUrl();
+                for (var i = 0; i < result.length; i++) {
+                    var qry = api + "msnfp_membershiporders(" + result[ordering[i]].id + ")";
+                    XrmServiceUtility.UpdateRecord(qry, { msnfp_order: i + 1 });
+                }
+
+                $('#lblMsg').html('');
+                $('#lblMsg').append('<p>Reordering Saved Successfully. Refreshing the Form.</p>');
+
+                setTimeout(function () {
+                    location.reload();
+                }, 3500);
+            }
+            else {
+                $('#lblMsg').html('');
+                $('#lblMsg').append('<p>Cannot decrease the last sorted item.</p>');
+            }
+        });
+
+        function saveRowReordering() {
+            $('#lblMsg').html('');
+            $('#lblMsg').append('<p>Saving Changes.</p>');
+
+            var dt = $("#orderList").DataTable();
+            let ordering = dt.rows()[0];
+            let api = XrmServiceUtility.GetWebAPIUrl();
+            for (var i = 0; i < result.length; i++) {
+                var qry = api + "msnfp_membershiporders(" + result[ordering[i]].id + ")";
+                XrmServiceUtility.UpdateRecord(qry, { msnfp_order: i + 1 });
+            }
+
+            $('#lblMsg').html('');
+            $('#lblMsg').append('<p>Reordering Saved Successfully. Refreshing the Form.</p>');
+
+            setTimeout(function () {
+                location.reload();
+            }, 3500);
+        }
+
+        function loadOrderList() {
+            var goQuery = "msnfp_membershiporders?";
+            goQuery += "$select=msnfp_membershiporderid,_msnfp_frommembershipid_value,_msnfp_tomembershipgroupid_value,msnfp_order&$orderby=msnfp_order asc&";
+            goQuery += "$filter=_msnfp_tomembershipgroupid_value eq " + currentRecordID;
+            var goResult = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + goQuery);
+
+            $(goResult).each(function (index) {
+                if (!isNullOrUndefined(this._msnfp_frommembershipid_value)) {
+                    var msQuery = "msnfp_membershipcategories?";
+                    msQuery += "$select=msnfp_membershipcategoryid,msnfp_name";
+                    msQuery += "&$filter=msnfp_membershipcategoryid eq " + this._msnfp_frommembershipid_value;
+                    var msResult = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + msQuery);
+
+                    var membershipName = "";
+
+                    var lblGroupOrderID = "<span tabindex='0' aria-label='Category Order' class='lblGroupOrderID' id='" +
+                        this.msnfp_membershiporderid + "' >" + (index + 1) + "</span>";
+
+                    if (!isNullOrUndefined(msResult) && !isNullOrUndefined(msResult[0].msnfp_name))
+                        membershipName = "<span tabindex='0' aria-label='Membership Category'>" + msResult[0].msnfp_name + "</span>";
+
+                    var sortButtons = '<i class="btnIncreaseOrder fa fa-plus-circle fa-2" data-id="' + index + '" style="font-size: 24px; color:#243a5e; cursor: pointer; " role="button" title="Increase Sort Order" tabindex="0"></i> &nbsp; <i class="btnDecreaseOrder fa fa-minus-circle fa-2" data-id="' + index + '" style="font-size: 24px;color:#db3923;cursor: pointer;" role="button" title="Decrease Sort Order" tabindex="0"></i>';
+
+
+                    result.push({ id: this.msnfp_membershiporderid, name: membershipName });
+
+                    orderList.row.add([
+                        lblGroupOrderID,
+                        membershipName,
+                        sortButtons
+                    ]).draw(false);
+                    i++;
+                }
+            });
+
+            $(".divloader").css('display', 'none');
+        }
+
+        function getParameters() {
+            currentRecordID = getDataParam("entityGUID");
+        }
+
+        function getDataParam(keyToFind) {
+            //Get the any query string parameters and load them
+            //into the vals array
+            var vals = new Array();
+            var found = false;
+            if (location.search != "") {
+                vals = decodeURIComponent(location.search).substr(1).split("&");
+                for (var i in vals) {
+                    vals[i] = vals[i].replace(/\+/g, " ").split("=");
+                }
+                // Look for the Dynamics 365 parameter named 'data'
+                for (var i in vals) {
+                    if (vals[i][0].toLowerCase() == "data") {
+                        var paramvals = new Array();
+                        // From the 'data' string, get the parameters into a new array seperated by & symbol:
+                        paramvals = decodeURIComponent(vals[i][1]).split("&");
+                        for (var i in paramvals) {
+                            // For each parameter, split it on '=' symbol to get key-value pairs:
+                            paramvals[i] = paramvals[i].replace(/\+/g, " ").split("=");
+
+                            // If this is the keyToFind, return the value and exit:
+                            if (paramvals[i][0].toLowerCase() == keyToFind.toLowerCase()) {
+                                found = true;
+                                return paramvals[i][1];
+                            }
+                        }
+                    }
+                }
+            }
+            if (!found) {
+                alert("No data parameter was passed to this page. Please try again.")
+                return null;
+            }
+        }
+
+        function isNullOrUndefined(value) {
+            return (typeof (value) === "undefined" || value === null || value === "");
+        }
+
+    </script>
+
+
+</body></html>

@@ -1,0 +1,631 @@
+<html><!--/*************************************************************************
+* © Microsoft. All rights reserved.
+*/--><head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <!--CSS-->
+    <link href="../scripts/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="../scripts/common.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../scripts/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="../scripts/jquery_ui.css" rel="stylesheet">
+
+    <!--JS-->
+    <script src="../scripts/jQuery.js" type="text/javascript"></script>
+    <script src="../scripts/common.js" type="text/javascript"></script>
+    <script src="../scripts/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="../scripts/jquery_ui.js" type="text/javascript"></script>
+
+
+    <style type="text/css">
+
+        body {
+            font-family: SegoeUI, "Segoe UI", "Helvetica Neue",Arial,"Noto Sans",sans-serif;
+        }
+
+        .form-control {
+            display: block;
+            width: 50%;
+            z-index: 2; /*This fixes an issue where labels may overlap a text box.*/
+            min-width: 50%;
+            height: calc((1.5em + 0.75rem) + 2px);
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: rgb(73, 80, 87);
+            background-color: rgb(255, 255, 255);
+            background-clip: padding-box;
+            padding: 0.375rem 0.75rem;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(206, 212, 218);
+            border-image: initial;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        .table td, .table th {
+            min-width: 80px;
+        }
+
+        .ui-autocomplete {
+            max-height: 100px;
+            overflow-y: auto;
+            /* prevent horizontal scrollbar */
+            overflow-x: hidden;
+        }
+        /* IE 6 doesn't support max-height
+           * we use height instead, but this forces the menu to always be this tall
+           */
+        * html .ui-autocomplete {
+            height: 100px;
+        }
+
+        #tbodyOpportunityReportingPlan textarea {
+            min-height: calc((1.5em + 0.75rem) + 2px);
+            height: calc((1.5em + 0.75rem) + 2px);
+        }
+    </style>
+
+<meta></head>
+<body>
+
+
+    <table id="tblOpportunityReportingPlan" class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Due Date</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Type</th>
+                <th scope="col">Objective</th>
+                <th scope="col">Responsibility</th>
+                <th scope="col">Status</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+
+        <tbody id="tbodyOpportunityReportingPlan">
+        </tbody>
+    </table>
+
+
+    <!--Executed on load-->
+    <script type="text/javascript">
+
+        var customerID;
+        var customerType;
+        var currentPageId;
+        var userSettings;
+        var userNameList = [];
+        var userIdNameDictionary = {};
+        var selectedUserId = '';
+        var objectivesSelectHTML = '<select class="objectiveText ddlNewObjective form-control" aria-label="Objective" title="Objective" style="width:100%;min-width:100px;">';
+        var typeSelectHTML = '<select class="typeText ddlNewType form-control" aria-label="Type" title="Type" style="width:100%;min-width:100px;">';
+        var reportStatusReasonsSelectHTML = '<select class="statusText ddlNewStatus form-control" aria-label="Status" title="Status" style="width:100%;min-width:120px;">';
+        var reportResponsibleUsers = '<select class="responsibleUser ddlResponsibleUsers form-control" aria-label="Responsible User" title="Responsible User" style="width:90%;min-width:120px;">'
+        var currentReportId = ""; // use this var to handle detele Opportunity report function
+        var xrm = XrmUtility.get_Xrm();
+
+        $(document).ready(function () {
+
+            // Get the customer info:
+            customerID = MissionFunctions.GetLookupGuid("customerid");
+            if (xrm.Page.data.entity.attributes.get("customerid") !== null && xrm.Page.data.entity.attributes.get("customerid") !== undefined)
+                customerType = xrm.Page.data.entity.attributes.get("customerid").getValue()[0].entityType;
+            currentPageId = xrm.Page.data.entity.getId().replace('{', '').replace('}', '');
+
+            jQuery.ajax({
+                url: `${parent.Xrm.Page.context.getClientUrl()}/api/data/v9.1/usersettingscollection(${MissionFunctions.GetCurrentUserID()})`,
+                success: function (result) {
+                    userSettings = result;
+                },
+                async: false
+            });
+
+            $(document).on('focus', ".txtNewDueDate", function () {
+                if ($(this).hasClass('hasdatepicker') === false) {
+                    $(this).datepicker({
+                        dateformat: 'mm/dd/yy',
+                    });
+                }
+            });
+
+            // Populate the list of users:
+            var fetchXML = encodeURI("<fetch distinct='true'>" +
+                "<entity name='systemuser'>" +
+                "<attribute name='fullname'/>" +
+                "<attribute name='systemuserid'/>" +
+                "<order attribute='fullname' />" +
+                "<link-entity name='systemuserroles' from='systemuserid' to='systemuserid' link-type='inner' intersect='true'>" +
+                "<link-entity name='role' from='roleid' to='roleid' link-type='inner'>" +
+                "<filter type='or'>" +
+                "<condition attribute='name' operator='eq' value='system administrator'/>" +
+                "<condition attribute='name' operator='like' value='%FundraisingandEngagement%'/>" +
+                "</filter>" +
+                "</link-entity>" +
+                "</link-entity>" +
+                "</entity>" +
+                "</fetch>");
+
+            xrm.WebApi.retrieveMultipleRecords("systemuser", "?fetchXml=" + fetchXML).then(function (result) {
+                reportResponsibleUsers += " <option value='1'></option>";
+
+                for (var i = 0; i < result.entities.length; i++) {
+                    console.log(result.entities[i].fullname + " " + result.entities[i].systemuserid);
+                    userNameList.push(result.entities[i].fullname);
+                    userIdNameDictionary[result.entities[i].systemuserid] = result.entities[i].fullname;
+                    reportResponsibleUsers += " <option value='" + result.entities[i].systemuserid + "'>" + result.entities[i].fullname + "</option>";
+                }
+
+                reportResponsibleUsers += "</select>";
+
+                userNameList.sort();
+
+            }, function (error) {
+                console.error(error);
+            }).then(function (result) {
+                getStatusAttributeMetadata("msnfp_report", function (allReportStatusReasons) {
+                    // Only proceed if we have the page id (not in Create state):
+                    if (currentPageId != null && currentPageId.length > 0) {
+                        // Get all the reports for this opportunity:
+                        var select = "msnfp_reports?$select=msnfp_reportid,msnfp_duedate,msnfp_name,msnfp_description,msnfp_type,_ownerid_value,statuscode,_msnfp_opportunityid_value,_msnfp_objectiveid_value";
+                        select += "&$filter=(_msnfp_opportunityid_value eq " + currentPageId + ")";
+
+                        var reports = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + select);
+
+                        if (reports !== null && reports !== undefined) {
+                            console.log("reports = " + reports);
+                            console.log("reports = " + reports.length);
+                            console.log("reports[0].ownerid = " + reports[0].ownerid);
+
+                            for (var i = 0; i < reports.length; i++) {
+
+                                var typeText = "";
+                                var statusText = "";
+                                var objectiveText = "";
+
+                                // Get the objective text (if applicable):
+                                if (reports[i].msnfp_type != null) {
+
+                                    // Filtering by Attributes breaks here for some reason, so we do that below:
+                                    var objSelect2 = "EntityDefinitions(LogicalName='msnfp_report')/Attributes/Microsoft.Dynamics.CRM.PicklistAttributeMetadata?$select=LogicalName&$expand=OptionSet($select=Options),GlobalOptionSet($select=Options)";
+                                    //objSelect += "&$filter=msnfp_objectiveid eq " + reports[i]._msnfp_objectiveid_value;
+                                    var obj2 = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + objSelect2);
+                                    //objectiveText = obj[0].msnfp_name;
+
+                                    for (var j = 0; j < obj2.length; j++) {
+                                        console.log("obj2[j].LogicalName = " + obj2[j].LogicalName);
+                                        if (obj2[j].LogicalName == "msnfp_type") {
+
+                                            // Now look through the options and compare to the GUID we have. If it matches assign and move on:
+                                            for (var k = 0; k < obj2[j].OptionSet.Options.length; k++) {
+                                                if (obj2[j].OptionSet.Options[k].Value == reports[i].msnfp_type) {
+                                                    typeText = obj2[j].OptionSet.Options[k].Label.LocalizedLabels[0].Label;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                // Get the status reason for this report:
+                                for (var j = 0; j < allReportStatusReasons.OptionSet.Options.length; j++) {
+                                    console.log(allReportStatusReasons.OptionSet.Options[j].Label.LocalizedLabels[0].Label);
+                                    if (reports[i].statuscode == allReportStatusReasons.OptionSet.Options[j].Value) {
+                                        statusText = allReportStatusReasons.OptionSet.Options[j].Label.LocalizedLabels[0].Label
+                                    }
+                                }
+
+                                // Clear out the name field:
+                                var reportName = reports[i].msnfp_name;
+
+                                if (reportName == null || reportName === "null") {
+                                    reportName = "";
+                                }
+
+                                // Clear out the desc field:
+                                var desc = reports[i].msnfp_description;
+
+                                if (desc == null || desc === "null") {
+                                    desc = "";
+                                }
+
+                                // Clear out the date field:
+                                var rDueDate = "";
+
+                                if (reports[i].msnfp_duedate != null) {
+                                    rDueDate = DSTOffsetYYYYMMDD(reports[i].msnfp_duedate);
+                                }
+
+                                // Get the objective text (if applicable):
+                                if (reports[i]._msnfp_objectiveid_value != null) {
+                                    var objSelect = "msnfp_objectives?$select=msnfp_objectiveid,msnfp_name";
+                                    objSelect += "&$filter=msnfp_objectiveid eq " + reports[i]._msnfp_objectiveid_value;
+                                    var obj = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + objSelect);
+                                    objectiveText = obj[0].msnfp_name;
+                                }
+
+                                // Note we can save an API call here by using the existing userIdNameDictionary of values for the assigned user.
+                                $("#tbodyOpportunityReportingPlan").append('' +
+                                    '<tr class="tr_clone" data-id="' + reports[i].msnfp_reportid + '">' +
+                                    '<td class="reportDate">' + rDueDate + '</td>' +
+                                    '<td class="reportName">' + reportName + '</td>' +
+                                    '<td class="desc">' + desc + '</td>' +
+                                    '<td class="typeText">' + typeText + '</td>' +
+                                    '<td class="objectiveText">' + objectiveText + '</td>' +
+                                    '<td class="responsibleUser">' + userIdNameDictionary[reports[i]._ownerid_value] + '</td>' +
+                                    '<td class="statusText">' + statusText + '</td>' +
+                                    '<td><i class="btnEditReport fa fa-edit fa-2" style="font-size: 24px;color: #ffb900;cursor: pointer;" aria-hidden="true"></i><i class="btnDeleteReport fa fa-trash" aria-hidden="true" style="font-size: 24px;color: #d83b01;cursor: pointer;margin-left: 10px;"></i></td>' +
+                                    '</tr>');
+                            }
+                        }
+                    }
+
+                    // --------------------------------------------Populate the info used by every new row addition
+                    // Get the objective select box info:
+                    var objSelect = "msnfp_objectives?$select=msnfp_objectiveid,msnfp_name,statecode";
+                    objSelect += "&$filter=statecode eq 0";
+                    var objs = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + objSelect);
+
+                    if (objs && objs.length > 0) {
+                        for (var i = 0; i < objs.length; i++) {
+                            objectivesSelectHTML += " <option value='" + objs[i].msnfp_objectiveid + "'>" + objs[i].msnfp_name + "</option>";
+                        }
+                    }
+
+                    objectivesSelectHTML += "</select>";
+
+                    // Get the type select box info:
+                    var typeSelect = "EntityDefinitions(LogicalName='msnfp_report')/Attributes/Microsoft.Dynamics.CRM.PicklistAttributeMetadata?$select=LogicalName&$expand=OptionSet($select=Options),GlobalOptionSet($select=Options)";
+                    var attributes = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + typeSelect);
+
+                    // Now we get the types and add them to the select:
+                    for (var j = 0; j < attributes.length; j++) {
+                        if (attributes[j].LogicalName == "msnfp_type") {
+                            for (var k = 0; k < attributes[j].OptionSet.Options.length; k++) {
+                                typeSelectHTML += " <option value='" + attributes[j].OptionSet.Options[k].Value + "'>" + attributes[j].OptionSet.Options[k].Label.LocalizedLabels[0].Label + "</option>";
+                            }
+                        }
+                    }
+
+                    typeSelectHTML += "</select>";
+
+
+                    // The status select html:
+                    var reportStatusReasons = allReportStatusReasons
+
+                    for (var i = 0; i < reportStatusReasons.OptionSet.Options.length; i++) {
+                        // Ensure we select active status reasons:
+                        if (reportStatusReasons.OptionSet.Options[i].State == 0) {
+                            reportStatusReasonsSelectHTML += " <option value='" + reportStatusReasons.OptionSet.Options[i].Value + "'>" + reportStatusReasons.OptionSet.Options[i].Label.LocalizedLabels[0].Label + "</option>";
+                        }
+                    }
+
+                    reportStatusReasonsSelectHTML += "</select>";
+
+                    // --------------------------------------------End of Populate the info used by every new row addition
+
+                    addNewRow();
+                });
+            });
+        });
+
+
+        // Clicking the add button:
+        $("body").on('click', 'i.btnSaveNewReport', function () {
+            if (customerID == null) {
+                return;
+            }
+            var thisRow = $(this).closest('tr')[0];
+            selectedUserId = $(thisRow).find('select.ddlResponsibleUsers').val();
+
+            if (selectedUserId == null || selectedUserId == "" || selectedUserId === "1") {
+                var confirmStrings = { text: "Please select a responsible user for this report.", title: "Responsible User Required" };
+                var confirmOptions = { height: 200, width: 450 };
+                xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
+                    function (success) {
+                        if (success.confirmed)
+                            console.log("Dialog closed using OK button.");
+                        else
+                            console.log("Dialog closed using Cancel button or X.");
+                    });
+            }
+            else {
+                // Keep the values as variables in case we need to do more validation in the future:
+                var duedate = $(thisRow).find('input.txtNewDueDate').val();
+                var title = $(thisRow).find('input.txtNewTitle').val();
+                var description = $(thisRow).find('textarea.txtareaNewDescription').val();
+
+                var type = $(thisRow).find('select.ddlNewType').val();
+                var typeLabel = $(thisRow).find('select.ddlNewType option:selected').text();
+
+                var objective = $(thisRow).find('select.ddlNewObjective').val();
+                var objectiveLabel = $(thisRow).find('select.ddlNewObjective option:selected').text();
+
+                var responsibility = $(thisRow).find('select.ddlResponsibleUsers').val();
+                var responsibilityLabel = $(thisRow).find('select.ddlResponsibleUsers option:selected').text();
+
+                var status = $(thisRow).find('select.ddlNewStatus').val();
+                var statusLabel = $(thisRow).find('select.ddlNewStatus option:selected').text();
+
+                //var report = $(thisRow).find('i.btnSaveNewReport').val();
+
+                // Now we make the previous row non-editable:
+                $(thisRow).find('input.txtNewDueDate').replaceWith(duedate).addClass("reportDate");
+                //$(thisRow).find('input.txtNewDueDate')
+                $(thisRow).find('input.txtNewTitle').replaceWith(title);
+                $(thisRow).find('textarea.txtareaNewDescription').replaceWith(description);
+                $(thisRow).find('select.ddlNewType').replaceWith(typeLabel);
+                $(thisRow).find('select.ddlNewObjective').replaceWith(objectiveLabel);
+                $(thisRow).find('select.ddlResponsibleUsers').replaceWith(responsibilityLabel);
+                $(thisRow).find('select.ddlNewStatus').replaceWith(statusLabel);
+                $(thisRow).find('td .btnSaveNewReport').replaceWith('<i class="btnEditReport fa fa-edit fa-2" style="font-size: 24px;color: #ffb900;cursor: pointer;" aria-hidden="true"></i>');
+
+                if (!($(thisRow).find('td .btnDeleteReport').length > 0))
+                    $(thisRow).find('td .btnEditReport').append('<i class="btnDeleteReport fa fa-trash" aria-hidden="true" style="font-size: 24px;color: #d83b01;cursor: pointer;margin-left: 10px;"></i>');
+
+
+                console.log("-----------------");
+                console.log("Getting fields. ");
+                console.log("txtNewDueDate = " + duedate);
+                console.log("txtNewTitle = " + title);
+                console.log("txtareaNewDescription = " + description);
+                console.log("ddlNewType = " + type);
+                console.log("ddlNewObjective = " + objective);
+                console.log("txtNewResponsibility = " + responsibility);
+                console.log("ddlNewStatus = " + status);
+                //console.log("btnSaveNewReport = " + $(thisRow).find('i.btnSaveNewReport').val());
+                console.log("-----------------");
+
+                var reportId = $(thisRow).attr('data-id');
+                if (typeof reportId !== typeof undefined && reportId !== false) {
+                    // Update the current record
+                    addNewOrUpdateReport(reportId, duedate, title, description, type, objective, responsibility, status, null);
+                } else {
+                    // Add new report record:
+                    addNewOrUpdateReport(null, duedate, title, description, type, objective, responsibility, status, thisRow);
+                    //$(thisRow).attr("data-id", currentReportId);
+                }
+
+                // Create the new row. Note that we cannot clone here as the datepicker id's won't assign correctly:
+                addNewRow();
+            }
+        });
+
+        // Handle btnDeleteReport click
+        $("body").on('click', 'i.btnDeleteReport', function () {
+            if (customerID == null) {
+                return;
+            }
+            var thisRow = $(this).closest('tr')[0];
+
+            var reportId = $(this).parents("tr").attr("data-id");
+            if (reportId == null || reportId == undefined) return;
+
+            var confirmStrings = { text: "Are you sure you want to delete this item?", title: "Warning!" };
+            var confirmOptions = { height: 100, width: 450 };
+            xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
+                function (success) {
+                    if (success.confirmed) {
+                        xrm.WebApi.deleteRecord("msnfp_report", reportId).then(function (result) {
+                            updateRecordCount();
+                            getTheFirstAndLastDates();
+                            saveToDynamics();
+                        }, function (error) {
+                            console.error(error);
+                        });
+                        thisRow.remove();
+                    }
+                    else
+                        console.log("Dialog closed using Cancel button or X.");
+                });
+        });
+
+        // Handle btnEditReport click
+        $("body").on('click', 'i.btnEditReport', function () {
+            if (customerID == null) {
+                return;
+            }
+
+            $(".btnSaveNewReport").closest("tr").remove();
+
+            var thisRow = $(this).closest('tr')[0];
+
+            var cell = $($(thisRow).find("td.reportDate"));
+
+            var v0 = cell.html();
+            cell.replaceWith('<td class="reportDate"><input type="text" aria-label="Due Date" title="Due Date" class="txtNewDueDate form-control" style="width:100%;min-width:110px;" /></td>');
+            $(thisRow).find('input.txtNewDueDate').val(v0);
+
+            cell = $($(thisRow).find("td.reportName"));
+            var v1 = cell.html();
+            cell.replaceWith('<td class="reportName"><input type="text" aria-label="Title" title="Title" class="txtNewTitle form-control" style="width:100%;min-width:200px;" /></td>');
+            $(thisRow).find('input.txtNewTitle').val(v1);
+
+            cell = $($(thisRow).find("td.desc"));
+            var v2 = cell.html();
+            cell.replaceWith('<td class="desc"><textarea rows="2" class="txtareaNewDescription form-control" aria-label="Description" title="Description" style="width:100%;"></textarea></td>');
+            $(thisRow).find('textarea.txtareaNewDescription').val(v2);
+
+            cell = $($(thisRow).find("td.typeText"));
+            var v3 = cell.html();
+            cell.replaceWith('<td class="typeText">' + typeSelectHTML + '</td>');
+            selectItem('.ddlNewType', v3);
+
+            cell = $($(thisRow).find("td.objectiveText"));
+            var v4 = cell.html();
+            cell.replaceWith('<td class="objectiveText">' + objectivesSelectHTML + '</td>');
+            selectItem('.ddlNewObjective', v4);
+
+            cell = $($(thisRow).find("td.responsibleUser"));
+            var v5 = cell.html();
+            cell.replaceWith('<td class="responsibleUser">' + reportResponsibleUsers + '</td>');
+            selectedUserId = MissionFunctions.GetKeyByValue(userIdNameDictionary, v5);
+            $($(thisRow).find("td .ddlResponsibleUsers")).val(selectedUserId)
+
+            cell = $($(thisRow).find("td.statusText"));
+            var v6 = cell.html();
+            cell.replaceWith('<td class="statusText">' + reportStatusReasonsSelectHTML + '</td>');
+            selectItem('.ddlNewStatus', v6);
+
+            $($(thisRow).find("td .btnEditReport")).replaceWith('<i class="btnSaveNewReport fa fa-floppy-o fa-2" style="font-size: 24px;color:#0078d4;cursor: pointer;" aria-hidden="true"></i>');
+        });
+
+        function selectItem(selector, label) {
+            const dropdown = document.querySelector(selector)
+            const index = Array.from(dropdown.options).findIndex(option => option.label === label)
+            return dropdown.selectedIndex = index;
+        }
+
+
+        // Add the report to this opportunity:
+        function addNewOrUpdateReport(reportId, dueDate, title, description, type, objective, responsibility, status, thisRow) {
+            var reportRecord = {};
+            reportRecord["msnfp_ObjectiveId@odata.bind"] = "/msnfp_objectives(" + objective + ")";
+            reportRecord["msnfp_OpportunityId@odata.bind"] = "/opportunities(" + currentPageId + ")";
+            reportRecord["ownerid@odata.bind"] = "/systemusers(" + responsibility + ")";
+
+            reportRecord["msnfp_name"] = title;
+            reportRecord["msnfp_description"] = description;
+
+            if (dueDate != null && dueDate != "")
+                reportRecord["msnfp_duedate"] = DSTOffset(dueDate);
+            else
+                reportRecord["msnfp_duedate"] = null;
+
+            if (status != null) {
+                reportRecord["statuscode"] = parseInt(status);
+            }
+            reportRecord["msnfp_type"] = type;
+
+            if (reportId) {
+                xrm.WebApi.updateRecord("msnfp_report", reportId, reportRecord).then(function (result) {
+                    console.log("Saved successfully!");
+                    getTheFirstAndLastDates();
+                    saveToDynamics();
+                },
+                    function (error) {
+                        console.error(error);
+                    });
+            } else {
+                xrm.WebApi.createRecord("msnfp_report", reportRecord).then(function (result) {
+                    $(thisRow).attr("data-id", result.id);
+                    currentReportId = result.id;
+                    updateRecordCount();
+                    getTheFirstAndLastDates();
+                    saveToDynamics();
+                    console.log("Saved successfully!");
+                },
+                    function (error) {
+                        console.error(error);
+                    });
+            }
+        }
+
+        function saveToDynamics() {
+            xrm.Page.data.entity.save();
+        }
+
+        function updateRecordCount() {
+            xrm.Page.data.entity.attributes.get("msnfp_numberofreports").setValue($('.tr_clone[data-id]').length);
+        }
+
+        function getTheFirstAndLastDates() {
+
+            var dates = [];
+            $(".reportDate").each(function () {
+                dates.push($(this).html());
+            });
+
+            // Sorts the dates:
+            dates = dates.sort(function (a, b) {
+                return new Date(b) - new Date(a);
+            });
+
+            var values = [];
+            for (var i = 0; i < dates.length; i++) {
+                var number = new Date(dates[i]).setHours(new Date(dates[i]).getHours() + 12);
+
+                if (!isNaN(number))
+                    values.push(number);
+            }
+
+            // Now set the two fields:
+            if (values.length > 0) {
+                xrm.Page.data.entity.attributes.get("msnfp_lastreport").setValue(new Date(values[0]));
+                xrm.Page.data.entity.attributes.get("msnfp_firstreport").setValue(new Date(values[values.length - 1]));
+            }
+        }
+
+        function addNewRow() {
+            $("#tbodyOpportunityReportingPlan").append('' +
+                '<tr class="tr_clone">' +
+                '<td class="reportDate"><input type="text" aria-label="Due Date" title="Due Date" class="txtNewDueDate form-control" style="width:100%;min-width:110px;" /></td>' +
+                '<td class="reportName"><input type="text" aria-label="Title" title="Title" class="txtNewTitle form-control" style="width:100%;min-width:200px;" /></td>' +
+                '<td class="desc"><textarea rows="2" class="txtareaNewDescription form-control" aria-label="Description" title="Description" style="width:100%;"></textarea></td>' +
+                '<td class="typeText">' + typeSelectHTML + '</td>' +
+                '<td class="objectiveText">' + objectivesSelectHTML + '</td>' +
+                '<td class="responsibleUser">' + reportResponsibleUsers + '</td>' +
+                '<td class="statusText">' + reportStatusReasonsSelectHTML + '</td>' +
+                '<td><i class="btnSaveNewReport fa fa-floppy-o fa-2" style="font-size: 24px;color:#0078d4;cursor: pointer;" aria-hidden="true"></i></td>' +
+                '</tr>');
+        }
+
+        function isNullOrUndefined(value) {
+            return (typeof (value) === "undefined" || value === null || value === "");
+        }
+
+
+        // Get the status reason metadata of an entity:
+        function getStatusAttributeMetadata(entityName, successCallback) {
+            var webApiQuery = xrm.Page.context.getClientUrl() + "/api/data/v8.2/EntityDefinitions(LogicalName='" + entityName + "')/Attributes/Microsoft.Dynamics.CRM.StatusAttributeMetadata?$expand=OptionSet";
+
+            var req = new XMLHttpRequest();
+            req.open('GET', webApiQuery, true);
+            req.setRequestHeader("Accept", "application/json");
+            req.setRequestHeader("OData-MaxVersion", "4.0");
+            req.setRequestHeader("OData-Version", "4.0");
+            req.onreadystatechange = function () {
+                if (this.readyState == 4 /* complete */) {
+                    if (this.status == 200) {
+                        var results = JSON.parse(this.response);
+                        successCallback(results.value[0]);
+                    }
+                    else {
+                        var error = JSON.parse(this.response).error;
+                        console.log(error.message);
+                    }
+                };
+            }
+            req.send();
+        }
+
+
+        function DSTOffset(str) {
+            if (str != null && str != undefined && userSettings != null && userSettings != undefined) {
+                let dt = new Date(str);
+                let start = new Date(dt.getYear(), userSettings.timezonedaylightmonth - 1, userSettings.timezonedaylightday);
+                let end = new Date(dt.getYear(), userSettings.timezonestandardmonth - 1, userSettings.timezonestandardday);
+                if (dt >= start && dt < end) dt.setMinutes(-userSettings.timezonedaylightbias);
+                return dt;
+            }
+        }
+
+        function DSTOffsetYYYYMMDD(str) {
+            if (str != null && str != undefined && userSettings != null && userSettings != undefined) {
+                let dt = new Date(str);
+                let start = new Date(dt.getYear(), userSettings.timezonedaylightmonth - 1, userSettings.timezonedaylightday);
+                let end = new Date(dt.getYear(), userSettings.timezonestandardmonth - 1, userSettings.timezonestandardday);
+                if (dt >= start && dt < end) dt.setMinutes(-userSettings.timezonedaylightbias);
+
+                var month = (dt.getMonth() + 1) < 10 ? "0" + (dt.getMonth() + 1) : (dt.getMonth() + 1);
+                var date = dt.getDate() < 10 ? "0" + dt.getDate() : dt.getDate();
+                return month + "/" + date + "/" + dt.getFullYear();
+            }
+        }
+
+    </script>
+
+
+</body></html>

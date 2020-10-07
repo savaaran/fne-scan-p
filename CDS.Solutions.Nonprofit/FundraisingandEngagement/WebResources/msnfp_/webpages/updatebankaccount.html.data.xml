@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{c049a03c-21a3-e911-a98a-000d3aff2e31}</WebResourceId>
+  <Name>msnfp_/webpages/updatebankaccount.html</Name>
+  <DisplayName>Update Bank Account</DisplayName>
+  <Description>Update Bank Account</Description>
+  <WebResourceType>1</WebResourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <DependencyXml>&lt;Dependencies&gt;&lt;Dependency componentType="WebResource"/&gt;&lt;/Dependencies&gt;</DependencyXml>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/msnfp_webpagesupdatebankaccounthtmlC049A03C-21A3-E911-A98A-000D3AFF2E31</FileName>
+</WebResource>

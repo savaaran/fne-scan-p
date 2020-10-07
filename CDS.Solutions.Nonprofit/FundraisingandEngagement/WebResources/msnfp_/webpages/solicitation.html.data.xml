@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{d59f0979-66ce-e911-a812-000d3a0c8f2a}</WebResourceId>
+  <Name>msnfp_/webpages/solicitation.html</Name>
+  <DisplayName>Solicitation Html</DisplayName>
+  <Description>Solicitation Html</Description>
+  <WebResourceType>1</WebResourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/msnfp_webpagessolicitationhtmlD59F0979-66CE-E911-A812-000D3A0C8F2A</FileName>
+</WebResource>

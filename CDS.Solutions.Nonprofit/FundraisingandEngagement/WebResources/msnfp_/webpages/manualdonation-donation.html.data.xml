@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{620ad5df-0d8d-e911-a97a-000d3aff2e33}</WebResourceId>
+  <Name>msnfp_/webpages/manualdonation-donation.html</Name>
+  <DisplayName>Manual Donation - Donation</DisplayName>
+  <Description>Used on the Transaction entity for manual Donations and Memberships. See file msnfp_manualdonation_donation.html</Description>
+  <WebResourceType>1</WebResourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <DependencyXml>&lt;Dependencies&gt;&lt;Dependency componentType="WebResource"/&gt;&lt;/Dependencies&gt;</DependencyXml>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/msnfp_webpagesmanualdonation-donationhtml620AD5DF-0D8D-E911-A97A-000D3AFF2E33</FileName>
+</WebResource>
