@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{5ce649b4-e6fc-ea11-a815-000d3a5cec97}</WebResourceId>
+  <Name>msnfp_/scripts/bankrunform.js</Name>
+  <DisplayName>Bankrun Form</DisplayName>
+  <WebResourceType>3</WebResourceType>
+  <IntroducedVersion>1.1.2.5</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <DependencyXml>&lt;Dependencies&gt;&lt;Dependency componentType="WebResource"/&gt;&lt;/Dependencies&gt;</DependencyXml>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/msnfp_scriptsbankrunformjs5CE649B4-E6FC-EA11-A815-000D3A5CEC97</FileName>
+</WebResource>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{13686cfe-6a8c-e911-a97a-000d3aff2e30}</WebResourceId>
+  <Name>msnfp_/scripts/jquery.js</Name>
+  <DisplayName>jQuery-3.5.1.js</DisplayName>
+  <Description>msnfp_/scripts/jquery.js</Description>
+  <WebResourceType>3</WebResourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <DependencyXml>&lt;Dependencies&gt;&lt;Dependency componentType="WebResource"/&gt;&lt;/Dependencies&gt;</DependencyXml>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/msnfp_scriptsjqueryjs13686CFE-6A8C-E911-A97A-000D3AFF2E30</FileName>
+</WebResource>

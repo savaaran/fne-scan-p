@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebResource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <WebResourceId>{d681652a-1242-ea11-a812-000d3af3bf00}</WebResourceId>
+  <Name>msnfp_/scripts/manualdonation_batchgift.css</Name>
+  <DisplayName>ManualDonation_BatchGift.css</DisplayName>
+  <Description>msnfp_/scripts/manualdonation_batchgift.css</Description>
+  <WebResourceType>2</WebResourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <IsEnabledForMobileClient>0</IsEnabledForMobileClient>
+  <IsAvailableForMobileOffline>0</IsAvailableForMobileOffline>
+  <DependencyXml>&lt;Dependencies&gt;&lt;Dependency componentType="WebResource"/&gt;&lt;/Dependencies&gt;</DependencyXml>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <IsHidden>0</IsHidden>
+  <FileName>/WebResources/msnfp_scriptsmanualdonation_batchgiftcssD681652A-1242-EA11-A812-000D3AF3BF00</FileName>
+</WebResource>
