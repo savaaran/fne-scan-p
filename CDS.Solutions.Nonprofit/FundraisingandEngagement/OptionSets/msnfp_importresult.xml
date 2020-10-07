@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<optionset Name="msnfp_importresult" localizedName="Import Result" description="The result of the import process." xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <OptionSetType>picklist</OptionSetType>
+  <IsGlobal>1</IsGlobal>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <displaynames>
+    <displayname description="Import Result" languagecode="1033" />
+  </displaynames>
+  <Descriptions>
+    <Description description="The result of the import process." languagecode="1033" />
+  </Descriptions>
+  <options>
+    <option value="844060000">
+      <labels>
+        <label description="Success" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060001">
+      <labels>
+        <label description="Failed" languagecode="1033" />
+      </labels>
+    </option>
+  </options>
+</optionset>

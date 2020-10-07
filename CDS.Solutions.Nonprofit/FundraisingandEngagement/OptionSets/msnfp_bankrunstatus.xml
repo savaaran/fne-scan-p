@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<optionset Name="msnfp_bankrunstatus" localizedName="Bank Run Status" description="Used to mark the status of the bank run. Once the bank run has been processed, the record should be set to inactive and changes will not longer be made." xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <OptionSetType>picklist</OptionSetType>
+  <IsGlobal>1</IsGlobal>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <ExternalTypeName></ExternalTypeName>
+  <displaynames>
+    <displayname description="Bank Run Status" languagecode="1033" />
+  </displaynames>
+  <Descriptions>
+    <Description description="Used to mark the status of the bank run. Once the bank run has been processed, the record should be set to inactive and changes will not longer be made." languagecode="1033" />
+  </Descriptions>
+  <options>
+    <option value="844060000" ExternalValue="" Color="#0000ff">
+      <labels>
+        <label description="Open" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="844060003" ExternalValue="" Color="#0000ff">
+      <labels>
+        <label description="Gift List Retrieved" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="844060002" ExternalValue="" Color="#0000ff">
+      <labels>
+        <label description="List Confirmed" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="844060001" ExternalValue="" Color="#0000ff">
+      <labels>
+        <label description="Processed" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="844060004" ExternalValue="" Color="#0000ff">
+      <labels>
+        <label description="Report Available" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+  </options>
+</optionset>

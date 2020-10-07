@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<optionset Name="msnfp_type" localizedName="Type" description="The type of the donation or pledge, this attribute will dictate what views the record will appear in as it is the Type field that labels the record as either a pledge, donation, recurring donation or&#xA;" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <OptionSetType>picklist</OptionSetType>
+  <IsGlobal>1</IsGlobal>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <displaynames>
+    <displayname description="Type" languagecode="1033" />
+  </displaynames>
+  <Descriptions>
+    <Description description="The type of the donation or pledge, this attribute will dictate what views the record will appear in as it is the Type field that labels the record as either a pledge, donation, recurring donation or&#xA;" languagecode="1033" />
+  </Descriptions>
+  <options>
+    <option value="844060000">
+      <labels>
+        <label description="Donation" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060001">
+      <labels>
+        <label description="Pledge" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060002">
+      <labels>
+        <label description="Pledge Schedule" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060003">
+      <labels>
+        <label description="Grant" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060004">
+      <labels>
+        <label description="Matched Gift (Donation)" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060005">
+      <labels>
+        <label description="Matched Gift (Pledge)" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060006">
+      <labels>
+        <label description="Donation Schedule" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060007">
+      <labels>
+        <label description="Recurring Donation" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060008">
+      <labels>
+        <label description="Soft Credit (Donation)" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060009">
+      <labels>
+        <label description="Soft Credit (Pledge)" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060010">
+      <labels>
+        <label description="Membership" languagecode="1033" />
+      </labels>
+    </option>
+  </options>
+</optionset>

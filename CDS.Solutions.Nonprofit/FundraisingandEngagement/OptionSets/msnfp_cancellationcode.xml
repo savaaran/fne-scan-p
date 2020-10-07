@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<optionset Name="msnfp_cancellationcode" localizedName="Cancellation Code" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <OptionSetType>picklist</OptionSetType>
+  <IsGlobal>1</IsGlobal>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <displaynames>
+    <displayname description="Cancellation Code" languagecode="1033" />
+  </displaynames>
+  <options>
+    <option value="844060000">
+      <labels>
+        <label description="Donor Felt Pressure From Fundraiser" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060001">
+      <labels>
+        <label description="No Longer Can Afford" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060002">
+      <labels>
+        <label description="Misunderstood commitment" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060003">
+      <labels>
+        <label description="Under Minimum Age" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060004">
+      <labels>
+        <label description="Spouse Objected" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060005">
+      <labels>
+        <label description="Changed Mind" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060006">
+      <labels>
+        <label description="Donor Intended For a Short Term Donation" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060007">
+      <labels>
+        <label description="Donor Intended a One Time Donation" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060008">
+      <labels>
+        <label description="Deceased" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060009">
+      <labels>
+        <label description="Donating to Other Charities" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060010">
+      <labels>
+        <label description="Payment Declined" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060011">
+      <labels>
+        <label description="Complaint" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060012">
+      <labels>
+        <label description="Account Closed" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060013">
+      <labels>
+        <label description="Already Donating" languagecode="1033" />
+      </labels>
+    </option>
+    <option value="844060014">
+      <labels>
+        <label description="No Reason Given" languagecode="1033" />
+      </labels>
+    </option>
+  </options>
+</optionset>

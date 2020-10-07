@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<optionset Name="msnfp_appliestocode" localizedName="Applies To Code" description="Directs whether the functionality is invoked when the type is “Transaction”, “Donor Commitment” or “Both”" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <OptionSetType>picklist</OptionSetType>
+  <IsGlobal>1</IsGlobal>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <ExternalTypeName></ExternalTypeName>
+  <displaynames>
+    <displayname description="Applies To Code" languagecode="1033" />
+  </displaynames>
+  <Descriptions>
+    <Description description="Directs whether the functionality is invoked when the type is “Transaction”, “Donor Commitment” or “Both”" languagecode="1033" />
+  </Descriptions>
+  <options>
+    <option value="844060000" ExternalValue="" Color="">
+      <labels>
+        <label description="Pledges" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="844060001" ExternalValue="" Color="">
+      <labels>
+        <label description="Donations" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+    <option value="844060002" ExternalValue="" Color="">
+      <labels>
+        <label description="Both" languagecode="1033" />
+      </labels>
+      <Descriptions>
+        <Description description="" languagecode="1033" />
+      </Descriptions>
+    </option>
+  </options>
+</optionset>
