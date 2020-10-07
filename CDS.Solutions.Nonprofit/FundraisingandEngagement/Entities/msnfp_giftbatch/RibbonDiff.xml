@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RibbonDiffXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CustomActions>
+    <CustomAction Id="msnfp.msnfp_giftbatch.Button2.Button.CustomAction" Location="Mscrm.Form.msnfp_giftbatch.MainTab.Save.Controls._children" Sequence="95">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.msnfp_giftbatch.Button2.Button.Alt" Command="msnfp.msnfp_giftbatch.Command0.Command" Id="msnfp.msnfp_giftbatch.Button2.Button" LabelText="$LocLabels:msnfp.msnfp_giftbatch.Button2.Button.LabelText" Sequence="95" TemplateAlias="o2" ToolTipTitle="$LocLabels:msnfp.msnfp_giftbatch.Button2.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.msnfp_giftbatch.Button2.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/Recalculate.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.msnfp_giftbatch.Button3.Button.CustomAction" Location="Mscrm.Form.msnfp_giftbatch.MainTab.Save.Controls._children" Sequence="100">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.msnfp_giftbatch.Button3.Button.Alt" Command="msnfp.msnfp_giftbatch.Command1.Command" Id="msnfp.msnfp_giftbatch.Button3.Button" LabelText="$LocLabels:msnfp.msnfp_giftbatch.Button3.Button.LabelText" Sequence="100" TemplateAlias="o2" ToolTipTitle="$LocLabels:msnfp.msnfp_giftbatch.Button3.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.msnfp_giftbatch.Button3.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/CloseBatch.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+  </CustomActions>
+  <Templates>
+    <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+  </Templates>
+  <CommandDefinitions>
+    <CommandDefinition Id="msnfp.msnfp_giftbatch.Command0.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_giftbatch.EnableRule0.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="RecalculateBatchGiftRecrod" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_giftbatch.Command1.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_giftbatch.EnableRule0.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="CloseBatchGiftButtons" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+  </CommandDefinitions>
+  <RuleDefinitions>
+    <TabDisplayRules />
+    <DisplayRules />
+    <EnableRules>
+      <EnableRule Id="msnfp.msnfp_giftbatch.EnableRule0.EnableRule">
+        <CustomRule FunctionName="HideBatchGiftButtons" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+    </EnableRules>
+  </RuleDefinitions>
+  <LocLabels>
+    <LocLabel Id="msnfp.msnfp_giftbatch.Button2.Button.Alt">
+      <Titles>
+        <Title description="Recalculate" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_giftbatch.Button2.Button.LabelText">
+      <Titles>
+        <Title description="Recalculate" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_giftbatch.Button2.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Recalculate" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_giftbatch.Button2.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Recalculate" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_giftbatch.Button3.Button.Alt">
+      <Titles>
+        <Title description="Close Batch" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_giftbatch.Button3.Button.LabelText">
+      <Titles>
+        <Title description="Close Batch" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_giftbatch.Button3.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Close Batch" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_giftbatch.Button3.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Close Batch" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+  </LocLabels>
+</RibbonDiffXml>

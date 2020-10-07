@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RibbonDiffXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CustomActions>
+    <CustomAction Id="msnfp.msnfp_giftaiddeclaration.Form.ViewButton.CustomAction" Location="Mscrm.Form.msnfp_giftaiddeclaration.MainTab.Save.Controls._children" Sequence="38">
+      <CommandUIDefinition>
+        <Button Command="msnfp.msnfp_giftaiddeclaration.Form.ViewCommand" Id="msnfp.msnfp_giftaiddeclaration.Form.ViewButton" Image32by32="$webresource:msnfp_/images/giftaiddeclaration32.png" Image16by16="$webresource:msnfp_/images/giftaiddeclaration16.png" LabelText="$LocLabels:msnfp.msnfp_giftaiddeclaration.Form.ViewButton.LabelText" Sequence="38" TemplateAlias="o1" ToolTipDescription="$LocLabels:msnfp.msnfp_giftaiddeclaration.Form.ViewButton.ToolTipDescription" />
+      </CommandUIDefinition>
+    </CustomAction>
+  </CustomActions>
+  <Templates>
+    <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+  </Templates>
+  <CommandDefinitions>
+    <CommandDefinition Id="msnfp.msnfp_giftaiddeclaration.Form.ViewCommand">
+      <EnableRules />
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="ViewGiftAidDeclaration" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+  </CommandDefinitions>
+  <RuleDefinitions>
+    <TabDisplayRules />
+    <DisplayRules />
+    <EnableRules />
+  </RuleDefinitions>
+  <LocLabels>
+    <LocLabel Id="msnfp.msnfp_giftaiddeclaration.Form.ViewButton.LabelText">
+      <Titles>
+        <Title description="View Declaration" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_giftaiddeclaration.Form.ViewButton.ToolTipDescription">
+      <Titles>
+        <Title description="Displays Gift Aid Declaration" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+  </LocLabels>
+</RibbonDiffXml>
