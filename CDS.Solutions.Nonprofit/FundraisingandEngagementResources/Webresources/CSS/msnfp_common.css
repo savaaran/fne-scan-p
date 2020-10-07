@@ -1,0 +1,191 @@
+@import url("https://fonts.googleapis.com/css?family=Hind:400,500,600,700");
+
+body { 
+    /* font-family: Trebuchet MS; */
+    font-family: 'Hind', sans-serif;
+    font-size: 12px;
+}
+
+input, textarea, select, button 
+{
+    /* font-family: Trebuchet MS; */
+    font-family: 'Hind', sans-serif;
+    font-size: 12px; 
+}
+
+.text-center {
+    text-align: center;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.btn {
+    margin: 5px;
+}
+
+.btn-disabled {
+    opacity: 0.3;
+}
+
+.field-label {
+    padding-right: 5px;
+}
+
+.hide {
+    display: none;
+}
+
+.error-msg {
+    color: red;
+    padding: 5px 15px;
+    font-weight: bold;
+    display: none;
+}
+
+.success-msg {
+    display: none;
+    color: green;
+    padding: 5px 15px;
+}
+
+.div-buttons {
+    display: none;
+}
+
+.error-control {
+    border-color: red;
+}
+
+
+/* start commented backslash hack \*/
+* html .clearfix {
+    height: 1%;
+}
+
+.clearfix {
+    display: block;
+}
+/* close commented backslash hack */
+
+table, th {
+    border-collapse: collapse;
+    /* font-family: Trebuchet MS; */
+    font-family: 'Hind', sans-serif;
+    font-size: 12px;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+table, td {
+    color: #000;
+    /* font-family: Trebuchet MS; */
+    font-family: 'Hind', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+.loadmask {
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -moz-opacity: 0.5;
+    opacity: .50;
+    filter: alpha(opacity=50);
+    background-color: #CCC;
+    width: 100%;
+    height: 100%;
+    zoom: 1;
+    cursor: wait;
+}
+
+.loadmask-msg {
+    z-index: 20001;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.loadmask-msg div {
+    background: url(..//WebResources/msnfp_ajaxLoader.gif) 0 0 no-repeat;
+    height: 36px;
+    width: 36px;
+}
+
+.masked {
+    overflow: hidden !important;
+}
+
+.masked-relative {
+    position: relative !important;
+}
+
+.masked-hidden {
+    visibility: hidden !important;
+}
+
+/**| Easy Grid |**/
+.cols {  } /* main column container class */
+/*.col, .col2, .col3, .col4, .col5{float:left;display:inline; margin-right:2%;}*/	
+.col, .col2, .col3, .col4, .col5{float:left;display:inline;}	
+.col:last-child { margin-right:0 !important; }
+.cols .last { margin-right:0 !important; }
+.col {width:49%;} /* 2 equal width columns - default */
+.cols3 > .col{width:32%;} /* 3 equal width columns */
+.cols4 > .col{width:23.5%;} /* 4 equal width columns */
+.cols5 > .col{width:18.4%;} /* 5 equal width columns */
+.cols6 > .col{width:15%;} /* 6 equal width columns */
+		
+.cols3 > .col2{width:66%;} 
+.cols4 > .col2{width:50%;} 
+.cols5 > .col2{width:38.8%;} 
+.cols6 > .col2{width:32%;} 
+		
+.cols4 > .col3{width:74.5%;} 
+.cols5 > .col3{width:59.2%;} 
+.cols6 > .col3{width:49%;} 
+		
+.cols5 > .col4{width:79.6%;} 
+.cols6 > .col4{width:66%;} 
+		
+.cols6 > .col5{width:83%;} 	
+
+.cols:before,.clearfix:before,.container:before,.cols:after,.clearfix:after,.container:after {content: " ";display: table;}
+.cols:after,.clearfix:after,.container:after {clear: both;}
+.cols,.clearfix,.container {*zoom: 1;} /* For IE 6 & 7 only */
+
+
+.content-header h2 { display: inline-block; margin-right: 30px; }
+.content-header i { border: solid black; border-width: 0 3px 3px 0; display: inline-block; padding: 3px; }
+.content-header .right { transform: rotate(-45deg); -webkit-transform: rotate(-45deg); }
+.content-header .left { transform: rotate(135deg); -webkit-transform: rotate(135deg); }
+.content-header .up { transform: rotate(-135deg); -webkit-transform: rotate(-135deg); }
+.content-header .down { transform: rotate(45deg); -webkit-transform: rotate(45deg); }
+ 
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.autocomplete-suggestions { border: 1px solid #999; background: #FFF; cursor: default; overflow: auto; -webkit-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); -moz-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-no-suggestion { padding: 2px 5px;}
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: bold; color: #000; }
+.autocomplete-group { padding: 2px 5px; }
+.autocomplete-group strong { font-weight: bold; font-size: 16px; color: #000; display: block; border-bottom: 1px solid #000; }
