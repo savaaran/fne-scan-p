@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RibbonDiffXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CustomActions>
+    <CustomAction Id="msnfp.msnfp_membershipcategory.AddToGroup.Button.CustomAction" Location="Mscrm.Form.msnfp_membershipcategory.MainTab.Collaborate.Controls._children" Sequence="38">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.msnfp_membershipcategory.AddToGroup.Button.Alt" Command="msnfp.msnfp_membershipcategory.AddToGroup.Command" Id="msnfp.msnfp_membershipcategory.AddToGroup.Button" Image16by16="$webresource:msnfp_/images/groupadd16.png" LabelText="$LocLabels:msnfp.msnfp_membershipcategory.AddToGroup.Button.LabelText" Sequence="38" TemplateAlias="o1" ModernImage="$webresource:msnfp_/Images/addfundallocation.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+  </CustomActions>
+  <Templates>
+    <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+  </Templates>
+  <CommandDefinitions>
+    <CommandDefinition Id="msnfp.msnfp_membershipcategory.AddToGroup.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_membershipcategory.AddToGroup.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="openMembershipGroupSelection" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+  </CommandDefinitions>
+  <RuleDefinitions>
+    <TabDisplayRules />
+    <DisplayRules />
+    <EnableRules>
+      <EnableRule Id="msnfp.msnfp_membershipcategory.AddToGroup.EnableRule">
+        <CustomRule FunctionName="HideButtonsOnMembership" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+    </EnableRules>
+  </RuleDefinitions>
+  <LocLabels>
+    <LocLabel Id="msnfp.msnfp_membershipcategory.AddToGroup.Button.Alt">
+      <Titles>
+        <Title description="ADD TO GROUP" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_membershipcategory.AddToGroup.Button.LabelText">
+      <Titles>
+        <Title description="ADD TO GROUP" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+  </LocLabels>
+</RibbonDiffXml>

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RibbonDiffXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CustomActions>
+    <CustomAction Id="msnfp.msnfp_membershipgroup.Button2.Button.CustomAction" Location="Mscrm.Form.msnfp_membershipgroup.MainTab.Collaborate.Controls._children" Sequence="39">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.msnfp_membershipgroup.Button2.Button.Alt" Command="msnfp.msnfp_membershipgroup.Command1.Command" Id="msnfp.msnfp_membershipgroup.Button2.Button" Image16by16="$webresource:msnfp_/images/grouporder16.png" LabelText="$LocLabels:msnfp.msnfp_membershipgroup.Button2.Button.LabelText" Sequence="39" TemplateAlias="o1" ModernImage="$webresource:msnfp_/images/grouporder.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.msnfp_membershipgroup.Button3.Button.CustomAction" Location="Mscrm.Form.msnfp_membershipgroup.MainTab.Collaborate.Controls._children" Sequence="38">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.msnfp_membershipgroup.Button3.Button.Alt" Command="msnfp.msnfp_membershipgroup.Command0.Command" Id="msnfp.msnfp_membershipgroup.Button3.Button" Image16by16="$webresource:msnfp_/images/clone16.png" LabelText="$LocLabels:msnfp.msnfp_membershipgroup.Button3.Button.LabelText" Sequence="38" TemplateAlias="o1" ModernImage="$webresource:msnfp_/images/clone.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+  </CustomActions>
+  <Templates>
+    <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+  </Templates>
+  <CommandDefinitions>
+    <CommandDefinition Id="msnfp.msnfp_membershipgroup.Command0.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_membershipgroup.EnableRule0.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="cloneMembershipGroup" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_membershipgroup.Command1.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_membershipgroup.EnableRule0.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="groupOrderOnMembershipGroup" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+  </CommandDefinitions>
+  <RuleDefinitions>
+    <TabDisplayRules />
+    <DisplayRules />
+    <EnableRules>
+      <EnableRule Id="msnfp.msnfp_membershipgroup.EnableRule0.EnableRule">
+        <CustomRule FunctionName="HideButtonsOnMembershipGroup" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+    </EnableRules>
+  </RuleDefinitions>
+  <LocLabels>
+    <LocLabel Id="msnfp.msnfp_membershipgroup.Button2.Button.Alt">
+      <Titles>
+        <Title description="Order List" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_membershipgroup.Button2.Button.LabelText">
+      <Titles>
+        <Title description="Order List" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_membershipgroup.Button3.Button.Alt">
+      <Titles>
+        <Title description="Clone" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_membershipgroup.Button3.Button.LabelText">
+      <Titles>
+        <Title description="Clone" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+  </LocLabels>
+</RibbonDiffXml>
