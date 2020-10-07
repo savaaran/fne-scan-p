@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{2f32b6a8-0e06-ea11-a811-000d3a0c8a65}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="msnfp_identifier" select="1" preview="1" icon="1">
+        <row name="result" id="msnfp_productid">
+          <cell name="msnfp_identifier" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="msnfp_customerid" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="msnfp_eventproductid" width="100" />
+          <cell name="msnfp_eventpackageid" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="msnfp_amount" width="100" />
+          <cell name="msnfp_date" width="100" />
+          <cell name="statuscode" width="100" />
+          <cell name="createdon" width="125" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+        <entity name="msnfp_product">
+          <attribute name="msnfp_identifier" />
+          <order attribute="msnfp_customerid" descending="false" />
+          <order attribute="createdon" descending="true" />
+          <filter type="and">
+            <condition attribute="statuscode" operator="eq" value="703650001" />
+          </filter>
+          <attribute name="msnfp_amount" />
+          <attribute name="statuscode" />
+          <attribute name="msnfp_eventpackageid" />
+          <attribute name="msnfp_date" />
+          <attribute name="createdon" />
+          <attribute name="msnfp_customerid" />
+          <attribute name="msnfp_eventproductid" />
+          <attribute name="msnfp_productid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>2.0.1.110</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Cancelled Products" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

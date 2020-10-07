@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{027e57bf-e10b-44d5-8316-3d70274d6d87}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="msnfp_name" select="1" icon="1" preview="1">
+        <row name="result" id="msnfp_preferencecategoryid">
+          <cell name="msnfp_name" width="300" />
+          <cell name="msnfp_categorycode" width="100" />
+          <cell name="createdon" width="125" />
+          <cell name="createdby" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="msnfp_preferencecategory">
+          <attribute name="msnfp_name" />
+          <attribute name="createdon" />
+          <order attribute="msnfp_name" descending="true" />
+          <order attribute="msnfp_categorycode" descending="true" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="msnfp_categorycode" />
+          <attribute name="createdby" />
+          <attribute name="msnfp_preferencecategoryid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>2.0.1.118</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Preference Categories" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

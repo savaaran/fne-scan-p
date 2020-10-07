@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{ae3332da-09f4-4903-9ff6-a72678a28596}</formid>
+    <IntroducedVersion>1.0.2</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form shownavigationbar="true" showImage="false" maxWidth="1920">
+      <tabs>
+        <tab verticallayout="true" id="{abe2aedc-d83f-4f84-b1bc-52264f11a165}" IsUserDefined="1" name="{abe2aedc-d83f-4f84-b1bc-52264f11a165}" locklevel="0" expanded="true" showlabel="true" ordinalvalue="0">
+          <columns>
+            <column width="34%" id="0">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{e4f537e4-241a-4300-95e2-e4c1a19a265e}" name="{e4f537e4-241a-4300-95e2-e4c1a19a265e}" columns="1" locklevel="0" labelwidth="130" celllabelalignment="Left" celllabelposition="Left" ordinalvalue="0">
+                  <rows>
+                    <row>
+                      <cell id="{4e6ac23b-489d-d3c8-bd14-2da9a211a2e0}" showlabel="true" locklevel="0" ordinalvalue="10001">
+                        <control id="msnfp_preference_customer" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="msnfp_preference_customer" disabled="false" uniqueid="{c51883b8-3295-19b5-ba71-ebb35ee62a47}" solutionaction="Modified">
+                          <parameters solutionaction="Added">
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>true</DisableMru>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4378c75a-7943-45a0-3265-8068450d94c4}" showlabel="true" locklevel="0" ordinalvalue="10002" solutionaction="Added">
+                        <labels>
+                          <label description="Opportunity" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_preference_opportunityid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="msnfp_preference_opportunityid" disabled="false" uniqueid="{191693b1-d5d3-c133-80cd-3e8a132bc7a2}">
+                          <parameters>
+                            <AutoResolve>true</AutoResolve>
+                            <DisableMru>true</DisableMru>
+                            <DisableQuickFind>false</DisableQuickFind>
+                            <DisableViewPicker>false</DisableViewPicker>
+                            <DefaultViewId>{9EB361B4-67AC-4830-8ABF-2D29EFBAEE2C}</DefaultViewId>
+                            <AllowFilterOff>false</AllowFilterOff>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <Navigation>
+        <NavBar>
+          <NavBarByRelationshipItem RelationshipName="msnfp_msnfp_preference_msnfp_opportunitypreference_PreferenceId" Sequence="10000" Area="Info" Id="nav_msnfp_msnfp_preference_msnfp_opportunitypreference_PreferenceId" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Opportunity Preferences" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_msnfp_preference_msnfp_eventpreference_PreferenceId" Sequence="10001" Area="Info" Id="nav_msnfp_msnfp_preference_msnfp_eventpreference_PreferenceId" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Event Preferences" />
+            </Titles>
+          </NavBarByRelationshipItem>
+        </NavBar>
+      </Navigation>
+      <controlDescriptions solutionaction="Added" />
+    </form>
+    <LocalizedNames>
+      <LocalizedName description="Preference" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>
