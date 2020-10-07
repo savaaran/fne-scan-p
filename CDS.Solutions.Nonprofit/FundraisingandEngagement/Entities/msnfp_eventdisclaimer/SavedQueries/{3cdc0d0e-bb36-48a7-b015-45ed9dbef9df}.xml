@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{3cdc0d0e-bb36-48a7-b015-45ed9dbef9df}</savedqueryid>
+    <layoutxml>
+      <grid name="msnfp_eventdisclaimers" jump="msnfp_identifier" select="1" icon="1" preview="0">
+        <row name="msnfp_eventdisclaimer" id="msnfp_eventdisclaimerid">
+          <cell name="msnfp_identifier" width="300" />
+          <cell name="msnfp_description" width="200" disableSorting="1" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="createdon" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>64</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="msnfp_eventdisclaimer">
+          <attribute name="msnfp_eventdisclaimerid" />
+          <attribute name="msnfp_identifier" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <order attribute="msnfp_identifier" descending="false" />
+          <attribute name="createdon" />
+          <attribute name="msnfp_description" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Event Disclaimer Lookup View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

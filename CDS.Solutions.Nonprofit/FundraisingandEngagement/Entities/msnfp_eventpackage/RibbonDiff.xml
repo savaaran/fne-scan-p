@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RibbonDiffXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CustomActions>
+    <CustomAction Id="msnfp.account.fande1.Button.CustomAction" Location="Mscrm.Form.msnfp_eventpackage.MainTab.Save.Controls._children" Sequence="80">
+      <CommandUIDefinition>
+        <FlyoutAnchor Alt="$LocLabels:msnfp.account.fande1.Button.Alt" Command="msnfp.msnfp_eventpackage.ReceiptButton.Command" Id="msnfp.account.fande1.Button" Image16by16="$webresource:msnfp_/Images/Receipt16.png" Image32by32="$webresource:msnfp_/Images/Receipt32.png" LabelText="$LocLabels:msnfp.account.fande1.Button.LabelText" Sequence="80" TemplateAlias="o2" ModernImage="$webresource:msnfp_/Images/Receipt.svg">
+          <Menu Id="msnfp.account.fande1.Button.Menu">
+            <MenuSection Id="msnfp.msnfp_eventpackage.Section3.Section" Sequence="5" DisplayMode="Menu16">
+              <Controls Id="msnfp.msnfp_eventpackage.Section3.Section.Controls">
+                <Button Alt="$LocLabels:msnfp.account.fande2.Button.Alt" Command="msnfp.msnfp_eventpackage.GenerateReceipt.Command" Id="msnfp.account.fande2.Button" LabelText="$LocLabels:msnfp.account.fande2.Button.LabelText" Sequence="10" ToolTipTitle="$LocLabels:msnfp.account.fande2.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.account.fande2.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/GenerateReceipt.svg" />
+                <Button Alt="$LocLabels:msnfp.account.fande3.Button.Alt" Command="msnfp.msnfp_eventpackage.VoidPaymentFailed.Command" Id="msnfp.account.fande3.Button" LabelText="$LocLabels:msnfp.account.fande3.Button.LabelText" Sequence="15" ToolTipTitle="$LocLabels:msnfp.account.fande3.Button.ToolTipTitle" ModernImage="$webresource:msnfp_/Images/Void.svg" />
+                <Button Alt="$LocLabels:msnfp.account.fande4.Button.Alt" Command="msnfp.msnfp_eventpackage.VoidReissued.Command" Id="msnfp.account.fande4.Button" LabelText="$LocLabels:msnfp.account.fande4.Button.LabelText" Sequence="20" ToolTipTitle="$LocLabels:msnfp.account.fande4.Button.ToolTipTitle" ModernImage="$webresource:msnfp_/Images/VoidReissued.svg" />
+                <Button Alt="$LocLabels:msnfp.account.fande5.Button.Alt" Command="msnfp.msnfp_eventpackage.Void.Command" Id="msnfp.account.fande5.Button" LabelText="$LocLabels:msnfp.account.fande5.Button.LabelText" Sequence="25" ToolTipTitle="$LocLabels:msnfp.account.fande5.Button.ToolTipTitle" ModernImage="$webresource:msnfp_/Images/Void.svg" />
+              </Controls>
+            </MenuSection>
+          </Menu>
+        </FlyoutAnchor>
+      </CommandUIDefinition>
+    </CustomAction>
+  </CustomActions>
+  <Templates>
+    <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+  </Templates>
+  <CommandDefinitions>
+    <CommandDefinition Id="msnfp.msnfp_eventpackage.GenerateReceipt.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_eventpackage.ShowHideGenerateReceiptButton.EnableRule" />
+        <EnableRule Id="msnfp.msnfp_eventpackage.HideButtonAccordingToSecurityRoles.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="CreateRelatedReceiptForEventPackage" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_eventpackage.ReceiptButton.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_eventpackage.ShowHideReceiptButton.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions />
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_eventpackage.Void.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_eventpackage.ShowHideVoidButton.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="updateRelatedReceiptToVoid" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_eventpackage.VoidPaymentFailed.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_eventpackage.ShowHideVoidPaymentFailedButton.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="updateRelatedReceiptToVoidPF" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_eventpackage.VoidReissued.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_eventpackage.ShowHideVoidReissuedButton.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="updateRelatedReceiptToVoidReissued" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+  </CommandDefinitions>
+  <RuleDefinitions>
+    <TabDisplayRules />
+    <DisplayRules />
+    <EnableRules>
+      <EnableRule Id="msnfp.msnfp_eventpackage.HideButtonAccordingToSecurityRoles.EnableRule">
+        <CustomRule FunctionName="HideButtonAccordingToSecurityRoles" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false">
+          <StringParameter Value="FundraisingandEngagement: Receipting" />
+        </CustomRule>
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_eventpackage.ShowHideGenerateReceiptButton.EnableRule">
+        <CustomRule FunctionName="showGenerateReceiptButtonOnEventPackge" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_eventpackage.ShowHideReceiptButton.EnableRule">
+        <CustomRule FunctionName="HideReceiptGroup" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_eventpackage.ShowHideVoidButton.EnableRule">
+        <CustomRule FunctionName="hideReceiptUpdateButtons" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_eventpackage.ShowHideVoidPaymentFailedButton.EnableRule">
+        <CustomRule FunctionName="hideReceiptVoidPaymentFailed" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_eventpackage.ShowHideVoidReissuedButton.EnableRule">
+        <CustomRule FunctionName="hideReceiptUpdateButtons" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+    </EnableRules>
+  </RuleDefinitions>
+  <LocLabels>
+    <LocLabel Id="msnfp.account.fande1.Button.Alt">
+      <Titles>
+        <Title description="Receipt" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande1.Button.LabelText">
+      <Titles>
+        <Title description="Receipt" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande2.Button.Alt">
+      <Titles>
+        <Title description="Generate Receipt" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande2.Button.LabelText">
+      <Titles>
+        <Title description="Generate Receipt" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande2.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Generate a receipt for this gift" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande2.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Generate Receipt" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande3.Button.Alt">
+      <Titles>
+        <Title description="Void (Payment Failed)" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande3.Button.LabelText">
+      <Titles>
+        <Title description="Void (Payment Failed)" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande3.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Void (Payment Failed)" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande4.Button.Alt">
+      <Titles>
+        <Title description="Void (Reissued)" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande4.Button.LabelText">
+      <Titles>
+        <Title description="Void (Reissued)" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande4.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Void (Reissued)" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande5.Button.Alt">
+      <Titles>
+        <Title description="Void" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande5.Button.LabelText">
+      <Titles>
+        <Title description="Void" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande5.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Void" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+  </LocLabels>
+</RibbonDiffXml>

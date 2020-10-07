@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{8e317192-e31a-4460-8762-2fd4a4ef481b}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="msnfp_identifier" select="1" icon="1" preview="1">
+        <row name="result" id="msnfp_eventpackageid">
+          <cell name="msnfp_identifier" width="300" />
+          <cell name="msnfp_date" width="100" />
+          <cell name="msnfp_customerid" width="100" />
+          <cell name="msnfp_amount" width="100" />
+          <cell name="msnfp_amount_paid" width="100" />
+          <cell name="msnfp_sum_tickets" width="100" />
+          <cell name="msnfp_sum_donations" width="100" />
+          <cell name="msnfp_sum_products" width="100" />
+          <cell name="msnfp_sum_sponsorships" width="100" />
+          <cell name="msnfp_val_tickets" width="100" />
+          <cell name="msnfp_val_donations" width="100" />
+          <cell name="msnfp_val_products" width="100" />
+          <cell name="msnfp_val_sponsorships" width="100" />
+          <cell name="statuscode" width="100" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="msnfp_eventpackage">
+          <attribute name="msnfp_identifier" />
+          <attribute name="createdon" />
+          <order attribute="msnfp_date" descending="true" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="msnfp_customerid" />
+          <attribute name="msnfp_sum_tickets" />
+          <attribute name="msnfp_sum_donations" />
+          <attribute name="msnfp_sum_sponsorships" />
+          <attribute name="msnfp_sum_products" />
+          <attribute name="msnfp_val_tickets" />
+          <attribute name="msnfp_val_sponsorships" />
+          <attribute name="msnfp_val_donations" />
+          <attribute name="statuscode" />
+          <attribute name="msnfp_val_products" />
+          <attribute name="msnfp_amount" />
+          <attribute name="msnfp_amount_paid" />
+          <attribute name="msnfp_date" />
+          <attribute name="msnfp_eventpackageid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>2.0.1.100</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Event Packages" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
