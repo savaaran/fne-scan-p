@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{c5438e7f-6358-43e5-ae5b-b029fa556487}</savedqueryid>
+    <layoutxml>
+      <grid name="msnfp_eventtableses" jump="msnfp_identifier" select="1" icon="1" preview="0">
+        <row name="msnfp_eventtables" id="msnfp_eventtablesid">
+          <cell name="msnfp_identifier" width="300" />
+          <cell name="msnfp_eventid" width="100" />
+          <cell name="msnfp_eventticketid" width="100" />
+          <cell name="msnfp_tablecapacity" width="100" />
+          <cell name="msnfp_tablenumber" width="100" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>64</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+        <entity name="msnfp_eventtables">
+          <attribute name="msnfp_eventtablesid" />
+          <attribute name="msnfp_identifier" />
+          <attribute name="createdon" />
+          <order attribute="msnfp_identifier" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="msnfp_tablenumber" />
+          <attribute name="msnfp_tablecapacity" />
+          <attribute name="msnfp_eventticketid" />
+          <attribute name="msnfp_eventid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>2.0.1.118</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Event Table Lookup View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

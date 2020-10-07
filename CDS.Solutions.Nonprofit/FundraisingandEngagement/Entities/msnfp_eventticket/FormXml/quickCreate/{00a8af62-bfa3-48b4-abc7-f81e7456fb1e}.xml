@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{00a8af62-bfa3-48b4-abc7-f81e7456fb1e}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab id="{42f6ae17-65fd-496d-a776-375e30c87331}" name="tab_1" showlabel="false">
+          <labels>
+            <label description="Tab" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="33%">
+              <sections>
+                <section id="{42c0370b-3b0e-4c48-88b3-14be9c798001}" name="TITLE_DISPLAY" columns="1" showlabel="false" showbar="false" IsUserDefined="0" locklevel="0" labelwidth="130" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Title Display" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{e80357e5-bc87-340c-d6b6-6be53acd86dd}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Description Display" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_description" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="msnfp_description" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="{d4e98c83-90eb-4fe9-aaaf-fd2f6d8e4b71}" name="TICKET_DETAILS" columns="1" showlabel="false" showbar="false" IsUserDefined="0" locklevel="0" labelwidth="130" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Ticket Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{e41ae708-db91-5a80-7653-5ae542dad812}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Price Per Ticket" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_amount" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="msnfp_amount" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1b97c471-6d32-a307-986e-acd54be5dde8}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Ticket Count" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_tickets" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="msnfp_tickets" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{64c01083-8611-6e5c-a1d0-c2b7d9e2121a}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Registrations Per Ticket" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_registrationsperticket" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="msnfp_registrationsperticket" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="{a0d4b0da-6f25-4272-96bf-9dd7afa1da64}" name="VISIBILITY" columns="1" showlabel="false" showbar="false" IsUserDefined="0" locklevel="0" labelwidth="130" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Visibility" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{1c7bd3d6-5105-bd23-23ce-ed5d34733c81}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Event" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_eventid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="msnfp_eventid" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <DisplayConditions Order="1">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Quick Create" languagecode="1033" />
+    </LocalizedNames>
+  </systemform>
+</forms>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RibbonDiffXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CustomActions>
+    <CustomAction Id="msnfp.msnfp_eventticket.UpdateTickets.Button.CustomAction" Location="Mscrm.Form.msnfp_eventticket.MainTab.Save.Controls._children" Sequence="85">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.msnfp_eventticket.UpdateTickets.Button.Alt" Command="msnfp.msnfp_eventticket.UpdateTickets.Command" Id="msnfp.msnfp_eventticket.UpdateTickets.Button" LabelText="$LocLabels:msnfp.msnfp_eventticket.UpdateTickets.Button.LabelText" Sequence="85" TemplateAlias="o2" ToolTipTitle="$LocLabels:msnfp.msnfp_eventticket.UpdateTickets.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.msnfp_eventticket.UpdateTickets.Button.ToolTipDescription" />
+      </CommandUIDefinition>
+    </CustomAction>
+  </CustomActions>
+  <Templates>
+    <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+  </Templates>
+  <CommandDefinitions>
+    <CommandDefinition Id="msnfp.msnfp_eventticket.UpdateTickets.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_eventticket.UpdateTickets.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="UpdateTicketsFromEventTicket" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+  </CommandDefinitions>
+  <RuleDefinitions>
+    <TabDisplayRules />
+    <DisplayRules />
+    <EnableRules>
+      <EnableRule Id="msnfp.msnfp_eventticket.UpdateTickets.EnableRule">
+        <FormStateRule State="Existing" Default="false" />
+      </EnableRule>
+    </EnableRules>
+  </RuleDefinitions>
+  <LocLabels>
+    <LocLabel Id="msnfp.msnfp_eventticket.UpdateTickets.Button.Alt">
+      <Titles>
+        <Title description="Update Tickets" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_eventticket.UpdateTickets.Button.LabelText">
+      <Titles>
+        <Title description="Update Tickets" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_eventticket.UpdateTickets.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Update the Tickets associated with this record" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_eventticket.UpdateTickets.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Update Tickets" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+  </LocLabels>
+</RibbonDiffXml>
