@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="Plugins.DonorCommitmentCreate: Update of msnfp_donorcommitment" SdkMessageProcessingStepId="{785a7b14-7ea2-ea11-a812-000d3a0c94a6}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+  <PluginTypeName>Plugins.DonorCommitmentCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c</PluginTypeName>
+  <PluginTypeId>770fbe5f-1a00-4c29-bddb-48d5f945a1bd</PluginTypeId>
+  <PrimaryEntity>msnfp_donorcommitment</PrimaryEntity>
+  <AsyncAutoDelete>0</AsyncAutoDelete>
+  <Description>Plugins.DonorCommitmentCreate: Update of msnfp_donorcommitment</Description>
+  <FilteringAttributes>msnfp_totalamount,msnfp_customerid,statuscode,msnfp_totalamount_balance,msnfp_totalamount_paid</FilteringAttributes>
+  <InvocationSource>1</InvocationSource>
+  <Mode>0</Mode>
+  <Rank>1</Rank>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>40</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages />
+</SdkMessageProcessingStep>

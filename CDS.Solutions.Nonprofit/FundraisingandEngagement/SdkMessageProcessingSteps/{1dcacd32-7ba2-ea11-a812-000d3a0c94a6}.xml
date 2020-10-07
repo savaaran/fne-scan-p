@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="Plugins.ConfigurationCreate: Update of msnfp_configuration" SdkMessageProcessingStepId="{1dcacd32-7ba2-ea11-a812-000d3a0c94a6}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+  <PluginTypeName>Plugins.ConfigurationCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c</PluginTypeName>
+  <PluginTypeId>c7a2f9a1-cbb6-46b3-ad22-9904c19c3b22</PluginTypeId>
+  <PrimaryEntity>msnfp_configuration</PrimaryEntity>
+  <AsyncAutoDelete>0</AsyncAutoDelete>
+  <Description>Plugins.ConfigurationCreate: Update of msnfp_configuration</Description>
+  <FilteringAttributes>msnfp_azure_webapiurl,msnfp_bankrunfilewebjoburl,msnfp_bankrun_pregeneratedby,msnfp_charitytitle,msnfp_identifier,msnfp_sche_maxretries,msnfp_paymentprocessorid,msnfp_sche_recurrencestart,msnfp_sche_retryinterval,msnfp_teamownerid,statecode,statuscode</FilteringAttributes>
+  <InvocationSource>1</InvocationSource>
+  <Mode>0</Mode>
+  <Rank>1</Rank>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>40</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages />
+</SdkMessageProcessingStep>

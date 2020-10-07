@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="Plugins.EventSponsorshipPageCreate: Update of msnfp_eventsponsorship" SdkMessageProcessingStepId="{8047371d-86a2-ea11-a812-000d3a0c94a6}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+  <PluginTypeName>Plugins.EventSponsorshipPageCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c</PluginTypeName>
+  <PluginTypeId>e80f352f-913e-4454-964a-8bd201b7f346</PluginTypeId>
+  <PrimaryEntity>msnfp_eventsponsorship</PrimaryEntity>
+  <AsyncAutoDelete>0</AsyncAutoDelete>
+  <Description>Plugins.EventSponsorshipPageCreate: Update of msnfp_eventsponsorship</Description>
+  <FilteringAttributes>msnfp_val_sold,msnfp_val_sold_base,msnfp_amount_nonreceiptable_base,msnfp_amount_nonreceiptable,msnfp_amount_receipted_base,msnfp_amount_receipted,msnfp_amount_tax,msnfp_amount_tax_base,createdby,createdonbehalfby,createdon,transactioncurrencyid,msnfp_date,msnfp_description,msnfp_eventid,exchangerate,importsequencenumber,msnfp_identifier,msnfp_order,ownerid,owningbusinessunit,owningteam,owninguser,msnfp_amount,msnfp_amount_base,msnfp_quantity,overriddencreatedon,msnfp_fromamount,msnfp_fromamount_base,msnfp_sum_sold,statecode,statuscode,timezoneruleversionnumber,utcconversiontimezonecode</FilteringAttributes>
+  <InvocationSource>1</InvocationSource>
+  <Mode>0</Mode>
+  <Rank>1</Rank>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>40</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages />
+</SdkMessageProcessingStep>

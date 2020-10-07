@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="Plugins.AccountCreate: Update of account" SdkMessageProcessingStepId="{85e86797-79a2-ea11-a812-000d3a0c94a6}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+  <PluginTypeName>Plugins.AccountCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c</PluginTypeName>
+  <PluginTypeId>f6e31f38-4f90-49a8-bdf3-cc8c0501bb2d</PluginTypeId>
+  <PrimaryEntity>account</PrimaryEntity>
+  <AsyncAutoDelete>0</AsyncAutoDelete>
+  <Description>Plugins.AccountCreate: Update of account</Description>
+  <FilteringAttributes>name,address1_addresstypecode,address1_city,address1_country,address1_county,address1_latitude,address1_longitude,address1_name,address1_postofficebox,address1_stateorprovince,address1_line1,address1_line2,address1_line3,address1_postalcode,address2_addresstypecode,address2_city,address2_country,address2_county,address2_latitude,address2_longitude,address2_name,address2_postofficebox,address2_stateorprovince,address2_line1,address2_line2,address2_line3,address2_postalcode,transactioncurrencyid,donotbulkemail,donotbulkpostalmail,donotemail,donotfax,donotpostalmail,donotphone,emailaddress1,emailaddress2,emailaddress3,msnfp_givinglevelid,msnfp_lasttransactionid,msnfp_lasttransactiondate,msnfp_lasteventpackageid,msnfp_lasteventpackagedate,msnfp_count_lifetimetransactions,msnfp_sum_lifetimetransactions,telephone1,masterid,merged,telephone2,owningbusinessunit,parentaccountid,msnfp_preferredlanguagecode,statecode,statuscode,msnfp_telephone1typecode,msnfp_telephone2typecode,telephone3,msnfp_telephone3typecode,msnfp_vip,websiteurl,msnfp_anonymity</FilteringAttributes>
+  <InvocationSource>1</InvocationSource>
+  <Mode>0</Mode>
+  <Rank>1</Rank>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>40</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages />
+</SdkMessageProcessingStep>

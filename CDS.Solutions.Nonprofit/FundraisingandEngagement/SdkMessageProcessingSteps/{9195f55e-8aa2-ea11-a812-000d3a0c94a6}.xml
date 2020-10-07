@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="Plugins.PaymentScheduleCreate: Update of msnfp_paymentschedule" SdkMessageProcessingStepId="{9195f55e-8aa2-ea11-a812-000d3a0c94a6}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+  <PluginTypeName>Plugins.PaymentScheduleCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c</PluginTypeName>
+  <PluginTypeId>e51b3d66-f029-4252-a3b9-4151f53df4ba</PluginTypeId>
+  <PrimaryEntity>msnfp_paymentschedule</PrimaryEntity>
+  <AsyncAutoDelete>0</AsyncAutoDelete>
+  <Description>Plugins.PaymentScheduleCreate: Update of msnfp_paymentschedule</Description>
+  <FilteringAttributes>msnfp_telephone2,msnfp_amount_membership,msnfp_amount_nonreceiptable,msnfp_amount_receipted,msnfp_amount_tax,msnfp_anonymity,msnfp_appealid,msnfp_appraiser,msnfp_originatingcampaignid,msnfp_cancellationnote,msnfp_cancelationcode,msnfp_cancelledon,msnfp_ccbrandcode,msnfp_chargeoncreate,msnfp_billing_city,msnfp_configurationid,msnfp_billing_country,transactioncurrencyid,msnfp_bookdate,msnfp_ga_deliverycode,msnfp_depositdate,msnfp_customerid,msnfp_emailaddress1,msnfp_eventid,msnfp_firstname,msnfp_firstpaymentdate,msnfp_frequency,msnfp_frequencyinterval,msnfp_giftbatchid,msnfp_transactiondescription,msnfp_invoiceidentifier,msnfp_lastname,msnfp_lastpaymentdate,msnfp_membershipcategoryid,msnfp_membershipinstanceid,msnfp_mobilephone,msnfp_name,msnfp_nextpaymentdate,msnfp_organizationname,msnfp_packageid,msnfp_paymentmethodid,msnfp_paymentprocessorid,msnfp_paymenttypecode,msnfp_telephone1,msnfp_designationid,msnfp_taxreceiptid,msnfp_receiptpreferencecode,msnfp_endondate,msnfp_frequencystartcode,msnfp_recurringamount,msnfp_constituentid,msnfp_scheduletypecode,msnfp_dataentrysource,msnfp_billing_stateorprovince,statecode,statuscode,msnfp_billing_line1,msnfp_billing_line2,msnfp_billing_line3,msnfp_transactionfraudcode,msnfp_transactionidentifier,msnfp_transactionresult,msnfp_dataentryreference,msnfp_tributecode,msnfp_tributeid,msnfp_tributeacknowledgement,msnfp_tributemessage,msnfp_billing_postalcode</FilteringAttributes>
+  <InvocationSource>1</InvocationSource>
+  <Mode>0</Mode>
+  <Rank>1</Rank>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>40</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages />
+</SdkMessageProcessingStep>
