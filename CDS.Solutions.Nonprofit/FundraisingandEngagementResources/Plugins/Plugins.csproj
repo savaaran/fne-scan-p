@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\ILMerge.3.0.40\build\ILMerge.props" Condition="Exists('..\packages\ILMerge.3.0.40\build\ILMerge.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{166FED27-F3DC-4017-9DBD-D7D62D74FCBB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Plugins</RootNamespace>
+    <AssemblyName>FundraisingandEngagement</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Plugins.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="eSELECTplus_dotNet_API">
+      <HintPath>LIB\eSELECTplus_dotNet_API.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.24\lib\net462\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.24\lib\net462\Microsoft.Xrm.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.Workflow.9.0.2.24\lib\net462\Microsoft.Xrm.Sdk.Workflow.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Activities.Presentation" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Workflow.Activities" />
+    <Reference Include="System.Workflow.ComponentModel" />
+    <Reference Include="System.Workflow.Runtime" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AzureModels\Account.cs" />
+    <Compile Include="AzureModels\Contact.cs" />
+    <Compile Include="AzureModels\MSNFP_DonorCommitment.cs" />
+    <Compile Include="AzureModels\MSNFP_Appeal.cs" />
+    <Compile Include="AzureModels\MSNFP_BankRun.cs" />
+    <Compile Include="AzureModels\MSNFP_BankRunSchedule.cs" />
+    <Compile Include="AzureModels\MSNFP_BulkReceipt.cs" />
+    <Compile Include="AzureModels\MSNFP_Configuration.cs" />
+    <Compile Include="AzureModels\MSNFP_DonationList.cs" />
+    <Compile Include="AzureModels\MSNFP_Event.cs" />
+    <Compile Include="AzureModels\MSNFP_EventDisclaimer.cs" />
+    <Compile Include="AzureModels\MSNFP_EventDonations.cs" />
+    <Compile Include="AzureModels\MSNFP_EventPackage.cs" />
+    <Compile Include="AzureModels\MSNFP_EventPreference.cs" />
+    <Compile Include="AzureModels\MSNFP_EventProduct.cs" />
+    <Compile Include="AzureModels\MSNFP_EventSponsor.cs" />
+    <Compile Include="AzureModels\MSNFP_EventSponsorship.cs" />
+    <Compile Include="AzureModels\MSNFP_EventTable.cs" />
+    <Compile Include="AzureModels\MSNFP_EventTicket.cs" />
+    <Compile Include="AzureModels\MSNFP_GiftAidDeclaration.cs" />
+    <Compile Include="AzureModels\MSNFP_MembershipGroup.cs" />
+    <Compile Include="AzureModels\MSNFP_MembershipOrder.cs" />
+    <Compile Include="AzureModels\MSNFP_PageOrder.cs" />
+    <Compile Include="AzureModels\MSNFP_Payment.cs" />
+    <Compile Include="AzureModels\MSNFP_PreferenceCategory.cs" />
+    <Compile Include="AzureModels\MSNFP_Product.cs" />
+    <Compile Include="AzureModels\MSNFP_Receipt.cs" />
+    <Compile Include="AzureModels\MSNFP_ReceiptLog.cs" />
+    <Compile Include="AzureModels\MSNFP_ReceiptStack.cs" />
+    <Compile Include="AzureModels\MSNFP_ReceiptTemplate.cs" />
+    <Compile Include="AzureModels\MSNFP_Refund.cs" />
+    <Compile Include="AzureModels\MSNFP_Registration.cs" />
+    <Compile Include="AzureModels\MSNFP_RegistrationPreference.cs" />
+    <Compile Include="AzureModels\MSNFP_RelatedImage.cs" />
+    <Compile Include="AzureModels\MSNFP_Response.cs" />
+    <Compile Include="AzureModels\MSNFP_Sponsorship.cs" />
+    <Compile Include="AzureModels\MSNFP_TermsofReference.cs" />
+    <Compile Include="AzureModels\MSNFP_Ticket.cs" />
+    <Compile Include="AzureModels\MSNFP_TributeOrMemory.cs" />
+    <Compile Include="AzureModels\MSNFP_Designation.cs" />
+    <Compile Include="AzureModels\MSNFP_Membership.cs" />
+    <Compile Include="AzureModels\MSNFP_MembershipCategory.cs" />
+    <Compile Include="AzureModels\MSNFP_PaymentMethod.cs" />
+    <Compile Include="AzureModels\MSNFP_PaymentProcessor.cs" />
+    <Compile Include="AzureModels\MSNFP_PaymentSchedule.cs" />
+    <Compile Include="AzureModels\MSNFP_Preference.cs" />
+    <Compile Include="AzureModels\MSNFP_Transaction.cs" />
+    <Compile Include="AzureModels\transactioncurrency.cs" />
+    <Compile Include="Common\AutoSoftCredit.cs" />
+    <Compile Include="Common\WebAPIClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CreateReceiptForEventPackage.cs" />
+    <Compile Include="CreateReceiptForPaymentSchedule.cs" />
+    <Compile Include="CreateReceiptOnTransactionCreate.cs" />
+    <Compile Include="DonationImportCreate.cs" />
+    <Compile Include="GivingLevelInstanceCreate.cs" />
+    <Compile Include="PaymentProcesses\iATSProcess.cs" />
+    <Compile Include="PaymentProcesses\iATS_Models\CreateACHEFTCustomerCode.cs" />
+    <Compile Include="PaymentProcesses\iATS_Models\CreateCreditCardCustomerCode.cs" />
+    <Compile Include="PaymentProcesses\iATS_Models\GetCustomerCodeDetail.cs" />
+    <Compile Include="PaymentProcesses\iATS_Models\ProcessACHEFTRefundWithTransactionId.cs" />
+    <Compile Include="PaymentProcesses\iATS_Models\ProcessACHEFTWithCustomerCode.cs" />
+    <Compile Include="PaymentProcesses\iATS_Models\ProcessCreditCardRefundWithTransactionId.cs" />
+    <Compile Include="PaymentProcesses\iATS_Models\ProcessCreditCardWithCustomerCode.cs" />
+    <Compile Include="PaymentProcesses\iATS_Models\UpdateACHEFTCustomerCode.cs" />
+    <Compile Include="PaymentProcesses\iATS_Models\UpdateCreditCardCustomerCode.cs" />
+    <Compile Include="RegistrationSecurityStatusCreate.cs" />
+    <Compile Include="Common\Utilities.cs" />
+    <Compile Include="OpportunityStageCreate.cs" />
+    <Compile Include="PaymentProcesses\CreditCardDetail.cs" />
+    <Compile Include="PaymentProcesses\ReceiptUtilities.cs" />
+    <Compile Include="PaymentProcesses\Stripe\BaseStipeRepository.cs" />
+    <Compile Include="PaymentProcesses\Stripe\DateFilterPlugin.cs" />
+    <Compile Include="PaymentProcesses\Stripe\Entities.cs" />
+    <Compile Include="PaymentProcesses\Stripe\Mapper`1.cs" />
+    <Compile Include="PaymentProcesses\Stripe\SourceConverter.cs" />
+    <Compile Include="PaymentProcesses\Stripe\StringOrObject`1.cs" />
+    <Compile Include="PaymentProcesses\Stripe\StripeCreditCardOptions.cs" />
+    <Compile Include="PaymentProcesses\Stripe\StripeCustomerService.cs" />
+    <Compile Include="PaymentProcesses\Stripe\StripeDateTimeConverter.cs" />
+    <Compile Include="PaymentProcesses\Stripe\StripeList`1.cs" />
+    <Compile Include="PaymentProcesses\Stripe\StripeRefundCreateOptions.cs" />
+    <Compile Include="PaymentProcesses\Stripe\StripeRefundService.cs" />
+    <Compile Include="PaymentProcesses\Stripe\StripeTokenCreateOptions.cs" />
+    <Compile Include="PaymentProcesses\Stripe\StripeTokenService.cs" />
+    <Compile Include="PaymentProcesses\Utilities.cs" />
+    <Compile Include="PluginBase.cs" />
+    <Compile Include="AccountCreate.cs" />
+    <Compile Include="AccountUpdate.cs" />
+    <Compile Include="BankRunCreate.cs" />
+    <Compile Include="BankRunScheduleCreate.cs" />
+    <Compile Include="ConfigurationCreate.cs" />
+    <Compile Include="ContactCreate.cs" />
+    <Compile Include="ContactUpdate.cs" />
+    <Compile Include="DesignatedCreditCreate.cs" />
+    <Compile Include="DesignationCreate.cs" />
+    <Compile Include="DonorCommitmentCreate.cs" />
+    <Compile Include="EventDisclaimerCreate.cs" />
+    <Compile Include="EventDonationCreate.cs" />
+    <Compile Include="EventPackageCreate.cs" />
+    <Compile Include="EventCreate.cs" />
+    <Compile Include="EventPreferenceCreate.cs" />
+    <Compile Include="EventProductCreate.cs" />
+    <Compile Include="EventSponsorCreate.cs" />
+    <Compile Include="EventSponsorshipPageCreate.cs" />
+    <Compile Include="EventTableCreate.cs" />
+    <Compile Include="EventTicketCreate.cs" />
+    <Compile Include="GiftAidDeclarationCreate.cs" />
+    <Compile Include="MembershipCategoryCreate.cs" />
+    <Compile Include="MembershipCreate.cs" />
+    <Compile Include="MembershipGroupCreate.cs" />
+    <Compile Include="MembershipOrderCreate.cs" />
+    <Compile Include="PaymentCreate.cs" />
+    <Compile Include="PaymentMethodCreate.cs" />
+    <Compile Include="PaymentMethodUpdate.cs" />
+    <Compile Include="PaymentProcessorCreate.cs" />
+    <Compile Include="PaymentScheduleCreate.cs" />
+    <Compile Include="PreferenceCategoryCreate.cs" />
+    <Compile Include="PreferenceCreate.cs" />
+    <Compile Include="ProductPageCreate.cs" />
+    <Compile Include="ReceiptCreate.cs" />
+    <Compile Include="ReceiptLogCreate.cs" />
+    <Compile Include="ReceiptStackCreate.cs" />
+    <Compile Include="ReceiptUpdate.cs" />
+    <Compile Include="RefundCreate.cs" />
+    <Compile Include="RegistrationPageCreate.cs" />
+    <Compile Include="RegistrationPreferenceCreate.cs" />
+    <Compile Include="ResponseCreate.cs" />
+    <Compile Include="SponsorshipCreate.cs" />
+    <Compile Include="TicketPageCreate.cs" />
+    <Compile Include="TransactionCurrencyCreate.cs" />
+    <Compile Include="TransactionGiftCreate.cs" />
+    <Compile Include="TransactionGiftUpdate.cs" />
+    <Compile Include="TributeOrMemoryCreate.cs" />
+    <Compile Include="TributeOrMemoryUpdate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpdateGiftBatchFromTransaction.cs" />
+    <Compile Include="UpdateGivingLevelOnContactOrAccount.cs" />
+    <Compile Include="UpdateReceiptOnAssociation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Plugins.snk" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"$(SolutionDir)packages\ILMerge.3.0.40\tools\net452\ILMerge.exe" /keyfile:"$(ProjectDir)Plugins.snk" /target:"library" /targetplatform:"v4,C:\Windows\Microsoft.NET\Framework\v4.0.30319" /copyattrs /out:"$(TargetDir)$(TargetName)$(TargetExt)" "$(ProjectDir)$(IntermediateOutputPath)$(TargetName)$(TargetExt)" "$(TargetDir)eSELECTplus_dotNet_API.dll" "$(TargetDir)Newtonsoft.Json.dll"</PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\ILMerge.3.0.40\build\ILMerge.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILMerge.3.0.40\build\ILMerge.props'))" />
+  </Target>
+</Project>
