@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="Plugins.TransactionGiftCreate: Update of msnfp_transaction" SdkMessageProcessingStepId="{d385fefc-95a2-ea11-a812-000d3a0c94a6}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+  <PluginTypeName>Plugins.TransactionGiftCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c</PluginTypeName>
+  <PluginTypeId>262af1b8-fb85-4728-955a-b5ec57758e55</PluginTypeId>
+  <PrimaryEntity>msnfp_transaction</PrimaryEntity>
+  <AsyncAutoDelete>0</AsyncAutoDelete>
+  <Description>Plugins.TransactionGiftCreate: Update of msnfp_transaction</Description>
+  <FilteringAttributes>msnfp_telephone2,msnfp_amount_membership,msnfp_amount_nonreceiptable,msnfp_amount_receipted,msnfp_amount_tax,msnfp_amount_transfer,msnfp_appealid,msnfp_appraiser,msnfp_bookdate,msnfp_ccbrandcode,msnfp_chargeoncreate,msnfp_chequewiredate,msnfp_chequenumber,msnfp_billing_city,msnfp_configurationid,msnfp_billing_country,transactioncurrencyid,msnfp_dataentryreference,msnfp_dataentrysource,msnfp_daterefunded,msnfp_ga_deliverycode,msnfp_depositdate,msnfp_customerid,msnfp_emailaddress1,msnfp_eventid,msnfp_eventpackageid,msnfp_firstname,msnfp_ga_amount_claimed,msnfp_ga_returnid,msnfp_ga_applicablecode,msnfp_giftbatchid,msnfp_transactiondescription,msnfp_invoiceidentifier,msnfp_lastname,msnfp_lastfailedretry,msnfp_membershipcategoryid,msnfp_membershipinstanceid,msnfp_mobilephone,msnfp_name,msnfp_nextfailedretry,msnfp_organizationname,msnfp_originatingcampaignid,owningbusinessunit,msnfp_packageid,msnfp_transaction_paymentmethodid,msnfp_paymentprocessorid,msnfp_paymenttypecode,msnfp_telephone1,msnfp_designationid,msnfp_taxreceiptid,msnfp_receiptpreferencecode,msnfp_receiveddate,msnfp_ref_amount_membership,msnfp_ref_amount_nonreceiptable,msnfp_ref_amount_receipted,msnfp_ref_amount_tax,msnfp_donorcommitmentid,msnfp_currentretry,msnfp_returneddate,msnfp_billing_stateorprovince,statecode,statuscode,msnfp_billing_line1,msnfp_billing_line2,msnfp_billing_line3,msnfp_thirdpartyreceipt,msnfp_ref_amount,msnfp_transactionfraudcode,msnfp_transactionidentifier,msnfp_transactionresult,msnfp_tributecode,msnfp_tributename,msnfp_tributeid,msnfp_tributeacknowledgement,msnfp_tributemessage,msnfp_validationdate,msnfp_validationperformed,msnfp_billing_postalcode,msnfp_anonymous,msnfp_relatedconstituentid</FilteringAttributes>
+  <InvocationSource>1</InvocationSource>
+  <Mode>0</Mode>
+  <Rank>1</Rank>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>40</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages>
+    <SdkMessageProcessingStepImage Name="postImage">
+      <SdkMessageProcessingStepImageId>{99406f05-96a2-ea11-a812-000d3a0c94a6}</SdkMessageProcessingStepImageId>
+      <Attributes></Attributes>
+      <EntityAlias>postImage</EntityAlias>
+      <ImageType>1</ImageType>
+      <MessagePropertyName>Target</MessagePropertyName>
+      <IsCustomizable>1</IsCustomizable>
+    </SdkMessageProcessingStepImage>
+    <SdkMessageProcessingStepImage Name="preImage">
+      <SdkMessageProcessingStepImageId>{24d93d13-96a2-ea11-a812-000d3a0c94a6}</SdkMessageProcessingStepImageId>
+      <Attributes></Attributes>
+      <EntityAlias>preImage</EntityAlias>
+      <ImageType>0</ImageType>
+      <MessagePropertyName>Target</MessagePropertyName>
+      <IsCustomizable>1</IsCustomizable>
+    </SdkMessageProcessingStepImage>
+  </SdkMessageProcessingStepImages>
+</SdkMessageProcessingStep>

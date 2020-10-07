@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="Plugins.RefundCreate: Update of msnfp_refund" SdkMessageProcessingStepId="{e417ebe4-8ea2-ea11-a812-000d3a0c94a6}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+  <PluginTypeName>Plugins.RefundCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c</PluginTypeName>
+  <PluginTypeId>66bb6c9d-4ce5-4e8e-84a4-115c07d67fe3</PluginTypeId>
+  <PrimaryEntity>msnfp_refund</PrimaryEntity>
+  <AsyncAutoDelete>0</AsyncAutoDelete>
+  <Description>Plugins.RefundCreate: Update of msnfp_refund</Description>
+  <FilteringAttributes>msnfp_amount_membership,msnfp_ref_amount_membership,msnfp_amount_nonreceiptable,msnfp_ref_amount_nonreceiptable,msnfp_amount_receipted,msnfp_ref_amount_receipted,msnfp_amount_tax,msnfp_ref_amount_tax,msnfp_chequenumber,transactioncurrencyid,msnfp_customerid,msnfp_receiveddate,exchangerate,msnfp_transactionid,msnfp_identifier,msnfp_bookdate,msnfp_refundtypecode,statecode,statuscode,msnfp_amount,msnfp_ref_amount,msnfp_transactiionresult,msnfp_transactionidentifier</FilteringAttributes>
+  <InvocationSource>1</InvocationSource>
+  <Mode>0</Mode>
+  <Rank>1</Rank>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>40</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages />
+</SdkMessageProcessingStep>

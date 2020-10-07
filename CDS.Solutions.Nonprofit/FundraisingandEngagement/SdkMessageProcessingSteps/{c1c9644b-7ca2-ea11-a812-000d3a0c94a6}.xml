@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="Plugins.ContactCreate: Update of contact" SdkMessageProcessingStepId="{c1c9644b-7ca2-ea11-a812-000d3a0c94a6}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+  <PluginTypeName>Plugins.ContactCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c</PluginTypeName>
+  <PluginTypeId>9950d03d-1898-439d-93aa-94bdc7c6c2f3</PluginTypeId>
+  <PrimaryEntity>contact</PrimaryEntity>
+  <AsyncAutoDelete>0</AsyncAutoDelete>
+  <Description>Plugins.ContactCreate: Update of contact</Description>
+  <FilteringAttributes>address1_addresstypecode,address1_city,address1_country,address1_county,address1_latitude,address1_longitude,address1_name,address1_postofficebox,address1_stateorprovince,address1_line1,address1_line2,address1_line3,address1_postalcode,address2_addresstypecode,address2_city,address2_country,address2_county,address2_latitude,address2_longitude,address2_name,address2_postofficebox,address2_stateorprovince,address2_line1,address2_line2,address2_line3,address2_postalcode,address3_addresstypecode,address3_city,address3_county,address3_latitude,address3_longitude,address3_name,address3_telephone1,address3_telephone2,address3_telephone3,address3_stateorprovince,address3_line1,address3_line2,address3_line3,address3_postalcode,msnfp_age,birthdate,transactioncurrencyid,msnfp_deceased,donotbulkemail,donotbulkpostalmail,donotemail,donotfax,donotpostalmail,donotphone,emailaddress1,emailaddress2,emailaddress3,firstname,fullname,gendercode,msnfp_givinglevelid,msnfp_householdid,msnfp_householdrelationship,jobtitle,msnfp_lasttransactionid,msnfp_lasttransactiondate,msnfp_lasteventpackageid,msnfp_lasteventpackagedate,lastname,masterid,merged,middlename,mobilephone,owningbusinessunit,msnfp_preferredlanguagecode,msnfp_primaryconstituenttype,msnfp_primarymembershipid,salutation,donotsendmm,statecode,statuscode,suffix,msnfp_telephone1typecode,msnfp_telephone2typecode,telephone3,msnfp_telephone3typecode,msnfp_upcomingbirthday,msnfp_vip,msnfp_anonymity</FilteringAttributes>
+  <InvocationSource>1</InvocationSource>
+  <Mode>0</Mode>
+  <Rank>1</Rank>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>40</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages />
+</SdkMessageProcessingStep>
