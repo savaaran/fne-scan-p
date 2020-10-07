@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <LocalizedNames>
+    <LocalizedName description="Fundraising Overview" languagecode="1033" />
+  </LocalizedNames>
+  <FormId>{75d41801-c0e7-ea11-a817-000d3a303484}</FormId>
+  <IsCustomizable>1</IsCustomizable>
+  <IsDefault>0</IsDefault>
+  <FormXml>
+    <forms type="dashboard">
+      <form>
+        <tabs>
+          <tab showlabel="false" verticallayout="true" id="{399875cb-9c79-4b8c-8c12-0e4d6b45724a}">
+            <labels>
+              <label description="Tab" languagecode="1033" />
+            </labels>
+            <columns>
+              <column width="100%">
+                <sections>
+                  <section showlabel="false" showbar="false" columns="111" id="{d629ee27-b40a-47a2-a4cc-58575b72e98a}">
+                    <labels>
+                      <label description="Section" languagecode="1033" />
+                    </labels>
+                    <rows>
+                      <row>
+                        <cell colspan="1" rowspan="12" showlabel="false" id="{f96fc807-bdfc-4d8e-89e8-ba41b138092d}" auto="false">
+                          <labels>
+                            <label description="Transaction" languagecode="1033" />
+                          </labels>
+                          <control id="Component20fe9d9" uniqueid="{9bad5cb6-89c4-3386-31e5-eec80bda7533}" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                            <parameters>
+                              <TargetEntityType>msnfp_transaction</TargetEntityType>
+                              <ChartGridMode>Chart</ChartGridMode>
+                              <EnableQuickFind>false</EnableQuickFind>
+                              <EnableViewPicker>false</EnableViewPicker>
+                              <EnableJumpBar>false</EnableJumpBar>
+                              <RecordsPerPage>12</RecordsPerPage>
+                              <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                              <ViewId>{246C4B32-25D7-4110-BD29-4DEE809A78F8}</ViewId>
+                              <IsUserView>false</IsUserView>
+                              <ViewIds>{246C4B32-25D7-4110-BD29-4DEE809A78F8}</ViewIds>
+                              <AutoExpand>Fixed</AutoExpand>
+                              <VisualizationId>{D0F036B2-BFE7-EA11-A817-000D3A303484}</VisualizationId>
+                              <IsUserChart>false</IsUserChart>
+                              <EnableChartPicker>false</EnableChartPicker>
+                              <RelationshipName />
+                            </parameters>
+                          </control>
+                        </cell>
+                        <cell colspan="1" rowspan="12" showlabel="false" id="{393d0c12-d5a9-49a0-aeed-99a29c8be181}" auto="false">
+                          <labels>
+                            <label description="Campaigns" languagecode="1033" />
+                          </labels>
+                          <control id="Component8a36a31" uniqueid="{e3b39ac8-295a-11e3-7e4d-1515a6417089}" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                            <parameters>
+                              <TargetEntityType>campaign</TargetEntityType>
+                              <ChartGridMode>Chart</ChartGridMode>
+                              <EnableQuickFind>false</EnableQuickFind>
+                              <EnableViewPicker>false</EnableViewPicker>
+                              <EnableJumpBar>false</EnableJumpBar>
+                              <RecordsPerPage>10</RecordsPerPage>
+                              <HeaderColorCode />
+                              <ViewId>{8EBCE151-8451-490D-A8DB-59FFF97949E8}</ViewId>
+                              <IsUserView>false</IsUserView>
+                              <ViewIds />
+                              <AutoExpand>Fixed</AutoExpand>
+                              <VisualizationId>{52B3A0B6-9FE8-EA11-A817-000D3A347F66}</VisualizationId>
+                              <IsUserChart>false</IsUserChart>
+                              <EnableChartPicker>false</EnableChartPicker>
+                              <RelationshipName />
+                            </parameters>
+                          </control>
+                        </cell>
+                        <cell colspan="1" rowspan="12" showlabel="false" id="{2dc11a3b-7485-4829-a26a-40ab28a927f6}" auto="false">
+                          <labels>
+                            <label description="Transactions" languagecode="1033" />
+                          </labels>
+                          <control id="Componentdf6f797" uniqueid="{a5e499a2-80c0-77b5-1b06-53b3d68ed21d}" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                            <parameters>
+                              <TargetEntityType>msnfp_transaction</TargetEntityType>
+                              <ChartGridMode>Chart</ChartGridMode>
+                              <EnableQuickFind>false</EnableQuickFind>
+                              <EnableViewPicker>false</EnableViewPicker>
+                              <EnableJumpBar>false</EnableJumpBar>
+                              <RecordsPerPage>10</RecordsPerPage>
+                              <HeaderColorCode />
+                              <ViewId>{73A79F62-C0E7-EA11-A817-000D3A303484}</ViewId>
+                              <IsUserView>false</IsUserView>
+                              <ViewIds />
+                              <AutoExpand>Fixed</AutoExpand>
+                              <VisualizationId>{F817F516-C4E7-EA11-A817-000D3A303484}</VisualizationId>
+                              <IsUserChart>false</IsUserChart>
+                              <EnableChartPicker>false</EnableChartPicker>
+                              <RelationshipName />
+                            </parameters>
+                          </control>
+                        </cell>
+                      </row>
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row>
+                        <cell colspan="1" rowspan="12" showlabel="false" id="{8f112890-d687-485a-bb21-0b815c451904}" auto="false">
+                          <labels>
+                            <label description="Transactions" languagecode="1033" />
+                          </labels>
+                          <control id="Component8c69471" uniqueid="{19c01a79-e0a8-5a1a-8387-7c961c3830dd}" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                            <parameters>
+                              <TargetEntityType>msnfp_transaction</TargetEntityType>
+                              <ChartGridMode>Chart</ChartGridMode>
+                              <EnableQuickFind>false</EnableQuickFind>
+                              <EnableViewPicker>false</EnableViewPicker>
+                              <EnableJumpBar>false</EnableJumpBar>
+                              <RecordsPerPage>10</RecordsPerPage>
+                              <HeaderColorCode />
+                              <ViewId>{73A79F62-C0E7-EA11-A817-000D3A303484}</ViewId>
+                              <IsUserView>false</IsUserView>
+                              <ViewIds />
+                              <AutoExpand>Fixed</AutoExpand>
+                              <VisualizationId>{EE360A94-C0E7-EA11-A817-000D3A303484}</VisualizationId>
+                              <IsUserChart>false</IsUserChart>
+                              <EnableChartPicker>false</EnableChartPicker>
+                              <RelationshipName />
+                            </parameters>
+                          </control>
+                        </cell>
+                        <cell colspan="1" rowspan="12" showlabel="false" id="{3e1056f3-1fea-4c67-b47f-21f84189bd85}" auto="false">
+                          <labels>
+                            <label description="Transactions" languagecode="1033" />
+                          </labels>
+                          <control id="Component72fa766" uniqueid="{ea6c1ded-2ed5-dc93-8b09-9b5514775c9d}" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                            <parameters>
+                              <TargetEntityType>msnfp_paymentschedule</TargetEntityType>
+                              <ChartGridMode>Chart</ChartGridMode>
+                              <EnableQuickFind>false</EnableQuickFind>
+                              <EnableViewPicker>false</EnableViewPicker>
+                              <EnableJumpBar>false</EnableJumpBar>
+                              <RecordsPerPage>12</RecordsPerPage>
+                              <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                              <ViewId>{7A1A0DD9-C2E7-EA11-A817-000D3A303484}</ViewId>
+                              <IsUserView>false</IsUserView>
+                              <ViewIds>{4ED6A86F-47A6-4ABF-88F1-5F12B8B13295},{7A1A0DD9-C2E7-EA11-A817-000D3A303484}</ViewIds>
+                              <AutoExpand>Fixed</AutoExpand>
+                              <VisualizationId>{46DA14E6-C3E7-EA11-A817-000D3A303484}</VisualizationId>
+                              <IsUserChart>false</IsUserChart>
+                              <EnableChartPicker>false</EnableChartPicker>
+                              <RelationshipName />
+                            </parameters>
+                          </control>
+                        </cell>
+                        <cell colspan="1" rowspan="12" showlabel="false" id="{13427e45-3d47-49cf-afe3-9988b2c571bb}" auto="false">
+                          <labels>
+                            <label description="Transactions" languagecode="1033" />
+                          </labels>
+                          <control id="Component34cfde2" uniqueid="{0d0e7241-ab06-5165-9262-19c7e20b7235}" classid="{E7A81278-8635-4d9e-8D4D-59480B391C5B}" indicationOfSubgrid="true">
+                            <parameters>
+                              <TargetEntityType>msnfp_transaction</TargetEntityType>
+                              <ChartGridMode>Grid</ChartGridMode>
+                              <EnableQuickFind>true</EnableQuickFind>
+                              <EnableViewPicker>true</EnableViewPicker>
+                              <EnableJumpBar>true</EnableJumpBar>
+                              <RecordsPerPage>8</RecordsPerPage>
+                              <HeaderColorCode>#F3F3F3</HeaderColorCode>
+                              <ViewId>{0A5CBD47-C4E7-EA11-A817-000D3A303484}</ViewId>
+                              <IsUserView>false</IsUserView>
+                              <ViewIds>{0A5CBD47-C4E7-EA11-A817-000D3A303484}</ViewIds>
+                              <AutoExpand>Fixed</AutoExpand>
+                              <VisualizationId>{F817F516-C4E7-EA11-A817-000D3A303484}</VisualizationId>
+                              <IsUserChart>false</IsUserChart>
+                              <EnableChartPicker>false</EnableChartPicker>
+                              <RelationshipName />
+                            </parameters>
+                          </control>
+                        </cell>
+                      </row>
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                      <row />
+                    </rows>
+                  </section>
+                </sections>
+              </column>
+            </columns>
+          </tab>
+        </tabs>
+        <controlDescriptions />
+      </form>
+    </forms>
+  </FormXml>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsTabletEnabled>0</IsTabletEnabled>
+</Dashboard>
