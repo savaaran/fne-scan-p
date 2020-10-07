@@ -1,0 +1,217 @@
+﻿<!--/*************************************************************************
+* © Microsoft. All rights reserved.
+*/-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="ClientGlobalContext.js.aspx" type="text/javascript"></script>
+    <link href="../scripts/jquery.dataTables.min.css" rel="stylesheet">
+
+    <script src="../scripts/jQuery.js" type="text/javascript"></script>
+    <script src="../scripts/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="../scripts/common.js" type="text/javascript"></script>
+    <style>
+        table.dataTable thead .sorting,
+        table.dataTable thead .sorting_asc,
+        table.dataTable thead .sorting_desc {
+            background: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <table id="membershipGroupList" class="table stripe hover" style="font-family: 'Segoe UI', Calibri; font-weight: normal; font-size: 12px; width: 95%;">
+            <thead>
+                <tr>
+                    <th style="text-align: left; width: 50px;" tabindex='0'>Add to Group</th>
+                    <th style="text-align: left;" tabindex='0'>Group Name</th>
+                    <th style="text-align: left;" tabindex='0'>Create On</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <div>
+            <input type="button" id="btnSave" class="btn" role="button" tabindex='0' value="Save and Close" style="margin-right: 3%;" />
+            <input type="button" id="btnClose" class="btn" role="button" tabindex='0' value="Close" style="margin-right: 3%;" />
+            <br>
+            <label id="lblMsg" role="alert"></label>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var membershipGroupList;
+        var query;
+        var result;
+        var xrm = XrmUtility.get_Xrm();;
+        var currentRecordID;
+        var isFormChanged = false;
+        var largestValue = 0;
+
+        $(document).ready(function () {
+            getParameters();
+
+            membershipGroupList = $('#membershipGroupList').DataTable({
+                "pagingType": "numbers",
+                "paging": true,
+                "searching": false,
+                "lengthChange": false,
+                "info": false,
+                "pageLength": 5,
+            });
+
+            var mGroupQuery = "msnfp_membershipgroups?";
+            mGroupQuery += "$select=msnfp_membershipgroupid,msnfp_identifier,createdon,statecode&$orderby=msnfp_identifier&";
+            mGroupQuery += "$filter=statecode eq 0";
+
+            var mGroupResult = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + mGroupQuery);
+
+            var gOrderQry = "msnfp_membershiporders?";
+            gOrderQry += "$select=msnfp_membershiporderid,msnfp_identifier,_msnfp_frommembershipid_value,_msnfp_tomembershipgroupid_value,msnfp_order,msnfp_orderdate&$orderby=msnfp_order desc&";
+            gOrderQry += "$filter=_msnfp_frommembershipid_value eq " + currentRecordID;
+
+            var gOrderRslt = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + gOrderQry);
+
+            var chkBox;
+            $(mGroupResult).each(function () {
+                var mGroupID = this.msnfp_membershipgroupid;
+
+                var obj = null;
+                if (!isNullOrUndefined(gOrderRslt)) {
+                    obj = $.grep(gOrderRslt, function (e) {
+                        return e._msnfp_tomembershipgroupid_value && e._msnfp_tomembershipgroupid_value.toLowerCase() == mGroupID;
+                    });
+                }
+
+                if (obj != null && obj.length > 0)
+                    chkBox = "<input type='checkbox' data-id='" + obj[0].msnfp_membershiporderid + "' class='chkGroupOrder' checked/>";
+                else
+                    chkBox = "<input type='checkbox' data-id='' class='chkGroupOrder' />";
+
+                var lblMembershipGroup = "<span class='lblMembershipGroupID' tabindex='0' aria-label='Membership Group' id='" +
+                    this.msnfp_membershipgroupid + "' >" + this.msnfp_identifier + "</span>";
+
+                var date = new Date(this.createdon).getMonth() + 1 + '/' + new Date(this.createdon).getDate() + '/' + new Date(this.createdon).getFullYear();
+
+                var formattedDate = "<span  tabindex='0' aria-label='Group Creation Date'>" + date + "</span>"
+
+                membershipGroupList.row.add([
+                    chkBox,
+                    lblMembershipGroup,
+                    formattedDate
+                ]).draw(false);
+            });
+
+            $('#btnClose').click(function () {
+                window.close();
+            });
+
+            $('#btnSave').click(function () {
+                if (isFormChanged) {
+
+                    $('#lblMsg').html('');
+                    $('#lblMsg').append('<p>Saving Changes.</p>');
+
+                    var dt = $("#membershipGroupList").DataTable();
+
+                    var unCheckedRows = dt.$('.chkGroupOrder:not(:checked)', { 'page': 'all' });
+
+                    unCheckedRows.each(function (index, elem) {
+                        var isChecked = $(elem).prop('checked');
+                        var groupOrderID = $(elem).data('id');
+
+                        if (!isChecked && !isNullOrUndefined(groupOrderID)) {
+                            XrmServiceUtility.DeleteRecord(groupOrderID, 'msnfp_membershiporders');
+                            largestValue = largestValue - 1;
+                        }
+                    });
+
+                    var checkedRows = dt.$(".chkGroupOrder:checked", { "page": "all" });
+
+                    checkedRows.each(function (index, elem) {
+                        var isChecked = $(elem).prop('checked');
+                        console.debug("isChecked:" + isChecked);
+                        var groupOrderID = $(elem).data('id');
+                        console.debug("groupOrderID:" + groupOrderID);
+                        var membershipGroupID = $($(this).closest('tr')[0]).find('.lblMembershipGroupID')[0].id;
+                        console.debug("membershipGroupID:" + membershipGroupID);
+
+                        var gQuery = "msnfp_membershiporders?";
+                        gQuery += "$select=msnfp_membershiporderid,msnfp_identifier,_msnfp_frommembershipid_value,_msnfp_tomembershipgroupid_value,msnfp_order,msnfp_orderdate&$orderby=msnfp_order desc&";
+                        gQuery += "$filter=_msnfp_tomembershipgroupid_value eq " + membershipGroupID;
+                        console.debug(XrmServiceUtility.GetWebAPIUrl() + gQuery);
+                        var gResult = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + gQuery);
+
+                        if (!isNullOrUndefined(gResult) && gResult.length > 0)
+                            largestValue = parseInt(gResult[0].msnfp_order);
+
+                        if (isChecked && isNullOrUndefined(groupOrderID)) {
+                            console.debug("Creating new groupOrder");
+                            var groupOrder = {};
+                            groupOrder["msnfp_FromMembershipId@odata.bind"] = "/msnfp_membershipcategories(" + currentRecordID + ")";
+                            groupOrder["msnfp_ToMembershipGroupId@odata.bind"] = "/msnfp_membershipgroups(" + membershipGroupID + ")";
+                            groupOrder["msnfp_order"] = largestValue + 1;
+                            console.debug(groupOrder);
+                            var qry = XrmServiceUtility.GetWebAPIUrl() + "msnfp_membershiporders";
+                            XrmServiceUtility.CreateRecord(qry, groupOrder);
+                        }
+                    });
+                }
+
+                $('#lblMsg').html('');
+                $('#lblMsg').append('<p>Saved Successfully. Closing Window.</p>');
+
+                setTimeout(function () {
+                    window.close();
+                }, 3500);
+            });
+        });
+
+        $(document).on('change', '[type=checkbox]', function (e) {
+
+            isFormChanged = true;
+        });
+
+        function getParameters() {
+            var dataVals = getDataParam();
+
+            currentRecordID = dataVals["entityGUID"];
+        }
+
+        function isNullOrUndefined(value) {
+            return (typeof (value) === "undefined" || value === null || value === "");
+        }
+
+
+        function getDataParam() {
+            //Get the query string parameters
+
+            var vals = new Array();
+            var dataVals = new Array();
+            if (location.search != "") {
+                vals = location.search.substr(1).split("&");
+                for (var i in vals) {
+                    vals[i] = vals[i].replace(/\+/g, " ").split("=");
+                }
+                //look for the parameter named 'data'
+                var found = false;
+                for (var i in vals) {
+                    if (vals[i][0].toLowerCase() == "data") {
+                        var dataValsString = vals[i][1];
+                        var tempArr = decodeURIComponent(dataValsString).split("&");
+                        for (var i in tempArr) {
+                            var curElem = tempArr[i].replace(/\+/g, " ").split("=");
+                            dataVals[curElem[0]] = curElem[1];
+                        }
+                        break;
+                    }
+                }
+            }
+            return dataVals;
+        }
+
+
+    </script>
+</body>
+</html>

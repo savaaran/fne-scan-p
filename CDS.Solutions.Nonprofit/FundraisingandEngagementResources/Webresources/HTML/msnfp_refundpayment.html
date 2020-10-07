@@ -1,0 +1,778 @@
+﻿<html>
+<!--/*************************************************************************
+* © Microsoft. All rights reserved.
+*/-->
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../scripts/jQuery.js" type="text/javascript"></script>
+    <script src="../scripts/jquery_ui.js" type="text/javascript"></script>
+    <link href="../scripts/jquery_ui.css" rel="stylesheet">
+    <link href="../scripts/common.css" rel="stylesheet">
+    <script src="../scripts/common.js" type="text/javascript"></script>
+
+</head>
+<body style="overflow-wrap: break-word;">
+    <style type="text/css">
+        table, th {
+            border-collapse: collapse;
+            color: #444444;
+            font-family: 'Hind', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+
+        table, td {
+            color: #444444;
+            font-family: 'Hind', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        input[type=text] {
+            width: 140px;
+            text-align: right;
+        }
+
+        .red-border {
+            border: solid 1px #CD2828 !important;
+        }
+
+        .tabview {
+            border-style: none;
+            padding: 12px;
+            position: relative;
+            top: 0px;
+            left: 0px;
+            width: calc(100% - 22px);
+            height: 33px;
+            background-color: #ededed;
+            z-index: 1;
+        }
+
+        .tab {
+            display: block;
+            text-align: center;
+            text-shadow: none;
+            border: 1px solid #b4b4b4;
+            -webkit-transition: all 0.1s ease-in-out;
+            -moz-transition: all 0.1s ease-in-out;
+            -ms-transition: all 0.1s ease-in-out;
+            -o-transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            font-weight: bolder;
+            color: black;
+            font-family: 'Hind', sans-serif;
+            font-size: 14px;
+            background-color: #cccccc;
+            padding: 5px 8px 3px 8px;
+            text-transform: uppercase;
+            text-decoration: none !important;
+            cursor: pointer !important;
+            white-space: nowrap;
+            float: left;
+        }
+
+            .tab:hover {
+                cursor: pointer;
+                color: white;
+                border: 1px solid #000000;
+                background-color: #000000;
+            }
+
+        .tab-active {
+            color: white;
+            border: 1px solid #000000;
+            background-color: #000000;
+            opacity: 1;
+            cursor: pointer !important;
+        }
+
+        .tab-disable {
+            opacity: 0.3;
+            cursor: default !important;
+        }
+
+        .fa, .fas, .far {
+            font-size: 18px !important;
+            vertical-align: middle;
+        }
+
+        .tab-disable:hover {
+            opacity: 0.3;
+            cursor: default !important;
+            background-color: #cccccc;
+            color: black;
+        }
+
+        .tab:first-of-type {
+            border-radius: 0px;
+        }
+
+        .tab:last-of-type {
+            border-radius: 0px;
+        }
+
+        .content-header h2 {
+            color: #7C7C7C;
+            font-size: 17px !important;
+            text-transform: uppercase !important;
+        }
+
+        input:disabled {
+            opacity: 0.5;
+        }
+
+        .content-details input, .content-details select, .contDet input, .contDet select {
+            margin: 2px;
+            padding: .280rem .5rem;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            margin-top: 1px;
+        }
+
+        .form-container-head {
+            background-color: white;
+            padding-left: 20px;
+            padding-top: 20px;
+            border-top: 0.6em solid #000000;
+            padding-right: 0px;
+        }
+
+        .form-container-headNBorder {
+            background-color: white;
+            padding-left: 20px;
+            padding-top: 20px;
+            padding-right: 0px;
+        }
+
+        .form-container {
+            background-color: white;
+            padding-left: 20px;
+            padding-right: 0px;
+        }
+
+        .main-button {
+            text-align: center !important;
+            text-shadow: none !important;
+            border: 1px solid #b4b4b4 !important;
+            background-color: #cccccc !important;
+            -webkit-transition: all 0.1s ease-in-out !important;
+            -moz-transition: all 0.1s ease-in-out !important;
+            -ms-transition: all 0.1s ease-in-out !important;
+            -o-transition: all 0.1s ease-in-out !important;
+            transition: all 0.1s ease-in-out !important;
+            padding: 5px 6px 3px 6px !important;
+            font-family: 'Hind', sans-serif !important;
+            font-weight: bolder !important;
+            text-transform: uppercase !important;
+            font-size: 14px !important;
+            color: #000 !important;
+            cursor: pointer !important;
+            border-radius: 0px !important;
+            background-clip: initial !important;
+            margin: 0 !important;
+            margin-top: 0px !important;
+            line-height: unset !important;
+            margin-right: 5px !important;
+            white-space: nowrap !important;
+        }
+
+            .main-button:hover {
+                cursor: pointer !important;
+                color: white !important;
+                border: 1px solid #000000 !important;
+                background-color: #000000 !important;
+            }
+
+            .main-button .button-icon {
+                margin-left: 10px;
+                text-rendering: optimizeLegibility;
+            }
+
+        .alertJs-dialog-height {
+            height: 450px !important;
+        }
+
+        .divloader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            background: lightgrey;
+            opacity: 0.8;
+            filter: alpha(opacity=40);
+            /*background: lightGrey url("msnfp_ajaxLoader.gif") no-repeat center center;*/
+            z-index: 2000;
+            margin-top: -8px;
+            margin-left: -8px;
+        }
+
+        #lblErrorAmount, #lblError {
+            color: red;
+        }
+
+        #lblResult {
+            color: green;
+        }
+    </style>
+    <div class="divloader" id="ajaxLoader" style="display: none; font-family: undefined;">
+        <img id="ajax-loader" src="msnfp_ajaxloader.gif" style="margin: 25% 49%; display: block;">
+    </div>
+    <div id="tblRefundProcess" style="font-family: undefined;">
+        <table class="content-details" style="width: 100%; margin-top: 5px;" border="0">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="tabview">
+                            <a class="tab tab-active" href="javascript:void(0)" id="TabCC" title="CC">Credit Card</a>
+                            <a class="tab" href="javascript:void(0)" id="TabCheque" title="Cheque">Check</a>
+                            <a class="tab" href="javascript:void(0)" id="TabCash" title="Cash">Cash</a>
+                            <a class="tab" href="javascript:void(0)" id="TabWireTransfer" title="WireTransfer">Wire Transfer</a>
+                            <a class="tab" href="javascript:void(0)" id="TabExtCC" title="ExtCC">Ext. Credit / Debit Card</a>
+                            <a class="tab" href="javascript:void(0)" id="TabOther" title="Other">Other</a>
+                        </div>
+                        <table style="border-style:none;width:100%;" border="0">
+                            <tbody>
+                                <tr style="background:#fff;">
+                                    <table style="border-style:none;width:99%;margin-left: 2px;" border="0" align="center">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <div class="content-header">
+                                                        <h2 class="noselect" style="margin-left: 23px;margin-bottom: 0px;">Available Amount</h2>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="content-header">
+                                                        <h2 class="noselect" style="margin-left: 29px;margin-bottom: 0px;">Amount Refunded</h2>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">Transactions Will Require Manually Refunding</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" style="background:#ededed !important;padding: 13px;padding-top: 15px;padding-bottom: 15px;text-align:center;">
+                                        <table style="border-style:none;width:99%;margin-left: 2px;" border="0" align="center">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="width: 157px;" class="form-container-head">Payment Amount</td>
+                                                    <td style="width: 30%;" class="form-container-head">
+                                                        <input type="text" id="txtPaymentAmount" disabled="">
+                                                    </td>
+                                                    <td class="form-container-head">
+                                                        <input type="text" id="txtPaymentAmountRefunded">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="form-container">Amount Refunded</td>
+                                                    <td class="form-container">
+                                                        <input type="text" id="txtAmountRefunded" disabled="">
+                                                    </td>
+                                                    <td class="form-container"><br></td>
+                                                </tr>
+                                                <tr id="trCheque">
+                                                    <td class="form-container">
+                                                        <span class="spnChequeNumber field-label hide">Check Number</span>
+                                                        <span class="spnWireNumber field-label hide">Wire Number</span>
+                                                    </td>
+                                                    <td class="form-container">
+                                                        <input type="text" id="txtChequeNumber" onKeyPress="return checkIt(event);">
+                                                    </td>
+                                                    <td class="form-container"><br></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="form-container">Vendor Number</td>
+                                                    <td class="form-container">
+                                                        <input type="text" id="txtVendorNumber" disabled="">
+                                                    </td>
+                                                    <td class="form-container"><br></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="form-container" style="height:10px;" colspan="3"><br></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="height:20px;border-style:none;">&nbsp;</div>
+                        <table style="width:100%;border-style:none;" class="contDet" border="0">
+                            <tbody>
+                                <tr>
+                                    <td colspan="3" style="background:#ededed !important;padding: 13px;padding-top: 15px;padding-bottom: 15px;text-align:center;">
+                                        <table style="border-style:none;width:99%;margin-left: 2px;" border="0" align="center">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="form-container-headNBorder" style="width: 157px;">Refund Available</td>
+                                                    <td class="form-container-headNBorder" style="width: 30%;"><input type="text" id="txtRefundAvailable" disabled=""></td>
+                                                    <td class="form-container-headNBorder"><br></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="form-container">Refund Amount</td>
+                                                    <td class="form-container">
+                                                        <input type="text" id="txtRefundAmount" disabled="">
+                                                    </td>
+                                                    <td class="form-container"><br></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="form-container">Refund Date</td>
+                                                    <td class="form-container">
+                                                        <input type="text" id="txtRefundDate" readonly="" style="background: white;">
+                                                    </td>
+                                                    <td class="form-container">
+                                                        <input type="button" class="main-button" value="Process  >" id="btnProcess">
+                                                        <!--<input type="button" class="main-button" value="Close  >" id="btnClose">-->
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="form-container" colspan="3">
+                                                        <label id="lblErrorAmount"></label>
+                                                        <label id="lblResult"></label>
+                                                        <label id="lblError"></label>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script type="text/javascript">
+        var PaymentType = {
+            Cash: 844060000,
+            Cheque: 844060001,
+            Credit_Debit_Card: 844060002,
+            Bank_Ach: 844060003,
+            In_Kind: 844060004,
+            Gift: 844060005,
+            Stock: 844060006,
+            Property: 844060007,
+            Other: 844060008,
+            Wire_or_Transfer: 844060009,
+            Direct_Debit: 844060010,
+            Fund_Transfer: 844060011,
+            Ext_CreditCard: 844060012,
+        }
+
+        var currentEntityGUID;
+        var transactionType;
+        var pluralName;
+        var currencySymbol;
+        var isoCurrencyCode;
+        var currentPayment;
+        var configRecord;
+
+        function getParameters() {
+            currentEntityGUID = MissionFunctions.GetQueryStringParam("entityGUID"); // = getDataParam("entityGUID");
+        }
+
+
+        $(function () {
+            $("#txtRefundDate").datepicker({
+                dateFormat: 'mm/dd/yy',
+            });
+
+            $('#txtRefundDate').val(getFormattedDate(new Date()));
+
+            $("#trCheque").hide();
+            $("#TabCC").hide();
+
+            getParameters();
+
+            var str = "msnfp_payments(" + currentEntityGUID + ")?";
+            str += "$select=msnfp_paymentid,msnfp_paymenttype,msnfp_amount,msnfp_amount_refunded,msnfp_amount_balance,_transactioncurrencyid_value,_msnfp_customerid_value,_msnfp_configurationid_value&";
+            str += "$expand=msnfp_customerid_contact($select=msnfp_vendorid),msnfp_customerid_account($select=msnfp_vendorid)";
+
+            currentPayment = XrmServiceUtility.ExecuteQueryWithExpand(XrmServiceUtility.GetWebAPIUrl() + str);
+
+            if (!isNullOrUndefined(currentPayment)) {
+                if (!isNullOrUndefined(currentPayment._msnfp_configurationid_value)) {
+                    var select = "msnfp_configurations?$select=msnfp_configurationid,";
+                    select += "msnfp_label_creditcard,msnfp_label_cheque,";
+                    select += "msnfp_label_cash,msnfp_label_wire,msnfp_label_extcreditcard,msnfp_label_other,msnfp_tran_forcefullrefund";
+                    var filter = "&$filter=(statuscode eq 1 and msnfp_configurationid eq " + currentPayment._msnfp_configurationid_value + ")";
+                    var configResult = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + select + filter);
+                    configRecord = configResult[0];
+
+                    if (!isNullOrUndefined(configRecord.msnfp_label_creditcard))
+                        $('#TabCC')[0].innerText = configRecord.msnfp_label_creditcard;
+                    if (!isNullOrUndefined(configRecord.msnfp_label_cheque))
+                        $('#TabCheque')[0].innerText = configRecord.msnfp_label_cheque;
+                    if (!isNullOrUndefined(configRecord.msnfp_label_cash))
+                        $('#TabCash')[0].innerText = configRecord.msnfp_label_cash;
+                    if (!isNullOrUndefined(configRecord.msnfp_label_wire))
+                        $('#TabWireTransfer')[0].innerText = configRecord.msnfp_label_wire;
+                    if (!isNullOrUndefined(configRecord.msnfp_label_extcreditcard))
+                        $('#TabExtCC')[0].innerText = configRecord.msnfp_label_extcreditcard;
+                    if (!isNullOrUndefined(configRecord.msnfp_label_other))
+                        $('#TabOther')[0].innerText = configRecord.msnfp_label_other;
+                }
+
+                if (currentPayment.msnfp_paymenttype == PaymentType.Credit_Debit_Card) {
+                    $("#TabCC").show();
+                    $(".tabview").find('a#TabCC').addClass('tab-active');
+
+                    $(".tabview").find('a#TabCheque').removeClass('tab-active');
+                    $(".tabview").find('a#TabCash').removeClass('tab-active');
+                    $(".tabview").find('a#TabWireTransfer').removeClass('tab-active');
+                    $(".tabview").find('a#TabExtCC').removeClass('tab-active');
+                    $(".tabview").find('a#TabOther').removeClass('tab-active');
+                }
+                else if (currentPayment.msnfp_paymenttype == PaymentType.Cheque) {
+                    $(".tabview").find('a#TabCheque').addClass('tab-active');
+
+                    $(".tabview").find('a#TabCC').removeClass('tab-active');
+                    $(".tabview").find('a#TabCash').removeClass('tab-active');
+                    $(".tabview").find('a#TabWireTransfer').removeClass('tab-active');
+                    $(".tabview").find('a#TabExtCC').removeClass('tab-active');
+                    $(".tabview").find('a#TabOther').removeClass('tab-active');
+                    $("#trCheque").show();
+
+                    $('.spnWireNumber').hide();
+                    $('.spnChequeNumber').show();
+                }
+                else if (currentPayment.msnfp_paymenttype == PaymentType.Cash) {
+                    $(".tabview").find('a#TabCash').addClass('tab-active');
+
+                    $(".tabview").find('a#TabCC').removeClass('tab-active');
+                    $(".tabview").find('a#TabCheque').removeClass('tab-active');
+                    $(".tabview").find('a#TabWireTransfer').removeClass('tab-active');
+                    $(".tabview").find('a#TabExtCC').removeClass('tab-active');
+                    $(".tabview").find('a#TabOther').removeClass('tab-active');
+                }
+                else if (currentPayment.msnfp_paymenttype == PaymentType.Wire_or_Transfer) {
+                    $(".tabview").find('a#TabWireTransfer').addClass('tab-active');
+
+                    $(".tabview").find('a#TabCC').removeClass('tab-active');
+                    $(".tabview").find('a#TabCash').removeClass('tab-active');
+                    $(".tabview").find('a#TabCheque').removeClass('tab-active');
+                    $(".tabview").find('a#TabExtCC').removeClass('tab-active');
+                    $(".tabview").find('a#TabOther').removeClass('tab-active');
+                    $("#trCheque").show();
+
+                    $('.spnChequeNumber').hide();
+                    $('.spnWireNumber').show();
+                }
+                else if (currentPayment.msnfp_paymenttype == PaymentType.Ext_CreditCard) {
+                    $(".tabview").find('a#TabExtCC').addClass('tab-active');
+
+                    $(".tabview").find('a#TabCC').removeClass('tab-active');
+                    $(".tabview").find('a#TabCash').removeClass('tab-active');
+                    $(".tabview").find('a#TabCheque').removeClass('tab-active');
+                    $(".tabview").find('a#TabWireTransfer').removeClass('tab-active');
+                    $(".tabview").find('a#TabOther').removeClass('tab-active');
+                }
+                else if (currentPayment.msnfp_paymenttype == PaymentType.Other) {
+                    $(".tabview").find('a#TabOther').addClass('tab-active');
+
+                    $(".tabview").find('a#TabCC').removeClass('tab-active');
+                    $(".tabview").find('a#TabCash').removeClass('tab-active');
+                    $(".tabview").find('a#TabCheque').removeClass('tab-active');
+                    $(".tabview").find('a#TabWireTransfer').removeClass('tab-active');
+                    $(".tabview").find('a#TabExtCC').removeClass('tab-active');
+                }
+
+                if (!isNullOrUndefined(currentPayment.msnfp_customerid_contact))
+                    $('#txtVendorNumber').val(currentPayment.msnfp_customerid_contact.msnfp_vendorid);
+
+                if (!isNullOrUndefined(currentPayment.msnfp_customerid_account))
+                    $('#txtVendorNumber').val(currentPayment.msnfp_customerid_account.msnfp_vendorid);
+
+                var amount = !isNullOrUndefined(currentPayment.msnfp_amount_balance) ? parseFloat(currentPayment.msnfp_amount_balance) : 0;
+                var totalRefunded = !isNullOrUndefined(currentPayment.msnfp_amount_refunded) ? currentPayment.msnfp_amount_refunded : 0;
+
+                getCurrencySymbol(currentPayment._transactioncurrencyid_value);
+
+                $('#txtPaymentAmount').val(currencySymbol + amount.toFixed(2));
+                $('#txtAmountRefunded').val(currencySymbol + totalRefunded.toFixed(2));
+                $('#txtPaymentAmountRefunded').val(currencySymbol + amount.toFixed(2));
+
+                if (amount == 0 || configRecord.msnfp_tran_forcefullrefund == true)
+                    $('#txtPaymentAmountRefunded').attr('disabled', 'disabled');
+
+                var totalHeader = !isNullOrUndefined(currentPayment.msnfp_amount) ? currentPayment.msnfp_amount : 0;
+                var totalAmountRefunded = totalRefunded;
+
+                if (totalHeader != 0 && totalHeader > totalAmountRefunded)
+                    $('#txtRefundAvailable').val(currencySymbol + (totalHeader - totalAmountRefunded).toFixed(2));
+                else
+                    $('#txtRefundAvailable').val(currencySymbol + "0.00");
+
+                $('#txtRefundAmount').val(currencySymbol + (totalHeader - totalAmountRefunded).toFixed(2));
+
+            }
+
+            $('#txtPaymentAmountRefunded').focusout(function () {
+                var amountAvailable = !isNullOrUndefined($('#txtPaymentAmount').val()) ? $('#txtPaymentAmount').val().replace(currencySymbol, '') : 0;
+                var amountRefund = !isNullOrUndefined($('#txtPaymentAmountRefunded').val()) ? $('#txtPaymentAmountRefunded').val().replace(currencySymbol, '') : 0;
+
+                if (parseFloat(amountRefund) > parseFloat(amountAvailable)) {
+                    $(this).addClass('red-border');
+                    $(this).focus();
+                }
+                else {
+                    $(this).removeClass('red-border');
+                    $('#txtRefundAmount').val(currencySymbol + (parseFloat(amountRefund)).toFixed(2));
+                }
+
+                if ($(this).val().indexOf(".") == -1) {
+                    $(this).val($(this).val() + ".00");
+                }
+
+                $(this).val(addDollarSign($(this).val()));
+            });
+
+            $('.tabview').children('a').each(function () {
+                $(this).click(function (e) {
+                    manageTab(this);
+                });
+            });
+
+            $('#btnProcess').click(function () {
+                var refundAvailable = $('#txtRefundAvailable').val();
+                var refundAmount = $('#txtRefundAmount').val();
+                $("#lblErrorAmount")[0].innerText = "";
+
+                refundAvailable = refundAvailable.replace(currencySymbol, '');
+                refundAmount = refundAmount.replace(currencySymbol, '');
+
+                if (refundAmount === "" || parseFloat(refundAmount) <= parseFloat("0") || parseFloat(refundAmount) > parseFloat(refundAvailable)) {
+                    $("#lblErrorAmount")[0].innerText = "Please confirm an amount to process.";
+                }
+                else {
+                    if (Validate()) {
+                        parent.Xrm.Utility.showProgressIndicator();
+
+                        var refund = {};
+
+                        if ($('.tabview').find('#TabCC').hasClass('tab-active'))
+                            refund["msnfp_refundtypecode"] = PaymentType.Credit_Debit_Card;
+                        else if ($('.tabview').find('#TabCheque').hasClass('tab-active')) {
+                            refund["msnfp_refundtypecode"] = PaymentType.Cheque;
+                            refund["msnfp_chequenumber"] = $('#txtChequeNumber').val();
+                        }
+                        else if ($('.tabview').find('#TabCash').hasClass('tab-active'))
+                            refund["msnfp_refundtypecode"] = PaymentType.Cash;
+                        else if ($('.tabview').find('#TabWireTransfer').hasClass('tab-active')) {
+                            refund["msnfp_refundtypecode"] = PaymentType.Wire_or_Transfer;
+                            refund["msnfp_chequenumber"] = $('#txtChequeNumber').val();
+                        }
+                        else if ($('.tabview').find('#TabExtCC').hasClass('tab-active'))
+                            refund['msnfp_refundtypecode'] = PaymentType.Ext_CreditCard;
+                        else if ($('.tabview').find('#TabOther').hasClass('tab-active'))
+                            refund['msnfp_refundtypecode'] = PaymentType.Other;
+
+                        console.log("refund code: " + refund['msnfp_refundtypecode']);
+
+                        // Customer:
+                        // See if it is an account or contact:
+                        if (!isNullOrUndefined(currentPayment.msnfp_customerid_contact)) {
+                            console.log("Contact");
+                            refund["msnfp_CustomerId_contact@odata.bind"] = "/contacts(" + currentPayment._msnfp_customerid_value + ")";
+                            //refund['msnfp_refundtypecode'] = PaymentType.Other;
+                        }
+                        if (!isNullOrUndefined(currentPayment.msnfp_customerid_account)) {
+                            console.log("Account");
+                            refund["msnfp_CustomerId_account@odata.bind"] = "/accounts(" + currentPayment._msnfp_customerid_value + ")";
+                        }
+
+                        refund["msnfp_ref_amount"] = !isNullOrUndefined($('#txtRefundAmount').val()) ? parseFloat($('#txtRefundAmount').val().replace(currencySymbol, '')) : 0;
+
+
+                        var paymentTotalHeader = !isNullOrUndefined(currentPayment.msnfp_amount) ? parseFloat(currentPayment.msnfp_amount) : 0;
+                        var paymentTotalRefunded = !isNullOrUndefined(currentPayment.msnfp_amount_refunded) ? parseFloat(currentPayment.msnfp_amount_refunded) : 0;
+
+                        console.log("paymentTotalRefunded = " + paymentTotalRefunded);
+
+                        refund["msnfp_amount"] = paymentTotalHeader - paymentTotalRefunded;
+
+                        var date = new Date($('#txtRefundDate').val());
+                        refund["msnfp_bookdate"] = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+
+                        refund["msnfp_paymentid@odata.bind"] = "/msnfp_payments(" + currentEntityGUID + ")";
+
+                        var qry = XrmServiceUtility.GetWebAPIUrl() + "msnfp_refunds";
+
+                        XrmServiceUtility.CreateRecordAsync(qry, refund, saveSuccess, errorFailure);
+                    }
+                }
+            });
+        });
+
+        function manageTab(current) {
+            $('.tabview').children('a').each(function () {
+                if (this === current) {
+                    $(this).addClass('tab-active');
+
+                    if (this.id == 'TabCheque' || this.id == 'TabWireTransfer') {
+                        $('#trCheque').show();
+
+                        if (this.id == 'TabCheque') {
+                            $('.spnWireNumber').hide();
+                            $('.spnChequeNumber').show();
+                        }
+                        else if (this.id == 'TabWireTransfer') {
+                            $('.spnChequeNumber').hide();
+                            $('.spnWireNumber').show();
+                        }
+                    }
+                    else
+                        $('#trCheque').hide();
+                }
+                else {
+                    $(this).removeClass('tab-active');
+                }
+            });
+        }
+
+        function getCurrencySymbol(transactionCurrencyID) {
+            if (!isNullOrUndefined(transactionCurrencyID)) {
+                var currencySelect = "transactioncurrencies?$select=transactioncurrencyid,currencysymbol,isocurrencycode"
+                currencySelect += "&$filter=transactioncurrencyid eq " + transactionCurrencyID;
+                var currencyRec = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + currencySelect);
+                if (!isNullOrUndefined(currencyRec))
+                    currencyRec = currencyRec[0];
+
+                if (!isNullOrUndefined(currencyRec)) {
+                    currencySymbol = currencyRec.currencysymbol;
+                    isoCurrencyCode = currencyRec.isocurrencycode;
+                }
+            }
+        }
+
+        function Validate() {
+            var isValidate = true;
+            if ($('.tabview').find('#TabCheque').hasClass('tab-active') && isNullOrUndefined($('#txtChequeNumber').val())) {
+                $("#lblErrorAmount")[0].innerText = "Please enter check number.";
+                isValidate = false;
+            }
+
+            if ($('.tabview').find('#TabWireTransfer').hasClass('tab-active') && isNullOrUndefined($('#txtChequeNumber').val())) {
+                $("#lblErrorAmount")[0].innerText = "Please enter wire number.";
+                isValidate = false;
+            }
+
+            if (isNullOrUndefined($('#txtRefundDate').val())) {
+                $("#lblErrorAmount")[0].innerText = "Please select Refund Date.";
+                isValidate = false;
+            }
+
+            return isValidate;
+        }
+
+        function formatdigits(val) {
+            val = val.toString();
+            return val.length === 1 ? "0" + val : val;
+        }
+
+        function checkIt(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                status = "This field accepts numbers only."
+                return false;
+            }
+            status = "";
+            return true;
+        }
+
+        function saveSuccess(recordID) {
+            if (!isNullOrUndefined(recordID)) {
+                $("#lblResult")[0].innerText = "Refund Successful.";
+                if (isParentAccessible())
+                    parent.window.opener.location.reload(true);
+                window.close();
+
+            }
+            else {
+                $("#lblError")[0].innerText = "Refund Failed.";
+            }
+            Xrm.Utility.closeProgressIndicator();
+            $('#btnProcess').hide();
+        }
+
+        function errorFailure(message) {
+            $("#lblError")[0].innerText = message;
+            Xrm.Utility.closeProgressIndicator();
+        }
+
+        function isParentAccessible() {
+            try {
+                parent.window.opener.location;
+                return true;
+            }
+            catch (err) {
+                return false;
+            }
+        }
+
+
+        Date.prototype.mmddyy = function () {
+            var mm = this.getMonth() + 1; // getMonth() is zero-based
+            var dd = this.getDate();
+
+            return [(mm > 9 ? '' : '0') + mm,
+            (dd > 9 ? '' : '0') + dd,
+            this.getFullYear().toString().substr(-2)
+            ].join('');
+        };
+
+        function isNullOrUndefined(value) {
+            return (typeof (value) === "undefined" || value === null || value === "");
+        }
+
+        function getFormattedDate(date) {
+            return ("0" + (date.getUTCMonth() + 1)).slice(-2)
+                + "/"
+                + ("0" + date.getUTCDate()).slice(-2)
+                + "/"
+                + date.getUTCFullYear();
+        }
+
+        function addDollarSign(value) {
+            if (value != null && value != undefined && currencySymbol != null && currencySymbol != "") {
+                if (value.substring(0, 1) != currencySymbol.substring(0, 1))
+                    value = currencySymbol + value;
+            }
+
+            return value;
+        }
+
+        function removeDollarSign(value) {
+            if (value != null && value != undefined && currencySymbol != null && currencySymbol != "") {
+                if (value.substring(0, 1) == currencySymbol.substring(0, 1))
+                    value = value.substr(currencySymbol.length);
+            }
+
+            return value;
+        }
+
+    </script>
+
+</body>
+</html>

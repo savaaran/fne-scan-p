@@ -1,0 +1,597 @@
+﻿<html>
+<!--/*************************************************************************
+* © Microsoft. All rights reserved.
+*/-->
+<head>
+    <title></title>
+    <meta charset="utf-8">
+
+    <link href="../scripts/common.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <script src="../scripts/jQuery.js" type="text/javascript"></script>
+    <script src="../scripts/loadmask.js" type="text/javascript"></script>
+    <script src="../scripts/common.js" type="text/javascript"></script>
+    <script src="../scripts/utilities" type="text/javascript"></script>
+    <style type="text/css">
+        .table-main input {
+            display: inline;
+            width: 180px;
+            margin: 6px;
+            padding: .200rem .3rem .200rem .4rem;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            margin-top: 1px;
+        }
+
+        .table-main select {
+            display: inline;
+            width: 320px;
+            margin: 6px;
+            padding: .180rem .3rem .100rem .4rem;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            margin-top: 1px;
+        }
+
+            .table-main select:disabled {
+                opacity: 0.5;
+            }
+
+        .table-main i {
+            border: ridge black;
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 5px 5px;
+            cursor: pointer;
+            margin: -2px 5px 2px 0;
+        }
+
+        .table-main {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .table-main tr td {
+                padding-top: 7px;
+                padding-bottom: 3px;
+            }
+
+            .table-main tr:nth-child(odd) {
+                background: #ededed;
+            }
+
+            .table-main tr:nth-child(even) {
+                background: #f9f9f9;
+            }
+
+        .btnPlusMinus {
+            font-size: 15px !important;
+            border: 2px solid rgba(0,0,0,0.20) !important;
+            transform: rotate(0deg) !important;
+            -webkit-transform: rotate(0deg) !important;
+            box-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.30);
+            border-radius: 4px;
+            margin-top: 1px;
+            background: #f3f3f3;
+            padding: 4px;
+        }
+
+            .btnPlusMinus:hover {
+                box-shadow: 0px 0px rgba(0, 0, 0, 0.55);
+                cursor: pointer;
+            }
+
+        .error-msg, .success-msg {
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body style="overflow-wrap: break-word;">
+    <div class="main" id="divFundAllocationIFrame">
+        <table class="table-main">
+            <colgroup>
+                <col width="20px">
+                <col width="20px">
+                <col width="30%">
+                <col>
+            </colgroup>
+            <tbody></tbody>
+        </table>
+        <table class="hide table-clone" role="presentation">
+            <tbody>
+                <tr>
+                    <td style="width: 95px;padding-left: 20px;">
+                        <a href="#" style="text-decoration:none" class="btnAdd" title="Add a designation" tabindex="0" role="button">
+                            <span style="color:#243a5e;" class="btnPlusMinus fas fa-plus" aria-hidden="true" aria-label="Add a designation"></span>
+                        </a>
+                        <a href="#" style="text-decoration:none" class="btnRemove" title="Remove this designation" tabindex="0" role="button">
+                            <span style="color:red;" class="btnPlusMinus fas fa-minus" aria-hidden="true" aria-label="Remove this designation"></span>
+                        </a>
+                    </td>
+                    <td class="text-center" >
+                        <label class="field-label" title="Designation" tabindex="0">Designation</label>
+                        <select class="form-control ddlFundList" role="listbox" title="Fund List">
+                            <option value=""></option>
+                        </select>
+                    </td>
+                    <td width="25%">
+                        <label class="form-control field-label" title="amount" tabindex="0">Amount</label>
+                        <input type="text" class="txtamount" title="enter amount" tabindex="0" onkeypress="return validateFloatKeyPress(this, event)">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div>
+            <div class="float-left" style="width: 70%">
+                <div class="error-msg" role="alert"></div>
+                <div class="success-msg"></div>
+            </div>
+            <div class="float-right" style="width: 30%">
+                <div class="div-buttons">
+                    <div class="btn float-right">
+                        <a href="javascript:;" id="btnCancel" title="Discard your changes" role="button" tabindex="0">
+                            <img class="btnPlusMinus" style="height: 23px !important;padding: 2px !important;" src="../images/cancelfundallocation32.png" aria-hidden="true" aria-label="Discard your changes">
+                        </a>
+                    </div>
+                    <div class="btn float-right">
+                        <a href="javascript:;" id="btnSave" title="Save your changes" tabindex="0">
+                            <img class="btnPlusMinus" style="height: 23px !important;padding: 2px !important;" src="../images/savefundallocation32.png" aria-hidden="true" aria-label="Save your changes">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var xrm; //= window.parent.Xrm;
+        var formType; //= xrm.Page.ui.getFormType();
+        var id = '';
+        var totalAmount = '';
+        var status;
+        var removedAllocations = [];
+        var clickOnButton = false;
+        var entity;
+        var designatedCreditRowId = 0;
+
+        $(document).ready(function () {
+            xrm = XrmUtility.get_Xrm();
+            formType = xrm.Page.ui.getFormType();
+
+            if (formType == 2 || formType == 4) {
+                status = xrm.Page.data.entity.attributes.get('statuscode').getValue();
+
+                var entityName = xrm.Page.data.entity.getEntityName();
+                if (entityName == 'msnfp_donationpledge')
+                    entity = EntityName.DonationPledge;
+                else if (entityName == 'msnfp_expense')
+                    entity = EntityName.Expense;
+                else if (entityName == 'msnfp_registration')
+                    entity = EntityName.Registration;
+                else if (entityName == 'msnfp_sponsorship')
+                    entity = EntityName.Sponsorship;
+                else if (entityName == 'msnfp_productfulfillment')
+                    entity = EntityName.Productfulfillment;
+                else if (entityName == 'msnfp_transaction')
+                    entity = EntityName.Transaction;
+
+                var amountField = xrm.Page.data.entity.attributes.get('msnfp_amount');
+                if (entity != null && amountField != null && amountField.getValue() > 0) {
+                    totalAmount = amountField.getValue();
+                    id = xrm.Page.data.entity.getId().replace('{', '').replace('}', '');
+                    //loadFunds();
+                    loadDesignations();
+                    //loadFundAllocations();
+                    loadDesignatedCredits();
+                    cloneDefaultTable();
+
+                    if (status == "2") {
+                        $('.main').find('input, textarea, button, select').attr('disabled', 'disabled');
+                        $('div.main .btnAdd, div.main .btnRemove').each(function () {
+                            $(this).addClass('btn-disabled');
+                        });
+                    }
+
+                    $('div.main').on('click', 'a.btnAdd', function () {
+                        var $this = $(this);
+                        if ($this.hasClass('btn-disabled'))
+                            return;
+                        enableButtons();
+                        //addFundAllocations();
+                        addDesignatedCredits();
+                        disableRemovebutton();
+                    });
+
+                    $('div.main').on('click', 'a.btnRemove', function () {
+                        var $this = $(this);
+                        if ($this.hasClass('btn-disabled'))
+                            return;
+                        enableButtons();
+                        var parentTr = $this.parents('tr');
+                        if (parentTr.attr('data-id') != null) {
+                            removedAllocations.push(parentTr.attr('data-id'));
+                            console.debug(parentTr.attr('data-id'));
+                        }
+                        parentTr.remove();
+                        calculateAmount();
+                    });
+
+                    $('div.main').on('change', 'input.txtamount', function (e) {
+                        enableButtons();
+                        var $this = $(this);
+                        $('.error-msg').hide();
+                        var rowAmount = getTotalAmount();
+                        if (rowAmount > totalAmount) {
+                            $('.error-msg').append('<p>Amount should be less then first row</p>');
+                            $('.error-msg').show();
+                            $this.val('');
+                            setTimeout(function () {
+                                $this.focus();
+                            }, 100);
+                        } else {
+                            calculateAmount();
+                        }
+                    });
+
+                    $('div.main').on('change', 'select.ddlFundList', function (e) {
+                        enableButtons();
+                    });
+
+                    $('#btnSave').click(function () {
+
+                        if (validate()) {
+                            $(".main").mask(" ");
+                            clickOnButton = true;
+                            $('div.main table.table-main tbody tr').each(function () {
+                                var $this = $(this);
+                                saveFundAllocation($this);
+                            });
+                            removeFundAllocation();
+                        }
+                    });
+
+                    $('#btnCancel').click(function () {
+                        //$('div.main table.table-main').remove();
+                        //$('div.main').prepend($('.table-clone-default').clone());
+                        //$('.table-clone-default:first').removeClass('table-clone-default hide').addClass('table-main');
+
+                        var fundFrame = $(this).closest('#divFundAllocationIFrame');
+                        fundFrame.find('.table-main > tbody').empty();
+
+                        //loadFundAllocations();
+                        loadDesignatedCredits();
+                    });
+                }
+            }
+            else {
+                $('div.main').hide();
+            }
+        });
+
+        var activeAjaxCount = 0;
+
+        $(document).ajaxStart(function () {
+            if (clickOnButton) {
+                activeAjaxCount++;
+                console.log('Start-' + activeAjaxCount);
+                $(".main").mask(" ");
+            }
+        });
+
+        $(document).ajaxComplete(function () {
+            if (clickOnButton) {
+                activeAjaxCount--;
+                console.log('Complete-' + activeAjaxCount);
+                if (activeAjaxCount == 0) {
+                    console.log('All Complete');
+                    $('div.success-msg').show();
+                    $('div.success-msg').html('Records saved successfully.');
+                    $('.div-buttons').hide();
+                    $(".main").unmask();
+                    clickOnButton = false;
+                }
+            }
+        });
+
+        //function loadFunds() {
+        //    var selectQuery = "msnfp_funds?$select=msnfp_fundname,msnfp_title&$orderby=msnfp_title&$filter=statuscode eq 1 and (msnfp_validfrom eq null and msnfp_validto eq null) or ((msnfp_validfrom eq null or msnfp_validfrom le " + getODataPreDateFilter(new Date()) + ") and (msnfp_validto eq null or msnfp_validto ge " + getODataPreDateFilter(new Date()) + "))";
+
+        //    var result = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + selectQuery);
+        //    $(result)
+        //        .each(function (k, v) {
+        //            $('table.table-clone select.ddlFundList').append('<option value="' + v.msnfp_fundid + '">' + v.msnfp_title + '</option>');
+        //        });
+        //}
+
+        function loadDesignations() {
+            var selectQuery = "msnfp_designations?$select=msnfp_name&$orderby=msnfp_name&$filter=statuscode eq 1 and (msnfp_startdate eq null and msnfp_enddate eq null) or ((msnfp_startdate eq null or msnfp_startdate le " + getODataPreDateFilter(new Date()) + ") and (msnfp_enddate eq null or msnfp_enddate ge " + getODataPreDateFilter(new Date()) + "))";
+            console.debug(XrmServiceUtility.GetWebAPIUrl() + selectQuery);
+            var result = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + selectQuery);
+            $(result)
+                .each(function (k, v) {
+                    $('table.table-clone select.ddlFundList').append('<option title="' + v.msnfp_designationid + '" value="' + v.msnfp_designationid + '" role="option">' + v.msnfp_name + '</option>');
+                });
+        }
+
+        //function loadFundAllocations() {
+        //    var selectQuery = '';
+        //    if (entity == EntityName.DonationPledge)
+        //        selectQuery = "msnfp_fundallocations?$select=msnfp_fundallocationid,msnfp_amount,_msnfp_fund_value&$filter=(statuscode eq 1 and _msnfp_donationpledgeid_value eq " + id + ")";
+        //    else if (entity == EntityName.Expense)
+        //        selectQuery = "msnfp_fundallocations?$select=msnfp_fundallocationid,msnfp_amount,_msnfp_fund_value&$filter=(statuscode eq 1 and _msnfp_expenseid_value eq " + id + ")";
+        //    else if (entity == EntityName.Registration)
+        //        selectQuery = "msnfp_fundallocations?$select=msnfp_fundallocationid,msnfp_amount,_msnfp_fund_value&$filter=(statuscode eq 1 and _msnfp_registrationid_value eq " + id + ")";
+        //    //Removed msnfp_sponsorshipid field 3 Fund Allocation Update TDD 09_12_2018
+        //    //else if (entity == EntityName.Sponsorship)
+        //    //    selectQuery = "msnfp_fundallocations?$select=msnfp_fundallocationid,msnfp_amount,_msnfp_fund_value&$filter=(statuscode eq 1 and _msnfp_sponsorshipid_value eq " + id + ")";
+        //    else if (entity == EntityName.Productfulfillment)
+        //        selectQuery = "msnfp_fundallocations?$select=msnfp_fundallocationid,msnfp_amount,_msnfp_fund_value&$filter=(statuscode eq 1 and _msnfp_productfulfillmentid_value eq " + id + ")";
+
+        //    var result = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + selectQuery);
+
+        //    if (result != undefined && result.length > 0) {
+        //        $.each(result,
+        //            function (k, v) {
+        //                var amount = 0;
+        //                if (v.msnfp_amount != null) {
+        //                    amount = v.msnfp_amount;
+        //                }
+
+        //                $('table.table-main tbody').append($('table.table-clone tr:first').clone());
+        //                var addedRow = $('table.table-main tbody tr:last');
+        //                addedRow.attr('data-id', v.msnfp_fundallocationid);
+        //                addedRow.find('select.ddlFundList').val(v._msnfp_fund_value);
+        //                addedRow.find('input.txtamount').val(amount);
+        //            });
+        //    }
+        //    else
+        //        addFundAllocations();
+
+        //    calculateAmount();
+        //}
+
+        function loadDesignatedCredits() {
+            var selectQuery = '';
+            //if (entity == EntityName.DonationPledge)
+            //    selectQuery = "msnfp_fundallocations?$select=msnfp_fundallocationid,msnfp_amount,_msnfp_fund_value&$filter=(statuscode eq 1 and _msnfp_donationpledgeid_value eq " + id + ")";
+            //else if (entity == EntityName.Expense)
+            //    selectQuery = "msnfp_fundallocations?$select=msnfp_fundallocationid,msnfp_amount,_msnfp_fund_value&$filter=(statuscode eq 1 and _msnfp_expenseid_value eq " + id + ")";
+            //else if (entity == EntityName.Registration)
+            //    selectQuery = "msnfp_fundallocations?$select=msnfp_fundallocationid,msnfp_amount,_msnfp_fund_value&$filter=(statuscode eq 1 and _msnfp_registrationid_value eq " + id + ")";
+            ////Removed msnfp_sponsorshipid field 3 Fund Allocation Update TDD 09_12_2018
+            ////else if (entity == EntityName.Sponsorship)
+            ////    selectQuery = "msnfp_fundallocations?$select=msnfp_fundallocationid,msnfp_amount,_msnfp_fund_value&$filter=(statuscode eq 1 and _msnfp_sponsorshipid_value eq " + id + ")";
+            //else if (entity == EntityName.Productfulfillment)
+            //    selectQuery = "msnfp_fundallocations?$select=msnfp_fundallocationid,msnfp_amount,_msnfp_fund_value&$filter=(statuscode eq 1 and _msnfp_productfulfillmentid_value eq " + id + ")";
+            if (entity == EntityName.Transaction)
+                selectQuery = "msnfp_designatedcredits?$select=msnfp_designatedcreditid,msnfp_amount,_msnfp_designatedcredit_designationid_value,_msnfp_designatiedcredit_designationid_value&$filter=(statuscode eq 1 and _msnfp_transactionid_value eq " + id + ")";
+
+            console.debug(XrmServiceUtility.GetWebAPIUrl() + selectQuery);
+
+            var result = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + selectQuery);
+            if (result != undefined && result.length > 0) {
+                $.each(result,
+                    function (k, v) {
+                        designatedCreditRowId++;
+                        var amount = 0;
+                        if (v.msnfp_amount != null) {
+                            amount = v.msnfp_amount;
+                        }
+
+                        $('table.table-main tbody').append($('table.table-clone tr:first').clone());
+                        var addedRow = $('table.table-main tbody tr:last');
+                        addedRow.attr('data-id', v.msnfp_designatedcreditid);
+                        addedRow.attr('id', designatedCreditRowId);
+                        addedRow.find('select.ddlFundList option[value=' + v._msnfp_designatiedcredit_designationid_value + ']').attr('selected', 'selected');
+                        addedRow.find('input.txtamount').val(amount);
+                    });
+            }
+            else
+                addDesignatedCredits();
+
+            calculateAmount();
+        }
+
+
+        function disableRemovebutton() {
+            if ($('table.table-main tbody tr').length == 1)
+                $('table.table-main tbody tr:first').find('.btnRemove').addClass('btn-disabled');
+            else
+                $('table.table-main tbody tr:first').find('.btnRemove').addClass('btn-disabled');
+            //$('table.table-main tbody tr:first').find('input.txtamount').attr('disabled', 'disabled');
+        }
+
+        function enableButtons() {
+            $('.div-buttons').show();
+            $('div.success-msg').hide();
+        }
+
+        //function addFundAllocations() {
+        //    $('table.table-main tbody').append($('table.table-clone tr:first').clone());
+        //    $('table.table-main tbody tr:last').find('input.txtamount').val('0');
+        //}
+
+        function addDesignatedCredits() {
+            $('table.table-main tbody').append($('table.table-clone tr:first').clone());
+            $('table.table-main tbody tr:last').find('input.txtamount').val('0');
+            $('table.table-main tbody tr:last').attr("id", ++designatedCreditRowId);
+        }
+
+        function calculateAmount() {
+            var amount = 0;
+            var i = 0;
+            $('table.table-main tbody tr').each(function () {
+                var txtAmount = $(this).find('input.txtamount').val();
+                if (i != 0 && txtAmount != '') {
+                    amount += parseFloat(txtAmount);
+                }
+                i++;
+            });
+            $('table.table-main tbody tr:first').find('input.txtamount').val(totalAmount - amount);
+            disableRemovebutton();
+        }
+
+        function getTotalAmount() {
+            var amount = 0;
+            var i = 0;
+            $('table.table-main tbody tr').each(function () {
+                if (i != 0) {
+                    amount += parseFloat($(this).find('input.txtamount').val());
+                }
+                i++;
+            });
+            return amount;
+        }
+
+        function saveFundAllocation(row) {
+            //console.debug("row:");
+            //console.debug(row);
+            var fundAllocation = {};
+            var rowId = $(row).attr("id");
+            var fundAllocationId = $(row).attr('data-id');
+            var txtAmount = row.find('input.txtamount');
+            var bookDateAttrib = xrm.Page.data.entity.attributes.get('msnfp_bookdate');
+            var bookDate = null;
+            if (bookDateAttrib != null) {
+                bookDate = bookDateAttrib.getValue();
+            }
+            //var selDesignationName = row.find('select.ddlFundList');
+            //var txtDesignationName = selDesignationName.options[selDesignationName.selectedIndex].text;
+            //var intDesignatedCreditNameLength = 160;
+            //console.debug(txtDesignationName.options);
+            //var txtDesignatedCreditName = txtDesignationName;
+            //fundAllocation["msnfp_name"] = txtDesignatedCreditName + parseFloat($(txtAmount).val());
+            fundAllocation["msnfp_amount"] = parseFloat($(txtAmount).val());
+            fundAllocation["msnfp_bookdate"] = bookDate;
+            //if (entity == EntityName.DonationPledge)
+            //    fundAllocation["msnfp_donationpledgeid@odata.bind"] = "/msnfp_donationpledges(" + id + ")";
+            //else if (entity == EntityName.Expense)
+            //    fundAllocation["msnfp_expenseid@odata.bind"] = "/msnfp_expenses(" + id + ")";
+            //else if (entity == EntityName.Registration)
+            //    fundAllocation["msnfp_registrationid@odata.bind"] = "/msnfp_registrations(" + id + ")";
+            //Removed msnfp_sponsorshipid field 3 Fund Allocation Update TDD 09_12_2018
+            //else if (entity == EntityName.Sponsorship)
+            //    fundAllocation["msnfp_sponsorshipid@odata.bind"] = "/msnfp_sponsorships(" + id + ")";
+            //else if (entity == EntityName.Productfulfillment)
+            //    fundAllocation["msnfp_productfulfillmentid@odata.bind"] = "/msnfp_productfulfillments(" + id + ")";
+            if (entity == EntityName.Transaction)
+                fundAllocation["msnfp_transactionid@odata.bind"] = "/msnfp_transactions(" + id + ")";
+
+            var ddlFund = row.find('select.ddlFundList');
+            //fundAllocation["msnfp_designatiedcredit_designationId@odata.bind"] = "/msnfp_designations(" + ddlFund.val() + ")";
+            fundAllocation["msnfp_designatedcredit_designationid@odata.bind"] = "/msnfp_designations(" + ddlFund.val() + ")";
+
+            //console.debug(fundAllocation);
+
+            if (fundAllocationId == undefined || fundAllocationId == '') {
+                var qry = XrmServiceUtility.GetWebAPIUrl() + "/msnfp_designatedcredits";
+                //$(row).data('data-id', "rrrr");
+                //console.debug("Create:" + qry);
+                XrmServiceUtility.CreateRecordAsync(qry, fundAllocation, saveFundAllocationSucess, errorFailure, rowId);
+            }
+            else {
+                var qry = XrmServiceUtility.GetWebAPIUrl() + "/msnfp_designatedcredits(" + fundAllocationId + ")";
+                //console.debug("Update:" + qry);
+                XrmServiceUtility.UpdateRecordAsync(qry, fundAllocation, saveFundAllocationSucess, errorFailure);
+            }
+        }
+
+        function saveFundAllocationSucess(id, rowId) {
+            console.debug("success. id:" + id + ", rowId:" + rowId);
+            if (rowId != null)
+                $("tr#" + rowId).attr("data-id", id);
+        }
+
+        function errorFailure(message) { alert(message); }
+
+        function removeFundAllocation() {
+            if (removedAllocations.length > 0) {
+                $.each(removedAllocations, function (index, value) {
+                    //console.debug("index:" + index + ", value:" + value);
+                    XrmServiceUtility.DeleteRecordAsync(value, "msnfp_designatedcredits");
+                });
+            }
+        }
+
+        function validate() {
+            $('div.error-msg').hide();
+            $('div.success-msg').hide();
+            var isValid = true;
+            $('table.table-main tbody tr').each(function () {
+                var $this = $(this);
+                var ddlFund = $this.find('select.ddlFundList');
+                if (ddlFund.val() == null || ddlFund.val() == '') {
+                    $(ddlFund).addClass('error-control');
+                    isValid = false;
+                }
+                else
+                    $(ddlFund).removeClass('error-control');
+
+                var txtAmount = $this.find('input.txtamount');
+                if (txtAmount.val() == '') {
+                    $(txtAmount).addClass('error-control');
+                    isValid = false;
+                }
+                else
+                    $(txtAmount).removeClass('error-control');
+            });
+            if (!isValid) {
+                $('div.error-msg').show();
+                $('div.error-msg').html('<p>Please insert required fields.</p>');
+            }
+            return isValid;
+        }
+
+        function cloneDefaultTable() {
+            $('div.main').append($('table.table-main').clone());
+            $('table.table-main:last').removeClass('table-main').addClass('table-clone-default hide');
+        }
+
+        function getODataPreDateFilter(date) {
+            var monthString;
+            var rawMonth = (date.getMonth() + 1).toString();
+            if (rawMonth.length == 1) {
+                monthString = "0" + rawMonth;
+            }
+            else { monthString = rawMonth; }
+
+            var dateString;
+            var rawDate = (date.getDate()).toString();
+            if (rawDate.length == 1) {
+                dateString = "0" + rawDate;
+            }
+            else { dateString = rawDate; }
+
+            var DateFilter = "";
+            DateFilter += date.getFullYear() + "-";
+            DateFilter += monthString + "-";
+            DateFilter += dateString;
+            DateFilter += "T00:00:00Z";
+            return DateFilter;
+        }
+
+        var EntityName = {
+            DonationPledge: 0,
+            Expense: 1,
+            Registration: 2,
+            Sponsorship: 3,
+            Productfulfillment: 4,
+            Transaction: 5
+        };
+
+    </script>
+</body>
+</html>

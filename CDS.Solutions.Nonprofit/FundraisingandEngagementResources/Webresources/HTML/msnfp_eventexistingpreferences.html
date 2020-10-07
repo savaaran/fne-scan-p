@@ -1,0 +1,417 @@
+﻿<!DOCTYPE html>
+<html>
+<!--/*************************************************************************
+* © Microsoft. All rights reserved.
+*/-->
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <!--CSS-->
+    <link href="../scripts/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="msnfp_common.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../scripts/jquery.dataTables.min.css" rel="stylesheet">
+
+    <!--JS-->
+    <script src="../scripts/jQuery.js" type="text/javascript"></script>
+    <script src="../scripts/common.js" type="text/javascript"></script>
+    <script src="../scripts/jquery.dataTables.min.js" type="text/javascript"></script>
+
+
+    <style type="text/css">
+
+        body {
+            font-family: SegoeUI, "Segoe UI", "Helvetica Neue",Arial,"Noto Sans",sans-serif;
+        }
+
+        .form-control {
+            display: block;
+            width: 50%;
+            z-index: 2; /*This fixes an issue where labels may overlap a text box.*/
+            min-width: 50%;
+            height: calc((1.5em + 0.75rem) + 2px);
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: rgb(73, 80, 87);
+            background-color: rgb(255, 255, 255);
+            background-clip: padding-box;
+            padding: 0.375rem 0.75rem;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(206, 212, 218);
+            border-image: initial;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        .chkFreeText {
+            width: 20px;
+            height: 20px;
+        }
+
+        #tblEventPreferences textarea {
+            min-height: calc((1.5em + 0.75rem) + 2px);
+            height: calc((1.5em + 0.75rem) + 2px);
+        }
+    </style>
+
+</head>
+<body>
+
+
+    <table id="tblEventPreferences" class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Preference</th>
+                <th scope="col">Category</th>
+                <th scope="col">Free Text</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+
+        <tbody id="tbodyEventPreferences">
+        </tbody>
+    </table>
+
+
+    <!--Executed on load-->
+    <script type="text/javascript">
+
+        var customerID2;
+        var customerID;
+        var customerType;
+        var currentPageId;
+        var categorySelectHTML = '<select class="ddlNewCategory form-control" style="width:100%;" aria-label="Category" title="Category" role="listbox">';
+        var currentEventPreferenceId = ""; // use this var to handle detele Event Preference function
+        var currentPreferenceId = "";
+        var xrm = XrmUtility.get_Xrm();
+
+        $(document).ready(function () {
+
+            // Get the customer info:
+            customerID = getLookupGuid("customerid");
+            //customerType = parent.Xrm.Page.data.entity.attributes.get("customerid").getValue()[0].entityType;
+            currentPageId = xrm.Page.data.entity.getId().replace('{', '').replace('}', '');
+
+            console.log("customerID = " + customerID);
+            console.log("customerType = " + customerType);
+            console.log("currentPageId = " + currentPageId);
+
+            // Only proceed if we have the page id (not in Create state):
+            if (currentPageId != null && currentPageId.length > 0) {
+
+                // Get all the Event preferences for this Event:
+                var eventPreferenceSelect = "msnfp_preferences?$select=msnfp_preferenceid,msnfp_name,msnfp_freetext,_msnfp_preferencecategoryid_value";
+                var expand = "&$expand=msnfp_preferencecategoryid($select=msnfp_name,msnfp_categorycode)&$filter=statecode eq 0 and _msnfp_preferencecategoryid_value ne null and msnfp_preferencecategoryid/msnfp_preferencecategoryid ne null";
+                var eventPreferences = XrmServiceUtility.ExecuteQueryWithExpand(XrmServiceUtility.GetWebAPIUrl() + eventPreferenceSelect + expand);
+
+                var eventPreferences = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + eventPreferenceSelect + expand);
+                if (eventPreferences != null) {
+
+                    for (var i = 0; i < eventPreferences.length; i++) {
+
+                        if (eventPreferences[i].msnfp_preferencecategoryid.msnfp_categorycode == 844060001) { // loading event category only
+
+                            var freeText;
+
+                            // See if we show the save button or not:
+                            var eventPreferenceSelect = "msnfp_eventpreferences?$select=msnfp_eventpreferenceid,msnfp_freetext,_msnfp_eventid_value,_msnfp_preferenceid_value, _msnfp_preferencecategoryid_value";
+                            eventPreferenceSelect += "&$filter=(statecode eq 0 and _msnfp_eventid_value eq " + currentPageId + " and _msnfp_preferenceid_value eq " + eventPreferences[i].msnfp_preferenceid + ")";
+                            var foundEventPreferences = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + eventPreferenceSelect);
+
+                            if (eventPreferences[i].msnfp_freetext == true)
+                                freeText = "<input type='checkbox' id='chkFreeText' name='chkFreeText' class='chkFreeText' aria-label='Yes' title='Yes' checked disabled />";
+                            else
+                                freeText = "<input type='checkbox' id='chkFreeText' class='chkFreeText' name='chkFreeText' aria-label='No' title='No' disabled />";
+
+                            // Show With Save:
+                            if (foundEventPreferences == null) {
+
+                                $("#tbodyEventPreferences").append('' +
+                                    '<tr class="tr_clone" preference-id="' + eventPreferences[i].msnfp_preferenceid + '" preferencecategoryid-id="' + eventPreferences[i]._msnfp_preferencecategoryid_value + '">' +
+                                    '<td><i id=\'addExistingPref' + eventPreferences[i].msnfp_preferenceid + '\' class="fa fa-arrow-left fa-2" aria-label="Add to this Event" title="Add to this Event" style="font-size: 24px;color:#243a5e;cursor: pointer;" tabindex="0"></i></td>' +
+                                    '<td scope="row" tabindex="0">' + eventPreferences[i].msnfp_name + '</td>' +
+                                    '<td tabindex="0">' + eventPreferences[i].msnfp_preferencecategoryid.msnfp_name + '</td>' +
+                                    '<td tabindex="0">' + freeText + '</td>' +
+                                    '<td><i class="btnEditPrefernce fa fa-edit fa-2" style="font-size: 24px;color: #ffb900;cursor: pointer;" role="button" aria-label="Edit this Preference" title="Edit this Preference" tabindex="0"></i><i class="btnDeletePreference fa fa-trash" style="font-size: 24px;color: #d83b01;cursor: pointer;margin-left: 10px;" role="button" aria-label="Delete this Preference" title="Delete this Preference" tabindex="0"></i></td>' +
+                                    '</tr>');
+                            }
+                            else {
+
+                                $("#tbodyEventPreferences").append('' +
+                                    '<tr class="tr_clone" preference-id="' + eventPreferences[i].msnfp_preferenceid + '">' +
+                                    '<td><i class="fa fa-check" style="font-size: 24px;color:#243a5e;" aria-label="Already Added to this Event" title="Already Added to this Event" tabindex="0"></i></td>' +
+                                    '<td scope="row" tabindex="0">' + eventPreferences[i].msnfp_name + '</td>' +
+                                    '<td tabindex="0">' + eventPreferences[i].msnfp_preferencecategoryid.msnfp_name + '</td>' +
+                                    '<td tabindex="0">' + freeText + '</td>' +
+                                    '<td><i class="btnEditPrefernce fa fa-edit fa-2" style="font-size: 24px;color: #ffb900;cursor: pointer;" role="button" aria-label="Edit this Preference" title="Edit this Preference" tabindex="0"></i><i class="btnDeletePreference fa fa-trash" style="font-size: 24px;color: #d83b01;cursor: pointer;margin-left: 10px;" role="button" aria-label="Delete this Preference" title="Delete this Preference" tabindex="0"></i></td>' +
+                                    '</tr>');
+                            }
+                        }
+                    }
+                }
+
+
+                // ------Start of new row content (this can be easily moved)------
+
+                // Get the objective select box info:
+                var objSelect = "msnfp_preferencecategories?$select=msnfp_preferencecategoryid,msnfp_categorycode,msnfp_name,statecode";
+                objSelect += "&$filter=statecode eq 0";
+                var objs = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + objSelect);
+
+                for (var i = 0; i < objs.length; i++) {
+                    if (objs[i].msnfp_categorycode == 844060001)  // loading event category only
+                        categorySelectHTML += " <option value='" + objs[i].msnfp_preferencecategoryid + "' role='option'>" + objs[i].msnfp_name + "</option>";
+                }
+                categorySelectHTML += "</select>";
+
+                // Add the new item row:
+                $("#tbodyEventPreferences").append('' +
+                    '<tr class="tr_clone">' +
+                    '<td tabindex="0"></td>' +
+                    '<td><input type="text" class="txtPreferenceName form-control" style="width:100%;" aria-label="Preference" title="Preference" tabindex="0" /></td>' +
+                    '<td tabindex="0">' + categorySelectHTML + '</td>' +
+                    '<td><input type="checkbox" id="chkFreeText" class="chkFreeText" name="chkFreeText" aria-label="Free Text" title="Free Text" tabindex="0" /></td>' +
+                    '<td><i class="btnSaveNewPreference fa fa-floppy-o fa-2" style="font-size: 24px;cursor: pointer;color:#0078d4;" role="button" aria-label="Save this Preference" title="Save this Preference" tabindex="0"></i></td>' +
+                    '</tr>');
+
+                // ------End of new row content------
+
+            }
+
+        });
+
+        // Clicking the add button:
+        $("body").on('click', 'i.btnSaveNewPreference', function () {
+            //if (customerID == null) {
+            //    return;
+            //}
+
+            var thisRow = $(this).closest('tr')[0];
+
+            // Keep the values as variables in case we need to do more validation in the future:
+            var description = $(thisRow).find('input.txtPreferenceName').val();
+            var objective = $(thisRow).find('select.ddlNewCategory').val();
+            var objectiveLabelText = $(thisRow).find('select.ddlNewCategory option:selected').text();
+            var freeText = $(thisRow).find('input.chkFreeText').is(':checked');
+
+            //$(thisRow).find('i.btnSaveNewPreference').css("color", ""); // < using this technique, we will make all previous values text.
+            // Now we make the previous row non-editable:
+            $(thisRow).find('input.txtPreferenceName').replaceWith(description);
+            $(thisRow).find('select.ddlNewCategory').replaceWith(objectiveLabelText);
+            //$(thisRow).find('textarea.txtareaNewEventRelation').replaceWith(oppRelation);
+            $(thisRow).find('i.btnSaveNewPreference').replaceWith('<i class="btnEditPrefernce fa fa-edit fa-2" style="font-size: 24px;color: #ffb900;cursor: pointer;" aria-label="Edit this Preference" title="Edit this Preference" tabindex="0"></i><i class="btnDeletePreference fa fa-trash" aria-hidden="true" style="font-size: 24px;color: #d83b01;cursor: pointer;margin-left: 10px;"></i>');
+
+            console.log("-----------------");
+            console.log("Getting fields. ");
+            console.log("txtPreferenceName = " + $(thisRow).find('input.txtPreferenceName').val());
+            console.log("ddlNewCategory = " + $(thisRow).find('select.ddlNewCategory').val());
+            //console.log("txtareaNewEventRelation = " + $(thisRow).find('textarea.txtareaNewEventRelation').val());
+            console.log("-----------------");
+
+
+            // We are creating two records. A preference record and a Event preference record.
+            // Note that this is done in one function as it needs to be sequential and synchronous:
+
+            var preferenceId = $(thisRow).attr('preference-id');
+            var eventPreferenceId = $(thisRow).attr('event-preference-id');
+
+            if (typeof preferenceId !== typeof undefined && preferenceId !== false) {
+                // Update the current preference and event preference records:
+
+                addNewOrUpdatePreference(preferenceId, eventPreferenceId, description, objective, freeText);
+            } else {
+
+                // Add new preference and event preference records:
+                addNewOrUpdatePreference(null, null, description, objective, freeText);
+
+                //$(thisRow).attr("event-preference-id", currentEventPreferenceId);
+                $(thisRow).attr("preference-id", currentPreferenceId);
+            }
+
+            addNewRow();
+            // refresh the EventExistingPreferences iframe
+            $('#WebResource_EventExistingPreferences', parent.document).attr('src', $('#WebResource_EventExistingPreferences', parent.document).attr('src'));
+
+        });
+
+        // Handle btnDeleteReport click
+        $("body").on('click', 'i.btnDeletePreference', function () {
+            //if (customerID == null) {
+            //    return;
+            //}
+
+            var thisRow = $(this).closest('tr')[0];
+
+            var preferenceId = $(this).parents("tr").attr("preference-id");
+            if (preferenceId == null || preferenceId == undefined) return;
+
+            var confirmStrings = { text: "Are you sure you want to delete this item?", title: "Warning!" };
+            var confirmOptions = { height: 100, width: 450 };
+            xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
+                function (success) {
+                    if (success.confirmed) {
+
+                        var preferenceToUpdate = {};
+                        preferenceToUpdate["statecode"] = 1;
+                        preferenceToUpdate["statuscode"] = 2;
+
+                        // changing state to inactive
+                        var qry = XrmServiceUtility.GetWebAPIUrl() + "msnfp_preferences(" + preferenceId + ")";
+                        XrmServiceUtility.UpdateRecord(qry, preferenceToUpdate);
+                        //XrmServiceUtility.DeleteRecord(preferenceId, "msnfp_preferences");
+
+                        thisRow.remove();
+                        // refresh the EventExistingPreferences iframe
+                        setTimeout(function () {
+                            //$('#WebResource_EventExistingPreferences', parent.document).attr('src', $('#WebResource_EventExistingPreferences', parent.document).attr('src'));
+                            var url = xrm.Page.getControl("WebResource_EventExistingPreferences").getObject().src;
+                            xrm.Page.getControl("WebResource_EventExistingPreferences").getObject().src = url;
+                        }, 900);
+                    }
+                    else
+                        console.log("Dialog closed using Cancel button or X.");
+                });
+        });
+
+
+        // Handle fa-arrow-left click
+        $("body").on('click', 'i.fa-arrow-left', function () {
+
+            var thisRow = $(this).closest('tr')[0];
+            var prefId = $(thisRow).attr('preference-id');
+            var prefCategoryId = $(thisRow).attr('preferencecategoryid-id');
+            var freeText = $(thisRow).find('input.chkFreeText').is(':checked');
+
+            // Add the preference to this opportunity by creating an “Event Preference” record:
+            var newEventPreference = {};
+            newEventPreference["msnfp_PreferenceId@odata.bind"] = "/msnfp_preferences(" + prefId + ")";
+            newEventPreference["msnfp_PreferenceCategoryId@odata.bind"] = "/msnfp_preferencecategories(" + prefCategoryId + ")";
+            newEventPreference["msnfp_EventId@odata.bind"] = "/opportunities(" + currentPageId + ")";
+
+            if (freeText)
+                newEventPreference["msnfp_freetext"] = true;
+            else
+                newEventPreference["msnfp_freetext"] = false;
+
+            if (prefId != null && currentPageId != null) {
+                var qry = XrmServiceUtility.GetWebAPIUrl() + "msnfp_eventpreferences";
+                XrmServiceUtility.CreateRecord(qry, newEventPreference);
+                console.log("Saved successfully.");
+                $("#addExistingPref" + prefId).replaceWith('<i class="fa fa-check" style="font-size: 24px;color:#243a5e;" aria-hidden="true"></i>');
+                // refresh the EventPreferences iframe
+                $('#WebResource_EventPreferences', parent.document).attr('src', $('#WebResource_EventPreferences', parent.document).attr('src'));
+            }
+        });
+
+
+
+        // Handle btnEditReport click
+        $("body").on('click', 'i.btnEditPrefernce', function () {
+
+            $(".btnSaveNewPreference").closest("tr").remove();
+
+            var thisRow = $(this).closest('tr')[0];
+
+            var td1 = $($(thisRow).find("td")[1]).html();
+            $($(thisRow).find("td")[1]).replaceWith('<td><input type="text" class="txtPreferenceName form-control" style="width:100%;" /></td>');
+            $(thisRow).find('input.txtPreferenceName').val(td1);
+
+
+            var td2 = $($(thisRow).find("td")[2]).html();
+            $($(thisRow).find("td")[2]).replaceWith('<td>' + categorySelectHTML + '</td>');
+            selectItem('.ddlNewCategory', td2);
+
+
+            var td3 = $($(thisRow).find("td")[3]).html();
+            td3 = td3.replace('disabled=""', '');
+            $($(thisRow).find("td")[3]).replaceWith('<td>' + td3 + '</td>');
+
+            $($(thisRow).find("td")[4]).replaceWith('<td><i class="btnSaveNewPreference fa fa-floppy-o fa-2" style="font-size: 24px;cursor: pointer;color:#243a5e;" aria-label="Save this Preference" title="Save this Preference" tabindex="0"></i></td>');
+        });
+
+        function selectItem(selector, label) {
+            const dropdown = document.querySelector(selector)
+            const index = Array.from(dropdown.options).findIndex(option => option.label === label)
+            return dropdown.selectedIndex = index;
+        }
+
+
+        // Add a new preference:
+        function addNewOrUpdatePreference(preferenceId, eventPreferenceId, description, selectedCategoryId, freeText) {
+
+            var newPreference = {};
+            newPreference["msnfp_name"] = description;
+            newPreference["msnfp_preferencecategoryid@odata.bind"] = "/msnfp_preferencecategories(" + selectedCategoryId + ")";
+
+            if (freeText)
+                newPreference["msnfp_freetext"] = true;
+            else
+                newPreference["msnfp_freetext"] = false;
+
+            //newPreference["msnfp_Preference_EventId@odata.bind"] = "/opportunities(" + currentPageId + ")";
+
+            if (currentPageId != null) {
+
+                if (preferenceId) {
+                    // Update Preference
+                    var qry = XrmServiceUtility.GetWebAPIUrl() + "msnfp_preferences(" + preferenceId + ")";
+                    XrmServiceUtility.UpdateRecord(qry, newPreference);
+                    console.log("Updated the current Preference!");
+
+                } else {
+                    // Create new Preference
+                    var qry = XrmServiceUtility.GetWebAPIUrl() + "msnfp_preferences";
+                    currentPreferenceId = XrmServiceUtility.CreateRecord(qry, newPreference);
+                }
+            }
+        }
+
+        // Add the preference to this Event by creating an �Event Preference� record:
+        function addNewOrUpdateEventPreference(eventPreferenceId, prefId, shortDescription) {
+
+            var newEventPreference = {};
+            newEventPreference["msnfp_PreferenceId@odata.bind"] = "/msnfp_preferences(" + prefId + ")";
+            newEventPreference["msnfp_EventId@odata.bind"] = "/opportunities(" + currentPageId + ")";
+            newEventPreference["msnfp_shortdescription"] = shortDescription;
+
+            if (prefId != null && currentPageId != null) {
+
+                if (eventPreferenceId) {
+                    // Update
+                    var qry = XrmServiceUtility.GetWebAPIUrl() + "msnfp_eventpreferences(" + eventPreferenceId + ")";
+                    XrmServiceUtility.UpdateRecord(qry, newEventPreference);
+                } else {
+                    // Create new
+                    var qry = XrmServiceUtility.GetWebAPIUrl() + "msnfp_eventpreferences";
+                    currentEventPreferenceId = XrmServiceUtility.CreateRecord(qry, newEventPreference);
+                }
+            }
+        }
+
+        function getLookupGuid(fieldName) {
+            var field = xrm.Page.data.entity.attributes.get(fieldName);
+            if (field != null && field.getValue() != null) {
+                return xrm.Page.data.entity.attributes.get(fieldName).getValue()[0].id.replace('{', '').replace('}', '');
+            }
+            return null;
+        }
+
+        function addNewRow() {
+            $("#tbodyEventPreferences").append('' +
+                '<tr class="tr_clone">' +
+                '<td tabindex="0"></td>' +
+                '<td><input type="text" class="txtPreferenceName form-control" style="width:100%;" aria-label="Preference" title="Preference" tabindex="0" /></td>' +
+                '<td tabindex="0">' + categorySelectHTML + '</td>' +
+                '<td><i class="btnSaveNewPreference fa fa-floppy-o fa-2" style="font-size: 24px;cursor: pointer;color:#0078d4;" aria-label="Save this Preference" title="Save this Preference" tabindex="0"></i></td>' +
+                '</tr>');
+        }
+
+    </script>
+
+</body>
+</html>

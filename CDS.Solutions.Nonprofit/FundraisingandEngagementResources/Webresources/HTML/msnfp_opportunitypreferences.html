@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html>
+<!--/*************************************************************************
+* © Microsoft. All rights reserved.
+*/-->
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <!--CSS-->
+    <link href="../scripts/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../scripts/jquery.dataTables.min.css" rel="stylesheet">
+
+    <!--JS-->
+    <script src="../scripts/jQuery.js" type="text/javascript"></script>
+    <script src="../scripts/common.js" type="text/javascript"></script>
+    <script src="../scripts/jquery.dataTables.min.js" type="text/javascript"></script>
+
+
+    <style type="text/css">
+
+        body {
+            font-family: SegoeUI, "Segoe UI", "Helvetica Neue",Arial,"Noto Sans",sans-serif;
+        }
+
+        .form-control {
+            display: block;
+            width: 50%;
+            z-index: 2; /*This fixes an issue where labels may overlap a text box.*/
+            min-width: 50%;
+            height: calc((1.5em + 0.75rem) + 2px);
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: rgb(73, 80, 87);
+            background-color: rgb(255, 255, 255);
+            background-clip: padding-box;
+            padding: 0.375rem 0.75rem;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(206, 212, 218);
+            border-image: initial;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        #tblOpportunityPreferences textarea {
+            min-height: calc((1.5em + 0.75rem) + 2px);
+            height: calc((1.5em + 0.75rem) + 2px);
+        }
+    </style>
+
+</head>
+<body>
+
+
+    <table id="tblOpportunityPreferences" class="table" role="presentation">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Objective</th>
+                <th scope="col">Opportunity Relation</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+
+        <tbody id="tbodyOpportunityPreferences">
+        </tbody>
+    </table>
+
+
+    <!--Executed on load-->
+    <script type="text/javascript">
+
+        var customerID;
+        var customerType;
+        var currentPageId;
+        var objectivesSelectHTML = '<select aria-label="Objective" title="Objective" class="ddlNewObjective form-control" role="listbox" style="width:100%;">';
+        var currentOpportunityPreferenceId = ""; // use this var to handle detele Opportunity Preference function
+        var currentPreferenceId = "";
+        var xrm = XrmUtility.get_Xrm();
+
+        $(document).ready(function () {
+
+            // Get the customer info:
+            customerID = getLookupGuid("customerid");
+            customerType = xrm.Page.data.entity.attributes.get("customerid").getValue()[0].entityType;
+            currentPageId = xrm.Page.data.entity.getId().replace('{', '').replace('}', '');
+
+            console.log("customerID = " + customerID);
+            console.log("customerType = " + customerType);
+            console.log("currentPageId = " + currentPageId);
+
+            // Only proceed if we have the page id (not in Create state):
+            if (currentPageId != null && currentPageId.length > 0) {
+
+                // Get all the opportunity preferences for this opportunity:
+                var opportunityPreferenceSelect = "msnfp_opportunitypreferences?$select=msnfp_opportunitypreferenceid,_msnfp_opportunityid_value,_msnfp_preferenceid_value,msnfp_shortdescription";
+                opportunityPreferenceSelect += "&$filter=(_msnfp_opportunityid_value eq " + currentPageId + ")";
+
+                var opportunityPreferences = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + opportunityPreferenceSelect);
+                if (opportunityPreferences != null) {
+
+                    for (var i = 0; i < opportunityPreferences.length; i++) {
+
+                        // Get the preference data for this record:
+                        var prefSelect = "msnfp_preferences?$select=msnfp_preferenceid,msnfp_name,_msnfp_objectiveid_value";
+                        prefSelect += "&$filter=(msnfp_preferenceid eq " + opportunityPreferences[i]._msnfp_preferenceid_value + ")";
+
+                        var prefs = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + prefSelect);
+
+                        if (prefs) {
+
+                            var shortDescripttion = opportunityPreferences[i].msnfp_shortdescription;
+
+                            if (shortDescripttion == null || shortDescripttion === "null") {
+                                shortDescripttion = "";
+                            }
+
+                            var objectiveText = "";
+                            var prefsName = "";
+
+                            // Get the objective text (if applicable):
+                            if (prefs != null) {
+                                if (prefs[0]._msnfp_objectiveid_value != null) {
+                                    var objSelect = "msnfp_objectives?$select=msnfp_objectiveid,msnfp_name";
+                                    objSelect += "&$filter=msnfp_objectiveid eq " + prefs[0]._msnfp_objectiveid_value;
+                                    var obj = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + objSelect);
+                                    objectiveText = obj[0].msnfp_name;
+                                }
+                                prefsName = prefs[0].msnfp_name;
+                            }
+
+
+                            $("#tbodyOpportunityPreferences").append('' +
+                                '<tr class="tr_clone" opportunity-preference-id="' + opportunityPreferences[i].msnfp_opportunitypreferenceid + '"preference - id="' + prefs[0].msnfp_preferenceid + '" > ' +
+                                '<td scope="row" title="' + prefsName + '" tabindex="0">' + prefsName + '</td>' +
+                                '<td title="' + objectiveText + '" tabindex="0">' + objectiveText + '</td>' +
+                                '<td title="' + shortDescripttion + '" tabindex="0">' + shortDescripttion + '</td>' +
+                                '<td><a href="#" style="text-decoration:none" class="btnEditPrefernce" title="Edit Prefernce" tabindex="0" role="button">' +
+                                '<i class="fa fa-edit fa-2" style="font-size: 24px;color: #ffb900;cursor: pointer;" aria-hidden="true" aria-label="Edit Prefernce"></i></a>' +
+                                '<a href="#" style="text-decoration:none" class="btnDeletePreference" role="button" title="Delete Preference" tabindex="0">' +
+                                '<i class="fa fa-trash" style="font-size: 24px;color: #d83b01;cursor: pointer;margin-left: 10px;" aria-hidden="true" aria-label="Delete Preference"></i></a></td>' +
+                                '</tr>');
+
+                        }
+                    }
+                }
+
+
+                // ------Start of new row content (this can be easily moved)------
+
+                // Get the objective select box info:
+                var objSelect = "msnfp_objectives?$select=msnfp_objectiveid,msnfp_name,statecode";
+                objSelect += "&$filter=statecode eq 0";
+                var objs = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + objSelect);
+
+                if (objs && objs.length > 0) {
+                    for (var i = 0; i < objs.length; i++) {
+                        objectivesSelectHTML += '<option value="' + objs[i].msnfp_objectiveid + '" role="option">' + objs[i].msnfp_name + '</option>';
+                    }
+                }
+
+                objectivesSelectHTML += "</select>";
+
+                // Add the new item row:
+                $("#tbodyOpportunityPreferences").append('' +
+                    '<tr class="tr_clone">' +
+                    '<td><input aria-label="Any notes or a larger description of how this donor may want to support this preference or objective." title="Any notes or a larger description of how this donor may want to support this preference or objective." type="text" class="txtNewDescription form-control" style="width:100%;" /></td>' +
+                    '<td>' + objectivesSelectHTML + '</td>' +
+                    '<td><textarea rows="2" aria-label="Opportunity Relation" title="Opportunity Relation" class="txtareaNewOpportunityRelation form-control" style="width:100%;"></textarea></td>' +
+                    '<td><a href="#" style="text-decoration:none" class="btnSaveNewPreference" role="button" title="Save New Preference" tabindex="0">' +
+                    '<i class="fa fa-floppy-o fa-2" style="font-size: 24px;color:#0078d4;cursor: pointer;" aria-hidden="true" aria-label="Save New Preference"></i></a></td>' +
+                    '</tr>');
+
+                // ------End of new row content------
+
+            }
+
+        });
+
+        // Clicking the add button:
+        $("body").on('click', 'a.btnSaveNewPreference', function () {
+            if (customerID == null) {
+                return;
+            }
+
+            var thisRow = $(this).closest('tr')[0];
+
+            // Keep the values as variables in case we need to do more validation in the future:
+            var description = $(thisRow).find('input.txtNewDescription').val();
+            var objective = $(thisRow).find('select.ddlNewObjective').val();
+            var objectiveLabelText = $(thisRow).find('select.ddlNewObjective option:selected').text();
+            var oppRelation = $(thisRow).find('textarea.txtareaNewOpportunityRelation').val();
+
+            //$(thisRow).find('i.btnSaveNewPreference').css("color", ""); // < using this technique, we will make all previous values text.
+            // Now we make the previous row non-editable:
+            $(thisRow).find('input.txtNewDescription').replaceWith(description);
+            $(thisRow).find('select.ddlNewObjective').replaceWith(objectiveLabelText);
+            $(thisRow).find('textarea.txtareaNewOpportunityRelation').replaceWith(oppRelation);
+            $(thisRow).find('.btnSaveNewPreference').replaceWith('<a href="#" style="text-decoration:none" class="btnEditPrefernce" role="button" title="Edit Prefernce" tabindex="0">' +
+                '<i class="fa fa-edit fa-2" style="font-size: 24px;color: #ffb900;cursor: pointer;" aria-hidden="true" aria-label="Edit Prefernce" ></i></a>' +
+                '<a href="#" style="text-decoration:none" class="btnDeletePreference" role="button" title="Delete Preference" tabindex="0">' +
+                '<i class="fa fa-trash" style="font-size: 24px;color: #d83b01;cursor: pointer;margin-left: 10px;" aria-hidden="true" aria-label="Delete Preference"></i></a>');  
+                
+
+            console.log("-----------------");
+            console.log("Getting fields. ");
+            console.log("txtNewDescription = " + $(thisRow).find('input.txtNewDescription').val());
+            console.log("ddlNewObjective = " + $(thisRow).find('select.ddlNewObjective').val());
+            console.log("txtareaNewOpportunityRelation = " + $(thisRow).find('textarea.txtareaNewOpportunityRelation').val());
+            console.log("-----------------");
+
+
+            // We are creating two records. A preference record and a opportunity preference record.
+            // Note that this is done in one function as it needs to be sequential and synchronous:
+
+            var preferenceId = $(thisRow).attr('preference-id');
+            var opportunityPreferenceId = $(thisRow).attr('opportunity-preference-id');
+
+            if (typeof preferenceId !== typeof undefined && preferenceId !== false && typeof opportunityPreferenceId !== typeof undefined && opportunityPreferenceId !== false) {
+                // Update the current preference and opportunity preference records:
+                addNewOrUpdatePreference(preferenceId, opportunityPreferenceId, description, objective, oppRelation);
+            } else {
+                // Add new preference and opportunity preference records:
+                addNewOrUpdatePreference(null, null, description, objective, oppRelation);
+                $(thisRow).attr("opportunity-preference-id", currentOpportunityPreferenceId);
+                $(thisRow).attr("preference-id", currentPreferenceId);
+            }
+
+            addNewRow();
+            // refresh the OpportunityExistingPreferences iframe
+            $('#WebResource_OpportunityExistingPreferences', parent.document).attr('src', $('#WebResource_OpportunityExistingPreferences', parent.document).attr('src'));
+
+        });
+
+        // Handle btnDeleteReport click
+        $("body").on('click', 'a.btnDeletePreference', function () {
+            if (customerID == null) {
+                return;
+            }
+            var thisRow = $(this).closest('tr')[0];
+
+            var opportunityPreferenceId = $(this).parents("tr").attr("opportunity-preference-id");
+            if (opportunityPreferenceId == null || opportunityPreferenceId == undefined) return;
+
+            var confirmStrings = { text: "Are you sure you want to delete this item?", title: "Warning!" };
+            var confirmOptions = { height: 100, width: 450 };
+            xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
+                function (success) {
+                    if (success.confirmed) {
+                        XrmServiceUtility.DeleteRecord(opportunityPreferenceId, "msnfp_opportunitypreferences");
+                        thisRow.remove();
+                        // refresh the OpportunityExistingPreferences iframe
+                        setTimeout(function () {
+                            $('#WebResource_OpportunityExistingPreferences', parent.document).attr('src', $('#WebResource_OpportunityExistingPreferences', parent.document).attr('src'));
+                        }, 500);
+                    }
+                    else
+                        console.log("Dialog closed using Cancel button or X.");
+                });
+        });
+
+        // Handle btnEditReport click
+        $("body").on('click', 'a.btnEditPrefernce', function () {
+            if (customerID == null) {
+                return;
+            }
+
+            $(".btnSaveNewPreference").closest("tr").remove();
+
+            var thisRow = $(this).closest('tr')[0];
+
+            var td0 = $($(thisRow).find("td")[0]).html();
+            $($(thisRow).find("td")[0]).replaceWith('<td><input type="text" class="txtNewDescription form-control" style="width:100%;" /></td>');
+            $(thisRow).find('input.txtNewDescription').val(td0);
+
+            var td1 = $($(thisRow).find("td")[1]).html();
+            $($(thisRow).find("td")[1]).replaceWith('<td>' + objectivesSelectHTML + '</td>');
+            selectItem('.ddlNewObjective', td1);
+
+            var td2 = $($(thisRow).find("td")[2]).html();
+            $($(thisRow).find("td")[2]).replaceWith('<td><textarea rows="2" class="txtareaNewOpportunityRelation form-control" style="width:100%;"></textarea></textarea></td>');
+            $(thisRow).find('textarea.txtareaNewOpportunityRelation').val(td2);
+
+            $($(thisRow).find("td")[3]).replaceWith('<td><a href="#" style="text-decoration:none" class="btnSaveNewPreference" role="button" title="Save New Preference" tabindex="0"><i class="fa fa-floppy-o fa-2" style="font-size: 24px;color:#0078d4;cursor: pointer;" aria-hidden="true" aria-label="Save New Preference"></i></a></td>');
+        });
+
+        function selectItem(selector, label) {
+            const dropdown = document.querySelector(selector)
+            const index = Array.from(dropdown.options).findIndex(option => option.label === label)
+            return dropdown.selectedIndex = index;
+        }
+
+
+        // Add a new preference:
+        function addNewOrUpdatePreference(preferenceId, opportunityPreferenceId, description, selectedObjectiveId, opportunityRelation) {
+            var newPreference = {};
+
+            // Need to get account or contact type from this page:
+            if (customerType == "contact") {
+                newPreference["msnfp_preference_customer_contact@odata.bind"] = "/contacts(" + customerID + ")";
+            }
+            else {
+                newPreference["msnfp_preference_customer_account@odata.bind"] = "/accounts(" + customerID + ")";
+            }
+
+            newPreference["msnfp_name"] = description;
+            newPreference["msnfp_objectiveid@odata.bind"] = "/msnfp_objectives(" + selectedObjectiveId + ")";
+            newPreference["msnfp_Preference_OpportunityId@odata.bind"] = "/opportunities(" + currentPageId + ")";
+
+            if (currentPageId != null) {
+
+                if (preferenceId && opportunityPreferenceId) {
+                    // Update Preference
+                    var qry = XrmServiceUtility.GetWebAPIUrl() + "msnfp_preferences(" + preferenceId + ")";
+                    XrmServiceUtility.UpdateRecord(qry, newPreference);
+                    console.log("Updated the current Preference!");
+
+                    // Update Opprotunity Preference
+                    addNewOrUpdateOpportunityPreference(opportunityPreferenceId, preferenceId, opportunityRelation);
+                } else {
+                    // Create new Preference
+                    var qry = XrmServiceUtility.GetWebAPIUrl() + "msnfp_preferences";
+                    currentPreferenceId = XrmServiceUtility.CreateRecord(qry, newPreference);
+                    console.log("Saved successfully 1.");
+
+                    // Now that we have saved, we create the relation between that and this opportunity via the "Opportunity Preference" record:
+                    if (currentPreferenceId != null) {
+                        addNewOrUpdateOpportunityPreference(null, currentPreferenceId, opportunityRelation);
+                    }
+                }
+            }
+        }
+
+
+        // Add the preference to this opportunity by creating an “Opportunity Preference” record:
+        function addNewOrUpdateOpportunityPreference(opportunityPreferenceId, prefId, shortDescription) {
+            var newOpportunityPreference = {};
+            newOpportunityPreference["msnfp_PreferenceId@odata.bind"] = "/msnfp_preferences(" + prefId + ")";
+            newOpportunityPreference["msnfp_OpportunityId@odata.bind"] = "/opportunities(" + currentPageId + ")";
+            newOpportunityPreference["msnfp_shortdescription"] = shortDescription;
+
+            if (prefId != null && currentPageId != null) {
+
+                if (opportunityPreferenceId) {
+                    // Update
+                    var qry = XrmServiceUtility.GetWebAPIUrl() + "msnfp_opportunitypreferences(" + opportunityPreferenceId + ")";
+                    XrmServiceUtility.UpdateRecord(qry, newOpportunityPreference);
+                } else {
+                    // Create new
+                    var qry = XrmServiceUtility.GetWebAPIUrl() + "msnfp_opportunitypreferences";
+                    currentOpportunityPreferenceId = XrmServiceUtility.CreateRecord(qry, newOpportunityPreference);
+                }
+            }
+        }
+
+
+        function getLookupGuid(fieldName) {
+            var field = xrm.Page.data.entity.attributes.get(fieldName);
+            if (field != null && field.getValue() != null) {
+                return xrm.Page.data.entity.attributes.get(fieldName).getValue()[0].id.replace('{', '').replace('}', '');
+            }
+            return null;
+        }
+
+        function addNewRow() {
+            $("#tbodyOpportunityPreferences").append('' +
+                '<tr class="tr_clone">' +
+                '<td><input type="text" class="txtNewDescription form-control" style="width:100%;" /></td>' +
+                '<td>' + objectivesSelectHTML + '</td>' +
+                '<td><textarea rows="2" class="txtareaNewOpportunityRelation form-control" style="width:100%;"></textarea></td>' +
+                '<td><a href="#" style="text-decoration:none" class="btnSaveNewPreference" role="button" title="Save New Preference" tabindex="0">' +
+                '<i class="fa fa-floppy-o fa-2" style="font-size: 24px;color:#0078d4;cursor: pointer;" aria-hidden="true" aria-label="Save New Preference"></i></a></td>' +
+                '</tr>');
+        }
+
+    </script>
+
+</body>
+</html>

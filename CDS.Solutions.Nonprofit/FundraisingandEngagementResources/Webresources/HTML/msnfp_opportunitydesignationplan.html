@@ -1,0 +1,1024 @@
+﻿<!DOCTYPE html>
+<html>
+<!--/*************************************************************************
+* © Microsoft. All rights reserved.
+*/-->
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <!--CSS-->
+    <link href="../scripts/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="../scripts/common.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../scripts/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="../scripts/jquery_ui.css" rel="stylesheet">
+
+    <!--JS-->
+    <script src="../scripts/jQuery.js" type="text/javascript"></script>
+    <script src="../scripts/common.js" type="text/javascript"></script>
+    <script src="../scripts/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="../scripts/jquery_ui.js" type="text/javascript"></script>
+
+
+    <style type="text/css">
+
+        body {
+            font-family: SegoeUI, "Segoe UI", "Helvetica Neue",Arial,"Noto Sans",sans-serif;
+        }
+
+        .form-control {
+            display: block;
+            width: 50%;
+            z-index: 2; /*This fixes an issue where labels may overlap a text box.*/
+            min-width: 50%;
+            height: calc((1.5em + 0.75rem) + 2px);
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: rgb(73, 80, 87);
+            background-color: rgb(255, 255, 255);
+            background-clip: padding-box;
+            padding: 0.375rem 0.75rem;
+            border-width: 1px;
+            border-style: solid;
+            border-color: rgb(206, 212, 218);
+            border-image: initial;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        .ui-autocomplete {
+            max-height: 100px;
+            overflow-y: auto;
+            /* prevent horizontal scrollbar */
+            overflow-x: hidden;
+        }
+        /* IE 6 doesn't support max-height
+           * we use height instead, but this forces the menu to always be this tall
+           */
+        * html .ui-autocomplete {
+            height: 100px;
+        }
+
+        .table td, .table th {
+            border-bottom: none;
+            border-top: none;
+        }
+
+        .tr_clone:first-of-type {
+            border-top: none;
+        }
+
+        .tr_clone {
+            border-top: 1px solid #dee2e6;
+        }
+
+
+        .tr_childclone td:first-of-type {
+            padding-left: 40px;
+        }
+
+        #tbodyOpportunityDesignationPlan textarea {
+            min-height: calc((1.5em + 0.75rem) + 2px);
+            height: calc((1.5em + 0.75rem) + 2px);
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: .5rem;
+            margin-top: 0.5em;
+            margin-right: 0.5em;
+        }
+    </style>
+
+</head>
+<body>
+
+
+    <table id="tblOpportunityDesignationPlan" class="table" role="presentation">
+        <tbody id="tbodyOpportunityDesignationPlan" role="presentation" >
+        </tbody>
+    </table>
+
+
+    <!--Executed on load-->
+    <script type="text/javascript">
+
+        var currentPageId;
+        var currencySymbol;
+        var userSettings;
+        var designationSelectHTML = '<select aria-label="Designation" title="Designation" class="ddlNewDesignation form-control" role="listbox" style="width:100%;min-width:100px;max-width:250px;">';
+        var currentDesignationPlanId = ""; // use this var to handle detele Opportunity report function
+        var xrm = XrmUtility.get_Xrm();
+
+        $(document).ready(function () {
+
+            currentPageId = xrm.Page.data.entity.getId().replace('{', '').replace('}', '');
+            getCurrencySymbol();
+
+            jQuery.ajax({
+                url: `${parent.Xrm.Page.context.getClientUrl()}/api/data/v9.1/usersettingscollection(${MissionFunctions.GetCurrentUserID()})`,
+                success: function (result) {
+                    userSettings = result;
+                },
+                async: false
+            });
+
+            // Get all designations for the dropdowns:
+            var designationSelect = "msnfp_designations?$select=msnfp_designationid,msnfp_name,statecode";
+            designationSelect += "&$orderby=msnfp_name asc&$filter=statecode eq 0";
+            var designations = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + designationSelect);
+
+            for (var i = 0; i < designations.length; i++) {
+                designationSelectHTML += ' <option title="' + designations[i].msnfp_designationid + '" value="' + designations[i].msnfp_designationid + '" role="option">' + designations[i].msnfp_name + '</option>';
+            }
+
+            designationSelectHTML += "</select>";
+
+
+            $(document).on('focus', ".txtNewDesignationBookDate", function () {
+                if ($(this).hasClass('hasDatepicker') === false) {
+                    $(this).datepicker({
+                        dateFormat: 'mm/dd/yy',
+                    });
+                }
+            });
+
+            $('body').on('change', '.txtNewAmount', function () {
+                console.log("Percentage Changed");
+                var thisRow = $(this).closest('tr')[0];
+                var amount = parseFloat($(thisRow).find('input.txtNewAmount').val().replace(currencySymbol, '').replace(/[^\d\.\-]/g, "")).toFixed(2);
+
+                if (!isNaN(amount)) {
+                    $(thisRow).find('input.txtNewAmount').val(currencySymbol + addCommasonLoad(amount));
+                    CalculatePercentageOfTotalBasedOnCorrespondingAmountChange(amount, $(thisRow));
+                }
+            });
+
+            $('body').on('change', '.txtNewPercentage', function () {
+                console.log("Percentage Changed");
+                calculateNewAmountFromPercentageChange($(this).closest('tr')[0]);
+            });
+
+            $('body').on('change', '.txtPercentageChild', function () {
+                console.log("Percentage Child Changed");
+                GetAmountPercentageFromParent($(this).closest('tr')[0]);
+            });
+
+            $('body').on('change', '.txtAmountChild', function () {
+                console.log("Percentage Child Changed");
+                CalculatePercentageOfChildBasedOnCorrespondingAmountChange($(this).closest('tr')[0]);
+            });
+
+
+            // Only proceed if we have the page id (not in Create state):
+            if (currentPageId != null && currentPageId.length > 0) {
+
+                // Get all the designation plans for this opportunity:
+                var select = "msnfp_designationplans?$select=msnfp_designationplanid,_msnfp_designationplan_designationid_value,_msnfp_parentdesignationplanid_value,msnfp_bookdate,msnfp_originaltotal,msnfp_percentageofpledgemax,_msnfp_designationplan_opportunityid_value";
+                select += "&$filter=(_msnfp_designationplan_opportunityid_value eq " + currentPageId + ")";
+
+                var designationPlans = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + select);
+
+                if (designationPlans != null) {
+                    console.log("designationPlans = " + designationPlans.length);
+                    for (var i = 0; i < designationPlans.length; i++) {
+                        // Print the Parent plans:
+                        if (designationPlans[i]._msnfp_parentdesignationplanid_value == null) {
+                            var designationPlanText = "";
+                            var parentRowId = designationPlans[i].msnfp_designationplanid;
+
+                            if (designationPlans[i]._msnfp_designationplan_designationid_value != null) {
+                                var objSelect = "msnfp_designations?$select=msnfp_designationid,msnfp_name";
+                                objSelect += "&$filter=msnfp_designationid eq " + designationPlans[i]._msnfp_designationplan_designationid_value;
+                                var obj = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + objSelect);
+                                designationPlanText = obj[0].msnfp_name;
+                            }
+
+                            var formattedAmount = "";
+                            if (designationPlans[i].msnfp_originaltotal != null) {
+                                formattedAmount = currencySymbol + addCommasonLoad(parseFloat(designationPlans[i].msnfp_originaltotal).toFixed(2));
+                            }
+
+                            var formattedDate = "";
+                            if (designationPlans[i].msnfp_bookdate != null) {
+                                formattedDate = (designationPlans[i].msnfp_bookdate).split("T")[0];
+                            }
+
+                            var formattedPercent = ""
+                            if (designationPlans[i].msnfp_percentageofpledgemax != null) {
+                                formattedPercent = designationPlans[i].msnfp_percentageofpledgemax;
+                            }
+
+                            $("#tbodyOpportunityDesignationPlan").append('' +
+                                '<tr class="tr_clone" data-id="' + designationPlans[i].msnfp_designationplanid + '">' +
+                                '<td><a href="#" style="text-decoration:none" class="btnAddNew" role="button" title="Add Designation Plan" tabindex="0">' +
+                                '<i class="fa fa-plus-circle fa-2" style="font-size: 24px;color:#243a5e;cursor: pointer;" aria-hidden="true" aria-label="Add Designation Plan"></i></a>&nbsp;&nbsp;' +
+                                '<a href="#" style="text-decoration:none" class="btnDeleteExisting" role="button" title="Remove Designation Plan" tabindex="0">' +
+                                '<i class="fa fa-minus-circle fa-2" style="font-size: 24px;color:#db3923;cursor: pointer;" aria-hidden="true" aria-label="Remove Designation Plan"></i></a>&nbsp;&nbsp;' +
+                                '<a href="#" style="text-decoration:none" class="btnMakeSplit" role="button" title="Split this Designation Plan" tabindex="0">' +
+                                '<i class="fa fa-arrow-circle-down fa-2" style="font-size: 24px;color:#243a5e;cursor: pointer;" aria-hidden="true" aria-label="Split this Designation Plan" ></i></a></td>' +
+                                '<td style="width:35%;"><div style="display: flex;"><label title="Designation" tabindex="0">Designation </label><label style="padding-left: 5%;width:100%;" title="' + designationPlanText + '" tabindex="0">' + designationPlanText + '</label></td>' +
+                                '<td><div style="display: flex;"><label style="padding-right:1.55em;" title="Designation Book Date" tabindex="0">Date </label><label id="txtDesignationBookDate' + designationPlans[i].msnfp_designationplanid + '" title="' + formattedDate + '" tabindex="0">' + formattedDate + '</label></div></td>' +
+                                '<td><div style="display: flex;"><label  title="Plan Amount" tabindex="0">Amount </label><label id="declarationPlanAmount' + designationPlans[i].msnfp_designationplanid + '" class="declarationPlanAmount"  aria-label="Designation Book Date" title="' + formattedAmount + '" tabindex="0">' + formattedAmount + '</label></div></td>' +
+                                '<td><div style="display: flex;"><label title="Percentage of Expected Giving" title="' + formattedPercent + '" tabindex="0">' + formattedPercent + '</label><label><i class="fa fa-percent fa-2" style="font-size: 22px;color:#b3b3b3;"></i></label></div></td> <td></td>' +
+                                '</tr>');
+
+                            // To add: '<td><i class="btnSaveNewDesignation fa fa-floppy-o fa-2" style="font-size: 24px;color:#0078d4;cursor: pointer;padding-top: 0.3em;" aria-hidden="true" title="Save Designation Plan"></i></td>'
+
+
+                            // Now get the children for this parent (if applicable):
+                            var childselect = "msnfp_designationplans?$select=msnfp_designationplanid,_msnfp_designationplan_designationid_value,_msnfp_parentdesignationplanid_value,msnfp_bookdate,msnfp_originaltotal,msnfp_percentageofpledgemax,_msnfp_designationplan_opportunityid_value,msnfp_amountrealized";
+                            childselect += "&$filter=(_msnfp_parentdesignationplanid_value eq " + designationPlans[i].msnfp_designationplanid + ")";
+
+                            var childDesignationPlans = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + childselect);
+
+
+                            // If there are any children, print them:
+                            if (childDesignationPlans != null) {
+
+                                var parentRow = $('tr[data-id="' + designationPlans[i].msnfp_designationplanid + '"]');
+
+                                console.log("Child plans: " + childDesignationPlans.length + ". For parent id = " + designationPlans[i].msnfp_designationplanid);
+
+                                // hide the split button
+                                $(".tr_clone[data-id=" + designationPlans[i].msnfp_designationplanid + "]").find(".btnMakeSplit").hide();
+
+                                for (var j = 0; j < childDesignationPlans.length; j++) {
+                                    var designationPlanChildText = "";
+
+                                    if (childDesignationPlans[j]._msnfp_designationplan_designationid_value != null) {
+                                        var objSelect = "msnfp_designations?$select=msnfp_designationid,msnfp_name";
+                                        objSelect += "&$filter=msnfp_designationid eq " + childDesignationPlans[j]._msnfp_designationplan_designationid_value;
+                                        var obj = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + objSelect);
+                                        designationPlanChildText = obj[0].msnfp_name;
+                                    }
+
+                                    var formattedDate = "";
+                                    if (childDesignationPlans[j].msnfp_bookdate != null) {
+                                        formattedDate = (childDesignationPlans[j].msnfp_bookdate).split("T")[0];
+                                    }
+
+                                    var formattedPercent = ""
+                                    if (childDesignationPlans[j].msnfp_percentageofpledgemax != null) {
+                                        formattedPercent = childDesignationPlans[j].msnfp_percentageofpledgemax;
+                                    }
+
+                                    var formattedRealized = ""
+                                    if (childDesignationPlans[j].msnfp_amountrealized != null) {
+                                        formattedRealized = childDesignationPlans[j].msnfp_amountrealized;
+                                    }
+
+                                    var formattedAmount = "";
+                                    if (childDesignationPlans[j].msnfp_originaltotal != null) {
+                                        formattedAmount = currencySymbol + addCommasonLoad(parseFloat(childDesignationPlans[j].msnfp_originaltotal).toFixed(2));
+                                    }
+
+                                    $(parentRow).after('' +
+                                        '<tr class="tr_childclone" parent-data-id="' + parentRowId + '" data-id="' + childDesignationPlans[j].msnfp_designationplanid + '">' +
+                                        '<td class="tdBtns"><i class="fa fa-share fa-flip-vertical fa-2" style="font-size: 24px;color:#b3b3b3;" role="button" title="Child of Designation Plan" tabindex="0"></i>&nbsp;&nbsp;' +
+                                        '<a href="#" style="text-decoration:none" class="btnAddNewChildToParent" role="button" title="Add Child Designation Plan" tabindex="0">' +
+                                        '<i class="fa fa-plus-circle fa-2" style="font-size: 24px;color:#243a5e;cursor: pointer;" aria-hidden="true" aria-label="Add Child Designation Plan" ></i></a>&nbsp;&nbsp;' +
+                                        '<a href="#" style="text-decoration:none" class="btnDeleteExistingChild"  role="button" title="Remove Child Designation Plan" tabindex="0">' +
+                                        '<i class="fa fa-minus-circle fa-2" style="font-size: 24px;color:#db3923;cursor: pointer;" aria-hidden="true" aria-label=="Remove Child Designation Plan"></i></a></td>' +
+                                        '<td style="width:35%;"><div style="display: flex;"><label>Designation </label><label style="padding-left: 5%;width:100%;">' + designationPlanChildText + '<label></div></td>' +
+                                        '<td><div style="display: flex;"><label>Realized </label><label>' + formattedRealized + '</label></div></td>' +
+                                        '<td><div style="display: flex;"><label>Amount </label><label class="lblAmountChild">' + formattedAmount + '</label></div></td>' +
+                                        '<td><div style="display: flex;"><label class="lblPercentageChild">' + formattedPercent + '</label><label><i class="fa fa-percent fa-2" style="font-size: 22px;color:#b3b3b3;" aria-hidden="true" title="Percentage of Expected Giving"></i></label></div></td> <td></td>' +
+                                        '</tr>');
+
+                                    // To add: '<td><i class="btnSaveChildDesignation fa fa-floppy-o fa-2" style="font-size: 24px;color:#0078d4;cursor: pointer;padding-top: 0.3em;" aria-hidden="true" title="Save Child Designation Plan"></i></td>'
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Could be moved to the top as well.
+            addNewRow();
+
+        });
+
+
+        // Clicking the add button on the parent:
+        $("body").on('click', 'a.btnSaveNewDesignation', function () {
+            //if (customerID == null) {
+            //    return;
+            //}
+            var thisRow = $(this).closest('tr')[0];
+
+            if (verifySaveNewDesignation(thisRow)) {
+                // Keep the values as variables in case we need to do more validation in the future:
+                var designation = $(thisRow).find('select.ddlNewDesignation').val();
+                var designationLabel = $(thisRow).find('select.ddlNewDesignation option:selected').text();
+                var date = $(thisRow).find('input.txtNewDesignationBookDate').val();
+                // Note not necessarily both of these will have a value:
+                //var amount = $(thisRow).find('input.txtNewAmount').val();
+                var amount = $(thisRow).find('input.txtNewAmount').val().replace(currencySymbol, '').replace(/[^\d\.\-]/g, "");
+                var formattedAmount = $(thisRow).find('input.txtNewAmount').val();
+                var percentage = $(thisRow).find('input.txtNewPercentage').val();
+
+                // Now we make the previous row non-editable:
+
+                var designationId = $(thisRow).attr('data-id');
+                if (designationId != null) {
+                    // Replace the buttons with the existing designation plan versions:
+                    $(thisRow).find('td.tdBtns').replaceWith('<td><a href="#" style="text-decoration:none" class="btnAddNew" role="button" title="Add Designation Plan" tabindex="0">' +
+                        '<i class="fa fa-plus-circle fa-2" style="font-size: 24px;color:#243a5e;cursor: pointer;" aria-hidden="true" aria-label="Add Designation Plan"></i></a>&nbsp;&nbsp;' +
+                        '<a href="#" style="text-decoration:none" class="btnDeleteExisting" role="button" title="Remove Designation Plan" tabindex="0">' +
+                        '<i class="fa fa-minus-circle fa-2" style="font-size: 24px;color:#db3923;cursor: pointer;" aria-hidden="true" aria-label="Remove Designation Plan"></i></a>&nbsp;&nbsp;' +
+                        '<a href="#" style="text-decoration:none" class="btnMakeSplit" role="button" title="Split this Designation Plan" tabindex="0">' +
+                        '<i class="fa fa-arrow-circle-down fa-2" style="font-size: 24px;color:#243a5e;cursor: pointer;" aria-hidden="true" aria-label="Split this Designation Plan"></i></a></td>');
+
+                    // Remove the save button:
+                    $(thisRow).find('.btnSaveNewDesignation').replaceWith("");
+
+                    $(thisRow).find('input.txtNewAmount').replaceWith("<label id='declarationPlanAmount" + designationId + "' class='declarationPlanAmount'>" + formattedAmount + "</label>");
+                    $(thisRow).find('input.txtNewDesignationBookDate').replaceWith("<label id='txtDesignationBookDate" + designationId + "'>" + date + "</label>");
+                }
+
+                $(thisRow).find('select.ddlNewDesignation').replaceWith("<label style='padding-left: 5%;width:100%;'>" + designationLabel + "</label>");
+                $(thisRow).find('input.txtNewPercentage').replaceWith("<label>" + percentage + "</label>");
+
+                console.log("-----------------");
+                console.log("Getting fields. ");
+                console.log("txtNewDesignationBookDate = " + date);
+                console.log("txtNewAmount = " + amount);
+                console.log("ddlNewDesignation = " + designation);
+                console.log("ddlNewDesignationLabel = " + designationLabel);
+                console.log("txtNewPercentage = " + percentage);
+                //console.log("btnSaveNewReport = " + $(thisRow).find('i.btnSaveNewReport').val());
+                console.log("-----------------");
+
+                if (typeof designationId !== typeof undefined && designationId !== false) {
+                    // Update the current record
+                    // Future code would go here for editing.
+                } else {
+                    // Add new report record:
+                    addNewOrUpdateDesignationPlan(null, date, amount, designation, percentage, null, null);
+                    $(thisRow).attr("data-id", currentDesignationPlanId);
+
+                    // We need to populate the ID fields:
+                    if (currentDesignationPlanId != null) {
+
+                        // Replace the buttons with the existing designation plan versions:
+                        $(thisRow).find('td.tdBtns').replaceWith('<td><a href="#" style="text-decoration:none" class="btnAddNew" role="button" title="Add Designation Plan" tabindex="0">' +
+                            '<i class="fa fa-plus-circle fa-2" style="font-size: 24px;color:#243a5e;cursor: pointer;" aria-hidden="true" aria-label="Add Designation Plan"></i></a>&nbsp;&nbsp;' +
+                            '<a href="#" style="text-decoration:none" class="btnDeleteExisting" role="button" title="Remove Designation Plan" tabindex="0">' +
+                            '<i class="fa fa-minus-circle fa-2" style="font-size: 24px;color:#db3923;cursor: pointer;" aria-hidden="true" aria-label="Remove Designation Plan"></i></a>&nbsp;&nbsp;' +
+                            '<a href="#" style="text-decoration:none" class="btnMakeSplit" role="button" title="Split this Designation Plan" tabindex="0">' +
+                            '<i class="fa fa-arrow-circle-down fa-2" style="font-size: 24px;color:#243a5e;cursor: pointer;" aria-hidden="true" aria-label="Split this Designation Plan"></i></a></td>');
+
+                        // Remove the save button:
+                        $(thisRow).find('.btnSaveNewDesignation').replaceWith("");
+
+                        $(thisRow).find('input.txtNewAmount').replaceWith("<label id='declarationPlanAmount" + currentDesignationPlanId + "' class='declarationPlanAmount'>" + formattedAmount + "</label>");
+                        $(thisRow).find('input.txtNewDesignationBookDate').replaceWith("<label id='txtDesignationBookDate" + currentDesignationPlanId + "' >" + date + "</label>");
+                    }
+                }
+
+                // Create the new row. Note that we cannot clone here as the datepicker id's won't assign correctly:
+                addNewRow();
+            }
+        });
+
+        // Clicking the add button on the child. The only difference (currently) is the child version has reference to the parent:
+        $("body").on('click', 'i.btnSaveChildDesignation', function () {
+
+            var thisRow = $(this).closest('tr')[0];
+
+            if (verifySaveNewChildDesignation(thisRow)) {
+                // Keep the values as variables in case we need to do more validation in the future:
+                var designation = $(thisRow).find('select.ddlNewDesignation').val();
+                var designationLabel = $(thisRow).find('select.ddlNewDesignation option:selected').text();
+                // Note not necessarily both of these will have a value:
+                //var amount = $(thisRow).find('input.txtAmountChild').val();
+                var amount = $(thisRow).find('input.txtAmountChild').val().replace(currencySymbol, '').replace(/[^\d\.\-]/g, "");
+                var realized = $(thisRow).find('input.txtRealized').val();
+                var percentage = $(thisRow).find('input.txtPercentageChild').val();
+
+
+                // Get the parent id value. If you cannot get this show a message and quit:
+                var parentDesignationId = $(thisRow).attr('parent-data-id');
+
+                // Get the date from the parent row:
+                var parentDate = document.getElementById("txtDesignationBookDate" + parentDesignationId).innerHTML;
+
+                // Now we make the previous row non-editable:
+                //$(thisRow).find('input.txtNewDesignationBookDate').replaceWith("<label>"+date+"</label>");
+                $(thisRow).find('input.txtRealized').replaceWith("<label>" + realized + "</label>");
+                $(thisRow).find('input.txtAmountChild').replaceWith("<label class='lblAmountChild'>" + amount + "</label>");
+                $(thisRow).find('select.ddlNewDesignation').replaceWith("<label style='padding-left: 5%;width:100%;'>" + designationLabel + "</label>");
+                $(thisRow).find('input.txtPercentageChild').replaceWith("<label class='lblPercentageChild'>" + percentage + "</label>");
+
+                console.log("-----------------");
+                console.log("Getting fields. ");
+                console.log("parentDesignationId = " + parentDesignationId);
+                console.log("parentDate = " + parentDate);
+                console.log("ddlNewDesignation = " + designation);
+                console.log("ddlNewDesignationLabel = " + designationLabel);
+                console.log("realized = " + realized);
+                console.log("txtAmountChild = " + amount);
+                console.log("txtPercentageChild = " + percentage);
+                //console.log("btnSaveNewReport = " + $(thisRow).find('i.btnSaveNewReport').val());
+                console.log("-----------------");
+
+                var designationId = $(thisRow).attr('data-id');
+                if (designationId != null) {
+                    // Replace the buttons with the existing designation plan versions:
+                    $(thisRow).find('td.tdBtns').replaceWith('"<td><i class="fa fa-share fa-flip-vertical fa-2" style="font-size: 24px;color:#b3b3b3;" role="button" title="Child of Designation Plan" tabindex="0"></i>&nbsp;&nbsp;' +
+                        '<a href="#" style="text-decoration:none" class="btnAddNewChildToParent" role="button" title="Add Child Designation Plan" tabindex="0">' +
+                        '<i class="fa fa-plus-circle fa-2" style="font-size: 24px;color:#243a5e;cursor: pointer;" aria-hidden="true" aria-label="Add Child Designation Plan"></i></a>&nbsp;&nbsp;' +
+                        '<a href="#" style="text-decoration:none" class="btnDeleteExistingChild"  role="button" title="Remove Child Designation Plan" tabindex="0">' +
+                        '<i class="fa fa-minus-circle fa-2" style="font-size: 24px;color:#db3923;cursor: pointer;" aria-hidden="true" aria-label=="Remove Child Designation Plan"></i></a></td>"');
+                    // Remove the save button:
+                    $(thisRow).find('.btnSaveChildDesignation').replaceWith("");
+                }
+
+                if (typeof designationId !== typeof undefined && designationId !== false) {
+                    // Update the current record
+                    // Future code would go here for editing.
+                } else {
+                    // Add new report record:
+                    addNewOrUpdateDesignationPlan(null, parentDate, amount, designation, percentage, realized, parentDesignationId);
+                    $(thisRow).attr("data-id", currentDesignationPlanId);
+
+                    if (currentDesignationPlanId != null) {
+
+                        // Replace the buttons with the existing designation plan versions:
+                        $(thisRow).find('td.tdBtns').replaceWith('"<td><i class="fa fa-share fa-flip-vertical fa-2" style="font-size: 24px;color:#b3b3b3;" role="button" title="Child of Designation Plan" tabindex="0"></i>&nbsp;&nbsp;' +
+                            '<a href="#" style="text-decoration:none" class="btnAddNewChildToParent" role="button" title="Add Child Designation Plan" tabindex="0">' +
+                            '<i class="fa fa-plus-circle fa-2" style="font-size: 24px;color:#243a5e;cursor: pointer;" aria-hidden="true" aria-label="Add Child Designation Plan"></i></a>&nbsp;&nbsp;' +
+                            '<a href="#" style="text-decoration:none" class="btnDeleteExistingChild"  role="button" title="Remove Child Designation Plan" tabindex="0">' +
+                            '<i class="fa fa-minus-circle fa-2" style="font-size: 24px;color:#db3923;cursor: pointer;" aria-hidden="true" aria-label=="Remove Child Designation Plan"></i></a></td>"');
+
+                        // Remove the save button:
+                        $(thisRow).find('.btnSaveChildDesignation').replaceWith("");
+                    }
+                }
+
+            }
+        });
+
+
+        // Add a new row (by clicking on the parent + button):
+        $("body").on('click', 'a.btnAddNew', function () {
+            addNewRow();
+        });
+
+        // Add a child to this parent:
+        $("body").on('click', 'a.btnMakeSplit', function () {
+            var thisRow = $(this).closest('tr')[0];
+
+            var designationPlanId = $(thisRow).attr('data-id');
+
+            addNewChildRow(thisRow, designationPlanId);
+            $(this).hide();
+        });
+
+        // Add a child to this child's parent (pressing + on a child record):
+        $("body").on('click', 'a.btnAddNewChildToParent', function () {
+
+            var thisRow = $(this).closest('tr')[0];
+
+            var designationPlanId = $(thisRow).attr('parent-data-id');
+
+            addNewChildRow(thisRow, designationPlanId);
+
+        });
+
+        // Delete an existing record:
+        $("body").on('click', 'a.btnDeleteExisting', function () {
+
+            var thisRow = $(this).closest('tr')[0];
+
+            var designationPlanId = $(this).parents("tr").attr("data-id");
+            if (designationPlanId == null || designationPlanId == undefined) return;
+
+            var confirmStrings = { text: "Are you sure you want to delete this item?", title: "Warning!" };
+            var confirmOptions = { height: 100, width: 450 };
+            xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
+                function (success) {
+                    if (success.confirmed) {
+                        // remove all the children first
+                        $(".tr_childclone[parent-data-id=" + designationPlanId + "]").each(function () {
+                            var designPlanId = $(this).attr("data-id");
+                            XrmServiceUtility.DeleteRecordAsync(designPlanId, "msnfp_designationplans");
+                            $(this).remove();
+                        });
+
+                        XrmServiceUtility.DeleteRecordAsync(designationPlanId, "msnfp_designationplans");
+                        thisRow.remove();
+                    }
+                    else
+                        console.log("Dialog closed using Cancel button or X.");
+                });
+        });
+
+        // Delete an existing child record:
+        $("body").on('click', 'a.btnDeleteExistingChild', function () {
+
+            var thisRow = $(this).closest('tr')[0];
+
+            var designationPlanId = $(this).parents("tr").attr("data-id");
+            if (designationPlanId == null || designationPlanId == undefined) return;
+
+            var confirmStrings = { text: "Are you sure you want to delete this item?", title: "Warning!" };
+            var confirmOptions = { height: 100, width: 450 };
+            xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
+                function (success) {
+                    if (success.confirmed) {
+                        XrmServiceUtility.DeleteRecord(designationPlanId, "msnfp_designationplans");
+                        thisRow.remove();
+                    }
+                    else
+                        console.log("Dialog closed using Cancel button or X.");
+                });
+        });
+
+        // Delete a new empty parent record:
+        $("body").on('click', 'a.btnDeleteNew', function () {
+            var numNewRows = $('.btnDeleteNew').length;
+            if (numNewRows > 1) {
+                var thisRow = $(this).closest('tr')[0];
+                thisRow.remove();
+            }
+        });
+
+        // Delete a new empty child record:
+        $("body").on('click', 'a.btnDeleteNewChild', function () {
+            var thisRow = $(this).closest('tr')[0];
+            var parentDesignationPlanId = $(thisRow).attr('parent-data-id');
+
+            if ($(".tr_childclone[parent-data-id=" + parentDesignationPlanId + "]").length == 1)
+                $(this).closest(".tr_childclone").siblings(".tr_clone[data-id=" + parentDesignationPlanId + "]").find(".btnMakeSplit").show();
+            thisRow.remove();
+        });
+
+
+        // Validate the new designation plan:
+        function verifySaveNewDesignation(thisRow) {
+
+            console.log("Amount: " + $(thisRow).find('input.txtNewAmount').val());
+            console.log("Amount contains data: " + ($(thisRow).find('input.txtNewAmount').val() == null || $(thisRow).find('input.txtNewAmount').val() == ""));
+            console.log("Percentage: " + $(thisRow).find('input.txtNewPercentage').val());
+            console.log("Percentage contains data: " + ($(thisRow).find('input.txtNewPercentage').val() == null || $(thisRow).find('input.txtNewPercentage').val() == ""));
+
+            // Do they have an amount or percentage field?:
+            if (($(thisRow).find('input.txtNewAmount').val() == null || $(thisRow).find('input.txtNewAmount').val() == "") && ($(thisRow).find('input.txtNewPercentage').val() == null || $(thisRow).find('input.txtNewPercentage').val() == "")) {
+                var confirmStrings = { text: "Please ensure the amount or percentage field has a value for this Designation Plan.", title: "Amount or Percentage is required" };
+                var confirmOptions = { height: 200, width: 450 };
+                xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
+                    function (success) {
+                        if (success.confirmed)
+                            console.log("Dialog closed using OK button.");
+                        else
+                            console.log("Dialog closed using Cancel button or X.");
+                    });
+                return false;
+            }
+            // Is the current page id not null?:
+            if (currentPageId == null) {
+                var confirmStrings = { text: "Please refresh the page and try this process again.", title: "Could not get Opportunity Id" };
+                var confirmOptions = { height: 200, width: 450 };
+                xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
+                    function (success) {
+                        if (success.confirmed)
+                            console.log("Dialog closed using OK button.");
+                        else
+                            console.log("Dialog closed using Cancel button or X.");
+                    });
+                return false;
+            }
+            return true;
+        }
+
+        // Validate the new child designation plan:
+        function verifySaveNewChildDesignation(thisRow) {
+
+            console.log("Amount: " + $(thisRow).find('input.txtAmountChild').val());
+            console.log("Amount contains data: " + ($(thisRow).find('input.txtAmountChild').val() == null || $(thisRow).find('input.txtAmountChild').val() == ""));
+            console.log("Percentage: " + $(thisRow).find('input.txtPercentageChild').val());
+            console.log("Percentage contains data: " + ($(thisRow).find('input.txtPercentageChild').val() == null || $(thisRow).find('input.txtPercentageChild').val() == ""));
+
+            // Do they have an amount or percentage field?:
+            if (($(thisRow).find('input.txtAmountChild').val() == null || $(thisRow).find('input.txtAmountChild').val() == "") && ($(thisRow).find('input.txtPercentageChild').val() == null || $(thisRow).find('input.txtPercentageChild').val() == "")) {
+                var confirmStrings = { text: "Please ensure the amount or percentage field has a value for this Designation Plan.", title: "Amount or Percentage is required" };
+                var confirmOptions = { height: 200, width: 450 };
+                xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
+                    function (success) {
+                        if (success.confirmed)
+                            console.log("Dialog closed using OK button.");
+                        else
+                            console.log("Dialog closed using Cancel button or X.");
+                    });
+                return false;
+            }
+            // Is the current page id not null?:
+            if (currentPageId == null) {
+                var confirmStrings = { text: "Please refresh the page and try this process again.", title: "Could not get Opportunity Id" };
+                var confirmOptions = { height: 200, width: 450 };
+                xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
+                    function (success) {
+                        if (success.confirmed)
+                            console.log("Dialog closed using OK button.");
+                        else
+                            console.log("Dialog closed using Cancel button or X.");
+                    });
+                return false;
+            }
+            return true;
+        }
+
+        // Add the report to this opportunity:
+        function addNewOrUpdateDesignationPlan(designationPlanId, date, amount, designation, percentage, realized, parentDesignationId) {
+            var designationPlanRecord = {};
+
+            designationPlanRecord["msnfp_DesignationPlan_OpportunityId@odata.bind"] = "/opportunities(" + currentPageId + ")";
+            designationPlanRecord["msnfp_DesignationPlan_DesignationId@odata.bind"] = "/msnfp_designations(" + designation + ")";
+
+            if (date != null && date != "") {
+                console.log("msnfp_bookdate = " + DSTOffsetYYYYMMDD(date));
+                designationPlanRecord["msnfp_bookdate"] = DSTOffsetYYYYMMDD(date);
+            }
+
+            if (amount != null) {
+                console.log("msnfp_originaltotal = " + amount);
+                designationPlanRecord["msnfp_originaltotal"] = parseFloat(amount);
+                console.log("msnfp_amountofpledgemax = " + amount);
+                designationPlanRecord["msnfp_amountofpledgemax"] = parseFloat(amount);
+            }
+
+            if (percentage != null) {
+                console.log("msnfp_percentageofpledgemax = " + percentage);
+                designationPlanRecord["msnfp_percentageofpledgemax"] = parseFloat(percentage);
+            }
+
+            if (realized != null) {
+                console.log("msnfp_amountrealized = " + realized);
+                designationPlanRecord["msnfp_amountrealized"] = parseFloat(realized);
+            }
+
+            if (parentDesignationId != null) {
+                console.log("Parent ID = " + parentDesignationId);
+                designationPlanRecord["msnfp_ParentDesignationPlanId@odata.bind"] = "/msnfp_designationplans(" + parentDesignationId.replace('{', '').replace('}', '') + ")";
+            }
+
+            // We try and get the campaign:
+            var campaign = xrm.Page.data.entity.attributes.get("campaignid").getValue();
+            if (campaign != null) {
+                designationPlanRecord["msnfp_DesignationPlan_CampaignId@odata.bind"] = "/campaigns(" + campaign[0].id.replace('{', '').replace('}', '') + ")";
+            }
+
+            // Customer:
+            var customer = xrm.Page.data.entity.attributes.get("customerid").getValue();
+            if (customer != null) {
+                // Note that failing to use the [0] will result in .entityType to not work:
+                if (customer[0].entityType == "account") {
+                    designationPlanRecord["msnfp_CustomerId_account@odata.bind"] = "/accounts(" + customer[0].id.replace('{', '').replace('}', '') + ")";
+                }
+                else if (customer[0].entityType == "contact") {
+                    designationPlanRecord["msnfp_CustomerId_contact@odata.bind"] = "/contacts(" + customer[0].id.replace('{', '').replace('}', '') + ")";
+                }
+            }
+
+            designationPlanRecord["statuscode"] = parseInt(1);
+            designationPlanRecord["statecode"] = parseInt(0);
+
+
+            // Try and get the currency:
+            var currency = xrm.Page.data.entity.attributes.get("transactioncurrencyid").getValue();
+            if (currency != null) {
+                designationPlanRecord["transactioncurrencyid@odata.bind"] = "/transactioncurrencies(" + currency[0].id.replace('{', '').replace('}', '') + ")";
+            }
+
+            if (designationPlanId) {
+                // Future update code would go here.
+            } else {
+                var qry = XrmServiceUtility.GetWebAPIUrl() + "msnfp_designationplans";
+                currentDesignationPlanId = XrmServiceUtility.CreateRecord(qry, designationPlanRecord);
+
+                // If this was a child, see if we need to update the parent:
+                if (parentDesignationId != null) {
+                    // Get all the children amounts:
+                    var childselect = "msnfp_designationplans?$select=msnfp_designationplanid,_msnfp_designationplan_designationid_value,_msnfp_parentdesignationplanid_value,msnfp_bookdate,msnfp_originaltotal,msnfp_percentageofpledgemax,_msnfp_designationplan_opportunityid_value,msnfp_amountrealized";
+                    childselect += "&$filter=(_msnfp_parentdesignationplanid_value eq " + parentDesignationId + ")";
+
+                    var childDesignationPlans = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + childselect);
+                    var totalChildren = 0;
+                    if (childDesignationPlans != null) {
+                        for (var i = 0; i < childDesignationPlans.length; i++) {
+                            if (childDesignationPlans[i].msnfp_originaltotal != null) {
+                                totalChildren += parseFloat(childDesignationPlans[i].msnfp_originaltotal);
+                            }
+                        }
+                        // Update the parent if applicable:
+                        var parentTotal = document.getElementById("declarationPlanAmount" + parentDesignationId).innerHTML;
+                        if (parentTotal != null) {
+                            if (parseFloat(parentTotal) < parseFloat(totalChildren)) {
+                                console.log("Parent is less than the children. Update the parent to: " + parseFloat(totalChildren));
+
+                                var parentToUpdate = {};
+                                parentToUpdate["msnfp_originaltotal"] = parseFloat(totalChildren);
+                                var qryParent = XrmServiceUtility.GetWebAPIUrl() + "msnfp_designationplans(" + parentDesignationId + ")";
+                                XrmServiceUtility.UpdateRecord(qryParent, parentToUpdate);
+
+                                document.getElementById("declarationPlanAmount" + parentDesignationId).innerHTML = parseFloat(totalChildren);
+                            }
+                        }
+                    }
+                }
+            }
+            console.log("Saved successfully!");
+        }
+
+        function calculateNewExpectedAmount() {
+            // We need to grab all the designation plans on the page and recalculate the expected total:
+            var currentExpected = 0;
+            var declarationPlanAmounts = document.getElementsByClassName("declarationPlanAmount");
+            for (var i = 0; i < declarationPlanAmounts.length; i++) {
+                try {
+                    //currentExpected += parseFloat(declarationPlanAmounts[i].innerHTML);
+                    currentExpected += parseFloat(declarationPlanAmounts[i].innerHTML.replace(currencySymbol, '').replace(/[^\d\.\-]/g, ""));
+                }
+                catch
+                {
+                    console.log(i + " = " + declarationPlanAmounts[i].innerHTML + " caused an error")
+                }
+            }
+
+            console.log("currentExpected = " + currentExpected);
+
+            if (currentExpected != null && currentExpected >= 0) {
+                xrm.Page.getAttribute("msnfp_expectedamount").setValue(currentExpected);
+                // Doing this causes a weird popup to occur: parent.Xrm.Page.data.entity.save();
+            }
+        }
+
+        // Anytime a percentage field changes, we need to recalculate the amount
+        function calculateNewAmountFromPercentageChange(thisRow) {
+            var expected = xrm.Page.getAttribute("msnfp_expectedamount").getValue();
+
+            var percentage = parseFloat($(thisRow).find('input.txtNewPercentage').val());
+            console.log("Percentage = " + percentage);
+            console.log("expected = " + expected);
+
+            if (isNaN(percentage) || expected == null) {
+                return;
+            }
+
+            if (percentage <= 0) {
+                var confirmStrings = { text: "Please ensure percentage is greater than 0.", title: "Percentage cannot be 0 or less" };
+                var confirmOptions = { height: 200, width: 450 };
+                xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
+                    function (success) {
+                        if (success.confirmed)
+                            console.log("Dialog closed using OK button.");
+                        else
+                            console.log("Dialog closed using Cancel button or X.");
+                    });
+                return;
+            }
+
+            if (expected != null && expected > 0) {
+                $(thisRow).find('input.txtNewAmount').val(currencySymbol + addCommasonLoad(parseFloat((expected * (percentage / 100.0))).toFixed(2)));
+            }
+        }
+
+        // Calculate the percentage:
+        function CalculatePercentageOfTotalBasedOnCorrespondingAmountChange(amount, thisRow) {
+            var expected = xrm.Page.getAttribute("msnfp_expectedamount").getValue();
+            if (isNaN(amount) || amount <= 0 || expected == null) {
+                return;
+            }
+
+            if (expected != null && expected > 0) {
+                $(thisRow).find('input.txtNewPercentage').val(((amount / expected) * 100.0).toFixed(2));
+            }
+        }
+
+        function CalculatePercentageOfChildBasedOnCorrespondingAmountChange(thisRow) {
+
+            var designationPlanId = $(thisRow).attr('parent-data-id');
+            var toltalParent = ($(".tr_clone[data-id=" + designationPlanId + "]").find(".declarationPlanAmount").text()) ? parseFloat($(".tr_clone[data-id=" + designationPlanId + "]").find(".declarationPlanAmount").text().replace(currencySymbol, '').replace(/[^\d\.\-]/g, "")) : 0;
+            var amount = ($(thisRow).find('input.txtAmountChild').val()) ? parseFloat($(thisRow).find('input.txtAmountChild').val()) : 0;
+
+            var totalChildrenAmount = 0;
+            $(".tr_childclone[parent-data-id=" + designationPlanId + "]").each(function () {
+                if ($(this).find(".lblAmountChild").text())
+                    totalChildrenAmount += parseFloat($(this).find(".lblAmountChild").text());
+            });
+
+            if (totalChildrenAmount + amount > toltalParent) {
+                var confirmStrings = { text: "Total Amount of Children can not be greater than the Parent's Amount!", title: "Warning!" };
+                var confirmOptions = { height: 100, width: 450 };
+                xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
+                    function (success) {
+                        if (success.confirmed) {
+                            $(thisRow).find('input.txtAmountChild').val("");
+                        }
+                        else {
+                            $(thisRow).find('input.txtAmountChild').val("");
+                            console.log("Dialog closed using Cancel button or X.");
+                        }
+
+                    });
+
+                return;
+            }
+
+            if (amount == null) {
+                return;
+            }
+
+            if (amount == "" || amount <= 0) {
+                return;
+            }
+
+            if (toltalParent != null && toltalParent > 0) {
+                $(thisRow).find('input.txtPercentageChild').val(((amount / toltalParent) * 100.0).toFixed(2));
+            }
+        }
+
+
+
+        function GetAmountPercentageFromParent(thisRow) {
+
+            // Get the parent amount:
+            var parentDesignationId = $(thisRow).attr('parent-data-id');
+            var percentage = ($(thisRow).find('input.txtPercentageChild').val()) ? parseFloat($(thisRow).find('input.txtPercentageChild').val()) : 0;
+
+            console.log("parentDesignationId = " + parentDesignationId);
+
+            var totalChildrenPercentage = 0;
+            $(".tr_childclone[parent-data-id=" + parentDesignationId + "]").each(function () {
+                if ($(this).find(".lblPercentageChild").text())
+                    totalChildrenPercentage += parseFloat($(this).find(".lblPercentageChild").text());
+            });
+
+            if (totalChildrenPercentage + percentage > 100) {
+                var confirmStrings = { text: "Total Percentage of Children can not be greater than the 100%!", title: "Warning!" };
+                var confirmOptions = { height: 100, width: 450 };
+                xrm.Navigation.openConfirmDialog(confirmStrings, confirmOptions).then(
+                    function (success) {
+                        if (success.confirmed) {
+                            $(thisRow).find('input.txtPercentageChild').val("");
+                        }
+                        else {
+                            $(thisRow).find('input.txtPercentageChild').val("");
+                            console.log("Dialog closed using Cancel button or X.");
+                        }
+                    });
+
+                return;
+            }
+
+
+            var parentRow = $('tr[parent-data-id="' + parentDesignationId + '"]');
+            console.log("parentRow = " + parentRow);
+
+
+            var parentAmount = document.getElementById("declarationPlanAmount" + parentDesignationId).innerHTML;
+
+
+
+            console.log("percentage = " + percentage);
+            console.log("parentAmount = " + parentAmount);
+            // Now set the amount of the child to be the percentage of the parent. No other adjusting required:
+            if (parentAmount != null && percentage != null && percentage >= 0) {
+                $(thisRow).find('input.txtAmountChild').val((parentAmount.replace(currencySymbol, '').replace(/[^\d\.\-]/g, "") * (percentage / 100.0)).toFixed(2));
+            }
+        }
+
+
+
+        function addNewRow() {
+            if ($(".btnDeleteNew").length < 1) {
+                $("#tbodyOpportunityDesignationPlan").append('' +
+                    '<tr class="tr_clone">' +
+                    '<td class="tdBtns"><a href="#" style="text-decoration:none" class="btnAddNew" role="button" title="Add Designation Plan" tabindex="0">' +
+                    '<i class="fa fa-plus-circle fa-2" style="font-size: 24px;color:#243a5e;cursor: pointer;" aria-hidden="true" aria-label="Add Designation Plan"></i></a>&nbsp;&nbsp;' +
+                    '<a href="#" style="text-decoration:none" class="btnDeleteNew" role="button" title="Remove Designation Plan" tabindex="0">' +
+                    '<i class="btnDeleteNew fa fa-minus-circle fa-2" style="font-size: 24px;color:#db3923;cursor: pointer;" aria-hidden="true" aria-label="Remove Designation Plan"></i></a></td>' +
+                    '<td style="width:35%;"><div style="display: flex;"><label>Designation </label>' + designationSelectHTML + '</div></td>' +
+                    '<td><div style="display: flex;"><label style="padding-right:1.55em;" aria-label="Expected Payment Date" title="Expected Payment Date (mm/dd/yyyy)">Date </label><input type="text" class="txtNewDesignationBookDate form-control"  autocomplete="off" tabindex="0" style="width:100%;min-width:50px;max-width:110px;" /></div></td>' +
+                    '<td><div style="display: flex;"><label>Amount </label><input type="text" aria-label="Amount" title="Amount" class="txtNewAmount form-control" style="width:100%;min-width:50px;max-width:110px;" /></div></td>' +
+                    '<td><div style="display: flex;"><input type="text" aria-label="Percentage Of Payments Max" title="Percentage Of Payments Max" class="txtNewPercentage form-control" style="width:100%;min-width:50px;max-width:70px;"/><label style="margin-left:0.5em;"><i class="fa fa-percent fa-2" style="font-size: 22px;color:#b3b3b3;" aria-hidden="true" title="Percentage of Expected Giving"></i></label></div></td>' +
+                    '<td><a href="#" style="text-decoration:none" class="btnSaveNewDesignation" role="button" title="Save Designation Plan" tabindex="0">' +
+                    '<i class="fa fa-floppy-o fa-2" style="font-size: 24px;color:#0078d4;cursor: pointer;padding-top: 0.3em;" aria-hidden="true" aria-label="Save Designation Plan"></i></a></td>' +
+                    '</tr>'); 
+            }
+        }
+
+
+        function addNewChildRow(parentrow, parentrowid) {
+
+            console.log("parentrowid = " + parentrowid);
+
+            $(parentrow).after('' +
+                '<tr class="tr_childclone" parent-data-id="' + parentrowid + '">' +
+                '<td class="tdBtns"><i class="fa fa-share fa-flip-vertical fa-2" style="font-size: 24px;color:#b3b3b3;" role="button" title="Child of Designation Plan" tabindex="0"></i>&nbsp;&nbsp;' +
+                '<a href="#" style="text-decoration:none" class="btnAddNewChildToParent" role="button" title="Add Child Designation Plan" tabindex="0">' +
+                '<i class="fa fa-plus-circle fa-2" style="font-size: 24px;color:#243a5e;cursor: pointer;" aria-hidden="true" aria-label="Add Child Designation Plan" ></i></a>&nbsp;&nbsp;' +
+                '<a href="#" style="text-decoration:none" class="btnDeleteNewChild" role="button" title="Remove Child Designation Plan" tabindex="0">' +
+                '<i class="fa fa-minus-circle fa-2" style="font-size: 24px;color:#db3923;cursor: pointer;" aria-hidden="true" aria-label="Remove Child Designation Plan"></i></a></td>' +
+                '<td style="width:35%;"><div style="display: flex;"><label>Designation </label>' + designationSelectHTML + '</div></td>' +
+                '<td><div style="display: flex;"><label>Realized </label><input type="text" aria-label="Realized" title="Realized" class="txtRealized form-control" style="width:100%;min-width:50px;max-width:110px;" /></div></td>' +
+                '<td><div style="display: flex;"><label>Amount </label><input type="text" aria-label="Amount" title="Amount" class="txtAmountChild form-control" style="width:100%;min-width:50px;max-width:110px;" /></div></td>' +
+                '<td><div style="display: flex;"><input type="text" aria-label="Percentage Of Payments Max" title="Percentage Of Payments Max" class="txtPercentageChild form-control" style="width:100%;min-width:50px;max-width:70px;" /><label style="margin-left:0.5em;"><i class="fa fa-percent fa-2" style="font-size: 22px;color:#b3b3b3;" aria-hidden="true" title="Percentage of Parent Amount"></i></label></div></td>' +
+                '<td><a href="#" style="text-decoration:none" class="btnSaveChildDesignation" role="button" title="Save Child Designation Plan" tabindex="0">' +
+                '<i class="fa fa-floppy-o fa-2" style="font-size: 24px;color:#0078d4;cursor: pointer;padding-top: 0.3em;" aria-hidden="true" aria-label="Save Child Designation Plan"></i></a></td>' +
+                '</tr>');
+        }
+
+
+        // Get the status reason metadata of an entity:
+        function getStatusAttributeMetadata(entityName) {
+            var data = null;
+            var webApiQuery = xrm.Page.context.getClientUrl() + "/api/data/v8.2/EntityDefinitions(LogicalName='" + entityName + "')/Attributes/Microsoft.Dynamics.CRM.StatusAttributeMetadata?$expand=OptionSet";
+
+            var req = new XMLHttpRequest();
+            req.open('GET', webApiQuery, false);
+            req.setRequestHeader("Accept", "application/json");
+            req.setRequestHeader("OData-MaxVersion", "4.0");
+            req.setRequestHeader("OData-Version", "4.0");
+            req.send();
+            if (req.readyState == 4 /* complete */) {
+                if (req.status == 200) {
+                    var results = JSON.parse(req.response);
+                    data = results.value[0];
+                }
+                else {
+                    var error = JSON.parse(req.response).error;
+                    console.log(error.message);
+                }
+            }
+            return data;
+        }
+
+
+        function getCurrencySymbol() {
+            var currencyField = xrm.Page.data.entity.attributes.get("transactioncurrencyid").getValue();
+            if (!isNullOrUndefined(currencyField)) {
+                var currencyid = currencyField[0].id;
+                var currencySelect = "transactioncurrencies?$select=transactioncurrencyid,currencysymbol,isocurrencycode"
+                currencySelect += "&$filter=transactioncurrencyid eq " + XrmUtility.CleanGuid(currencyid);
+                var currencyRec = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + currencySelect);
+                if (!isNullOrUndefined(currencyRec))
+                    currencyRec = currencyRec[0];
+
+                if (!isNullOrUndefined(currencyRec)) {
+                    currencySymbol = currencyRec.currencysymbol;
+                    isoCurrencyCode = currencyRec.isocurrencycode;
+                }
+            }
+        }
+
+        function addCommasonLoad(nStr) {
+            if (nStr != 0) {
+                nStr = nStr.replace(currencySymbol, '').replace(',', '');
+                nStr += '';
+                x = nStr.split('.');
+                x1 = x[0];
+                x2 = x.length > 1 ? '.' + x[1] : '';
+                var rgx = /(\d+)(\d{3})/;
+                while (rgx.test(x1)) {
+                    x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                }
+                return x1 + x2;
+            }
+            else return '0.00';
+        }
+
+        function DSTOffset(str) {
+            if (str != null && str != undefined && userSettings != null && userSettings != undefined) {
+                let dt = new Date(str);
+                let start = new Date(dt.getYear(), userSettings.timezonedaylightmonth - 1, userSettings.timezonedaylightday);
+                let end = new Date(dt.getYear(), userSettings.timezonestandardmonth - 1, userSettings.timezonestandardday);
+                if (dt >= start && dt < end) dt.setMinutes(-userSettings.timezonedaylightbias);
+                return dt;
+            }
+        }
+
+        function DSTOffsetYYYYMMDD(str) {
+            if (str != null && str != undefined && userSettings != null && userSettings != undefined) {
+                let dt = new Date(str);
+                let start = new Date(dt.getYear(), userSettings.timezonedaylightmonth - 1, userSettings.timezonedaylightday);
+                let end = new Date(dt.getYear(), userSettings.timezonestandardmonth - 1, userSettings.timezonestandardday);
+                if (dt >= start && dt < end) dt.setMinutes(-userSettings.timezonedaylightbias);
+                return dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
+            }
+        }
+
+        function isNullOrUndefined(value) {
+            return (typeof (value) === "undefined" || value === null || value === "");
+        }
+
+
+
+    </script>
+
+</body>
+</html>

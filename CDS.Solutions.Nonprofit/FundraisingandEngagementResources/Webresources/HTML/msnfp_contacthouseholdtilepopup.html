@@ -1,0 +1,856 @@
+﻿<!--/*************************************************************************
+* © Microsoft. All rights reserved.
+*/-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../scripts/jQuery.js" type="text/javascript"></script>
+    <script src="../scripts/common.js" type="text/javascript"></script>
+    <script src="../scripts/bootstrap.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../scripts/bootstrap.min.css" rel="stylesheet">
+
+    <meta>
+</head>
+<body style="margin: 0px; word-wrap: break-word;">
+    <style type="text/css">
+        table, th {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .spanNextDonationDate, .spanLastDonationDate, .spanDate {
+            text-transform: uppercase !important;
+        }
+
+        .header1 {
+            font-weight: 400;
+            font-size: 19px;
+            line-height: 1.32;
+            padding-left: 6%;
+        }
+
+        .header2 {
+            font-weight: 400;
+            font-size: 20px;
+            padding-left: 6%;
+            line-height: 1.4;
+        }
+
+        .header3 {
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 1.8;
+            padding-left: 6%;
+        }
+
+        .spanMembership {
+            font-size: 15px;
+        }
+
+        .boldCaps {
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            padding-left: 6%;
+            padding-top: 4%;
+        }
+
+        div.divSection {
+            width: 100%;
+            height: 120px;
+            background-color: #f2f2f2;
+            font-family: SegoeUI, "Segoe UI", "Helvetica Neue",Arial,"Noto Sans",sans-serif;
+            background-position: right bottom; /*Positioning*/
+            background-repeat: no-repeat;
+            border-bottom-width: 5px;
+            border-bottom-style: solid;
+        }
+
+        div.divSectionHousehold {
+            width: 100%;
+            height: 120px;
+            background-color: #f2f2f2;
+            font-family: SegoeUI, "Segoe UI", "Helvetica Neue",Arial,"Noto Sans",sans-serif;
+            background-position: right bottom; /*Positioning*/
+            background-repeat: no-repeat;
+            border-bottom-width: 5px;
+            border-bottom-style: solid;
+        }
+
+        #divOpportunity {
+            background-color: #f2f2f2;
+            font-family: SegoeUI, "Segoe UI", "Helvetica Neue",Arial,"Noto Sans",sans-serif;
+            background-position: right bottom; /*Positioning*/
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #divAddToDiscovery {
+            height: 30px;
+        }
+
+        .divOpportunityContent {
+            font-size: 20px;
+        }
+
+        .spanHighlighted {
+            color: #000000;
+            /*padding-left: 3px;*/
+            padding-right: 3px;
+        }
+
+        div.emptyDiv {
+            /*padding-left: 3px;*/
+            line-height: 15px;
+        }
+
+        .spanOppExists, .spanSolicitationDays {
+            text-transform: uppercase !important;
+        }
+
+        a#lnkShowExistingOpportunity {
+            text-decoration: none;
+        }
+
+        /*Householding*/
+
+        table, th {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .boldCaps {
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            padding-left: 6%;
+            padding-top: 4%;
+        }
+
+
+        div.divSectionTabs {
+            width: 100%;
+            height: 100px;
+            font-family: SegoeUI, "Segoe UI", "Helvetica Neue",Arial,"Noto Sans",sans-serif;
+            background-position: right bottom; /*Positioning*/
+            background-repeat: no-repeat;
+            border-bottom-width: 5px;
+            border-bottom-style: solid;
+        }
+
+        div.divSectionAddress {
+            width: 100%;
+            height: 40px;
+            padding-top: 1%;
+            padding-left: 2%;
+            font-family: SegoeUI, "Segoe UI", "Helvetica Neue",Arial,"Noto Sans",sans-serif;
+        }
+
+        .spanNextDonationDate, .spanLastDonationDate, .spanDate {
+            text-transform: uppercase !important;
+        }
+
+        .HouseholdingTitle {
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1.32;
+            padding-top: 1%;
+            padding-bottom: 1%;
+            text-align: center;
+            background: #f2f2f2;
+        }
+
+        .header1 {
+            font-weight: 400;
+            font-size: 19px;
+            line-height: 1.32;
+            padding-left: 6%;
+        }
+
+        .header2 {
+            font-weight: 400;
+            font-size: 20px;
+            padding-left: 6%;
+            line-height: 1.4;
+        }
+
+        .header3 {
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 1.8;
+            padding-left: 10%;
+        }
+
+        body {
+            font-family: SegoeUI, "Segoe UI", "Helvetica Neue",Arial,"Noto Sans",sans-serif;
+            font-weight: 400;
+        }
+
+        h2 {
+            margin-top: 5px;
+            margin-left: 5px;
+        }
+
+        h3 {
+            margin-top: 5px;
+            margin-left: 5px;
+        }
+
+        a {
+            color: #000000;
+        }
+
+        .tabs {
+            max-width: 640px;
+            margin: 0 auto;
+            /*padding: 0 20px;*/
+        }
+
+        #tab-button {
+            display: table;
+            table-layout: fixed;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+            #tab-button li {
+                display: table-cell;
+                width: 20%;
+            }
+
+                #tab-button li a {
+                    display: block;
+                    padding: .4em;
+                    background: #eee;
+                    border: 1.5px solid #243a5e;
+                    text-align: center;
+                    color: #000;
+                    text-decoration: none;
+                }
+
+
+
+                    #tab-button li a:hover,
+                    #tab-button .is-active a {
+                        border: 1.5px solid #243a5e;
+                        background: #fff;
+                    }
+
+
+
+        .tab-button-outer {
+            display: none;
+        }
+
+        .tab-contents {
+            margin-top: 0px;
+            border: 1px solid #243a5e;
+        }
+
+        a {
+            height: 39px;
+            overflow: hidden;
+        }
+
+        /*When in the center section normally*/
+        @media screen and (min-width: 400px) {
+            .tab-button-outer {
+                position: relative;
+                z-index: 2;
+                display: block;
+            }
+
+            .tab-select-outer {
+                display: none;
+            }
+
+            .tab-contents {
+                position: relative;
+                /*top: -1px;*/
+                margin-top: 0;
+            }
+        }
+
+        /*End of Householding*/
+
+    </style>
+
+    <!--Householding Starts-->
+    <div class="tabs" id="divHouseholdingMain" style="display:none;">
+        <div class="HouseholdingTitle">
+            Household Details<span class="spanAmount"></span>
+        </div>
+        <div class="tab-button-outer">
+            <ul id="tab-button">
+                <li class="is-active"><a href="#tab01" id="aTab1Name"></a></li>
+                <li class=""><a href="#tab02" id="aTab2Name"></a></li>
+                <li><a href="#tab03" id="aTab3Name"></a></li>
+                <li><a href="#tab04" id="aTab4Name"></a></li>
+                <li><a href="#tab05" id="aTab5Name"></a></li>
+            </ul>
+        </div>
+        <div class="tab-select-outer">
+            <select id="tab-select">
+                <option value="#tab01" id="optionTab1Name"></option>
+                <option value="#tab02" id="optionTab2Name"></option>
+                <option value="#tab03" id="optionTab3Name"></option>
+                <option value="#tab04" id="optionTab4Name"></option>
+                <option value="#tab05" id="optionTab5Name"></option>
+            </select>
+        </div>
+        <div id="tab01" class="tab-contents" style="">
+
+            <table style="width:100%;">
+                <tr>
+                    <td style="width: 50%;">
+                        <div class="divSectionTabs" id="divDirectContributions" style="border-bottom-color: #243a5e;">
+                            <div class="boldCaps">DIRECT CONTRIBUTIONS</div>
+                            <div class="header2"><span class="currencySymbol"></span><span class="spanHighlighted"><lbl id="lblDirectContributions1"></lbl></span></div>
+                        </div>
+                    </td>
+                    <td style="width: 50%;">
+                        <div class="divSectionTabs" id="divMajorDonation" style="border-bottom-color: #243a5e;">
+                            <div class="boldCaps">MAJOR DONATION</div>
+                            <div class="header2" id="divOpportunityDate1">
+                                <span class="spanHighlighted"><lbl id="lblOpportunityDate1"></lbl></span>
+                            </div>
+                            <div class="header1">
+                                <span class="currencySymbol"></span><lbl id="lblOpportunityAmount1"></lbl>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        <div id="tab02" class="tab-contents" style="display: none;">
+
+            <table style="width:100%;">
+                <tr>
+                    <td style="width: 50%;">
+                        <div class="divSectionTabs" id="divDirectContributions" style="border-bottom-color: #243a5e;">
+                            <div class="boldCaps">DIRECT CONTRIBUTIONS</div>
+                            <div class="header2"><span class="currencySymbol"></span><span class="spanHighlighted"><lbl id="lblDirectContributions2"></lbl></span></div>
+                        </div>
+                    </td>
+                    <td style="width: 50%;">
+                        <div class="divSectionTabs" id="divMajorDonation" style="border-bottom-color: #243a5e;">
+                            <div class="boldCaps">MAJOR DONATION</div>
+                            <div class="header2" id="divOpportunityDate2">
+                                <span class="spanHighlighted"><lbl id="lblOpportunityDate2"></lbl></span>
+                            </div>
+                            <div class="header1">
+                                <span class="currencySymbol"></span><lbl id="lblOpportunityAmount2"></lbl>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        <div id="tab03" class="tab-contents" style="display: none;">
+
+
+            <table style="width:100%;">
+                <tr>
+                    <td style="width: 50%;">
+                        <div class="divSectionTabs" id="divDirectContributions" style="border-bottom-color: #243a5e;">
+                            <div class="boldCaps">DIRECT CONTRIBUTIONS</div>
+                            <div class="header2"><span class="currencySymbol"></span><span class="spanHighlighted"><lbl id="lblDirectContributions3"></lbl></span></div>
+                        </div>
+                    </td>
+                    <td style="width: 50%;">
+                        <div class="divSectionTabs" id="divMajorDonation" style="border-bottom-color: #243a5e;">
+                            <div class="boldCaps">MAJOR DONATION</div>
+                            <div class="header2" id="divOpportunityDate3">
+                                <span class="spanHighlighted"><lbl id="lblOpportunityDate3"></lbl></span>
+                            </div>
+                            <div class="header1">
+                                <span class="currencySymbol"></span><lbl id="lblOpportunityAmount3"></lbl>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        <div id="tab04" class="tab-contents" style="display: none;">
+
+            <table style="width:100%;">
+                <tr>
+                    <td style="width: 50%;">
+                        <div class="divSectionTabs" id="divDirectContributions" style="border-bottom-color: #243a5e;">
+                            <div class="boldCaps">DIRECT CONTRIBUTIONS</div>
+                            <div class="header2"><span class="currencySymbol"></span><span class="spanHighlighted"><lbl id="lblDirectContributions4"></lbl></span></div>
+                        </div>
+                    </td>
+                    <td style="width: 50%;">
+                        <div class="divSectionTabs" id="divMajorDonation" style="border-bottom-color: #243a5e;">
+                            <div class="boldCaps">MAJOR DONATION</div>
+                            <div class="header2" id="divOpportunityDate4">
+                                <span class="spanHighlighted"><lbl id="lblOpportunityDate4"></lbl></span>
+                            </div>
+                            <div class="header1">
+                                <span class="currencySymbol"></span><lbl id="lblOpportunityAmount4"></lbl>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        <div id="tab05" class="tab-contents" style="display: none;">
+
+            <table style="width:100%;">
+                <tr>
+                    <td style="width: 50%;">
+                        <div class="divSectionTabs" id="divDirectContributions" style="border-bottom-color: #243a5e;">
+                            <div class="boldCaps">DIRECT CONTRIBUTIONS</div>
+                            <div class="header2"><span class="currencySymbol"></span><span class="spanHighlighted"><lbl id="lblDirectContributions5"></lbl></span></div>
+                        </div>
+                    </td>
+                    <td style="width: 50%;">
+                        <div class="divSectionTabs" id="divMajorDonation" style="border-bottom-color: #243a5e;">
+                            <div class="boldCaps">MAJOR DONATION</div>
+                            <div class="header2" id="divOpportunityDate5">
+                                <span class="spanHighlighted"><lbl id="lblOpportunityDate5"></lbl></span>
+                            </div>
+                            <div class="header1">
+                                <span class="currencySymbol"></span><lbl id="lblOpportunityAmount5"></lbl>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+
+        <div>
+            <table style="width:100%;">
+                <tr>
+                    <td style="width: 50%;">
+                        <div class="divSectionHousehold" id="divHouseholdGiving" style="background-image: url('../../../../webresources/msnfp_/images/recentgift.png'); background-size: 75px; border-bottom-color: #243a5e;">
+                            <div class="boldCaps">HOUSEHOLD GIVING</div>
+                            <div class="header2">
+                                <span class="currencySymbol"></span><label id="lblHouseholdGiving"></label>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="width: 50%;">
+                        <div class="divSectionHousehold" id="divFirstLastGift" style="background-image: url('../../../../webresources/msnfp_/images/firstandlastgift.png'); background-size: 75px; border-bottom-color: #243a5e;">
+                            <div class="boldCaps">First/Last Gift</div>
+                            <div class="header2">
+                                <label id="lblFirstTransactionDate" style="font-size:12px;"></label><br />
+                                <label id="lblFirstTransactionName" style="font-size:12px;margin-top: -10;"></label><br />
+                                <label id="lblLastTransactionDate" style="font-size:12px;margin-top: -10;"></label><br />
+                                <label id="lblLastTransactionName" style="font-size:12px;margin-top: -10;"></label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 50%;">
+                        <div class="divSectionHousehold" id="divHouseholdMembers" style="background-image: url('../../../../webresources/msnfp_/images/householdmembers.png'); background-size: 75px; border-bottom-color: #243a5e;">
+                            <div class="boldCaps">HOUSEHOLD MEMBERS</div>
+                            <div class="header2">
+                                <label id="lblHouseholdMembers"></label>
+                            </div>
+                        </div>
+                    </td>
+                    <td style="width: 50%;">
+                        <div class="divSectionHousehold" id="divLastCommunication" style="background-image: url('../../../../webresources/msnfp_/images/lastcommunication.png'); background-size: 75px; border-bottom-color: #243a5e; ">
+                            <div class="boldCaps">LAST COMMUNICATION</div>
+                            <div class="header2">
+                                <label id="lblLastCommunication"></label><br />
+                                <label id="lblLastCommunicationName" style="margin-top: -10;"></label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="divSectionAddress" id="divUpdateAddress" style="border-color: #ddd;">
+                <a href="#" onclick="updateAddress();"><i class="fa fa-home" style="font-size: 24px;" aria-hidden="true"></i> Update the Address</a>
+            </div>
+        </div>
+    </div>
+    <!--Householding Ends-->
+
+    
+    <script type="text/javascript">
+
+        var dt;
+        var month;
+        var suffix;
+        var currentPageId;
+        var amountTotal = 0;
+        var _xrm;
+        var currencySymbol;
+        var householdId;
+        var entityName;
+
+        $(document).ready(function () {
+            _xrm = XrmUtility.get_Xrm();
+
+            var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+            // Query the information for this account:
+            currentPageId = MissionFunctions.GetQueryStringParam("contactId");
+            console.log("currentPageId == " + currentPageId);
+
+            // Get rid of the modal naming:
+            parent.$("h1[data-id='defaultDialogChromeTitle']", parent.document).html("");
+
+            // Start of Householding.
+            if (currentPageId != null && currentPageId.length > 0) {
+
+                var contactQuery = "contacts?";
+                contactQuery += "$select=contactid,_msnfp_householdid_value,_transactioncurrencyid_value&";
+                contactQuery += "$filter=contactid eq " + XrmUtility.CleanGuid(currentPageId) + "";
+
+                thisContactRecord = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + contactQuery);
+
+                if (!isNullOrUndefined(thisContactRecord[0]._transactioncurrencyid_value)) {
+                    var currencyid = thisContactRecord[0]._transactioncurrencyid_value;
+                    var currencySelect = "transactioncurrencies?$select=transactioncurrencyid,currencysymbol"
+                    currencySelect += "&$filter=transactioncurrencyid eq " + XrmUtility.CleanGuid(currencyid);
+                    var currencyRec = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + currencySelect);
+                    if (!isNullOrUndefined(currencyRec))
+                        currencyRec = currencyRec[0];
+
+                    if (!isNullOrUndefined(currencyRec)) {
+                        currencySymbol = currencyRec.currencysymbol;
+                        //$('.currencySymbol').val().innerHTML = currencySymbol;
+                        $('.currencySymbol').each(function () {
+                            $(this)[0].innerText = currencySymbol;
+                        });
+                    }
+                }
+                console.log("thisContactRecord[0]._msnfp_householdid_value == " + thisContactRecord[0]._msnfp_householdid_value);
+
+                if (thisContactRecord[0]._msnfp_householdid_value)
+                {
+                    $("#divHouseholdingMain").show();
+
+                    // get Household information
+                    var householdQuery = "accounts?$select=msnfp_lifetimegivingsum&$filter=accountid eq " + XrmUtility.CleanGuid(thisContactRecord[0]._msnfp_householdid_value);
+                    var householdRecord = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + householdQuery);
+                    let householdGivingTotal = 0;
+                    if (householdRecord != null && householdRecord[0] != null) {
+                        householdGivingTotal = householdRecord[0].msnfp_lifetimegivingsum != null ? householdRecord[0].msnfp_lifetimegivingsum : 0;
+                    }
+
+                    // Get the household members:
+                    var mQuery = "contacts?";
+                    mQuery += "$select=contactid,fullname,_msnfp_householdid_value,msnfp_lifetimegiving_rollup,msnfp_firstactivity_rollup,msnfp_lastactivity_rollup,msnfp_lifetimegivingsum,statecode&$orderby=msnfp_lifetimegivingsum desc&";
+                    mQuery += "$filter=_msnfp_householdid_value eq " + XrmUtility.CleanGuid(thisContactRecord[0]._msnfp_householdid_value);
+
+                    var householdMemberRecords = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + mQuery);
+                    var householdMembersCount = 0;
+                    var activeHouseholdMembersCount = 0;
+
+                    // For each member up to 5:
+                    if (householdMemberRecords) {
+                        
+                        let householdFirstGiftDate;
+                        let householdFirstGiftAmount = 0;
+                        let householdFirstGiftCustomerName = "";
+                        let householdLastGiftDate;
+                        let householdLastGiftAmount = 0;
+                        let householdLastGiftCustomerName = "";
+
+                        let householdFirstCommunicationDate;
+                        let householdLastCommunicationDate;
+                        let householdLastCommunicationName;
+
+                        let householdNumberMax = 5;
+
+
+                        householdMembersCount = householdMemberRecords.length;
+                        for (var i = 0; i < householdMemberRecords.length; i++) {
+
+                            if (householdMemberRecords[i].statecode === 0) {
+                                activeHouseholdMembersCount += 1;
+                            }
+
+                            var currentHouseholdMemberName = householdMemberRecords[i].fullname;
+
+                            if (i < householdNumberMax) {
+                                $("#aTab" + (i + 1) + "Name").text(householdMemberRecords[i].fullname);
+                                $("#aTab" + (i + 1) + "Name").prop('title', householdMemberRecords[i].fullname);
+                                $("#optionTab" + (i + 1) + "Name").text(householdMemberRecords[i].fullname);
+
+                                let contactDirectContributions = addCommas(parseFloat(householdMemberRecords[i].msnfp_lifetimegivingsum).toFixed(2));
+                                if (contactDirectContributions == NaN || contactDirectContributions == "NaN") {
+                                    contactDirectContributions = 0;
+                                }
+
+                                $("#lblDirectContributions" + (i + 1) + "").text(contactDirectContributions);
+
+                                // Get the opportunity for this contact:
+                                let oQuery = "opportunities?";
+                                oQuery += "$select=opportunityid,_customerid_value,statecode,estimatedvalue,estimatedclosedate,name,createdon&$orderby=createdon desc&";
+                                oQuery += "$filter=statecode eq 0 and estimatedvalue ne null and _customerid_value eq " + XrmUtility.CleanGuid(householdMemberRecords[i].contactid) + "";
+
+                                let opportunityRecords = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + oQuery);
+
+                                if (opportunityRecords) {
+                                    if (opportunityRecords[0].estimatedvalue != null && opportunityRecords[0].estimatedvalue != undefined) {
+                                        $("#lblOpportunityAmount" + (i + 1) + "").text(addCommas(parseFloat(opportunityRecords[0].estimatedvalue).toFixed(2)));
+                                    }
+
+                                    if (opportunityRecords[0].estimatedclosedate != null && opportunityRecords[0].estimatedclosedate != undefined) {
+                                        //YYYY-MM-DD
+                                        let dateObj = (opportunityRecords[0].estimatedclosedate).split("-");
+                                        let monthInt = dateObj[1];
+
+                                        $("#lblOpportunityDate" + (i + 1) + "").text(monthNames[parseInt(monthInt - 1)].toUpperCase() + " " + dateObj[2] + ", " + dateObj[0]);
+                                    }
+                                }
+                                else {
+                                    $("#lblOpportunityAmount" + (i + 1) + "").text("0");
+                                    $("#divOpportunityDate" + (i + 1) + "").hide();
+                                }
+                            }
+
+                            // Set, if applicable, the first and last activities of the household:
+                            if (householdMemberRecords[i].msnfp_firstactivity_rollup) {
+                                if (householdFirstCommunicationDate == null) {
+                                    householdFirstCommunicationDate = householdMemberRecords[i].msnfp_firstactivity_rollup;
+                                }
+                                else {
+                                    // Get First Date:
+                                    if (householdFirstCommunicationDate > householdMemberRecords[i].msnfp_firstactivity_rollup) {
+                                        householdFirstCommunicationDate = householdMemberRecords[i].msnfp_firstactivity_rollup;
+                                    }
+                                }
+                            }
+
+                            if (householdMemberRecords[i].msnfp_lastactivity_rollup) {
+                                if (householdLastCommunicationDate == null) {
+                                    householdLastCommunicationDate = householdMemberRecords[i].msnfp_lastactivity_rollup;
+                                    householdLastCommunicationName = currentHouseholdMemberName;
+                                }
+                                else {
+                                    // Get Last Date:
+                                    if (householdLastCommunicationDate < householdMemberRecords[i].msnfp_lastactivity_rollup) {
+                                        householdLastCommunicationDate = householdMemberRecords[i].msnfp_lastactivity_rollup;
+                                        householdLastCommunicationName = currentHouseholdMemberName;
+                                    }
+                                }
+                            }
+
+                            // Get the completed transactions for this member:
+                            let transSelect = "msnfp_transactions?$select=msnfp_transactionid,msnfp_bookdate,msnfp_amount,statuscode&$orderby=msnfp_bookdate desc";
+                            transSelect += "&$filter=statuscode eq 844060000 and _msnfp_customerid_value eq " + householdMemberRecords[i].contactid + "";
+
+                            let thisMembersTransactions = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + transSelect);
+
+                            if (thisMembersTransactions) {
+                                // For each transaction:
+                                for (var j = 0; j < thisMembersTransactions.length; j++) {
+                                //    // Add to total:
+                                //    if (thisMembersTransactions[j].msnfp_amount) {
+                                //        householdGivingTotal += thisMembersTransactions[j].msnfp_amount;
+                                //    }
+
+                                    // Now do date processing:
+                                    if (thisMembersTransactions[j].msnfp_bookdate) {
+                                        if (householdFirstGiftDate == null) {
+                                            householdFirstGiftDate = thisMembersTransactions[j].msnfp_bookdate;
+                                            householdFirstGiftAmount = thisMembersTransactions[j].msnfp_amount;
+                                            householdFirstGiftCustomerName = currentHouseholdMemberName;
+                                        }
+                                        else {
+                                            // Get First Date:
+                                            if (householdFirstGiftDate > thisMembersTransactions[j].msnfp_bookdate) {
+                                                householdFirstGiftDate = thisMembersTransactions[j].msnfp_bookdate;
+                                                householdFirstGiftAmount = thisMembersTransactions[j].msnfp_amount;
+                                                householdFirstGiftCustomerName = currentHouseholdMemberName;
+                                            }
+                                        }
+
+                                        if (householdLastGiftDate == null) {
+                                            householdLastGiftDate = thisMembersTransactions[j].msnfp_bookdate;
+                                            householdLastGiftAmount = thisMembersTransactions[j].msnfp_amount;
+                                            householdLastGiftCustomerName = currentHouseholdMemberName;
+                                        }
+                                        else {
+                                            // Get Last Date:
+                                            if (householdLastGiftDate < thisMembersTransactions[j].msnfp_bookdate) {
+                                                householdLastGiftDate = thisMembersTransactions[j].msnfp_bookdate;
+                                                householdLastGiftAmount = thisMembersTransactions[j].msnfp_amount;
+                                                householdLastGiftCustomerName = currentHouseholdMemberName;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } // End of member processing.
+
+
+                        // Fill in the household giving (aggregate of all contacts completed transactions):
+                        if (householdGivingTotal != null && householdGivingTotal != undefined) {
+                            $("#lblHouseholdGiving").text(addCommas(parseFloat(householdGivingTotal).toFixed(2)));
+                        }
+                        else {
+                            $("#lblHouseholdGiving").text("0");
+                        }
+
+                        // Fill in the first and last dates:
+                        if (householdFirstGiftDate != null && householdFirstGiftDate != undefined) {
+
+                            let dateObj = (householdFirstGiftDate).split("-");
+                            let monthInt = dateObj[1];
+
+                            if (!isNullOrUndefined(householdFirstGiftAmount)) {
+                                householdFirstGiftAmount = addCommas(parseFloat(householdFirstGiftAmount).toFixed(2));
+                            }
+                            else {
+                                householdFirstGiftAmount = 0;
+                                householdFirstGiftCustomerName = "";
+                            }
+
+                            $("#lblFirstTransactionDate").text(currencySymbol + "" + householdFirstGiftAmount + " on " + monthNames[parseInt(monthInt - 1)].toUpperCase() + " " + dateObj[2].split("T")[0] + ", " + dateObj[0]);
+                            $("#lblFirstTransactionName").text(" By: " + householdFirstGiftCustomerName);
+
+                        }
+
+                        if (householdLastGiftDate != null && householdLastGiftDate != undefined) {
+
+                            let dateObj = (householdLastGiftDate).split("-");
+                            let monthInt = dateObj[1];
+
+                            if (!isNullOrUndefined(householdLastGiftAmount)) {
+                                householdLastGiftAmount = addCommas(parseFloat(householdLastGiftAmount).toFixed(2));
+                            }
+                            else {
+                                householdLastGiftAmount = 0;
+                                householdLastGiftCustomerName = "";
+                            }
+
+                            $("#lblLastTransactionDate").text(currencySymbol + "" + householdLastGiftAmount + " on " + monthNames[parseInt(monthInt - 1)].toUpperCase() + " " + dateObj[2].split("T")[0] + ", " + dateObj[0]);
+                            $("#lblLastTransactionName").text(" By: " + householdLastGiftCustomerName);
+                        }
+
+                        // Fill in the last communication date:
+                        if (householdLastCommunicationDate != null && householdLastCommunicationDate != undefined) {
+
+                            let dateObj = (householdLastCommunicationDate).split("-");
+                            let monthInt = dateObj[1];
+
+                            $("#lblLastCommunication").text(monthNames[parseInt(monthInt - 1)].toUpperCase() + " " + dateObj[2].split("T")[0] + ", " + dateObj[0]);
+                            $("#lblLastCommunicationName").text(householdLastCommunicationName);
+                        }
+                    }
+
+                    if (householdMembersCount < 5) {
+                        if (householdMembersCount == 0) {
+                            $("#tab01").hide();
+                        }
+                        for (var i = 5; i >= householdMembersCount; i--) {
+                            $("#aTab" + (i + 1) + "Name").parent().remove();
+                            $("#optionTab" + (i + 1) + "Name").remove();
+                        }
+                    }
+
+                    // Show the member number:
+                    if (householdMemberRecords) {
+                        $("#lblHouseholdMembers").text(activeHouseholdMembersCount);
+                    }
+                    else {
+                        $("#lblHouseholdMembers").text("0");
+                    }
+                }
+                
+                // End of Householding.
+            }
+
+            // Tab functionality:
+            var tabButtonItem = $('#tab-button li');
+            var tabSelect = $('#tab-select');
+            var tabContents = $('.tab-contents');
+            var activeClass = 'is-active';
+
+            tabButtonItem.first().addClass(activeClass);
+            tabContents.not(':first').hide();
+
+            tabButtonItem.find('a').on('click', function (e) {
+                var target = $(this).attr('href');
+
+                tabButtonItem.removeClass(activeClass);
+                $(this).parent().addClass(activeClass);
+                tabSelect.val(target);
+                tabContents.hide();
+                $(target).show();
+                e.preventDefault();
+            });
+
+            tabSelect.on('change', function () {
+                var target = $(this).val();
+                var targetSelectNum = $(this).prop('selectedIndex');
+
+                tabButtonItem.removeClass(activeClass);
+                tabButtonItem.eq(targetSelectNum).addClass(activeClass);
+                tabContents.hide();
+                $(target).show();
+            });
+            // End of Tab functionality.
+        });
+
+        function getSuffix(n) {
+            return n < 11 || n > 13 ? ['st', 'nd', 'rd', 'th'][Math.min((n - 1) % 10, 3)] : 'th'
+        }
+
+        
+        function addCommas(nStr) {
+            if (nStr != 0) {
+                nStr += '';
+                x = nStr.split('.');
+                x1 = x[0];
+                x2 = x.length > 1 ? '.' + x[1] : '';
+                var rgx = /(\d+)(\d{3})/;
+                while (rgx.test(x1)) {
+                    x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                }
+                return x1 + x2;
+            }
+            else return 0;
+        }
+
+        function getFormattedDate(date) {
+            return ("0" + (date.getUTCMonth() + 1)).slice(-2)
+                + "/"
+                + ("0" + date.getUTCDate()).slice(-2)
+                + "/"
+                + date.getUTCFullYear();
+        }
+
+        function isNullOrUndefined(value) {
+            return (typeof (value) === "undefined" || value === null || value === "");
+        }
+                
+        function updateAddress() {
+            var windowOptions = { height: 650, width: 1250 };
+            var data = { from: "contact", refreshbackgroundpage: false, fromid: currentPageId.replace(/[{}]/g, ""), householdid: thisContactRecord[0]._msnfp_householdid_value.replace(/[{}]/g, "") };
+            _xrm.Navigation.openWebResource("msnfp_/webpages/updatehouseholdaddress.html", windowOptions, JSON.stringify(data));
+        }
+
+    </script>
+
+</body>
+</html>

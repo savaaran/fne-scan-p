@@ -1,0 +1,474 @@
+﻿<!--/*************************************************************************
+* © Microsoft. All rights reserved.
+*/-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>UPDATE BANK ACCOUNT</title>
+    <script src="ClientGlobalContext.js.aspx" type="text/javascript"></script>
+    <script src="../scripts/jQuery.js" type="text/javascript"></script>
+    <link href="../scripts/common.css" rel="stylesheet">
+    <script src="../scripts/common.js" type="text/javascript"></script>
+</head>
+<body style="height: 255px">
+    <style type="text/css">
+        table, th {
+            border-collapse: collapse;
+            color: #444444;
+            font-family: 'Hind', sans-serif;
+            font-size: 14px;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+
+        table, td {
+            color: #444444;
+            font-family: 'Hind', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        input[type=text] {
+            width: 190px;
+        }
+
+        input:disabled {
+            opacity: 0.5;
+        }
+
+        .red-border {
+            border: solid 2px #FF0000 !important;
+        }
+
+        .tabview {
+            border-style: none;
+            padding: 12px;
+            position: relative;
+            top: 0px;
+            left: 0px;
+            width: calc(100% - 22px);
+            height: 33px;
+            background-color: none;
+            z-index: 1;
+        }
+
+        .fa, .fas, .far {
+            font-size: 18px !important;
+            vertical-align: middle;
+        }
+
+        .content-header h2 {
+            color: #000000;
+            font-size: 18px !important;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .content-details input, .content-details select, .contDet input, .contDet select {
+            margin: 2px;
+            padding: .280rem .5rem;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            margin-top: 1px;
+        }
+
+        .form-container-head {
+            background-color: white;
+            padding-left: 20px;
+            padding-top: 20px;
+            border-top: 0.6em solid #243a5e;
+            padding-right: 0px;
+        }
+
+        .form-container-headNBorder {
+            background-color: white;
+            padding-left: 20px;
+            padding-top: 20px;
+            padding-right: 0px;
+        }
+
+        .form-container {
+            background-color: white;
+            padding-left: 20px;
+            padding-right: 0px;
+        }
+
+        .main-button {
+            text-align: center !important;
+            text-shadow: none !important;
+            border: 1px solid #b4b4b4 !important;
+            background-color: #cccccc !important;
+            -webkit-transition: all 0.1s ease-in-out !important;
+            -moz-transition: all 0.1s ease-in-out !important;
+            -ms-transition: all 0.1s ease-in-out !important;
+            -o-transition: all 0.1s ease-in-out !important;
+            transition: all 0.1s ease-in-out !important;
+            padding: 5px 6px 3px 6px !important;
+            font-family: 'Hind', sans-serif !important;
+            font-weight: bolder !important;
+            text-transform: uppercase !important;
+            font-size: 14px !important;
+            color: #243a5e !important;
+            cursor: pointer !important;
+            border-radius: 0px !important;
+            background-clip: initial !important;
+            margin: 0 !important;
+            margin-top: 0px !important;
+            line-height: unset !important;
+            margin-right: 5px !important;
+            white-space: nowrap !important;
+        }
+
+            .main-button:hover {
+                cursor: pointer !important;
+                color: white !important;
+                border: 1px solid #243a5e !important;
+                background-color: #243a5e !important;
+            }
+
+            .main-button .button-icon {
+                margin-left: 10px;
+                text-rendering: optimizeLegibility;
+            }
+
+        .mandatory span:after {
+            content: '*';
+            color: red;
+            font-weight: bold;
+            font-size: 15px;
+            padding-left: 3px;
+        }
+
+        .divloader {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            background: lightgrey;
+            opacity: 0.8;
+            filter: alpha(opacity=40);
+            z-index: 2000;
+            margin-top: -30px;
+            margin-left: -8px;
+        }
+    </style>
+
+    <table class="content-details" style="width: 100%; margin-top: 5px;" border="0" role="presentation">
+        <tbody>
+            <tr>
+                <td style="padding-left: 0px;padding-right: 2px;">
+                    <div class="tabview">
+                        <div class="content-header" style="float:left;width: 220px;margin-top: 4px;">
+                            <h2 class="noselect" style="margin: 0;">UPDATE BANK ACCOUNT</h2>
+                        </div>
+                    </div>
+                    <table style="border-style:none;width:100%;" border="0" role="presentation">
+                        <tbody>
+                            <tr>
+                                <td colspan="3" style="background:#ededed !important;padding: 13px;padding-top: 15px;padding-bottom: 15px;text-align:center;">
+                                    <table style="border-style:none;width:99%;margin-left: 2px;" border="0" align="center" role="presentation">
+                                        <tbody>
+                                            <tr class="trBank mandatory">
+                                                <td class="form-container-head"><span><label for="listCreditCard" title="Existing Account">Existing Account</label></span></td>
+                                                <td class="form-container-head">
+                                                    <select id="listBank" style="width: 190px; height: 32px;" aria-label="Existing Account" role="listbox">
+                                                        <option value="0" role="option"></option>
+                                                    </select>
+                                                    <!--<input type="text" id="txtExBank" style="width: 265px;" disabled />-->
+                                                    <input type="hidden" id="hdBankAccountID" />
+                                                    <input type="hidden" id="hdAuthToken" />
+                                                    <input type="hidden" id="hdAuthNetProfile" />
+                                                    <input type="hidden" id="hdCustomerID" />
+                                                </td>
+                                            </tr>
+                                            <tr class="trBank mandatory">
+                                                <td class="form-container"><span><label for="txtBankName" title="The name of the bank the account is held with.">Bank Name</label></span></td>
+                                                <td class="form-container"><input type="text" id="txtBankName" aria-label="Bank Name" aria-required="true" /></td>
+                                            </tr>
+                                            <tr class="trBank mandatory">
+                                                <td class="form-container"><span><label for="txtAccountNumber" title="The bank account number as it appears on the bank account without dashes">A/C Number</label></span></td>
+                                                <td class="form-container"><input type="text" id="txtAccountNumber" aria-label="A/C Number" aria-required="true" onkeypress="return checkIt(event);" /></td>
+                                            </tr>
+                                            <tr class="trBank mandatory">
+                                                <td class="form-container"><span><label for="txtRoutingNumber" title="The bank account routing number as it appears on the bank account without dashes.">Routing Number</label></span></td>
+                                                <td class="form-container"><input type="text" id="txtRoutingNumber" aria-label="Routing Number" aria-required="true" onkeypress="return checkIt(event);" /></td>
+                                            </tr>
+                                            <tr class="trBank mandatory">
+                                                <td class="form-container"><span><label for="txtCustomerName" title="The name of the individual as it pertains to there payment method such as the name on the card or the name on the bank account">Name</label></span></td>
+                                                <td class="form-container"><input type="text" id="txtCustomerName" aria-label="Name" aria-required="true" /></td>
+                                            </tr>
+                                            <tr class="trBank mandatory">
+                                                <td class="form-container"><span><label for="listAccountType" title="Account Type">Account Type</label></span></td>
+                                                <td class="form-container">
+                                                    <select id="listAccountType" style="width: 190px; height: 32px;" aria-label="Account Type" aria-required="true" role="listbox">
+                                                        <option value="0" role="option">Please Select..</option>
+                                                        <option value="844060000" role="option">CHECKING</option>
+                                                        <option value="844060001" role="option">SAVING</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="form-container" colspan="2">                                                    
+                                                    <input type="button" class="main-button" id="btnUpdate" role="button" value="Update" />
+                                                    <input type="button" id="btnClose" class="main-button" role="button" value="Close" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="form-container" colspan="3">
+                                                    <span id="lblMsg" style="color: #e60000;display:block;" role="alert"></span>
+                                                    <span id="lblErrorValidation" style="color:#e60000; display: block;" role="alert"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="form-container" style="height:10px;" colspan="2">
+                                                    <br>
+                                                    <select id="ddlPaymentGateway" hidden="hidden">
+                                                        <option value=""></option>
+                                                        <option value="844060000">Moneris</option>
+                                                        <option value="844060001">Authorize.Net</option>
+                                                        <option value="844060002">iATS</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script type="text/javascript">
+        var BAList = "";
+        var baQuery = "";
+
+        var entityName;
+        var currentEntityGUID;
+        var bankAccountID;
+
+        var configRecord = null;
+
+        var xrm;
+        xrm = XrmUtility.get_Xrm();
+
+        var currentuserID = xrm.Page.context.getUserId().replace('{', '').replace('}', '').toUpperCase();
+        var userSelect = "systemusers?$select=systemuserid,_msnfp_configurationid_value"
+        userSelect += "&$filter=systemuserid eq " + currentuserID;
+        var user = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + userSelect);
+        user = user[0];
+
+        if (!isNullOrUndefined(user._msnfp_configurationid_value)) {
+            var selectQuery = "msnfp_configurations?$select=msnfp_configurationid";
+            var filterConfig = "&$filter=msnfp_configurationid eq " + user._msnfp_configurationid_value;
+            var configresult = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + selectQuery + filterConfig);
+            if (!isNullOrUndefined(configresult))
+                configRecord = configresult[0];
+        }
+
+
+        function getParameters() {
+            entityName = MissionFunctions.GetQueryStringParam("entityName");
+            currentEntityGUID = MissionFunctions.GetQueryStringParam("entityGUID");
+            if (entityName === "msnfp_transaction" || entityName === "msnfp_paymentschedule")
+                bankAccountID = MissionFunctions.GetQueryStringParam("bankAccountID");
+        }
+
+        $(function () {
+            getParameters();
+
+            if (entityName === "msnfp_paymentschedule" || entityName === "msnfp_transaction") {
+                baQuery = "msnfp_paymentmethods?";
+                baQuery += "$select=msnfp_paymentmethodid,msnfp_bankactnumber,msnfp_bankname,msnfp_name&";
+                baQuery += "$filter=msnfp_paymentmethodid eq " + XrmUtility.CleanGuid(bankAccountID) + " and msnfp_type eq 844060001";
+            }
+            else if (entityName === "contact" || entityName === "account") {
+                baQuery = "msnfp_paymentmethods?";
+                baQuery += "$select=msnfp_paymentmethodid,msnfp_bankactnumber,msnfp_bankname,msnfp_name,_msnfp_customerid_value&";
+                baQuery += "$filter=_msnfp_customerid_value eq " + currentEntityGUID + " and msnfp_type eq 844060001";
+            }
+
+            BAList = XrmServiceUtility.ExecuteQuery(XrmServiceUtility.GetWebAPIUrl() + baQuery);
+
+            if (!isNullOrUndefined(BAList)) {
+                $("tr.trBank").show();
+                $.each(BAList, function (key, value) {
+                    $('#listBank').append($("<option role='option'></option>").attr("value", value.msnfp_paymentmethodid).text(value.msnfp_name));
+                    $('#listBank').val(value.msnfp_paymentmethodid);
+                    $('#hdCustomerID').val(value._msnfp_customerid_value);
+                });
+            }
+            else {
+                $("tr.trBank").hide();
+                $("#btnUpdate").hide();
+                //$('#lblMsg').html('No related bank account exists.');
+                $('#lblMsg').append('<p>No related bank account exists.</p>');
+
+            }
+        });
+
+        $("#btnClose").click(function () {
+            window.close();
+        });
+
+        //$('#txtBankName, #txtAccountNumber, #txtRoutingNumber, #txtCustomerName').focusout(function () {
+        //    $.as_VerifyEmpty($(this));
+        //});
+
+        function checkIt(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                status = "This field accepts numbers only."
+                return false;
+            }
+            status = "";
+            return true;
+        }
+
+        $.as_VerifyEmpty = function (elem) {
+            var r = false;
+            if (elem) {
+                r = $.trim(elem.val()).length > 0;
+                if (!r)
+                    elem.addClass('red-border').val('');
+                else
+                    elem.removeClass('red-border');
+            }
+            return r;
+        }
+
+        $("#btnUpdate").click(function () {
+            if (validate()) {
+
+                if ($("#listBank").val() !== "0" && $.as_VerifyEmpty($('#txtBankName'))
+                    && $.as_VerifyEmpty($('#txtAccountNumber')) && $.as_VerifyEmpty($('#txtRoutingNumber'))
+                    && $.as_VerifyEmpty($('#txtCustomerName')) && $("#listAccountType").val() !== "0") {
+                    var eEntity = {};
+
+                    var accountNo = $('#txtAccountNumber').val();
+                    eEntity["msnfp_bankname"] = $('#txtBankName').val();
+                    eEntity["msnfp_bankactnumber"] = accountNo;
+                    eEntity["msnfp_bankactrtnumber"] = $('#txtRoutingNumber').val();
+                    eEntity["msnfp_nameonfile"] = $('#txtCustomerName').val();
+                    eEntity["msnfp_banktypecode"] = $('#listAccountType').val();
+                    if (entityName === "account") {
+                        eEntity["msnfp_CustomerId_account@odata.bind"] = "/accounts(" + $('#hdCustomerID').val() + ")";
+                    }
+                    else if (entityName === "contact") {
+                        eEntity["msnfp_CustomerId_contact@odata.bind"] = "/contacts(" + $('#hdCustomerID').val() + ")";
+                    }
+                    eEntity["msnfp_name"] = $('#txtBankName').val() + " - " + accountNo.substr(accountNo.length - 4);
+                    eEntity["msnfp_type"] = 844060001; // Bank Account
+
+                    var str = XrmServiceUtility.GetWebAPIUrl() + "msnfp_paymentmethods(" + $('#listBank').val() + ")";
+
+                    var recordID = XrmServiceUtility.UpdateRecord(str, eEntity);
+
+                    if (!isNullOrUndefined(recordID)) {
+                        $("#btnUpdate").hide();
+                        //$('#lblMsg').html('Bank Account Updated Successfully.');
+                        $('#lblMsg').append('<p>Bank Account Updated Successfully.</p>');
+                        $('#lblMsg').css('color', 'green');
+                        //$("#btnClose").show();
+                    }
+                    else {
+                        //$('#lblMsg').html('An error has occured, please close this window and try again.');
+                        $('#lblMsg').append('<p>An error has occured, please close this window and try again.</p>');
+                        $('#lblMsg').css('color', '##e60000');
+                    }
+                }
+            }
+        });
+
+        function validate() {
+            var isValidate = true;
+            //$("#lblMsg")[0].innerText = '';
+            $('#lblMsg').html('');
+            //$("#lblErrorValidation")[0].innerText = '';
+            $('#lblErrorValidation').html('');
+            
+            if ($("#listBank").val() === "0") {
+                isValidate = false;
+                $("#listBank").addClass('red-border');
+                $('#lblErrorValidation').append('<p>Please select existing account</p>');
+                return;
+            }
+            else {
+                $("#listBank").removeClass('red-border');
+            }
+
+            if (isNullOrUndefined($("#txtBankName").val())) {
+                isValidate = false;
+                $("#txtBankName").addClass('red-border');
+                $('#lblErrorValidation').append('<p>Please enter the bank name.</p>');
+                return;
+            }
+            else {
+                $("#txtBankName").removeClass('red-border');
+            }
+
+            if (isNullOrUndefined($("#txtAccountNumber").val())) {
+                isValidate = false;
+                $("#txtAccountNumber").addClass('red-border');
+                $('#lblErrorValidation').append('<p>Please enter a/c number.</p>');
+                return;
+            }
+            else {
+                $("#txtAccountNumber").removeClass('red-border');
+            }
+
+            if (isNullOrUndefined($("#txtRoutingNumber").val())) {
+                isValidate = false;
+                $("#txtRoutingNumber").addClass('red-border');
+                $('#lblErrorValidation').append('<p>Please enter routing number.</p>');
+                return;
+            }
+            else {
+                $("#txtRoutingNumber").removeClass('red-border');
+            }
+
+            if (isNullOrUndefined($("#txtCustomerName").val())) {
+                isValidate = false;
+                $("#txtCustomerName").addClass('red-border');
+                $('#lblErrorValidation').append('<p>Please enter name.</p>');
+                return;
+            }
+            else {
+                $("#txtCustomerName").removeClass('red-border');
+            }
+
+            if ($("#listAccountType").val() === "0") {
+                isValidate = false;
+                $("#listAccountType").addClass('red-border');
+                $('#lblErrorValidation').append('<p>Please select account type.</p>');
+                return;
+            }
+            else {
+                $("#listAccountType").removeClass('red-border');
+            }     
+
+            return isValidate;
+        }
+
+        function isNullOrUndefined(value) {
+            return (typeof (value) === "undefined" || value === null || value === "");
+        }
+    </script>
+</body>
+</html>
