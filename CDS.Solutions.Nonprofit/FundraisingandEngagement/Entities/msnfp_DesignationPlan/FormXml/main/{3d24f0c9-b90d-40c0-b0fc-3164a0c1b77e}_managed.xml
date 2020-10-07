@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{3d24f0c9-b90d-40c0-b0fc-3164a0c1b77e}</formid>
+    <IntroducedVersion>1.0.2</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form shownavigationbar="true" showImage="false" maxWidth="1920">
+      <tabs>
+        <tab verticallayout="true" id="{b4953d4d-4b13-4060-b75f-3e8d4e6138ff}" IsUserDefined="1" name="{b4953d4d-4b13-4060-b75f-3e8d4e6138ff}" locklevel="0" expanded="true" showlabel="true" ordinalvalue="0">
+          <columns>
+            <column width="33%" id="1">
+              <sections>
+                <section name="{b4953d4d-4b13-4060-b75f-3e8d4e6138ff}_section_2" showlabel="false" showbar="false" locklevel="0" id="{b9d5ae0c-a98d-4394-c715-6847e4810237}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" ordinalvalue="0">
+                  <rows>
+                    <row>
+                      <cell id="{b115ea4d-ab43-b38e-e910-bcc12bce104c}" showlabel="true" locklevel="0" ordinalvalue="10001" solutionaction="Modified" />
+                    </row>
+                    <row>
+                      <cell id="{a52bdd60-9d0d-22c7-a29d-ce7728c73db8}" showlabel="true" locklevel="0" ordinalvalue="10000" solutionaction="Added">
+                        <labels>
+                          <label description="Campaign" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_designationplan_campaignid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="msnfp_designationplan_campaignid" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{30a03a0e-dc20-3440-d6ba-683ad799b36e}" showlabel="true" locklevel="0" ordinalvalue="10002" solutionaction="Added">
+                        <labels>
+                          <label description="Opportunity" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_designationplan_opportunityid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="msnfp_designationplan_opportunityid" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <LocalizedNames>
+      <LocalizedName description="Designation Plan" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RibbonDiffXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CustomActions>
+    <CustomAction Id="msnfp.msnfp_designation.Button2.Button.CustomAction" Location="Mscrm.Form.msnfp_designation.MainTab.Save.Controls._children" Sequence="75">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.msnfp_designation.Button2.Button.Alt" Command="msnfp.msnfp_designation.Command0.Command" Id="msnfp.msnfp_designation.Button2.Button" LabelText="$LocLabels:msnfp.msnfp_designation.Button2.Button.LabelText" Sequence="75" TemplateAlias="o2" ToolTipTitle="$LocLabels:msnfp.msnfp_designation.Button2.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.msnfp_designation.Button2.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/SetAsDebitSelection.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.msnfp_designation.Button3.Button.CustomAction" Location="Mscrm.Form.msnfp_designation.MainTab.Save.Controls._children" Sequence="78">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.msnfp_designation.Button3.Button.Alt" Command="msnfp.msnfp_designation.Command1.Command" Id="msnfp.msnfp_designation.Button3.Button" LabelText="$LocLabels:msnfp.msnfp_designation.Button3.Button.LabelText" Sequence="78" TemplateAlias="o2" ToolTipTitle="$LocLabels:msnfp.msnfp_designation.Button3.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.msnfp_designation.Button3.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/RemoveAsDebitSelection.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.msnfp_designation.Button5.Button.CustomAction" Location="Mscrm.Form.msnfp_designation.MainTab.Save.Controls._children" Sequence="73">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.msnfp_designation.Button5.Button.Alt" Command="msnfp.msnfp_designation.Command2.Command" Id="msnfp.msnfp_designation.Button5.Button" LabelText="$LocLabels:msnfp.msnfp_designation.Button5.Button.LabelText" Sequence="73" TemplateAlias="o2" ToolTipTitle="$LocLabels:msnfp.msnfp_designation.Button5.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.msnfp_designation.Button5.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/AddToPage.svg" />
+      </CommandUIDefinition>
+    </CustomAction>
+  </CustomActions>
+  <Templates>
+    <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+  </Templates>
+  <CommandDefinitions>
+    <CommandDefinition Id="msnfp.msnfp_designation.Command0.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_designation.EnableRule0.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="SetAsDebitSelection" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_designation.Command1.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_designation.EnableRule1.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="RemoveAsDebitSelection" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.msnfp_designation.Command2.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_designation.EnableRule2.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="AddToPageDesignation" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+  </CommandDefinitions>
+  <RuleDefinitions>
+    <TabDisplayRules />
+    <DisplayRules />
+    <EnableRules>
+      <EnableRule Id="msnfp.msnfp_designation.EnableRule0.EnableRule">
+        <CustomRule FunctionName="ShowSetAsDebitSelection" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_designation.EnableRule1.EnableRule">
+        <CustomRule FunctionName="ShowRemoveAsDebitSelection" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.msnfp_designation.EnableRule2.EnableRule">
+        <CustomRule FunctionName="HideAddToPageDesignation" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+    </EnableRules>
+  </RuleDefinitions>
+  <LocLabels>
+    <LocLabel Id="msnfp.msnfp_designation.Button2.Button.Alt">
+      <Titles>
+        <Title description="Set as Debit Selection" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_designation.Button2.Button.LabelText">
+      <Titles>
+        <Title description="Set as Debit Selection" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_designation.Button2.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Sets this Designation as Debit Selection" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_designation.Button2.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Set as Debit Selection" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_designation.Button3.Button.Alt">
+      <Titles>
+        <Title description="Remove as Debit Selection" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_designation.Button3.Button.LabelText">
+      <Titles>
+        <Title description="Remove as Debit Selection" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_designation.Button3.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Removes this Designation as a Debit Selection" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_designation.Button3.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Remove as Debit Selection" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_designation.Button5.Button.Alt">
+      <Titles>
+        <Title description="Add To Page" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_designation.Button5.Button.LabelText">
+      <Titles>
+        <Title description="Add To Page" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_designation.Button5.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Add this designation to a donation page." languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_designation.Button5.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Add To Page" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+  </LocLabels>
+</RibbonDiffXml>
