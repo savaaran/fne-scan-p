@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{77916419-e214-42b0-a777-e61f61e7804e}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="msnfp_identifier" select="1" icon="1" preview="1">
+        <row name="result" id="msnfp_opportunitypreferenceid">
+          <cell name="msnfp_identifier" width="300" />
+          <cell name="createdon" width="125" />
+          <cell name="msnfp_opportunityid" width="100" />
+          <cell name="msnfp_preferenceid" width="100" />
+          <cell name="ownerid" width="100" />
+          <cell name="createdby" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="msnfp_opportunitypreference">
+          <attribute name="msnfp_identifier" />
+          <attribute name="createdon" />
+          <order attribute="msnfp_identifier" descending="true" />
+          <order attribute="createdon" descending="true" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="msnfp_preferenceid" />
+          <attribute name="msnfp_opportunityid" />
+          <attribute name="createdby" />
+          <attribute name="ownerid" />
+          <attribute name="msnfp_opportunitypreferenceid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>2.0.1.100</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Opportunity Preferences" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
