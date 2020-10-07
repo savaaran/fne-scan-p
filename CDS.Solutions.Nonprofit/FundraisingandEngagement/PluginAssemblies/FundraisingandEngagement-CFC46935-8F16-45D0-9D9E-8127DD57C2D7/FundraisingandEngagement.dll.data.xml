@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PluginAssembly FullName="FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginAssemblyId="cfc46935-8f16-45d0-9d9e-8127dd57c2d7" CustomizationLevel="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IsolationMode>2</IsolationMode>
+  <SourceType>0</SourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <FileName>/PluginAssemblies/FundraisingandEngagement-CFC46935-8F16-45D0-9D9E-8127DD57C2D7/FundraisingandEngagement.dll</FileName>
+  <PluginTypes>
+    <PluginType AssemblyQualifiedName="Plugins.AccountCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="f6e31f38-4f90-49a8-bdf3-cc8c0501bb2d" Name="Plugins.AccountCreate">
+      <FriendlyName>a1190e79-93b2-441a-8e27-f241d7701629</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.AccountUpdate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="08768982-0da7-4f6c-b8dd-5c26da23968c" Name="Plugins.AccountUpdate">
+      <FriendlyName>d81b4711-ceba-4234-bce5-81ed76e0cda7</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.BankRunCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="68c66022-0dbb-45c7-9716-8730d69cb181" Name="Plugins.BankRunCreate">
+      <FriendlyName>33ded82e-214f-4380-9b13-f56def5e1ff4</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.BankRunScheduleCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="8a0305c4-6d8e-42d5-bb0e-01d96454d243" Name="Plugins.BankRunScheduleCreate">
+      <FriendlyName>05ccdd3e-b6ce-4f73-a9ef-f00c79bd4aec</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.ConfigurationCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="c7a2f9a1-cbb6-46b3-ad22-9904c19c3b22" Name="Plugins.ConfigurationCreate">
+      <FriendlyName>19161182-493c-4282-9e30-aa4c52e82002</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.ContactCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="9950d03d-1898-439d-93aa-94bdc7c6c2f3" Name="Plugins.ContactCreate">
+      <FriendlyName>5a5d0934-dd23-438e-8fd0-11355be10ad0</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.ContactUpdate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="82bdbe56-8200-4f44-b303-e865fe33d3e7" Name="Plugins.ContactUpdate">
+      <FriendlyName>ce9084da-a1af-405c-ba91-9ea195d48155</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.DesignatedCreditCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="f9700a6c-4377-4da4-b061-f075cc766367" Name="Plugins.DesignatedCreditCreate">
+      <FriendlyName>48768d92-2b1f-472c-bfa9-7f5c86a73fe3</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.DesignationCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="48e9aab1-bbb9-464d-bf12-f63e529d3881" Name="Plugins.DesignationCreate">
+      <FriendlyName>cc322bad-6a7e-46a7-8e06-cdd493f2d39b</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.DonationImportCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="14bfb282-6794-4eb6-8b73-7030b88f580f" Name="Plugins.DonationImportCreate">
+      <FriendlyName>29389227-62dc-4bdd-b918-0eca972ce601</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.DonorCommitmentCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="770fbe5f-1a00-4c29-bddb-48d5f945a1bd" Name="Plugins.DonorCommitmentCreate">
+      <FriendlyName>44b5ff62-2797-407d-aef5-7db47754fd05</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.EventCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="b4f4adac-f6bd-4712-97cc-260a1b35ae01" Name="Plugins.EventCreate">
+      <FriendlyName>7bfd2dd3-cd6d-422c-85ee-2616ed732ff2</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.EventDisclaimerCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="884c6574-25d1-4578-b47a-bd7352095ee2" Name="Plugins.EventDisclaimerCreate">
+      <FriendlyName>69eb381a-1869-4e78-9e27-6eba88e25b57</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.EventDonationCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="595e521b-fa7c-4ce2-baac-d6dc2579ad69" Name="Plugins.EventDonationCreate">
+      <FriendlyName>2c0c5ea3-2558-4250-b99c-96eb56bbd3ef</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.EventPackageCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="b0292809-e834-453b-9d20-7d35e1273d39" Name="Plugins.EventPackageCreate">
+      <FriendlyName>21f6fcb0-cd1a-492e-be4d-55fd705a5395</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.EventPreferenceCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="12f54cfa-3c75-49f7-9eb2-d19011ea4c16" Name="Plugins.EventPreferenceCreate">
+      <FriendlyName>dbcb3878-d6c1-4c76-a977-c41a83c5aacb</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.EventProductCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="b1309ed2-494d-41ec-b96c-dd409a7b21a8" Name="Plugins.EventProductCreate">
+      <FriendlyName>1eb2135e-3202-4ca7-b4b4-5c2548f11ec4</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.EventSponsorCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="0318c52e-cf4b-4075-b706-918822c3eb23" Name="Plugins.EventSponsorCreate">
+      <FriendlyName>44f0867b-a1f9-4796-bd40-023181508bba</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.EventSponsorshipPageCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="e80f352f-913e-4454-964a-8bd201b7f346" Name="Plugins.EventSponsorshipPageCreate">
+      <FriendlyName>c2eb42db-643f-4094-bd94-95cd5cc193a3</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.EventTableCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="ccb74d6e-07b5-41e7-8805-7be848de80be" Name="Plugins.EventTableCreate">
+      <FriendlyName>d15d386b-d018-4310-a6ac-d0873495424f</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.EventTicketCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="5d45a86c-ec9c-42a0-9be9-1e3378688eb1" Name="Plugins.EventTicketCreate">
+      <FriendlyName>3fffa5a1-7c72-4e2c-bb06-77f21438ff51</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.GiftAidDeclarationCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="9672cae5-e754-4fa9-9dff-8947769c15dd" Name="Plugins.GiftAidDeclarationCreate">
+      <FriendlyName>a1942778-9fd2-4dda-96f3-2222b0827deb</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.GivingLevelInstanceCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="bdcdbde9-19e5-47e5-bb4e-47de45cf9520" Name="Plugins.GivingLevelInstanceCreate">
+      <FriendlyName>478768bd-3ede-4bba-a229-3dbe9fbb397f</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.MembershipCategoryCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="b49ee75e-8185-46db-8f16-dac61631ad9d" Name="Plugins.MembershipCategoryCreate">
+      <FriendlyName>795e509a-8840-4bc2-b3d9-0d5328f186a0</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.MembershipCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="3ec35dce-9b84-4c53-ba76-66a56f87ca8d" Name="Plugins.MembershipCreate">
+      <FriendlyName>8d681992-1d6a-4339-a64f-4b258f7427db</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.MembershipGroupCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="310601d9-7bd1-4381-9ad5-72e4e0451cc1" Name="Plugins.MembershipGroupCreate">
+      <FriendlyName>c5b3a171-9082-4711-812b-f3b30450db7b</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.MembershipOrderCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="c7b459a0-7a09-40c1-a568-b6bd87d877ff" Name="Plugins.MembershipOrderCreate">
+      <FriendlyName>56211c9a-1bfd-4e95-9d7b-3c696947ceaf</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.OpportunityStageCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="eb04ec1d-fa38-4559-800c-e8c905084e16" Name="Plugins.OpportunityStageCreate">
+      <FriendlyName>010b1eda-1dcb-4e53-b0ef-d2edeef1bbba</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.PaymentCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="01440dd5-7938-4bbd-8e3a-9e84b366d15d" Name="Plugins.PaymentCreate">
+      <FriendlyName>3c782ce9-d711-449f-bc55-25d422aadf0d</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.PaymentMethodCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="b8d7f993-1189-4e79-be78-275c49c872ce" Name="Plugins.PaymentMethodCreate">
+      <FriendlyName>787c5a3e-8540-4c0f-805b-d11368199d91</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.PaymentMethodUpdate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="d569da10-3dab-45c6-ab71-c5e37729be19" Name="Plugins.PaymentMethodUpdate">
+      <FriendlyName>aeaf01ad-96c7-4ddf-9313-5d90a843b6d1</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.PaymentProcessorCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="176691a2-b0c9-40a7-8b97-5e167c98934e" Name="Plugins.PaymentProcessorCreate">
+      <FriendlyName>515fe30a-6f88-45e0-91c6-4c63ad43a685</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.PaymentScheduleCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="e51b3d66-f029-4252-a3b9-4151f53df4ba" Name="Plugins.PaymentScheduleCreate">
+      <FriendlyName>76cd6e82-36e4-4892-947a-0f5a46f92ffe</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.PreferenceCategoryCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="37937388-cbef-48a9-add4-fb10a3e2f43a" Name="Plugins.PreferenceCategoryCreate">
+      <FriendlyName>76119b9c-0cda-4a22-b6ae-27fe2a473db3</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.PreferenceCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="46b5fe0e-ace9-41c2-b70d-182376796d7a" Name="Plugins.PreferenceCreate">
+      <FriendlyName>47310bda-eb7f-4d12-a7aa-c2b64bc23564</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.ProductPageCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="bb92f967-416a-4994-9186-e3a8f1f23ec6" Name="Plugins.ProductPageCreate">
+      <FriendlyName>46e674ac-e0e7-41da-8ed7-617baaf513e8</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.ReceiptCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="7e712e32-d238-469f-a850-5dcbe93a741e" Name="Plugins.ReceiptCreate">
+      <FriendlyName>f6b1f213-e6ab-4b4e-9b9e-2dab6bf3a9f6</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.ReceiptLogCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="79ecda50-c7ed-4515-92ee-58178ab519c7" Name="Plugins.ReceiptLogCreate">
+      <FriendlyName>45c89609-ffc6-4a5b-ba71-5d6de1ef66f4</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.ReceiptStackCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="7854444e-927a-403b-8440-8852f02385fe" Name="Plugins.ReceiptStackCreate">
+      <FriendlyName>a9d9842b-c0fd-4a7f-b1ad-5ef530ea59b6</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.ReceiptUpdate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="0143fc70-515c-45e0-b249-1c11a348a9f9" Name="Plugins.ReceiptUpdate">
+      <FriendlyName>0dadd40b-f954-411d-a1bd-a867e4f52852</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.RefundCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="66bb6c9d-4ce5-4e8e-84a4-115c07d67fe3" Name="Plugins.RefundCreate">
+      <FriendlyName>7ae3a1c2-a043-4827-bc52-4c16100cf796</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.RegistrationPageCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="f288ad38-4866-4aaf-b055-1fb7bd813122" Name="Plugins.RegistrationPageCreate">
+      <FriendlyName>1c0aba01-8663-42ea-aa7c-8cd014a23c30</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.RegistrationPreferenceCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="0fa7d479-f8bc-43fb-b9a7-88423c5e1bef" Name="Plugins.RegistrationPreferenceCreate">
+      <FriendlyName>880fc1bb-ad03-45dc-85a3-68e8275e925c</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.RegistrationSecurityStatusCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="ba6527c5-f2cd-47e9-b9cb-3ba08aff1b67" Name="Plugins.RegistrationSecurityStatusCreate">
+      <FriendlyName>45ab69ec-60b7-4a36-a2cf-1e49b3185dc4</FriendlyName>
+      <WorkflowActivityGroupName>FundraisingandEngagement (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.ResponseCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="a51c57d0-2cda-49d4-af15-4cfb91e0aa21" Name="Plugins.ResponseCreate">
+      <FriendlyName>d7427312-9942-4d3b-b80d-d747366e7406</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.SponsorshipCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="8ef32729-f4d8-4a34-8c36-f1eca3a4c53a" Name="Plugins.SponsorshipCreate">
+      <FriendlyName>515cafa7-354b-4418-a550-be6d5e98e1bb</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.TicketPageCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="0b2d58d3-503f-4d0c-8c1f-aaf7f99b3fca" Name="Plugins.TicketPageCreate">
+      <FriendlyName>73bbe2a6-96ff-47ae-a39e-0dddd049d1e5</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.TransactionCurrencyCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="7978706c-092c-4149-a387-5be7db04d435" Name="Plugins.TransactionCurrencyCreate">
+      <FriendlyName>a1068a34-85be-43c2-a980-d0525d1f2f06</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.TransactionGiftCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="262af1b8-fb85-4728-955a-b5ec57758e55" Name="Plugins.TransactionGiftCreate">
+      <FriendlyName>5dd48649-74b9-42b8-b0eb-ee32fb12d68c</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.TransactionGiftUpdate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="3d1d93df-2476-403e-89df-3293d01d6086" Name="Plugins.TransactionGiftUpdate">
+      <FriendlyName>53e80217-82a2-4990-9b31-c5137bdd5025</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.TributeOrMemoryCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="be9dc55d-a798-4f6f-8fbc-4d9621e6cdb8" Name="Plugins.TributeOrMemoryCreate">
+      <FriendlyName>ded7d019-d959-431b-ae44-2e5ad19e5637</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.TributeOrMemoryUpdate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="b2f99430-bdf1-44c3-baea-246606ed9298" Name="Plugins.TributeOrMemoryUpdate">
+      <FriendlyName>479e28d7-7d80-4aa9-a0ae-414db1f14b11</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.UpdateGiftBatchFromTransaction, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="41582943-85fd-440a-b0f9-3beb7962f8f2" Name="Plugins.UpdateGiftBatchFromTransaction">
+      <FriendlyName>f041db83-0260-43c8-89b6-dd3b1d95f7a2</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Plugins.UpdateReceiptOnAssociation, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="40060a36-9f4e-4ce3-83c7-ce16ef29bcd5" Name="Plugins.UpdateReceiptOnAssociation">
+      <FriendlyName>22b02e14-da65-480f-b4dc-4d0ec2795531</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Workflows.CreateReceiptForEventPackage, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="be845eaf-fecf-4029-8d0d-8ae573c460cb" Name="Workflows.CreateReceiptForEventPackage">
+      <FriendlyName>8e09dff4-3e91-4476-ac88-29f952e2ede3</FriendlyName>
+      <WorkflowActivityGroupName>FundraisingandEngagement (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Workflows.CreateReceiptForPaymentSchedule, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="0d42a9a3-9f33-438a-8dc9-1ff8e3e03de1" Name="Workflows.CreateReceiptForPaymentSchedule">
+      <FriendlyName>fb46e80c-0149-44ef-bc12-c0af74f1dcd7</FriendlyName>
+      <WorkflowActivityGroupName>FundraisingandEngagement (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Workflows.CreateReceiptOnTransactionCreate, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="6b1b63f7-8cf2-4a28-8a79-dc11716caaa9" Name="Workflows.CreateReceiptOnTransactionCreate">
+      <FriendlyName>6898b391-257f-4c7d-9c13-ca40d027bb99</FriendlyName>
+      <WorkflowActivityGroupName>FundraisingandEngagement (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="Workflows.UpdateGivingLevelOnContactOrAccount, FundraisingandEngagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8ad1edaac4bc000c" PluginTypeId="bf9a883b-6b50-4225-9a2c-a2ef6a0cddf1" Name="Workflows.UpdateGivingLevelOnContactOrAccount">
+      <FriendlyName>e9366448-7a33-4daa-8ab4-b6e86c081f41</FriendlyName>
+      <WorkflowActivityGroupName>FundraisingandEngagement (1.0.0.0)</WorkflowActivityGroupName>
+    </PluginType>
+  </PluginTypes>
+</PluginAssembly>

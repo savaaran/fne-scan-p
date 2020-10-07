@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Role id="{d6f3e9ea-6214-ea11-a811-000d3a0c8a65}" name="FundraisingandEngagement: Generate Pledges" isinherited="0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IsCustomizable>1</IsCustomizable>
+  <RolePrivileges>
+    <RolePrivilege name="prvAppendmsnfp_DesignatedCredit" level="Global" />
+    <RolePrivilege name="prvAppendmsnfp_DesignationPlan" level="Global" />
+    <RolePrivilege name="prvAppendmsnfp_DonorCommitment" level="Global" />
+    <RolePrivilege name="prvAppendTomsnfp_DesignatedCredit" level="Global" />
+    <RolePrivilege name="prvAppendTomsnfp_DesignationPlan" level="Global" />
+    <RolePrivilege name="prvAppendTomsnfp_DonorCommitment" level="Global" />
+    <RolePrivilege name="prvAppendToOpportunity" level="Global" />
+    <RolePrivilege name="prvAssignmsnfp_DesignatedCredit" level="Global" />
+    <RolePrivilege name="prvAssignmsnfp_DesignationPlan" level="Global" />
+    <RolePrivilege name="prvAssignmsnfp_DonorCommitment" level="Global" />
+    <RolePrivilege name="prvCreatemsnfp_DesignatedCredit" level="Global" />
+    <RolePrivilege name="prvCreatemsnfp_DesignationPlan" level="Global" />
+    <RolePrivilege name="prvCreatemsnfp_DonorCommitment" level="Global" />
+    <RolePrivilege name="prvCreateSharePointData" level="Global" />
+    <RolePrivilege name="prvReadmsnfp_configuration" level="Global" />
+    <RolePrivilege name="prvReadmsnfp_DesignatedCredit" level="Global" />
+    <RolePrivilege name="prvReadmsnfp_Designation" level="Global" />
+    <RolePrivilege name="prvReadmsnfp_DesignationPlan" level="Global" />
+    <RolePrivilege name="prvReadmsnfp_DonorCommitment" level="Global" />
+    <RolePrivilege name="prvReadOpportunity" level="Global" />
+    <RolePrivilege name="prvReadPluginAssembly" level="Global" />
+    <RolePrivilege name="prvReadPluginType" level="Global" />
+    <RolePrivilege name="prvReadSdkMessage" level="Global" />
+    <RolePrivilege name="prvReadSdkMessageProcessingStep" level="Global" />
+    <RolePrivilege name="prvReadSdkMessageProcessingStepImage" level="Global" />
+    <RolePrivilege name="prvReadSharePointData" level="Global" />
+    <RolePrivilege name="prvReadSharePointDocument" level="Global" />
+    <RolePrivilege name="prvSharemsnfp_DesignatedCredit" level="Global" />
+    <RolePrivilege name="prvSharemsnfp_DesignationPlan" level="Global" />
+    <RolePrivilege name="prvSharemsnfp_DonorCommitment" level="Global" />
+    <RolePrivilege name="prvWritemsnfp_DesignatedCredit" level="Global" />
+    <RolePrivilege name="prvWritemsnfp_DesignationPlan" level="Global" />
+    <RolePrivilege name="prvWritemsnfp_DonorCommitment" level="Global" />
+    <RolePrivilege name="prvWriteOpportunity" level="Global" />
+    <RolePrivilege name="prvWriteSharePointData" level="Global" />
+  </RolePrivileges>
+</Role>
