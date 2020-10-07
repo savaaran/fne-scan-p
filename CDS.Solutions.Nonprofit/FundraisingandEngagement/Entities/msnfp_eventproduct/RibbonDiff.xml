@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RibbonDiffXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CustomActions>
+    <CustomAction Id="msnfp.msnfp_eventproduct.UpdateProducts.Button.CustomAction" Location="Mscrm.Form.msnfp_eventproduct.MainTab.Save.Controls._children" Sequence="75">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.msnfp_eventproduct.UpdateProducts.Button.Alt" Command="msnfp.msnfp_eventproduct.UpdateProducts.Command" Id="msnfp.msnfp_eventproduct.UpdateProducts.Button" LabelText="$LocLabels:msnfp.msnfp_eventproduct.UpdateProducts.Button.LabelText" Sequence="75" TemplateAlias="o2" ToolTipTitle="$LocLabels:msnfp.msnfp_eventproduct.UpdateProducts.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.msnfp_eventproduct.UpdateProducts.Button.ToolTipDescription" />
+      </CommandUIDefinition>
+    </CustomAction>
+  </CustomActions>
+  <Templates>
+    <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+  </Templates>
+  <CommandDefinitions>
+    <CommandDefinition Id="msnfp.msnfp_eventproduct.UpdateProducts.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.msnfp_eventproduct.UpdateProducts.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="UpdateProductsFromEventProduct" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+  </CommandDefinitions>
+  <RuleDefinitions>
+    <TabDisplayRules />
+    <DisplayRules />
+    <EnableRules>
+      <EnableRule Id="msnfp.msnfp_eventproduct.UpdateProducts.EnableRule">
+        <FormStateRule State="Existing" Default="false" />
+      </EnableRule>
+    </EnableRules>
+  </RuleDefinitions>
+  <LocLabels>
+    <LocLabel Id="msnfp.msnfp_eventproduct.UpdateProducts.Button.Alt">
+      <Titles>
+        <Title description="Update Products" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_eventproduct.UpdateProducts.Button.LabelText">
+      <Titles>
+        <Title description="Update Products" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_eventproduct.UpdateProducts.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Update the Products associated with this record" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_eventproduct.UpdateProducts.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Update Products" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+  </LocLabels>
+</RibbonDiffXml>

@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{35b95be7-05d6-4979-b0c8-bea46310c832}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab id="{ecc09d1d-bdbe-442a-9adf-fb908e77b440}" name="tab_1" showlabel="false" labelid="{5517ed13-3b9d-493f-ba6c-71e210dcde83}">
+          <labels>
+            <label description="Tab" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="33%">
+              <sections>
+                <section id="{8a7a9a4a-49c7-4e78-ba9e-24e0704e7e87}" name="TITLE_DISPLAY" columns="1" showlabel="false" showbar="false" IsUserDefined="0" locklevel="0" labelwidth="130" celllabelalignment="Left" celllabelposition="Left" labelid="{8e2d5d3a-f263-49bd-8c69-9b98430bbb6b}">
+                  <labels>
+                    <label description="Title Display" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{32bbd157-d32e-4ed9-25c6-732b2d0da58a}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Internal Display Name" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_identifier" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="msnfp_identifier" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{67649c11-762a-0745-71e2-c56aea9ee81a}" showlabel="false" userspacer="true" labelid="{a5e9a2bd-db11-4b1b-be72-53161cfe0c5d}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a100a8c0-d071-dd6b-4269-e79180284423}" showlabel="true" locklevel="0" rowspan="2" labelid="{dc47c485-d318-478b-a7e6-7df65f7a6081}">
+                        <labels>
+                          <label description="Description (displayed offline &amp; online)" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_description" classid="{E0DECE4B-6FC8-4a8f-A065-082708572369}" datafieldname="msnfp_description" disabled="false" uniqueid="{24ea1067-2dc9-1c5c-8e06-109c7a8b4020}" />
+                      </cell>
+                    </row>
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="{729e167a-eba5-4bad-8d30-e98fb7a5c932}" name="DESCRIPTION_DISPLAY" columns="1" showlabel="false" showbar="false" IsUserDefined="0" locklevel="0" labelwidth="130" celllabelalignment="Left" celllabelposition="Left" labelid="{163e7a9e-432f-450a-89e0-520286de4a1b}">
+                  <labels>
+                    <label description="Description Display" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{d475a7d7-0732-ceb3-0e4d-483b433c679b}" showlabel="true" locklevel="0" labelid="{548890d7-0a9f-47fb-92fb-cc2df1ee909a}">
+                        <labels>
+                          <label description="Amount (Receiptable)" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_amount_receipted" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="msnfp_amount_receipted" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{89349513-342e-5659-4349-280c2bb2b5ae}" showlabel="true" locklevel="0" labelid="{5a9991df-e6d1-4c9e-8918-8b2f9db13756}">
+                        <labels>
+                          <label description="Quantity" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_quantity" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="msnfp_quantity" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3839aa8e-0ec3-a627-25db-64eb360b018a}" showlabel="true" locklevel="0" labelid="{09825201-e1a6-4d47-baa0-6a84ec4b714b}">
+                        <labels>
+                          <label description="Max Products per Registration" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_maxproducts" classid="{C6D124CA-7EDA-4a60-AEA9-7FB8D318B68F}" datafieldname="msnfp_maxproducts" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{84b63329-3c0d-8ad2-918c-25e0a447adbd}" showlabel="true" locklevel="0" labelid="{a48ec6de-ce9f-4b25-ae17-01b73a963d1c}">
+                        <labels>
+                          <label description="Amount (Tax)" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_amount_tax" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="msnfp_amount_tax" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="33%">
+              <sections>
+                <section id="{61276107-e279-431d-b559-f2283ef71a89}" name="PRODUCT_DETAILS" columns="1" showlabel="true" showbar="false" IsUserDefined="0" locklevel="0" labelwidth="130" celllabelalignment="Left" celllabelposition="Left" labelid="{fc022aba-2c37-4f94-a82a-bc4c9d993d64}">
+                  <labels>
+                    <label description="Product Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{ba267bc5-d908-bdc0-23a1-4b451b8a23d8}" showlabel="true" locklevel="0" labelid="{acb99fd5-880c-4234-8acf-9f2a74d34946}">
+                        <labels>
+                          <label description="Event" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_eventid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="msnfp_eventid" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <controlDescriptions />
+      <DisplayConditions Order="2">
+        <Role Id="{627090ff-40a3-4053-8790-584edc5be201}" />
+        <Role Id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Quick Create" languagecode="1033" />
+    </LocalizedNames>
+  </systemform>
+</forms>
