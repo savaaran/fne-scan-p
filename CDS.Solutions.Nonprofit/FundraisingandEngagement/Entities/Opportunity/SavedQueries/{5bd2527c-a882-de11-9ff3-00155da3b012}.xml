@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{5bd2527c-a882-de11-9ff3-00155da3b012}</savedqueryid>
+    <queryapi></queryapi>
+    <layoutxml>
+      <grid name="resultset" jump="name" select="1" preview="1" icon="1">
+        <row name="result" id="opportunityid">
+          <cell name="actualclosedate" width="125" />
+          <cell name="name" width="100" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="customerid" width="150" />
+          <cell name="msnfp_amountallocated" width="100" />
+          <cell name="msnfp_expectedamount" width="100" />
+          <cell name="stepname" width="100" />
+          <cell name="campaignid" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+        <entity name="opportunity">
+          <order attribute="actualclosedate" descending="true" />
+          <order attribute="customerid" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="2" />
+          </filter>
+          <attribute name="customerid" />
+          <attribute name="actualclosedate" />
+          <attribute name="name" />
+          <attribute name="campaignid" />
+          <attribute name="stepname" />
+          <attribute name="msnfp_expectedamount" />
+          <attribute name="msnfp_amountallocated" />
+          <attribute name="opportunityid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>5.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Lost Opportunities" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

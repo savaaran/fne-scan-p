@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{e9a97eb3-03e8-ea11-a813-000d3a5cec97}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="name" select="1" preview="1" icon="1">
+        <row name="result" id="opportunityid">
+          <cell name="modifiedon" width="100" />
+          <cell name="statecode" width="100" />
+          <cell name="name" width="150" />
+          <cell name="customerid" width="100" />
+          <cell name="emailaddress" width="100" />
+          <cell name="stepname" width="100" />
+          <cell name="closeprobability" width="100" />
+          <cell name="estimatedvalue" width="100" />
+          <cell name="actualvalue" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+        <entity name="opportunity">
+          <attribute name="name" />
+          <attribute name="statecode" />
+          <attribute name="closeprobability" />
+          <attribute name="customerid" />
+          <attribute name="estimatedvalue" />
+          <attribute name="emailaddress" />
+          <attribute name="actualvalue" />
+          <attribute name="stepname" />
+          <attribute name="modifiedon" />
+          <order attribute="modifiedon" descending="true" />
+          <order attribute="customerid" descending="false" />
+          <filter type="and">
+            <condition attribute="estimatedclosedate" operator="last-year" />
+          </filter>
+          <attribute name="opportunityid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.1.0.8</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="All Opportunities Est. Close Last Year" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Shows all the opportunities" languagecode="1033" />
+    </Descriptions>
+  </savedquery>
+</savedqueries>

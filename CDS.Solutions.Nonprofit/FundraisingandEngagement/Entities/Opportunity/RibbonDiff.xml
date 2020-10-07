@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RibbonDiffXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CustomActions>
+    <CustomAction Id="msnfp.account.fande1.Button.CustomAction" Location="Mscrm.Form.opportunity.MainTab.Actions.Controls._children" Sequence="5">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.account.fande1.Button.Alt" Command="msnfp.opportunity.Command0.Command" Id="msnfp.account.fande1.Button" LabelText="$LocLabels:msnfp.account.fande1.Button.LabelText" Sequence="5" TemplateAlias="o1" ToolTipTitle="$LocLabels:msnfp.account.fande1.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.account.fande1.Button.ToolTipDescription" />
+      </CommandUIDefinition>
+    </CustomAction>
+    <CustomAction Id="msnfp.account.fande2Button.CustomAction" Location="Mscrm.Form.opportunity.MainTab.Actions.Controls._children" Sequence="5">
+      <CommandUIDefinition>
+        <SplitButton Command="msnfp.opportunity.Command3.Command" Id="msnfp.account.fande2Button" LabelText="$LocLabels:msnfp.account.fande2Button.LabelText" Sequence="5" TemplateAlias="o1" ModernImage="$webresource:msnfp_/Images/CreateDonorCommitment.svg">
+          <Menu Id="msnfp.account.fande2Button.Menu">
+            <MenuSection Id="msnfp.opportunity.Section4.Section" Sequence="5" DisplayMode="Menu16">
+              <Controls Id="msnfp.opportunity.Section4.Section.Controls">
+                <Button Alt="$LocLabels:msnfp.account.fande3.Button.Alt" Command="msnfp.opportunity.Command1.Command" Id="msnfp.account.fande3.Button" LabelText="$LocLabels:msnfp.account.fande3.Button.LabelText" Sequence="8" ToolTipTitle="$LocLabels:msnfp.account.fande3.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.account.fande3.Button.ToolTipDescription" ModernImage="$webresource:msnfp_/Images/CreateDonorCommitment.svg" />
+              </Controls>
+            </MenuSection>
+          </Menu>
+        </SplitButton>
+      </CommandUIDefinition>
+    </CustomAction>
+  </CustomActions>
+  <Templates>
+    <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+  </Templates>
+  <CommandDefinitions>
+    <CommandDefinition Id="msnfp.opportunity.Command0.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.opportunity.EnableRule0.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="SetOpportunityAsCommitted" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.opportunity.Command1.Command">
+      <EnableRules />
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="CreatePledgeFromOpportunityDesignationPlans" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.opportunity.Command2.Command">
+      <EnableRules />
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="CreatePledgeScheduleFromOpportunityDesignationPlans" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+    <CommandDefinition Id="msnfp.opportunity.Command3.Command">
+      <EnableRules>
+        <EnableRule Id="msnfp.opportunity.EnableRule1.EnableRule" />
+      </EnableRules>
+      <DisplayRules />
+      <Actions />
+    </CommandDefinition>
+  </CommandDefinitions>
+  <RuleDefinitions>
+    <TabDisplayRules />
+    <DisplayRules />
+    <EnableRules>
+      <EnableRule Id="msnfp.opportunity.EnableRule0.EnableRule">
+        <CustomRule FunctionName="ShowSetCommittedOpportunity" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+      <EnableRule Id="msnfp.opportunity.EnableRule1.EnableRule">
+        <CustomRule FunctionName="ShowCreatePledgeOptionsOnOpportunity" Library="$webresource:msnfp_/scripts/ribbonbutton.js" Default="false" InvertResult="false" />
+      </EnableRule>
+    </EnableRules>
+  </RuleDefinitions>
+  <LocLabels>
+    <LocLabel Id="msnfp.account.fande1.Button.Alt">
+      <Titles>
+        <Title description="Set Committed" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande1.Button.LabelText">
+      <Titles>
+        <Title description="Set Committed" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande1.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Sets this opportunity to committed and sets the committed date to today." languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande1.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Set Committed" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande2Button.LabelText">
+      <Titles>
+        <Title description="Create Donor Commitment" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande3.Button.Alt">
+      <Titles>
+        <Title description="Create Donor Commitment" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande3.Button.LabelText">
+      <Titles>
+        <Title description="Create Donor Commitment" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande3.Button.ToolTipDescription">
+      <Titles>
+        <Title description="Create a Donor Commitment from the designation plans." languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.account.fande3.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Create Donor Commitment" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+  </LocLabels>
+</RibbonDiffXml>

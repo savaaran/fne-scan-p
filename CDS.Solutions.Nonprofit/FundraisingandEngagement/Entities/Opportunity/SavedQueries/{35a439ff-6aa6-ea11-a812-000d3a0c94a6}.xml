@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{35a439ff-6aa6-ea11-a812-000d3a0c94a6}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="name" select="1" preview="1" icon="1">
+        <row name="result" id="opportunityid">
+          <cell name="statecode" width="75" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="createdon" width="75" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="name" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="customerid" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="estimatedclosedate" width="75" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="estimatedvalue" width="100" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="stepname" width="100" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="msnfp_prospectivegifttype" width="100" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+        <entity name="opportunity">
+          <attribute name="name" />
+          <attribute name="statecode" />
+          <attribute name="stepname" />
+          <attribute name="estimatedvalue" />
+          <order attribute="createdon" descending="true" />
+          <order attribute="customerid" descending="false" />
+          <filter type="and">
+            <condition attribute="estimatedvalue" operator="ge" value="1000" />
+          </filter>
+          <attribute name="msnfp_prospectivegifttype" />
+          <attribute name="customerid" />
+          <attribute name="estimatedclosedate" />
+          <attribute name="createdon" />
+          <attribute name="opportunityid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Opportunities with Estimated Revenue over $1000" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="All opportunities with estimated revenue over $1000" languagecode="1033" />
+    </Descriptions>
+  </savedquery>
+</savedqueries>

@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{1522b2ff-aa14-43eb-99ae-042311689aa6}</formid>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form shownavigationbar="true" showImage="false" maxWidth="1920">
+      <tabs>
+        <tab verticallayout="true" id="{71cfed89-fe46-470e-969e-209000a1a03c}" IsUserDefined="1" labelid="{8e4040cc-b709-473a-b246-fe4d06c5c6e6}">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{f055f035-1fae-4462-aedf-f3b364374567}" labelid="{ba3baf9d-808c-4b7b-a759-f399b3b0596c}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{f1ad3b85-902e-453a-afb0-f6a3bfe1646c}" labelid="{caf65127-57e1-4758-9215-ee88f510b4e7}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Identifier" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_identifier" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="msnfp_identifier" uniqueid="{0588baed-c888-6e47-4bc4-a0b363c83860}" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{535c7092-e30e-85d5-9296-5980d7eabd6d}" showlabel="true" locklevel="0" labelid="{854923ff-64b8-49a8-9146-1c75dcc25a88}">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="msnfp_name" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{92dcba61-186b-7eae-4092-50de75998d32}" showlabel="true" locklevel="0" labelid="{cd170389-323d-4ece-99db-b0c1e1f3862c}">
+                        <labels>
+                          <label description="Tribute or Memory" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_tributeormemorytypecode" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="msnfp_tributeormemorytypecode" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_duplicates" id="{0a85726b-895d-d910-9655-b86872e5db7a}" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true" labelid="{3d6b7cd9-e26e-47cb-98cb-9428f89d45ab}">
+          <labels>
+            <label description="Duplicate Tributes" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_2_section_1" showlabel="true" showbar="false" locklevel="0" id="{3295cee4-c1d6-6248-23d3-44995b8db110}" IsUserDefined="0" layout="varwidth" columns="1" labelwidth="115" celllabelalignment="Left" celllabelposition="Left" labelid="{acf8b956-0b69-4259-90a5-b04131ea7e96}">
+                  <labels>
+                    <label description="Select a Tribute which is a duplicate of this one. Save the form to remove the duplication." languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{06b0dc54-572a-c6e1-baa1-6585d1865189}" showlabel="true" locklevel="0" labelid="{90a52b6b-3bbe-4548-a387-3143c9ae448c}">
+                        <labels>
+                          <label description="Duplicate Tribute Id" languagecode="1033" />
+                        </labels>
+                        <control id="msnfp_duplicatetributeid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="msnfp_duplicatetributeid" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="tab_3" id="{70a0230d-c69a-b3d8-d61c-21a0b28ce3e0}" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true">
+          <labels>
+            <label description="Administration" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section name="tab_3_section_1" showlabel="false" showbar="false" locklevel="0" id="{7331b86c-330a-030b-6b2d-45e6cc800988}" IsUserDefined="0" layout="varwidth" columns="1111" labelwidth="115" celllabelalignment="Left" celllabelposition="Left">
+                  <labels>
+                    <label description="Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{08a3a8ba-dc19-9610-1d31-7dc502441a9a}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Created By" languagecode="1033" />
+                        </labels>
+                        <control id="createdby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="createdby" disabled="false" />
+                      </cell>
+                      <cell id="{e700712e-d751-892a-4252-a34e52176d29}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Created On" languagecode="1033" />
+                        </labels>
+                        <control id="createdon" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="createdon" disabled="false" />
+                      </cell>
+                      <cell id="{0002880d-9e0b-abc0-abc0-1395783d8db4}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Modified By" languagecode="1033" />
+                        </labels>
+                        <control id="modifiedby" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="modifiedby" disabled="false" />
+                      </cell>
+                      <cell id="{70c84562-8890-bd0a-8130-bd69ed2a8d2b}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Modified On" languagecode="1033" />
+                        </labels>
+                        <control id="modifiedon" classid="{5B773807-9FB2-42db-97C3-7A91EFF8ADFF}" datafieldname="modifiedon" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a2c81463-e692-2b14-2696-dc930e706196}" showlabel="true" locklevel="0">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" disabled="false" />
+                      </cell>
+                      <cell id="{67940326-d8c7-16c3-ac9e-721dbe802280}" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                      <cell id="{99473068-1ace-67b7-0569-cae3c3464272}" showlabel="true" locklevel="0" labelid="{96401549-a4b1-4354-b88a-bb01a2d796e0}">
+                        <labels>
+                          <label description="Status" languagecode="1033" />
+                        </labels>
+                        <control id="statecode" classid="{3EF39988-22BB-4f0b-BBBE-64B5A3748AEE}" datafieldname="statecode" disabled="false" />
+                      </cell>
+                      <cell id="{d60c46c7-0bb0-7cb2-7361-ea5c3ad07e0b}" showlabel="true" locklevel="0" labelid="{bb4e1227-02a0-43c6-8f1b-fedad4dd6037}">
+                        <labels>
+                          <label description="Status Reason" languagecode="1033" />
+                        </labels>
+                        <control id="statuscode" classid="{5D68B988-0661-4db2-BC3E-17598AD3BE6C}" datafieldname="statuscode" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{16a13125-b3b6-4306-8985-159520cd2ca6}" columns="111">
+        <rows>
+          <row>
+            <cell id="{33296046-24b4-a758-7d1b-0a7a6e561a66}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{5b57de04-412e-a7cb-eb05-e944c97d2818}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{e2de4e24-a3a1-007d-1107-6c786d37e117}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <Navigation>
+        <NavBar>
+          <NavBarByRelationshipItem RelationshipName="msnfp_msnfp_tributeormemory_msnfp_donationimport_TributeId" Sequence="10000" Area="Info" Id="nav_msnfp_msnfp_tributeormemory_msnfp_donationimport_TributeId">
+            <Titles>
+              <Title LCID="1033" Text="Donation Imports" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_tributeormemory_msnfp_donorcommitment" Sequence="10001" Area="Info" Id="nav_msnfp_tributeormemory_msnfp_donorcommitment">
+            <Titles>
+              <Title LCID="1033" Text="Donor Commitments" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_msnfp_tributeormemory_msnfp_paymentschedule_TributeId" Sequence="10002" Area="Info" Id="nav_msnfp_msnfp_tributeormemory_msnfp_paymentschedule_TributeId">
+            <Titles>
+              <Title LCID="1033" Text="Payment Schedules" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_tributeormemory_msnfp_transaction" Sequence="10003" Area="Info" Id="nav_msnfp_tributeormemory_msnfp_transaction">
+            <Titles>
+              <Title LCID="1033" Text="Transactions" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_msnfp_tributeormemory_msnfp_tributeormemory_DuplicateTributeId" Sequence="10004" Area="Info" Id="nav_msnfp_msnfp_tributeormemory_msnfp_tributeormemory_DuplicateTributeId" Show="false">
+            <Titles>
+              <Title LCID="1033" Text="Tribute or Memories" />
+            </Titles>
+          </NavBarByRelationshipItem>
+        </NavBar>
+        <NavBarAreas>
+          <NavBarArea Id="Info">
+            <Titles>
+              <Title LCID="1033" Text="Common" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Sales">
+            <Titles>
+              <Title LCID="1033" Text="Sales" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Service">
+            <Titles>
+              <Title LCID="1033" Text="Service" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="Marketing">
+            <Titles>
+              <Title LCID="1033" Text="Marketing" />
+            </Titles>
+          </NavBarArea>
+          <NavBarArea Id="ProcessCenter">
+            <Titles>
+              <Title LCID="1033" Text="Process Sessions" />
+            </Titles>
+          </NavBarArea>
+        </NavBarAreas>
+      </Navigation>
+      <controlDescriptions />
+      <DisplayConditions Order="1" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Fundraising: Information" languagecode="1033" />
+    </LocalizedNames>
+  </systemform>
+</forms>
