@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{4ed6a86f-47a6-4abf-88f1-5f12b8b13295}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" preview="1" icon="1" select="1" jump="msnfp_name">
+        <row id="msnfp_paymentscheduleid" name="result">
+          <cell name="msnfp_bookdate" width="100" />
+          <cell name="msnfp_amount_receipted" width="100" />
+          <cell name="msnfp_name" imageproviderwebresource="$webresource:" imageproviderfunctionname="" width="150" />
+          <cell name="msnfp_scheduletypecode" width="100" />
+          <cell name="msnfp_frequency" width="100" />
+          <cell name="msnfp_frequencyinterval" imageproviderwebresource="$webresource:" imageproviderfunctionname="" width="125" />
+          <cell name="msnfp_designationid" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="msnfp_originatingcampaignid" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="statuscode" width="100" />
+          <cell name="msnfp_customerid" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch mapping="logical" version="1.0">
+        <entity name="msnfp_paymentschedule">
+          <attribute name="msnfp_name" />
+          <filter type="and">
+            <condition value="0" operator="eq" attribute="statecode" />
+          </filter>
+          <attribute name="msnfp_frequencyinterval" />
+          <attribute name="msnfp_frequency" />
+          <order attribute="msnfp_name" descending="false" />
+          <attribute name="msnfp_scheduletypecode" />
+          <attribute name="msnfp_bookdate" />
+          <attribute name="msnfp_designationid" />
+          <attribute name="msnfp_originatingcampaignid" />
+          <attribute name="msnfp_amount_receipted" />
+          <attribute name="statuscode" />
+          <attribute name="msnfp_customerid" />
+          <attribute name="msnfp_paymentscheduleid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.2</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Payment Schedules" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
