@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{3741711d-95d8-44c3-97ec-82f427be1080}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="msnfp_identifier" select="1" icon="1" preview="1">
+        <row name="result" id="msnfp_bankrunscheduleid">
+          <cell name="msnfp_identifier" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="msnfp_bankrunid" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="msnfp_paymentscheduleid" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>1</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="msnfp_bankrunschedule">
+          <attribute name="msnfp_identifier" />
+          <attribute name="createdon" />
+          <order attribute="createdon" descending="true" />
+          <order attribute="msnfp_identifier" descending="false" />
+          <attribute name="msnfp_paymentscheduleid" />
+          <attribute name="msnfp_bankrunid" />
+          <attribute name="msnfp_bankrunscheduleid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Bank Run Schedule Advanced Find View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
