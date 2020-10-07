@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{164281B4-65E2-43AB-84E2-6F61D0128661}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Webresources</RootNamespace>
+    <AssemblyName>Webresources</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="CSS\msnfp_bootstrap_4.3.1.min.css" />
+    <Content Include="CSS\msnfp_common.css" />
+    <Content Include="CSS\msnfp_jquery.datatables.min.css" />
+    <Content Include="CSS\msnfp_jquery_ui.css" />
+    <Content Include="CSS\msnfp_manualdonation_batchgift.css" />
+    <Content Include="CSS\msnfp_manualdonation_transaction.css" />
+    <Content Include="CSS\msnfp_rowreorder.datatables.min.css" />
+    <Content Include="HTML\msnfp_addnewbankaccount.html" />
+    <Content Include="HTML\msnfp_addnewcreditcard.html" />
+    <Content Include="HTML\msnfp_assignbankaccounttogift.html" />
+    <Content Include="HTML\msnfp_assigncreditcardtogift.html" />
+    <Content Include="HTML\msnfp_batchgift.html" />
+    <Content Include="HTML\msnfp_contacthouseholdtilepopup.html" />
+    <Content Include="HTML\msnfp_viewgiftaiddeclaration.html" />
+    <Content Include="HTML\msnfp_customersnapshot.html" />
+    <Content Include="HTML\msnfp_designatedcreditsiframe.html" />
+    <Content Include="HTML\msnfp_eventexistingpreferences.html" />
+    <Content Include="HTML\msnfp_eventpackage.html" />
+    <Content Include="HTML\msnfp_eventpreferences.html" />
+    <Content Include="HTML\msnfp_giftaiddeclaration.html" />
+    <Content Include="HTML\msnfp_grouporderlist.html" />
+    <Content Include="HTML\msnfp_manualdonation-donation.html" />
+    <Content Include="HTML\msnfp_manualdonation-paymentschedule.html" />
+    <Content Include="HTML\msnfp_manualdonation-pledge.html" />
+    <Content Include="HTML\msnfp_membershipgrouplist.html" />
+    <Content Include="HTML\msnfp_opportunitydesignationplan.html" />
+    <Content Include="HTML\msnfp_opportunityexistingpreferences.html" />
+    <Content Include="HTML\msnfp_opportunitypreferences.html" />
+    <Content Include="HTML\msnfp_opportunityreportingplan.html" />
+    <Content Include="HTML\msnfp_opportunitystages.html" />
+    <Content Include="HTML\msnfp_payforpackagepopup.html" />
+    <Content Include="HTML\msnfp_refundgift.html" />
+    <Content Include="HTML\msnfp_refundpayment.html" />
+    <Content Include="HTML\msnfp_registrationpreferences.html" />
+    <Content Include="HTML\msnfp_returnfailgift.html" />
+    <Content Include="HTML\msnfp_updatebankaccount.html" />
+    <Content Include="HTML\msnfp_updatecreditcard.html" />
+    <Content Include="HTML\msnfp_updatehouseholdaddress.html" />
+    <Content Include="HTML\msnfp_writeoffpopup.html" />
+    <Content Include="Images\msnfp_firstandlastgIft.png" />
+    <Content Include="Images\msnfp_directcontributions.png" />
+    <Content Include="Images\msnfp_householdmembers.png" />
+    <Content Include="Images\msnfp_lastcommunication.png" />
+    <Content Include="Images\msnfp_majordonation.png" />
+    <Content Include="Images\msnfp_addresschange.svg" />
+    <Content Include="Images\msnfp_addresschange16.png" />
+    <Content Include="Images\msnfp_addresschange32.png" />
+    <Content Include="Images\msnfp_ajaxloader.gif" />
+    <Content Include="Images\msnfp_appeal.svg" />
+    <Content Include="Images\msnfp_appeal16.png" />
+    <Content Include="Images\msnfp_appeal32.png" />
+    <Content Include="Images\msnfp_bankaccount.svg" />
+    <Content Include="Images\msnfp_bankaccount16.png" />
+    <Content Include="Images\msnfp_bankaccount32.png" />
+    <Content Include="Images\msnfp_benefitrecipients.svg" />
+    <Content Include="Images\msnfp_cancelfundallocation32.png" />
+    <Content Include="Images\msnfp_clone.svg" />
+    <Content Include="Images\msnfp_clone16.png" />
+    <Content Include="Images\msnfp_closebatch.svg" />
+    <Content Include="Images\msnfp_configuration.svg" />
+    <Content Include="Images\msnfp_configuration16.png" />
+    <Content Include="Images\msnfp_configuration32.png" />
+    <Content Include="Images\msnfp_createdonorcommitment.svg" />
+    <Content Include="Images\msnfp_creditcard.svg" />
+    <Content Include="Images\msnfp_creditcard16.png" />
+    <Content Include="Images\msnfp_creditcard32.png" />
+    <Content Include="Images\msnfp_creditplans.svg" />
+    <Content Include="Images\msnfp_donationimport.svg" />
+    <Content Include="Images\msnfp_donationpledge.svg" />
+    <Content Include="Images\msnfp_donationpledge16.png" />
+    <Content Include="Images\msnfp_donationpledge32.png" />
+    <Content Include="Images\msnfp_dot_green.png" />
+    <Content Include="Images\msnfp_event.svg" />
+    <Content Include="Images\msnfp_event16.png" />
+    <Content Include="Images\msnfp_event32.png" />
+    <Content Include="Images\msnfp_eventdisclaimer.svg" />
+    <Content Include="Images\msnfp_eventdonations.svg" />
+    <Content Include="Images\msnfp_eventpackage.svg" />
+    <Content Include="Images\msnfp_eventpackage16.png" />
+    <Content Include="Images\msnfp_eventpackage32.png" />
+    <Content Include="Images\msnfp_eventpreference16.png" />
+    <Content Include="Images\msnfp_eventpreference32.png" />
+    <Content Include="Images\msnfp_eventpreferences.svg" />
+    <Content Include="Images\msnfp_eventproducts.svg" />
+    <Content Include="Images\msnfp_eventsponsor.svg" />
+    <Content Include="Images\msnfp_eventsponsorships.svg" />
+    <Content Include="Images\msnfp_eventtable16.png" />
+    <Content Include="Images\msnfp_eventtable32.png" />
+    <Content Include="Images\msnfp_eventtables.svg" />
+    <Content Include="Images\msnfp_eventticket.svg" />
+    <Content Include="Images\msnfp_fund.svg" />
+    <Content Include="Images\msnfp_fund16.png" />
+    <Content Include="Images\msnfp_fund32.png" />
+    <Content Include="Images\msnfp_generatereceipt.svg" />
+    <Content Include="Images\msnfp_generateurl.svg" />
+    <Content Include="Images\msnfp_giftaiddeclaration.svg" />
+    <Content Include="Images\msnfp_giftaiddeclaration16.png" />
+    <Content Include="Images\msnfp_giftaiddeclaration32.png" />
+    <Content Include="Images\msnfp_giftaidreturn.svg" />
+    <Content Include="Images\msnfp_giftaidreturn16.png" />
+    <Content Include="Images\msnfp_giftaidreturn32.png" />
+    <Content Include="Images\msnfp_giftanniversary.png" />
+    <Content Include="Images\msnfp_giftbatch.svg" />
+    <Content Include="Images\msnfp_giftbatch16.png" />
+    <Content Include="Images\msnfp_giftbatch32.png" />
+    <Content Include="Images\msnfp_givinghistory.png" />
+    <Content Include="Images\msnfp_givinglevel.png" />
+    <Content Include="Images\msnfp_givinglevel.svg" />
+    <Content Include="Images\msnfp_givinglevel16.png" />
+    <Content Include="Images\msnfp_givinglevel32.png" />
+    <Content Include="Images\msnfp_givinglevelinstance.svg" />
+    <Content Include="Images\msnfp_givinglevelinstance16.png" />
+    <Content Include="Images\msnfp_givinglevelinstance32.png" />
+    <Content Include="Images\msnfp_groupadd16.png" />
+    <Content Include="Images\msnfp_grouporder.svg" />
+    <Content Include="Images\msnfp_grouporder16.png" />
+    <Content Include="Images\msnfp_influenced.png" />
+    <Content Include="Images\msnfp_membership.png" />
+    <Content Include="Images\msnfp_membership.svg" />
+    <Content Include="Images\msnfp_membership16.png" />
+    <Content Include="Images\msnfp_membership32.png" />
+    <Content Include="Images\msnfp_membershipcategory16.png" />
+    <Content Include="Images\msnfp_membershipcategory32.png" />
+    <Content Include="Images\msnfp_membershipcategry.svg" />
+    <Content Include="Images\msnfp_membershipgroup.svg" />
+    <Content Include="Images\msnfp_membershipgroup16.png" />
+    <Content Include="Images\msnfp_membershipgroup32.png" />
+    <Content Include="Images\msnfp_package.svg" />
+    <Content Include="Images\msnfp_package16.png" />
+    <Content Include="Images\msnfp_package32.png" />
+    <Content Include="Images\msnfp_paymentassets.svg" />
+    <Content Include="Images\msnfp_payments.svg" />
+    <Content Include="Images\msnfp_paymentschedule.svg" />
+    <Content Include="Images\msnfp_pledgematch.svg" />
+    <Content Include="Images\msnfp_pledgematch16.png" />
+    <Content Include="Images\msnfp_pledgematch32.png" />
+    <Content Include="Images\msnfp_preferencecategory16.png" />
+    <Content Include="Images\msnfp_preferencecategory32.png" />
+    <Content Include="Images\msnfp_preferences.svg" />
+    <Content Include="Images\msnfp_products.svg" />
+    <Content Include="Images\msnfp_recalculate.svg" />
+    <Content Include="Images\msnfp_receipt.svg" />
+    <Content Include="Images\msnfp_receipt16.png" />
+    <Content Include="Images\msnfp_receipt32.png" />
+    <Content Include="Images\msnfp_receiptlog.svg" />
+    <Content Include="Images\msnfp_receiptlog16.png" />
+    <Content Include="Images\msnfp_receiptlog32.png" />
+    <Content Include="Images\msnfp_receiptstack.svg" />
+    <Content Include="Images\msnfp_receiptstack16.png" />
+    <Content Include="Images\msnfp_receiptstack32.png" />
+    <Content Include="Images\msnfp_recentgift.png" />
+    <Content Include="Images\msnfp_refund.svg" />
+    <Content Include="Images\msnfp_refund16.png" />
+    <Content Include="Images\msnfp_refund32.png" />
+    <Content Include="Images\msnfp_registration.svg" />
+    <Content Include="Images\msnfp_registration16.png" />
+    <Content Include="Images\msnfp_registration32.png" />
+    <Content Include="Images\msnfp_registrationpreference16.png" />
+    <Content Include="Images\msnfp_registrationpreference32.png" />
+    <Content Include="Images\msnfp_registrationpreferences.svg" />
+    <Content Include="Images\msnfp_removeasdebitselection.svg" />
+    <Content Include="Images\msnfp_removewebsite.svg" />
+    <Content Include="Images\msnfp_response.svg" />
+    <Content Include="Images\msnfp_response16.png" />
+    <Content Include="Images\msnfp_response32.png" />
+    <Content Include="Images\msnfp_returngift.svg" />
+    <Content Include="Images\msnfp_savefundallocation32.png" />
+    <Content Include="Images\msnfp_setasdebitselection.svg" />
+    <Content Include="Images\msnfp_solicitationadd32.png" />
+    <Content Include="Images\msnfp_sponsor16.png" />
+    <Content Include="Images\msnfp_sponsor32.png" />
+    <Content Include="Images\msnfp_sponsorship.svg" />
+    <Content Include="Images\msnfp_sponsorship16.png" />
+    <Content Include="Images\msnfp_sponsorship32.png" />
+    <Content Include="Images\msnfp_tickets.svg" />
+    <Content Include="Images\msnfp_void.svg" />
+    <Content Include="Images\msnfp_voidreissued.svg" />
+    <Content Include="Images\msnfp_writeoff.svg" />
+    <Content Include="Images\ui_icons_444444_256x240.png" />
+    <Content Include="Images\ui_icons_555555_256x240.png" />
+    <Content Include="JS\msnfp_angular.min_1.8.0.js" />
+    <Content Include="JS\msnfp_autopopulatedfieldsforgifts.js" />
+    <Content Include="JS\msnfp_bankrunform.js" />
+    <Content Include="JS\msnfp_batchgiftform.js" />
+    <Content Include="JS\msnfp_bootstrap_4.3.1.min.js" />
+    <Content Include="JS\msnfp_common.js" />
+    <Content Include="JS\msnfp_configurationform.js" />
+    <Content Include="JS\msnfp_contactform.js" />
+    <Content Include="JS\msnfp_contactquickcreateform.js" />
+    <Content Include="JS\msnfp_datatables.celledit.js" />
+    <Content Include="JS\msnfp_datatables.rowreorder.min.js" />
+    <Content Include="JS\msnfp_donationimportform.js" />
+    <Content Include="JS\msnfp_donorcommitmentform.js" />
+    <Content Include="JS\msnfp_eventform.js" />
+    <Content Include="JS\msnfp_eventpopulatevenueaddress.js" />
+    <Content Include="JS\msnfp_givinglevelinstanceform.js" />
+    <Content Include="JS\msnfp_householdredirectform.js" />
+    <Content Include="JS\msnfp_jquery.autocomplete.js" />
+    <Content Include="JS\msnfp_jquery.datatables.min.js" />
+    <Content Include="JS\msnfp_jquery.js" />
+    <Content Include="JS\msnfp_jquery_sorttable.js" />
+    <Content Include="JS\msnfp_jquery_ui.js" />
+    <Content Include="JS\msnfp_loadmask.js" />
+    <Content Include="JS\msnfp_manualdonation_transaction.js" />
+    <Content Include="JS\msnfp_membershipform.js" />
+    <Content Include="JS\msnfp_opportunityredirecttoform.js" />
+    <Content Include="JS\msnfp_packageform.js" />
+    <Content Include="JS\msnfp_paymentscheduleform.js" />
+    <Content Include="JS\msnfp_pledgematchform.js" />
+    <Content Include="JS\msnfp_registrationform.js" />
+    <Content Include="JS\msnfp_ribbonbutton.js" />
+    <Content Include="JS\msnfp_savepaymentvalues.js" />
+    <Content Include="JS\msnfp_stepper.min.js" />
+    <Content Include="JS\msnfp_transactionform.js" />
+    <Content Include="JS\msnfp_utilities.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
