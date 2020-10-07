@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RibbonDiffXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CustomActions>
+    <HideCustomAction HideActionId="msnfp.Mscrm.SubGrid.msnfp_addresschange.AddExistingAssoc.Hide" Location="Mscrm.SubGrid.msnfp_addresschange.AddExistingAssoc" />
+    <HideCustomAction HideActionId="msnfp.Mscrm.SubGrid.msnfp_addresschange.AddExistingStandard.Hide" Location="Mscrm.SubGrid.msnfp_addresschange.AddExistingStandard" />
+    <HideCustomAction HideActionId="msnfp.Mscrm.SubGrid.msnfp_addresschange.AddNewStandard.Hide" Location="Mscrm.SubGrid.msnfp_addresschange.AddNewStandard" />
+    <HideCustomAction HideActionId="msnfp.Mscrm.SubGrid.msnfp_addresschange.BulkDelete.Hide" Location="Mscrm.SubGrid.msnfp_addresschange.BulkDelete" />
+    <HideCustomAction HideActionId="msnfp.Mscrm.SubGrid.msnfp_addresschange.Deactivate.Hide" Location="Mscrm.SubGrid.msnfp_addresschange.Deactivate" />
+    <HideCustomAction HideActionId="msnfp.Mscrm.SubGrid.msnfp_addresschange.Delete.Hide" Location="Mscrm.SubGrid.msnfp_addresschange.Delete" />
+    <HideCustomAction HideActionId="msnfp.Mscrm.SubGrid.msnfp_addresschange.Edit.Hide" Location="Mscrm.SubGrid.msnfp_addresschange.Edit" />
+    <HideCustomAction HideActionId="msnfp.Mscrm.SubGrid.msnfp_addresschange.NewRecord.Hide" Location="Mscrm.SubGrid.msnfp_addresschange.NewRecord" />
+    <HideCustomAction HideActionId="msnfp.Mscrm.SubGrid.msnfp_addresschange.Remove.Hide" Location="Mscrm.SubGrid.msnfp_addresschange.Remove" />
+  </CustomActions>
+  <Templates>
+    <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+  </Templates>
+  <CommandDefinitions />
+  <RuleDefinitions>
+    <TabDisplayRules />
+    <DisplayRules />
+    <EnableRules />
+  </RuleDefinitions>
+  <LocLabels />
+</RibbonDiffXml>
