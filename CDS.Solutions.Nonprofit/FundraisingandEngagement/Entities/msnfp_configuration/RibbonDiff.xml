@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RibbonDiffXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CustomActions>
+    <CustomAction Id="msnfp.msnfp_configuration.Button2.Button.CustomAction" Location="Mscrm.Form.msnfp_configuration.MainTab.Save.Controls._children" Sequence="75">
+      <CommandUIDefinition>
+        <Button Alt="$LocLabels:msnfp.msnfp_configuration.Button2.Button.Alt" Command="msnfp.msnfp_configuration.Command0.Command" Id="msnfp.msnfp_configuration.Button2.Button" LabelText="$LocLabels:msnfp.msnfp_configuration.Button2.Button.LabelText" Sequence="75" TemplateAlias="o2" ToolTipTitle="$LocLabels:msnfp.msnfp_configuration.Button2.Button.ToolTipTitle" ToolTipDescription="$LocLabels:msnfp.msnfp_configuration.Button2.Button.ToolTipDescription" />
+      </CommandUIDefinition>
+    </CustomAction>
+  </CustomActions>
+  <Templates>
+    <RibbonTemplates Id="Mscrm.Templates"></RibbonTemplates>
+  </Templates>
+  <CommandDefinitions>
+    <CommandDefinition Id="msnfp.msnfp_configuration.Command0.Command">
+      <EnableRules />
+      <DisplayRules />
+      <Actions>
+        <JavaScriptFunction FunctionName="TriggerGiftSyncOnDemand" Library="$webresource:msnfp_/scripts/ribbonbutton.js" />
+      </Actions>
+    </CommandDefinition>
+  </CommandDefinitions>
+  <RuleDefinitions>
+    <TabDisplayRules />
+    <DisplayRules />
+    <EnableRules />
+  </RuleDefinitions>
+  <LocLabels>
+    <LocLabel Id="msnfp.msnfp_configuration.Button2.Button.Alt">
+      <Titles>
+        <Title description="Manual Gift Sync" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_configuration.Button2.Button.LabelText">
+      <Titles>
+        <Title description="Manual Gift Sync" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_configuration.Button2.Button.ToolTipDescription">
+      <Titles>
+        <Title description="This will cause the gift sync webjob to be queued for execution on command instead of waiting for the schedule. This will not interfere with the existing scheduled process." languagecode="1033" />
+      </Titles>
+    </LocLabel>
+    <LocLabel Id="msnfp.msnfp_configuration.Button2.Button.ToolTipTitle">
+      <Titles>
+        <Title description="Manual Gift Sync" languagecode="1033" />
+      </Titles>
+    </LocLabel>
+  </LocLabels>
+</RibbonDiffXml>
