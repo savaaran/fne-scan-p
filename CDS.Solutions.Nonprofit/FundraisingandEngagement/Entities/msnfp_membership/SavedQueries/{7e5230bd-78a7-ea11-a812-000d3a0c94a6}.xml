@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{7e5230bd-78a7-ea11-a812-000d3a0c94a6}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="msnfp_name" select="1" preview="1" icon="1">
+        <row name="result" id="msnfp_membershipid">
+          <cell name="msnfp_customer" width="200" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+          <cell name="msnfp_membershipcategoryid" width="100" />
+          <cell name="msnfp_enddate" width="100" />
+          <cell name="msnfp_startdate" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+        <entity name="msnfp_membership">
+          <order attribute="msnfp_enddate" descending="true" />
+          <order attribute="msnfp_customer" descending="false" />
+          <filter type="and">
+            <condition attribute="msnfp_enddate" operator="last-seven-days" />
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="msnfp_startdate" />
+          <attribute name="msnfp_membershipcategoryid" />
+          <attribute name="msnfp_enddate" />
+          <attribute name="msnfp_customer" />
+          <attribute name="msnfp_membershipid" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Expired Memberships" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Memberships that are expired" languagecode="1033" />
+    </Descriptions>
+  </savedquery>
+</savedqueries>

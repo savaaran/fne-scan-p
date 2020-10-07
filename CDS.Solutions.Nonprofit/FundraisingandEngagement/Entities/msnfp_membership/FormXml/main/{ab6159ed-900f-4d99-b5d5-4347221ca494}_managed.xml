@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{ab6159ed-900f-4d99-b5d5-4347221ca494}</formid>
+    <IntroducedVersion>1.1.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <Navigation>
+        <NavBar>
+          <NavBarByRelationshipItem RelationshipName="msnfp_Membership_msnfp_Contact" Sequence="10001" Area="Info" Id="nav_msnfp_Membership_msnfp_Contact" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Contacts" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_membership_msnfp_configuration" Sequence="10002" Area="Info" Id="nav_msnfp_membership_msnfp_configuration" Show="false" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Configurations" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_membership_msnfp_transaction" Sequence="10003" Area="Info" Id="nav_msnfp_membership_msnfp_transaction" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Transactions" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_membership_msnfp_paymentschedule" Sequence="10004" Area="Info" Id="nav_msnfp_membership_msnfp_paymentschedule" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Payment Schedules" />
+            </Titles>
+          </NavBarByRelationshipItem>
+          <NavBarByRelationshipItem RelationshipName="msnfp_msnfp_membership_msnfp_membershipcategory" Id="nav_msnfp_msnfp_membership_msnfp_membershipcategory" Show="true" Sequence="10005" Area="Info" solutionaction="Added">
+            <Titles>
+              <Title LCID="1033" Text="Membership Categories" />
+            </Titles>
+          </NavBarByRelationshipItem>
+        </NavBar>
+      </Navigation>
+    </form>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>
