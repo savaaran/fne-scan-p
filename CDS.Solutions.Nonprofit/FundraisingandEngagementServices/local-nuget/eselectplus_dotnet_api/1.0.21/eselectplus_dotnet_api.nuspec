@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>eSELECTplus_dotNet_API</id>
+    <version>1.0.21</version>
+    <title>eSELECTplus_dotNet_API</title>
+    <authors>Moneris Solutions</authors>
+    <owners>Moneris Solutions</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/Moneris/eCommerce-Unified-API-dotNet</projectUrl>
+    <description>Moneris eCommerce-Unified-API-dotNet</description>
+  </metadata>
+</package>
